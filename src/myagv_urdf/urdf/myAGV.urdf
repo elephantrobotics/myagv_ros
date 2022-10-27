@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="myAGV">
+
+    <!-- <link name="base_footprint">
+        <visual>
+        <geometry>
+            <mesh filename="package://myagv_urdf/urdf/myagv_all.dae" scale="1 1 1"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="black">
+            <color rgba="0.7 0.5 0.0 0.5"/>
+        </material>
+        </visual>   
+    </link> -->
+
+    <link name="base_footprint">
+        <visual>
+        <geometry>
+            <mesh filename="package://myagv_urdf/urdf/myagv_base.dae" scale="1 1 1"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="black">
+            <color rgba="0.7 0.7 0.0 1.0"/>
+        </material>
+        </visual>   
+    </link>
+
+    <joint name="base_up" type="continuous">
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <parent link="base_footprint"/>
+        <child link="base_up"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="base_up">
+        <visual>
+        <geometry>
+            <mesh filename="package://myagv_urdf/urdf/myagv_up.dae" scale="1 1 1"/>
+        </geometry>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <material name="black">
+            <color rgba="0.7 0.7 0.0 1.0"/>
+        </material>
+        </visual>   
+    </link>
+
+</robot>

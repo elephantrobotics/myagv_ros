@@ -1,0 +1,65 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_c977e/fast && /usr/bin/make  -f CMakeFiles/cmTC_c977e.dir/build.make CMakeFiles/cmTC_c977e.dir/build
+make[1]: Entering directory '/home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_c977e.dir/src.c.o
+/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_c977e.dir/src.c.o -c /home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_c977e
+/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c977e.dir/link.txt --verbose=1
+/usr/bin/cc -rdynamic CMakeFiles/cmTC_c977e.dir/src.c.o -o cmTC_c977e 
+CMakeFiles/cmTC_c977e.dir/src.c.o: In function `main':
+src.c:(.text+0x48): undefined reference to `pthread_create'
+src.c:(.text+0x50): undefined reference to `pthread_detach'
+src.c:(.text+0x58): undefined reference to `pthread_cancel'
+src.c:(.text+0x64): undefined reference to `pthread_join'
+src.c:(.text+0x74): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_c977e.dir/build.make:105: recipe for target 'cmTC_c977e' failed
+make[1]: *** [cmTC_c977e] Error 1
+make[1]: Leaving directory '/home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_c977e/fast' failed
+make: *** [cmTC_c977e/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+static void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_70d65/fast && /usr/bin/make  -f CMakeFiles/cmTC_70d65.dir/build.make CMakeFiles/cmTC_70d65.dir/build
+make[1]: Entering directory '/home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_70d65.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_70d65.dir/CheckFunctionExists.c.o -c /home/ubuntu/cmake-3.19.8-Linux-aarch64/share/cmake-3.19/Modules/CheckFunctionExists.c
+Linking C executable cmTC_70d65
+/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -E cmake_link_script CMakeFiles/cmTC_70d65.dir/link.txt --verbose=1
+/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_70d65.dir/CheckFunctionExists.c.o -o cmTC_70d65  -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_70d65.dir/build.make:105: recipe for target 'cmTC_70d65' failed
+make[1]: *** [cmTC_70d65] Error 1
+make[1]: Leaving directory '/home/ubuntu/myagv_ros/build/CMakeFiles/CMakeTmp'
+Makefile:140: recipe for target 'cmTC_70d65/fast' failed
+make: *** [cmTC_70d65/fast] Error 2
+
+
+

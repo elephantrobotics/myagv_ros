@@ -1,0 +1,23 @@
+obstacle_range: 2.5 #传感器探测最大障碍物距离 小于这个距离都会会加入代价地图
+raytrace_range: 3.0 #机器人运动过程中实时清除障碍物并更新可移动的自由空间 0.3
+footprint: [[-0.18, -0.11], [-0.18, 0.11], [0.18, 0.11], [0.18, -0.11]]
+inflation_radius: 0.25 #机器人与障碍物的最小距离 0.05
+transform_tolerance: 0.5
+
+observation_sources: scan
+scan:
+  data_type: LaserScan
+  topic: scan
+  marking: true
+  clearing: true
+
+map_type: costmap
+
+# sonar_layer:
+#   topics : ['/sonar']
+#   enable: true
+#   no_readings_timeout : 0.0
+#   clear_threshold : .2 
+#   mark_threshold : .8 
+#   clear_on_max_reading : true 
+  
