@@ -5,7 +5,8 @@ import os
 import time
 import threading
 import traceback
-from PyQt5.QtWidgets import QMainWindow, QApplication
+from PyQt5 import QtCore
+from PyQt5.QtWidgets import QMainWindow, QApplication, QMessageBox
 
 from myagv_window import Ui_MainWindow as myAGV_window
 
@@ -17,6 +18,7 @@ class Myagv_Window(myAGV_window, QMainWindow):
         super(Myagv_Window, self).__init__()
         self.setupUi(self)
         self.setWindowTitle('myAGV Test Tool')
+        self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
         self.ros = False
         self.run_launch = ""
         self.open_ros.clicked.connect(self.open)
@@ -27,6 +29,7 @@ class Myagv_Window(myAGV_window, QMainWindow):
         self.navigation_button.clicked.connect(self.navigation)
         self.handle_control.clicked.connect(self.myagv_ps2)
         self.close_button.clicked.connect(self.close_teleop)
+        self.open_camera.clicked.connect(self.open_video)
 
     def open(self):
         current_time = self.get_current_time()
@@ -185,6 +188,29 @@ class Myagv_Window(myAGV_window, QMainWindow):
             with open("/home/ubuntu/error.log", "a") as f:
                 f.write(e)
             self.textBrowser.append('[' + str(current_time) + ']' +' '+ str(e))
+            
+    def open_video(self):
+        current_time = self.get_current_time()
+        mes = 'open camera......'
+        try:
+            global lock
+            while lock:
+                pass
+            lock = True
+            self.textBrowser.append('[' + str(current_time) + ']' + ' ' + mes)
+            t1 = threading.Thread(target=self.camram)
+            t1.setDaemon(True)
+            t1.start()
+            lock = False
+        except Exception as e:
+            e = traceback.format_exc()
+            with open("/home/ubuntu/error.log", "a") as f:
+                f.write(e)
+            # message box
+            QMessageBox.warning(self, "Warning", "Please check whether the serial port is connected", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
+
+    def camram(self):
+        os.system("sudo mplayer tv://")
 
     def ross(self):
         os.system("roslaunch ~/myagv_ros/src/myagv_odometry/launch/myagv_active.launch")
