@@ -152,9 +152,10 @@ include_directories(
 #   ${catkin_LIBRARIES}
 # )
 
-add_executable(publisher 
-               src/carcontrol.cpp)
+add_executable(publisher src/carcontrol.cpp)
+add_executable(publisher_number src/carcontrol_number.cpp)
 target_link_libraries(publisher ${catkin_LIBRARIES})
+target_link_libraries(publisher_number ${catkin_LIBRARIES})
 
 #############
 ## Install ##

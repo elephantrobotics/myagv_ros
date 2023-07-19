@@ -1,0 +1,5 @@
+<launch>
+
+    <node pkg="myagv_ps2" type="publisher_number" name="publisher_number" output="screen" />
+
+</launch>
