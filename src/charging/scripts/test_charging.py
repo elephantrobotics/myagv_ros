@@ -207,7 +207,7 @@ def main():
     degrees2=3.5
     fdegrees2=0
     while True:
-        cam = cv2.VideoCapture(0)
+        cam = cv2.VideoCapture('/dev/video0')
         #font = cv2.FONT_HERSHEY_SIMPLEX
         ret, frame = cam.read()       
         #frame = _flip_frame(frame, flipCode=-1)

@@ -1,0 +1,14 @@
+<launch>
+
+    <node pkg="myagv_odometry" type="myagv_start" name="myagv_start" output="screen" />
+
+    <param name = "robot_description" textfile = "$(find myagv_urdf)/urdf/myAGV.urdf"/> 
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <include file="$(find ydlidar_ros_driver)/launch/X2.launch" />
+   
+
+
+
+</launch>

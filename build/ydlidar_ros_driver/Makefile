@@ -87,29 +87,6 @@ install/strip/fast: preinstall/fast
 	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -143,6 +120,17 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
+
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -153,6 +141,18 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -201,21 +201,6 @@ ydlidar_ros_driver_node/fast:
 	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/build.make ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/build
 .PHONY : ydlidar_ros_driver_node/fast
 
-# Convenience name for target.
-ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/build.make ydlidar_ros_driver/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
 src/ydlidar_ros_driver.o: src/ydlidar_ros_driver.cpp.o
 
 .PHONY : src/ydlidar_ros_driver.o
@@ -256,7 +241,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... _catkin_empty_exported_target"
 	@echo "... ydlidar_ros_driver_node"
 	@echo "... src/ydlidar_ros_driver.o"
 	@echo "... src/ydlidar_ros_driver.i"

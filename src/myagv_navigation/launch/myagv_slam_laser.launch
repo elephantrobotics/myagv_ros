@@ -3,6 +3,7 @@
     <include file="$(find myagv_navigation)/launch/gmapping.launch"/>
 
     <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/gmapping.rviz"/>
-
+  <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
+    args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" />
 </launch>
 

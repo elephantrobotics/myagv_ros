@@ -1,9 +1,9 @@
 global_costmap:
   global_frame: map
-  robot_base_frame: base_link
-  update_frequency: 10.0 
-  publish_frequency: 10.0 
-  static_map: false #是否使用一个地图或者地图服务器来初始化代价地图，如果不使用静态地图，这个为false
+  robot_base_frame: base_footprint
+  update_frequency: 5.0 
+  publish_frequency: 5.0 
+  static_map: true #是否使用一个地图或者地图服务器来初始化代价地图，如果不使用静态地图，这个为false
   rolling_window: true
   width: 20.0
   height: 20.0

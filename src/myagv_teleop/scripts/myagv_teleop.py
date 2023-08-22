@@ -30,7 +30,7 @@ def getKey():
         key = sys.stdin.read(1)
     else:
         key = ''
-
+    
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
@@ -54,30 +54,31 @@ if __name__=="__main__":
                 x = 0
                 y = 0
                 theta = 0
+            
             elif key == 'i':
-                x = 1            
+                x = 0.05           
                 y = 0
                 theta = 0
             elif key == ',':
-                x = -1            
+                x = -0.2          
                 y = 0
                 theta = 0
             elif key == 'j':
                 x = 0            
-                y = 1
+                y = 0.2
                 theta = 0
             elif key == 'l':
                 x = 0            
-                y = -1
+                y = -0.2
                 theta = 0
             elif key == 'u':
                 x = 0            
                 y = 0
-                theta = 1
+                theta = 0.5
             elif key == 'o':
                 x = 0            
                 y = 0
-                theta = -1
+                theta = -0.5
             elif key == '\x03':
                 break
 

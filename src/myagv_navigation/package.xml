@@ -61,6 +61,8 @@
   <build_export_depend>rospy</build_export_depend>
   <build_export_depend>tf</build_export_depend>
   <build_export_depend>visualization_msgs</build_export_depend>
+  <build_depend>python-catkin-tools</build_depend>
+  <exec_depend>python</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>move_base_msgs</exec_depend>
   <exec_depend>roscpp</exec_depend>

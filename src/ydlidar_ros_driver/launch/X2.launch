@@ -4,7 +4,7 @@
     <param name="port"         type="string" value="/dev/ttyAMA0"/>  
     <param name="frame_id"     type="string" value="laser_frame"/>
     <!--<param name="frame_id"     type="string" value="base_link"/>-->
-    <param name="ignore_array"     type="string" value=""/>
+    <param name="ignore_array"     type="string" value="-50,50"/>
 
     <!-- int property -->
     <param name="baudrate"         type="int" value="115200"/>  
@@ -34,7 +34,8 @@
     <!-- frequency is invalid, External PWM control speed -->
     <param name="frequency"    type="double" value="10.0"/>
   </node>
-  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser4"
-    args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" />
+  <!--node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
+    args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" /-->
+
   <!--node name="rviz" pkg="rviz" type="rviz" args="-d $(find ydlidar_ros_driver)/launch/lidar.rviz" /-->
 </launch>

@@ -87,6 +87,29 @@ install/strip/fast: preinstall/fast
 	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -131,29 +154,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # The main all target
 all: cmake_check_build_system
 	cd /home/ubuntu/myagv_ros/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/myagv_ros/build/CMakeFiles /home/ubuntu/myagv_ros/build/myagv_odometry//CMakeFiles/progress.marks
@@ -185,6 +185,21 @@ preinstall/fast:
 depend:
 	cd /home/ubuntu/myagv_ros/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+myagv_odometry/CMakeFiles/myagv_start.dir/rule:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myagv_odometry/CMakeFiles/myagv_start.dir/rule
+.PHONY : myagv_odometry/CMakeFiles/myagv_start.dir/rule
+
+# Convenience name for target.
+myagv_start: myagv_odometry/CMakeFiles/myagv_start.dir/rule
+
+.PHONY : myagv_start
+
+# fast build rule for target.
+myagv_start/fast:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/build
+.PHONY : myagv_start/fast
 
 # Convenience name for target.
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/rule:
@@ -255,6 +270,60 @@ src/myAGVSub.cpp.s:
 	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.s
 .PHONY : src/myAGVSub.cpp.s
 
+src/myagv_start.o: src/myagv_start.cpp.o
+
+.PHONY : src/myagv_start.o
+
+# target to build an object file
+src/myagv_start.cpp.o:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start.cpp.o
+.PHONY : src/myagv_start.cpp.o
+
+src/myagv_start.i: src/myagv_start.cpp.i
+
+.PHONY : src/myagv_start.i
+
+# target to preprocess a source file
+src/myagv_start.cpp.i:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start.cpp.i
+.PHONY : src/myagv_start.cpp.i
+
+src/myagv_start.s: src/myagv_start.cpp.s
+
+.PHONY : src/myagv_start.s
+
+# target to generate assembly for a file
+src/myagv_start.cpp.s:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start.cpp.s
+.PHONY : src/myagv_start.cpp.s
+
+src/myagv_start_sub.o: src/myagv_start_sub.cpp.o
+
+.PHONY : src/myagv_start_sub.o
+
+# target to build an object file
+src/myagv_start_sub.cpp.o:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start_sub.cpp.o
+.PHONY : src/myagv_start_sub.cpp.o
+
+src/myagv_start_sub.i: src/myagv_start_sub.cpp.i
+
+.PHONY : src/myagv_start_sub.i
+
+# target to preprocess a source file
+src/myagv_start_sub.cpp.i:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start_sub.cpp.i
+.PHONY : src/myagv_start_sub.cpp.i
+
+src/myagv_start_sub.s: src/myagv_start_sub.cpp.s
+
+.PHONY : src/myagv_start_sub.s
+
+# target to generate assembly for a file
+src/myagv_start_sub.cpp.s:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_odometry/CMakeFiles/myagv_start.dir/build.make myagv_odometry/CMakeFiles/myagv_start.dir/src/myagv_start_sub.cpp.s
+.PHONY : src/myagv_start_sub.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -269,12 +338,19 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... myagv_odometry_node"
+	@echo "... myagv_start"
 	@echo "... src/myAGV.o"
 	@echo "... src/myAGV.i"
 	@echo "... src/myAGV.s"
 	@echo "... src/myAGVSub.o"
 	@echo "... src/myAGVSub.i"
 	@echo "... src/myAGVSub.s"
+	@echo "... src/myagv_start.o"
+	@echo "... src/myagv_start.i"
+	@echo "... src/myagv_start.s"
+	@echo "... src/myagv_start_sub.o"
+	@echo "... src/myagv_start_sub.i"
+	@echo "... src/myagv_start_sub.s"
 .PHONY : help
 
 

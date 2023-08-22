@@ -1,8 +1,10 @@
 #include <vector>
 #include <iostream>
 #include <iomanip>
+#include <time.h>
 
 #include "myagv_odometry/myAGV.h"
+#include "std_msgs/Int8.h"
 
 //const unsigned char ender[2] = { 0x0d, 0x0a };
 const unsigned char header[2] = { 0xfe, 0xfe };
@@ -69,13 +71,33 @@ bool MyAGV::init()
     lastTime = ros::Time::now();
 
     pub = n.advertise<nav_msgs::Odometry>("odom", 50);
-
+    pub_v = n.advertise<std_msgs::Int8>("Voltage", 1000);
+    restore(); //first restore,abort current err,don't restore
     return true;
+}
+
+void MyAGV::restore()
+{
+    unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x00, 0x01, 0x02};
+    boost::asio::write(sp, boost::asio::buffer(cmd));
+    return;
+}
+
+void MyAGV::restoreRun()
+{
+    int res = 0;
+    std::cout << "if you want restore run,pls input 1,then press enter" << std::endl;
+    while(res != 1) {
+        std::cin >> res;
+        //std::cout << res;
+    }
+    restore();
+    return;
 }
 
 bool MyAGV::readSpeed()
 {
-    int i, length = 0;
+    int i, length = 0, count = 0;
     unsigned char checkSum;
     unsigned char buf_header[1] = {0};
     unsigned char buf[16] = {0};
@@ -84,7 +106,9 @@ bool MyAGV::readSpeed()
     boost::system::error_code er2;
     bool header_found = false;
     while (!header_found) {
-        ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+        ++count;
+        ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);     
+//	    ROS_INFO("start");
         if (ret != 1) {
             continue;
         }
@@ -104,13 +128,30 @@ bool MyAGV::readSpeed()
         }
         header_found = true;
     }
+    //std::cout << std::endl;
 
     // if (!(buf_header[0] == header[0] && buf_header[1] == header[1]))  {
     //     // not a header
     //     return false;
     // }
 
-    ret = boost::asio::read(sp, boost::asio::buffer(buf), boost::asio::transfer_at_least(16), er2); // ready break
+    ret = boost::asio::read(sp, boost::asio::buffer(buf), boost::asio::transfer_at_least(4), er2); // ready break
+   /* std::cout << "readSpeed: " << ret;
+    for (int i = 0; i < ret; ++i) {
+        std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(buf[i]) << " ";
+    }
+    std::cout << std::endl;*/
+	if ((buf[0] + buf[1] + buf[2] + buf[3]) == buf[4]) {
+        int wheel_num = 0;
+        for (int i = 0; i < 4; ++i) {
+            if (buf[i] == 1) {
+                wheel_num = i+1;
+                ROS_ERROR("ERROR %d wheel current > 2000", wheel_num);
+            }
+        }
+        restoreRun();
+        return false;
+    }
     if (ret != 16) {
         ROS_ERROR("Read error");
         return false;
@@ -204,6 +245,59 @@ bool MyAGV::readSpeed()
 
 void MyAGV::writeSpeed(double movex, double movey, double rot)
 {
+    if (movex == 10 && movey == 10 && rot == 10)
+    {
+        char buf[7] = {0xfe, 0xfe ,0x01 ,0x01 ,0x01 ,0x03};
+        boost::asio::write(sp, boost::asio::buffer(buf));
+        unsigned char buf_header[1] = {0};
+
+        size_t ret;
+        boost::system::error_code er2;
+        bool header_found = false;
+        time_t now_t = time(NULL);
+        while (true) {
+            
+            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+            
+            if (ret != 1) {
+                continue;
+            }
+            if (buf_header[0] != header[0]) {
+                continue;
+            }
+            bool header_2_found = false;
+            while (!header_2_found) {
+                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+                if (ret != 1) {
+                    continue;
+                }
+                if (buf_header[0] != header[0]) {
+                    continue;
+                }
+                header_2_found = true;
+            }
+            header_found = true;
+            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+            if (buf_header[0] == 0x01)
+            {
+                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+                if (buf_header[0] == 0x01)
+                {
+                    ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+                    std_msgs::Int8 msg;
+                    msg.data = (int)buf_header[0] / 10;
+                    ROS_INFO("Voltage: %d", msg.data);
+                    pub_v.publish(msg);
+                    break;
+                }
+            }
+            if (time(NULL) - now_t > 3)
+            {
+                ROS_ERROR("Get Voltage timeout");
+                break;
+            }
+        }
+    }else{
     if (movex > 1.0) movex = 1.0;
     if (movex < -1.0) movex = -1.0;
     if (movey > 1.0) movey = 1.0;
@@ -228,22 +322,20 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     buf[4] = rot_send;
     buf[5] = check;
     
-    std::cout << "writeSpeed: ";
+    /*std::cout << "writeSpeed: ";
     std::cout << movex;
-    // for (int i = 0; i < 6; ++i) {
-    //     std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(buf[i]) << " ";
-    // }
-    std::cout << std::endl;
+     for (int i = 0; i < 6; ++i) {
+         std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(buf[i]) << " ";
+     }
+    std::cout << std::endl;*/
 
-    boost::asio::write(sp, boost::asio::buffer(buf));
+    boost::asio::write(sp, boost::asio::buffer(buf));}
 }
 
 bool MyAGV::execute(double linearX, double linearY, double angularZ)
 {
-	std::cout << "execute: " << linearX << std::endl;
+	//std::cout << "execute: " << linearX << std::endl;
     writeSpeed(linearX, linearY, angularZ);
-
-	
     readSpeed(); // easy to report error 
 
     geometry_msgs::TransformStamped odom_trans;

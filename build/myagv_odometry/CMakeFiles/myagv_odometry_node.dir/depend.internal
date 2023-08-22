@@ -75,7 +75,9 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o
  /opt/ros/melodic/include/ros/wall_timer.h
  /opt/ros/melodic/include/ros/wall_timer_options.h
  /opt/ros/melodic/include/rosconsole/macros_generated.h
+ /opt/ros/melodic/include/sensor_msgs/Imu.h
  /opt/ros/melodic/include/std_msgs/Header.h
+ /opt/ros/melodic/include/std_msgs/Int8.h
  /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
  /opt/ros/melodic/include/tf/LinearMath/MinMax.h
  /opt/ros/melodic/include/tf/LinearMath/QuadWord.h
@@ -179,6 +181,7 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o
  /opt/ros/melodic/include/ros/wall_timer.h
  /opt/ros/melodic/include/ros/wall_timer_options.h
  /opt/ros/melodic/include/rosconsole/macros_generated.h
+ /opt/ros/melodic/include/sensor_msgs/Imu.h
  /opt/ros/melodic/include/std_msgs/Header.h
  /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
  /opt/ros/melodic/include/tf/LinearMath/MinMax.h

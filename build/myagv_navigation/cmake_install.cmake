@@ -57,3 +57,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_navigation" TYPE FILE FILES "/home/ubuntu/myagv_ros/src/myagv_navigation/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/myagv_navigation" TYPE PROGRAM FILES "/home/ubuntu/myagv_ros/build/myagv_navigation/catkin_generated/installspace/stop_resume_navigation.py")
+endif()
+

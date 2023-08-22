@@ -74,7 +74,9 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melo
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/sensor_msgs/Imu.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/std_msgs/Int8.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/tf/LinearMath/MinMax.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /opt/ros/melodic/include/tf/LinearMath/QuadWord.h
@@ -178,6 +180,7 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/m
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/sensor_msgs/Imu.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/tf/LinearMath/Matrix3x3.h
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /opt/ros/melodic/include/tf/LinearMath/MinMax.h

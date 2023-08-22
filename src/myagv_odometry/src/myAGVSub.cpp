@@ -10,7 +10,7 @@ void cmdCallback(const geometry_msgs::Twist& msg)
 	linearX = msg.linear.x;
 	linearY = msg.linear.y;
 	angularZ = msg.angular.z;
-	std::cout << "cmdCallback: " << msg.linear.x << ", linearX: " << linearX << std::endl;
+//	std:: "cmdCallback: " << msg.linear.x << ", linearX: " << linearX << ", linearY: " << linearY <<", angularZ: " << angularZ <<std::endl;
 }
 
 int main(int argc, char* argv[])
@@ -21,7 +21,7 @@ int main(int argc, char* argv[])
 
 	if (!myAGV.init())
 		ROS_ERROR("myAGV initialized failed!");
-	ROS_ERROR("myAGV initialized successful!");
+	ROS_INFO("myAGV initialized successful!");
 
 	ros::Subscriber sub = n.subscribe("cmd_vel", 50, cmdCallback);
 	ros::Rate loop_rate(100);
@@ -32,7 +32,6 @@ int main(int argc, char* argv[])
 	{
 		ros::spinOnce();
 		myAGV.execute(linearX, linearY, angularZ);
-		
 		loop_rate.sleep();
 	}
 

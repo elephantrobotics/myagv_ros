@@ -157,6 +157,15 @@ add_executable(myagv_odometry_node
                src/myAGVSub.cpp)
 target_link_libraries(myagv_odometry_node ${catkin_LIBRARIES})
 
+add_executable(myagv_start 
+               src/myagv_start.cpp
+               src/myagv_start_sub.cpp)
+target_link_libraries(myagv_start ${catkin_LIBRARIES})
+
+
+
+
+
 #############
 ## Install ##
 #############
