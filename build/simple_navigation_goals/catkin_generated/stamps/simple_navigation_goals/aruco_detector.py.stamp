@@ -17,7 +17,7 @@ cam = cv2.VideoCapture(cam_id)
 calibrationFile = "calibrationFileName.xml"
 calibrationParams = cv2.FileStorage(calibrationFile, cv2.FILE_STORAGE_READ)
 dist_coeffs = calibrationParams.getNode("distCoeffs").mat()
-
+print(dist_coeffs)
 
 font = cv2.FONT_HERSHEY_SIMPLEX  # font for displaying text (below)
 ret, frame = cam.read()
@@ -31,7 +31,7 @@ center = (size[1] / 2, size[0] / 2)
 # Camera internals
 camera_matrix = np.array([[focal_length, 0, center[0]], [0, focal_length, center[1]],[0, 0, 1]], dtype="double")
 
-
+print(camera_matrix,dist_coeffs)
 
 cv2.namedWindow("show",0)
 

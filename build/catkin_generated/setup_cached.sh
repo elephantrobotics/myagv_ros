@@ -7,4 +7,5 @@
 # new environment variables
 
 # modified environment variables
+export PATH='/opt/ros/melodic/bin:/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/:/opt/aarch64_qt5.12.10/bin:/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'
 export PWD='/home/ubuntu/myagv_ros/build'

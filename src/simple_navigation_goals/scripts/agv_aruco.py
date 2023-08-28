@@ -465,10 +465,10 @@ def main_process(first_dir = 1):
                 print ("Finsih doing")
                 return 1
         else:
-            if i < max_towards_times:  # 增加判断条件，防止过程丢失二维码信息
+            if i < max_towards_times:
                 continue
             else:
-                print("Didn't see objects")
+                print ("Didn't see objects")
                 return 0
 
     rot_once(1,1,0,0)
