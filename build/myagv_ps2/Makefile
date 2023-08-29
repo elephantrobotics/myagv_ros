@@ -87,6 +87,29 @@ install/strip/fast: preinstall/fast
 	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
 .PHONY : install/strip/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -120,18 +143,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
@@ -142,17 +153,6 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/home/ubuntu/cmake-3.19.8-Linux-aarch64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -185,6 +185,21 @@ preinstall/fast:
 depend:
 	cd /home/ubuntu/myagv_ros/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+myagv_ps2/CMakeFiles/publisher_number.dir/rule:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myagv_ps2/CMakeFiles/publisher_number.dir/rule
+.PHONY : myagv_ps2/CMakeFiles/publisher_number.dir/rule
+
+# Convenience name for target.
+publisher_number: myagv_ps2/CMakeFiles/publisher_number.dir/rule
+
+.PHONY : publisher_number
+
+# fast build rule for target.
+publisher_number/fast:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/build
+.PHONY : publisher_number/fast
 
 # Convenience name for target.
 myagv_ps2/CMakeFiles/publisher.dir/rule:
@@ -228,6 +243,33 @@ src/carcontrol.cpp.s:
 	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher.dir/build.make myagv_ps2/CMakeFiles/publisher.dir/src/carcontrol.cpp.s
 .PHONY : src/carcontrol.cpp.s
 
+src/carcontrol_number.o: src/carcontrol_number.cpp.o
+
+.PHONY : src/carcontrol_number.o
+
+# target to build an object file
+src/carcontrol_number.cpp.o:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/src/carcontrol_number.cpp.o
+.PHONY : src/carcontrol_number.cpp.o
+
+src/carcontrol_number.i: src/carcontrol_number.cpp.i
+
+.PHONY : src/carcontrol_number.i
+
+# target to preprocess a source file
+src/carcontrol_number.cpp.i:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/src/carcontrol_number.cpp.i
+.PHONY : src/carcontrol_number.cpp.i
+
+src/carcontrol_number.s: src/carcontrol_number.cpp.s
+
+.PHONY : src/carcontrol_number.s
+
+# target to generate assembly for a file
+src/carcontrol_number.cpp.s:
+	cd /home/ubuntu/myagv_ros/build && $(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/src/carcontrol_number.cpp.s
+.PHONY : src/carcontrol_number.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -242,9 +284,13 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... publisher"
+	@echo "... publisher_number"
 	@echo "... src/carcontrol.o"
 	@echo "... src/carcontrol.i"
 	@echo "... src/carcontrol.s"
+	@echo "... src/carcontrol_number.o"
+	@echo "... src/carcontrol_number.i"
+	@echo "... src/carcontrol_number.s"
 .PHONY : help
 
 

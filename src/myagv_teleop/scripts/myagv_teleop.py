@@ -56,20 +56,20 @@ if __name__=="__main__":
                 theta = 0
             
             elif key == 'i':
-                x = 0.05           
+                x = 0.5           
                 y = 0
                 theta = 0
             elif key == ',':
-                x = -0.2          
+                x = -0.5          
                 y = 0
                 theta = 0
             elif key == 'j':
                 x = 0            
-                y = 0.2
+                y = 0.5
                 theta = 0
             elif key == 'l':
                 x = 0            
-                y = -0.2
+                y = -0.5
                 theta = 0
             elif key == 'u':
                 x = 0            

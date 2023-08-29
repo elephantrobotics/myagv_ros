@@ -142,13 +142,14 @@
 /home/ubuntu/myagv_ros/build/myagv_odometry/CMakeFiles/list_install_components.dir
 /home/ubuntu/myagv_ros/build/myagv_odometry/CMakeFiles/edit_cache.dir
 /home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/install/strip.dir
+/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/install.dir
+/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/publisher_number.dir
+/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/rebuild_cache.dir
+/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/publisher.dir
 /home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/install/local.dir
 /home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/test.dir
 /home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/list_install_components.dir
-/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/publisher.dir
-/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/install.dir
 /home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/edit_cache.dir
-/home/ubuntu/myagv_ros/build/myagv_ps2/CMakeFiles/rebuild_cache.dir
 /home/ubuntu/myagv_ros/build/myagv_urdf/CMakeFiles/install/strip.dir
 /home/ubuntu/myagv_ros/build/myagv_urdf/CMakeFiles/edit_cache.dir
 /home/ubuntu/myagv_ros/build/myagv_urdf/CMakeFiles/list_install_components.dir

@@ -1136,6 +1136,19 @@ myagv_odometry_node/fast:
 .PHONY : myagv_odometry_node/fast
 
 #=============================================================================
+# Target rules for targets named publisher_number
+
+# Build rule for target.
+publisher_number: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 publisher_number
+.PHONY : publisher_number
+
+# fast build rule for target.
+publisher_number/fast:
+	$(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/build
+.PHONY : publisher_number/fast
+
+#=============================================================================
 # Target rules for targets named publisher
 
 # Build rule for target.
@@ -1677,6 +1690,7 @@ help:
 	@echo "... myagv_start"
 	@echo "... openfile"
 	@echo "... publisher"
+	@echo "... publisher_number"
 	@echo "... record_pose"
 	@echo "... robot_pose_ekf"
 	@echo "... send_goal"

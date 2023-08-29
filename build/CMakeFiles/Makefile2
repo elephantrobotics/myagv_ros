@@ -278,6 +278,7 @@ myagv_odometry/clean: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/clean
 # Directory level rules for directory myagv_ps2
 
 # Recursive "all" directory target.
+myagv_ps2/all: myagv_ps2/CMakeFiles/publisher_number.dir/all
 myagv_ps2/all: myagv_ps2/CMakeFiles/publisher.dir/all
 
 .PHONY : myagv_ps2/all
@@ -288,6 +289,7 @@ myagv_ps2/preinstall:
 .PHONY : myagv_ps2/preinstall
 
 # Recursive "clean" directory target.
+myagv_ps2/clean: myagv_ps2/CMakeFiles/publisher_number.dir/clean
 myagv_ps2/clean: myagv_ps2/CMakeFiles/publisher.dir/clean
 
 .PHONY : myagv_ps2/clean
@@ -2029,7 +2031,7 @@ auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/clean:
 auto_dock/CMakeFiles/record_pose.dir/all:
 	$(MAKE) $(MAKESILENT) -f auto_dock/CMakeFiles/record_pose.dir/build.make auto_dock/CMakeFiles/record_pose.dir/depend
 	$(MAKE) $(MAKESILENT) -f auto_dock/CMakeFiles/record_pose.dir/build.make auto_dock/CMakeFiles/record_pose.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=28,29 "Built target record_pose"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=30,31 "Built target record_pose"
 .PHONY : auto_dock/CMakeFiles/record_pose.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2110,7 +2112,7 @@ auto_dock/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/clean:
 auto_dock/CMakeFiles/send_goal.dir/all:
 	$(MAKE) $(MAKESILENT) -f auto_dock/CMakeFiles/send_goal.dir/build.make auto_dock/CMakeFiles/send_goal.dir/depend
 	$(MAKE) $(MAKESILENT) -f auto_dock/CMakeFiles/send_goal.dir/build.make auto_dock/CMakeFiles/send_goal.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=41,42 "Built target send_goal"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=43,44 "Built target send_goal"
 .PHONY : auto_dock/CMakeFiles/send_goal.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2428,6 +2430,33 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/clean:
 .PHONY : myagv_odometry/CMakeFiles/myagv_odometry_node.dir/clean
 
 #=============================================================================
+# Target rules for target myagv_ps2/CMakeFiles/publisher_number.dir
+
+# All Build rule for target.
+myagv_ps2/CMakeFiles/publisher_number.dir/all:
+	$(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/depend
+	$(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=28,29 "Built target publisher_number"
+.PHONY : myagv_ps2/CMakeFiles/publisher_number.dir/all
+
+# Build rule for subdir invocation for target.
+myagv_ps2/CMakeFiles/publisher_number.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/myagv_ros/build/CMakeFiles 2
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 myagv_ps2/CMakeFiles/publisher_number.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/myagv_ros/build/CMakeFiles 0
+.PHONY : myagv_ps2/CMakeFiles/publisher_number.dir/rule
+
+# Convenience name for target.
+publisher_number: myagv_ps2/CMakeFiles/publisher_number.dir/rule
+
+.PHONY : publisher_number
+
+# clean rule for target.
+myagv_ps2/CMakeFiles/publisher_number.dir/clean:
+	$(MAKE) $(MAKESILENT) -f myagv_ps2/CMakeFiles/publisher_number.dir/build.make myagv_ps2/CMakeFiles/publisher_number.dir/clean
+.PHONY : myagv_ps2/CMakeFiles/publisher_number.dir/clean
+
+#=============================================================================
 # Target rules for target myagv_ps2/CMakeFiles/publisher.dir
 
 # All Build rule for target.
@@ -2462,7 +2491,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/all: charg
 robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/all: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=38 "Built target robot_pose_ekf_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=40 "Built target robot_pose_ekf_generate_messages_nodejs"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2490,7 +2519,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/all: charging
 robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/all: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=35,36 "Built target robot_pose_ekf_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=37,38 "Built target robot_pose_ekf_generate_messages_eus"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2572,7 +2601,7 @@ robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/all: robot_pos
 robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/all: robot_pose_ekf/CMakeFiles/nav_msgs_generate_messages_py.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/build.make robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/build.make robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=45,46 "Built target test_robot_pose_ekf_zero_covariance"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=47,48 "Built target test_robot_pose_ekf_zero_covariance"
 .PHONY : robot_pose_ekf/CMakeFiles/test_robot_pose_ekf_zero_covariance.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2681,7 +2710,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/all: charging/
 robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/all: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=39,40 "Built target robot_pose_ekf_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=41,42 "Built target robot_pose_ekf_generate_messages_py"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2820,7 +2849,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/all: robot_pose_ekf/CMakeFiles/nav_
 robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/all: robot_pose_ekf/CMakeFiles/nav_msgs_generate_messages_py.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=30,31,32,33 "Built target robot_pose_ekf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=32,33,34,35 "Built target robot_pose_ekf"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2876,7 +2905,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/all: chargin
 robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/all: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=37 "Built target robot_pose_ekf_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=39 "Built target robot_pose_ekf_generate_messages_lisp"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2904,7 +2933,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/all: charging
 robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/all: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/build.make robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=34 "Built target robot_pose_ekf_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=36 "Built target robot_pose_ekf_generate_messages_cpp"
 .PHONY : robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3230,7 +3259,7 @@ robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/all: robot_pose_ekf/CMakeFiles
 robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/all: robot_pose_ekf/CMakeFiles/nav_msgs_generate_messages_py.dir/all
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/build.make robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/depend
 	$(MAKE) $(MAKESILENT) -f robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/build.make robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=43,44 "Built target test_robot_pose_ekf"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=45,46 "Built target test_robot_pose_ekf"
 .PHONY : robot_pose_ekf/CMakeFiles/test_robot_pose_ekf.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3475,7 +3504,7 @@ robot_pose_ekf/CMakeFiles/nav_msgs_generate_messages_py.dir/clean:
 ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/all:
 	$(MAKE) $(MAKESILENT) -f ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/build.make ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/build.make ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=47,48 "Built target ydlidar_ros_driver_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/myagv_ros/build/CMakeFiles --progress-num=49,50 "Built target ydlidar_ros_driver_node"
 .PHONY : ydlidar_ros_driver/CMakeFiles/ydlidar_ros_driver_node.dir/all
 
 # Build rule for subdir invocation for target.

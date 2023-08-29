@@ -156,6 +156,10 @@ add_executable(publisher
                src/carcontrol.cpp)
 target_link_libraries(publisher ${catkin_LIBRARIES})
 
+add_executable(publisher_number 
+               src/carcontrol_number.cpp)
+target_link_libraries(publisher_number ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############
