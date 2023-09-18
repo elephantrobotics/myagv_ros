@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_launch
+Description: Description of rtabmap_launch
+Version: 0.21.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

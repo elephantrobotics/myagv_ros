@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_demos
+Description: Description of rtabmap_demos
+Version: 0.21.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: rtabmap_conversions rtabmap_msgs visualization_msgs find_object_2d

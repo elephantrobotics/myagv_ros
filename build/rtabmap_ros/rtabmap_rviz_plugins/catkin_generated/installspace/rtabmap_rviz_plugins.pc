@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_rviz_plugins
+Description: Description of rtabmap_rviz_plugins
+Version: 0.21.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lrtabmap_rviz_plugins
+Requires: roscpp sensor_msgs std_msgs pcl_conversions pluginlib rviz tf rtabmap_conversions rtabmap_msgs

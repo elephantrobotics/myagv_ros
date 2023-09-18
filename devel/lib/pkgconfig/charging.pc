@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/devel
+prefix=/home/er/myagv_ros/devel
 
 Name: charging
 Description: Description of charging

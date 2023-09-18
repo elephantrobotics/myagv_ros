@@ -1,6 +1,6 @@
 Panels:
   - Class: rviz/Displays
-    Help Height: 78
+    Help Height: 0
     Name: Displays
     Property Tree Widget:
       Expanded:
@@ -9,9 +9,10 @@ Panels:
         - /RobotModel1/Links1
         - /Inflated Obstacles1/Position1
         - /Inflated Obstacles1/Orientation1
+        - /Map2
         - /PoseArray1
       Splitter Ratio: 0.6526610255241394
-    Tree Height: 672
+    Tree Height: 233
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -27,10 +28,16 @@ Panels:
     Name: Views
     Splitter Ratio: 0.5
   - Class: rviz/Time
-    Experimental: false
     Name: Time
     SyncMode: 0
     SyncSource: LaserScan
+  - Class: navi_multi_goals_pub_rviz_plugin/MultiNaviGoalsPanel
+    Name: MultiNaviGoalsPanel
+  - Class: rviz/Tool Properties
+    Expanded:
+      - /2D Nav Goal1
+    Name: Tool Properties
+    Splitter Ratio: 0.5
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -77,6 +84,7 @@ Visualization Manager:
       Keep: 1
       Name: Odometry
       Position Tolerance: 0.10000000149011612
+      Queue Size: 10
       Shape:
         Alpha: 1
         Axes Length: 1
@@ -143,6 +151,7 @@ Visualization Manager:
         Z: 0
       Pose Color: 255; 85; 255
       Pose Style: None
+      Queue Size: 10
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
@@ -166,6 +175,7 @@ Visualization Manager:
         Z: 0
       Pose Color: 255; 85; 255
       Pose Style: None
+      Queue Size: 10
       Radius: 0.029999999329447746
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
@@ -187,9 +197,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 4096
       Min Color: 0; 0; 0
-      Min Intensity: 0
       Name: LaserScan
       Position Transformer: XYZ
       Queue Size: 10
@@ -211,6 +219,7 @@ Visualization Manager:
       Head Length: 0.10000000149011612
       Head Radius: 0.15000000596046448
       Name: Goal Pose
+      Queue Size: 10
       Shaft Length: 0.5
       Shaft Radius: 0.029999999329447746
       Shape: Arrow
@@ -255,12 +264,21 @@ Visualization Manager:
       Head Length: 0.07000000029802322
       Head Radius: 0.029999999329447746
       Name: PoseArray
+      Queue Size: 10
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (Flat)
       Topic: /particlecloud
       Unreliable: false
       Value: false
+    - Class: rviz/Marker
+      Enabled: true
+      Marker Topic: visualization_marker
+      Name: Marker
+      Namespaces:
+        {}
+      Queue Size: 100
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 0; 0; 0
@@ -279,7 +297,7 @@ Visualization Manager:
       X std deviation: 0.5
       Y std deviation: 0.5
     - Class: rviz/SetGoal
-      Topic: /move_base_simple/goal
+      Topic: /move_base_simple/goal_temp
     - Class: rviz/PublishPoint
       Single click: true
       Topic: /clicked_point
@@ -296,9 +314,8 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 360.1225280761719
+      Scale: 72.33740997314453
       Target Frame: <Fixed Frame>
-      Value: TopDownOrtho (rviz)
       X: -0.13627944886684418
       Y: 0.5294041633605957
     Saved: ~
@@ -308,7 +325,9 @@ Window Geometry:
   Height: 904
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000016a0000032cfc0200000005fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000198000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e0000032c000000ca00ffffff000000010000010f00000270fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000270000000a600fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000043000fffffffb0000000800540069006d00650100000000000004500000000000000000000004280000032c00000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  MultiNaviGoalsPanel:
+    collapsed: false
+  QMainWindow State: 000000ff00000000fd00000004000000000000016a00000329fc0200000007fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000006400fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000198000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c00610079007301000000410000012a000000dd00fffffffb00000026004d0075006c00740069004e0061007600690047006f0061006c007300500061006e0065006c01000001710000014b000000e600fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007301000002c2000000a80000006400ffffff000000010000010f00000270fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073000000002800000270000000b000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000004a00000003efc0100000002fb0000000800540069006d00650000000000000004a00000042b00fffffffb0000000800540069006d00650100000000000004500000000000000000000004280000032900000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -318,5 +337,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1432
-  X: 129
-  Y: 25
+  X: 127
+  Y: 28

@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/devel
+prefix=/home/er/myagv_ros/devel
 
 Name: myagv_ps2
 Description: Description of myagv_ps2

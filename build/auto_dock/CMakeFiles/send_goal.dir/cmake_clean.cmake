@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/send_goal"
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/send_goal.pdb"
+  "/home/er/myagv_ros/devel/lib/auto_dock/send_goal"
+  "/home/er/myagv_ros/devel/lib/auto_dock/send_goal.pdb"
   "CMakeFiles/send_goal.dir/src/send_goal.cpp.o"
 )
 

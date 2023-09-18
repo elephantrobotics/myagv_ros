@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/devel
+
+Name: rtabmap_python
+Description: Description of rtabmap_python
+Version: 0.21.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: rospy

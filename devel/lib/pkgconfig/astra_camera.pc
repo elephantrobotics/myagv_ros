@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/devel
+
+Name: astra_camera
+Description: Description of astra_camera
+Version: 1.2.3
+Cflags: -I/home/er/myagv_ros/devel/include -I/home/er/myagv_ros/src/ros_astra_camera/include
+Libs: -L${prefix}/lib -lastra_camera
+Requires: cv_bridge dynamic_reconfigure image_geometry image_transport message_runtime roscpp sensor_msgs tf2 tf2_ros std_srvs message_filters camera_info_manager

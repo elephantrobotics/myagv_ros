@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_examples
+Description: Description of rtabmap_examples
+Version: 0.21.1
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: roscpp rtabmap_conversions message_filters

@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/devel
+
+Name: rtabmap_util
+Description: Description of rtabmap_util
+Version: 0.21.1
+Cflags: -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_util/include
+Libs: -L${prefix}/lib -lrtabmap_util_plugins
+Requires: cv_bridge image_transport roscpp nav_msgs sensor_msgs stereo_msgs std_msgs tf laser_geometry pcl_conversions pcl_ros nodelet message_filters pluginlib rtabmap_msgs rtabmap_conversions octomap_msgs

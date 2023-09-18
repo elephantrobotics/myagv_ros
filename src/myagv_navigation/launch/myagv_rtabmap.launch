@@ -1,0 +1,10 @@
+<launch>
+
+
+    <!--include file="$(find orbbec_camera)/launch/astra_pro2.launch"/-->
+    
+    <include file="$(find myagv_navigation)/launch/rtabmap_mapping.launch"/>
+
+
+</launch>
+

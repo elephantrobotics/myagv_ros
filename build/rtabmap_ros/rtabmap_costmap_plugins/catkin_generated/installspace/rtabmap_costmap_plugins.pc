@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_costmap_plugins
+Description: Description of rtabmap_costmap_plugins
+Version: 0.21.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lrtabmap_costmap_plugins -lrtabmap_costmap_plugins2
+Requires: roscpp pcl_conversions costmap_2d

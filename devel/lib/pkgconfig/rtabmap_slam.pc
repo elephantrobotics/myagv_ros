@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/devel
+
+Name: rtabmap_slam
+Description: Description of rtabmap_slam
+Version: 0.21.1
+Cflags: -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_slam/include
+Libs: -L${prefix}/lib -lrtabmap_slam_plugins
+Requires: actionlib actionlib_msgs cv_bridge geometry_msgs move_base_msgs nav_msgs nodelet pluginlib sensor_msgs std_msgs std_srvs tf tf2_ros visualization_msgs rtabmap_msgs rtabmap_util rtabmap_sync apriltag_ros

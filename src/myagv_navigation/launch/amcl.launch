@@ -20,8 +20,8 @@
         <param name="laser_z_short" value="0.05"/>
         <param name="laser_z_max" value="0.05"/>
         <param name="laser_z_rand" value="0.5"/>
-        <param name="max_particles" value="5000"/>
-        <param name="min_particles" value="500"/>
+        <param name="max_particles" value="500"/>
+        <param name="min_particles" value="100"/>
         <param name="odom_alpha1" value="0.25"/>
         <param name="odom_alpha2" value="0.80"/>
         <param name="odom_alpha3" value="0.55"/>
@@ -34,8 +34,8 @@
         <param name="recovery_alpha_fast" value="0.1"/>
         <param name="resample_interval" value="1"/>
         <param name="transform_tolerance" value="1.25"/>
-        <param name="update_min_a" value="0.2"/>
-        <param name="update_min_d" value="0.2"/>
+        <param name="update_min_a" value="0.05"/>
+        <param name="update_min_d" value="0.15"/>
     </node>
 
 </launch>

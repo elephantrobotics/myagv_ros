@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/myagv_ros/src/myagv_navigation
+# Install script for directory: /home/er/myagv_ros/src/myagv_navigation
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/myagv_ros/install")
+  set(CMAKE_INSTALL_PREFIX "/home/er/myagv_ros/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,27 +37,22 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigation.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/er/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigation.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_navigation/cmake" TYPE FILE FILES
-    "/home/ubuntu/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigationConfig.cmake"
-    "/home/ubuntu/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigationConfig-version.cmake"
+    "/home/er/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigationConfig.cmake"
+    "/home/er/myagv_ros/build/myagv_navigation/catkin_generated/installspace/myagv_navigationConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_navigation" TYPE FILE FILES "/home/ubuntu/myagv_ros/src/myagv_navigation/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_navigation" TYPE FILE FILES "/home/er/myagv_ros/src/myagv_navigation/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/myagv_navigation" TYPE PROGRAM FILES "/home/ubuntu/myagv_ros/build/myagv_navigation/catkin_generated/installspace/stop_resume_navigation.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/myagv_navigation" TYPE PROGRAM FILES "/home/er/myagv_ros/build/myagv_navigation/catkin_generated/installspace/stop_resume_navigation.py")
 endif()
 

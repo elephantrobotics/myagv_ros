@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_odom
+Description: Description of rtabmap_odom
+Version: 0.21.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lrtabmap_odom -lrtabmap_odom_plugins
+Requires: cv_bridge image_geometry laser_geometry message_filters nav_msgs nodelet pcl_conversions pcl_ros pluginlib roscpp sensor_msgs rtabmap_conversions rtabmap_msgs rtabmap_util rtabmap_sync

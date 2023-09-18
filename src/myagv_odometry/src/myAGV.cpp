@@ -15,7 +15,7 @@ const unsigned char header[2] = { 0xfe, 0xfe };
 
 boost::asio::io_service iosev;
 //boost::asio::serial_port sp(iosev, "/dev/ttyUSB0");
-boost::asio::serial_port sp(iosev, "/dev/ttyACM0");
+boost::asio::serial_port sp(iosev, "/dev/ttyS0");
 
 boost::array<double, 36> odom_pose_covariance = {
     {1e-9, 0, 0, 0, 0, 0,
@@ -78,8 +78,21 @@ bool MyAGV::init()
 
 void MyAGV::restore()
 {
+
+    boost::asio::streambuf clear_buffer; 
+    boost::asio::read(sp, clear_buffer, boost::asio::transfer_at_least(1));
+    
+    std::this_thread::sleep_for(std::chrono::milliseconds(100)); 
     unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x00, 0x01, 0x02};
+    
+    std::cout << "Sending data: ";
+    for (int i = 0; i < 6; ++i) {
+        std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(cmd[i]) << " ";
+    }
+    std::cout << std::dec << std::endl;
+
     boost::asio::write(sp, boost::asio::buffer(cmd));
+    std::this_thread::sleep_for(std::chrono::milliseconds(50));
     return;
 }
 
@@ -89,9 +102,11 @@ void MyAGV::restoreRun()
     std::cout << "if you want restore run,pls input 1,then press enter" << std::endl;
     while(res != 1) {
         std::cin >> res;
-        //std::cout << res;
+        std::cout <<  "press enter" << std::endl;
+        std::cout << res;
     }
     restore();
+    std::cout <<  "restore finished" << std::endl;
     return;
 }
 
@@ -100,7 +115,7 @@ bool MyAGV::readSpeed()
     int i, length = 0, count = 0;
     unsigned char checkSum;
     unsigned char buf_header[1] = {0};
-    unsigned char buf[16] = {0};
+    unsigned char buf[27] = {0};
 
     size_t ret;
     boost::system::error_code er2;
@@ -108,6 +123,7 @@ bool MyAGV::readSpeed()
     while (!header_found) {
         ++count;
         ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);     
+        //ROS_ERROR("read ret %d", buf_header[0]);
 //	    ROS_INFO("start");
         if (ret != 1) {
             continue;
@@ -118,6 +134,7 @@ bool MyAGV::readSpeed()
         bool header_2_found = false;
         while (!header_2_found) {
             ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
+            //ROS_ERROR("read2 ret %d", buf_header[0]);
             if (ret != 1) {
                 continue;
             }
@@ -135,25 +152,25 @@ bool MyAGV::readSpeed()
     //     return false;
     // }
 
-    ret = boost::asio::read(sp, boost::asio::buffer(buf), boost::asio::transfer_at_least(4), er2); // ready break
-   /* std::cout << "readSpeed: " << ret;
+    ret = boost::asio::read(sp, boost::asio::buffer(buf), er2); // ready break
+    /*std::cout << "readSpeed: %d --" << ret;
     for (int i = 0; i < ret; ++i) {
         std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(buf[i]) << " ";
-    }
-    std::cout << std::endl;*/
+    }*/
+    std::cout << std::endl;
 	if ((buf[0] + buf[1] + buf[2] + buf[3]) == buf[4]) {
         int wheel_num = 0;
         for (int i = 0; i < 4; ++i) {
             if (buf[i] == 1) {
                 wheel_num = i+1;
-                ROS_ERROR("ERROR %d wheel current > 2000", wheel_num);
+                ROS_ERROR("ERROR %d wheel current > 800", wheel_num);
             }
         }
         restoreRun();
         return false;
     }
-    if (ret != 16) {
-        ROS_ERROR("Read error");
+    if (ret != 27) {
+        ROS_ERROR("Read error %d",  ret);
         return false;
     }
     // for (int i = 0; i < ret; ++i) {
@@ -203,11 +220,11 @@ bool MyAGV::readSpeed()
     int index = 0;
     //index += 2;
     int check = 0;
-    for (int i = 0; i < 15; ++i)
-        check += buf[index + i];
-    if (check % 256 != buf[index + 15])
+    for (int i = 0; i < 26; ++i)
+        check += buf[i];
+    if (check % 256 != buf[index + 26])
 	{
-		ROS_ERROR("error 3!");	
+		ROS_ERROR("error 3! %d -- %d", check, buf[index + 26]);	
     	return false;
 	}
 
@@ -332,27 +349,28 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     boost::asio::write(sp, boost::asio::buffer(buf));}
 }
 
-bool MyAGV::execute(double linearX, double linearY, double angularZ)
+void MyAGV::execute(double linearX, double linearY, double angularZ)
 {
 	//std::cout << "execute: " << linearX << std::endl;
     writeSpeed(linearX, linearY, angularZ);
     readSpeed(); // easy to report error 
 
+    geometry_msgs::Quaternion odom_quat = tf::createQuaternionMsgFromYaw(theta); // THETA
+    
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = currentTime;
     odom_trans.header.frame_id = "odom";
     odom_trans.child_frame_id = "base_footprint";
 
-    geometry_msgs::Quaternion odom_quat;
-    odom_quat = tf::createQuaternionMsgFromYaw(theta); // THETA
     odom_trans.transform.translation.x = x; //X
     odom_trans.transform.translation.y = y; //Y
-
     odom_trans.transform.translation.z = 0.0;
     odom_trans.transform.rotation = odom_quat;
 
-    odomBroadcaster.sendTransform(odom_trans);
+    //send the transform
+    //odomBroadcaster.sendTransform(odom_trans);
 
+    //publish the odometry message over ROS
     nav_msgs::Odometry msgl;
     msgl.header.stamp = currentTime;
     msgl.header.frame_id = "odom";
@@ -370,4 +388,5 @@ bool MyAGV::execute(double linearX, double linearY, double angularZ)
     msgl.twist.covariance = odom_twist_covariance;
 
     pub.publish(msgl);
+    lastTime=currentTime;
 }

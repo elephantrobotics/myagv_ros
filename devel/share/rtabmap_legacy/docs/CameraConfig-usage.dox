@@ -1,0 +1,10 @@
+\subsubsection usage Usage
+\verbatim
+<node name="rtabmap_legacy" pkg="rtabmap_legacy" type="rtabmap_legacy">
+  <param name="device_id" type="int" value="0" />
+  <param name="frame_rate" type="double" value="15.0" />
+  <param name="video_or_images_path" type="str" value="" />
+  <param name="pause" type="bool" value="False" />
+</node>
+\endverbatim
+

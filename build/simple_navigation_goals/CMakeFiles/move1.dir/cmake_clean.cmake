@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/simple_navigation_goals/move1"
-  "/home/ubuntu/myagv_ros/devel/lib/simple_navigation_goals/move1.pdb"
+  "/home/er/myagv_ros/devel/lib/simple_navigation_goals/move1"
+  "/home/er/myagv_ros/devel/lib/simple_navigation_goals/move1.pdb"
   "CMakeFiles/move1.dir/src/move1.cpp.o"
 )
 

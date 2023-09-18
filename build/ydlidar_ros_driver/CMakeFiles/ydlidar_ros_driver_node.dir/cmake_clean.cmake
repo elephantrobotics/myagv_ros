@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/ydlidar_ros_driver/ydlidar_ros_driver_node"
-  "/home/ubuntu/myagv_ros/devel/lib/ydlidar_ros_driver/ydlidar_ros_driver_node.pdb"
+  "/home/er/myagv_ros/devel/lib/ydlidar_ros_driver/ydlidar_ros_driver_node"
+  "/home/er/myagv_ros/devel/lib/ydlidar_ros_driver/ydlidar_ros_driver_node.pdb"
   "CMakeFiles/ydlidar_ros_driver_node.dir/src/ydlidar_ros_driver.cpp.o"
 )
 

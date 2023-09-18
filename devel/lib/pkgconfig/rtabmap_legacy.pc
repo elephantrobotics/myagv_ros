@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/devel
+
+Name: rtabmap_legacy
+Description: Description of rtabmap_legacy
+Version: 0.21.1
+Cflags: -I/home/er/myagv_ros/devel/include
+Libs: -L${prefix}/lib -lrtabmap_legacy_plugins
+Requires: dynamic_reconfigure image_transport rtabmap_conversions rtabmap_msgs rtabmap_util

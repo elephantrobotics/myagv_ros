@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/share/gennodejs/ros/robot_pose_ekf/srv/GetStatus.js"
+  "/home/er/myagv_ros/devel/share/gennodejs/ros/robot_pose_ekf/srv/GetStatus.js"
   "CMakeFiles/robot_pose_ekf_generate_messages_nodejs"
 )
 

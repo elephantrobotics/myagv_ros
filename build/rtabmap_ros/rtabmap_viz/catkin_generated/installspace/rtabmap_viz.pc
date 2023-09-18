@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: rtabmap_viz
+Description: Description of rtabmap_viz
+Version: 0.21.1
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: cv_bridge geometry_msgs std_msgs std_srvs nav_msgs rtabmap_msgs rtabmap_sync tf

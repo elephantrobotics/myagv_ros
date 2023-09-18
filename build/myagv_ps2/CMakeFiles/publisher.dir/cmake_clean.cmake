@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/myagv_ps2/publisher"
-  "/home/ubuntu/myagv_ros/devel/lib/myagv_ps2/publisher.pdb"
+  "/home/er/myagv_ros/devel/lib/myagv_ps2/publisher"
+  "/home/er/myagv_ros/devel/lib/myagv_ps2/publisher.pdb"
   "CMakeFiles/publisher.dir/src/carcontrol.cpp.o"
 )
 

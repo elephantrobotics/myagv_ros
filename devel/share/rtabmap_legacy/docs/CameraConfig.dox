@@ -1,0 +1,9 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~device_id" : \b [int] Camera device ID min: 0, default: 0, max: 7
+- \b "~frame_rate" : \b [double] Frame rate min: 0.0, default: 15.0, max: 100.0
+- \b "~video_or_images_path" : \b [str] Video or images directory path min: , default: , max: 
+- \b "~pause" : \b [bool] Pause min: False, default: False, max: True
+

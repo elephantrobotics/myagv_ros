@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/devel
+prefix=/home/er/myagv_ros/devel
 
 Name: ydlidar_ros_driver
 Description: Description of ydlidar_ros_driver
