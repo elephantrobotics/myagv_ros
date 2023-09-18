@@ -104,7 +104,7 @@ class GetStatusResponse {
 
   static getMessageSize(object) {
     let length = 0;
-    length += object.status.length;
+    length += _getByteLength(object.status);
     return length + 4;
   }
 

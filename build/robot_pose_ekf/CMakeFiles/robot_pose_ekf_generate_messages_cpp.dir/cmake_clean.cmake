@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/include/robot_pose_ekf/GetStatus.h"
+  "/home/er/myagv_ros/devel/include/robot_pose_ekf/GetStatus.h"
   "CMakeFiles/robot_pose_ekf_generate_messages_cpp"
 )
 

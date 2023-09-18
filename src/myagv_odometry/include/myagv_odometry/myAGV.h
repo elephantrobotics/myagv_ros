@@ -24,8 +24,8 @@ public:
 	~MyAGV();
 	bool init();
 	float invSqrt(float number);
-	bool execute(double linearX, double linearY, double angularZ);
-    void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az);
+	void execute(double linearX, double linearY, double angularZ);
+	void MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az);
 	void accelerometerOffset(float gx, float gy, float gz);
 	void publisherOdom();
 	void publisherImuSensor();

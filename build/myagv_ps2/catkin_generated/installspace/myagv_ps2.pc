@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/install
+prefix=/home/er/myagv_ros/install
 
 Name: myagv_ps2
 Description: Description of myagv_ps2

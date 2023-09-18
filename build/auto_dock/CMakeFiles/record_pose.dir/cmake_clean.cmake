@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/record_pose"
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/record_pose.pdb"
+  "/home/er/myagv_ros/devel/lib/auto_dock/record_pose"
+  "/home/er/myagv_ros/devel/lib/auto_dock/record_pose.pdb"
   "CMakeFiles/record_pose.dir/src/record_pose.cpp.o"
 )
 

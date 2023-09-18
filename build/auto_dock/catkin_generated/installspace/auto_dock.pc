@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/install
+prefix=/home/er/myagv_ros/install
 
 Name: auto_dock
 Description: Description of auto_dock

@@ -20,6 +20,11 @@ _id_get = 0
 def main():
     try:
         print ("The main process would be " + str(main_process(first_dir = 1)) )
+        #print (stage_quick_rot())
+        #print (stage_slow_rot())
+        #front_once()
+        #move_to_center()
+        #stages_rot()
     except rospy.exceptions.ROSException as e:
         print("Node has already been initialized, do nothing")
 
@@ -428,7 +433,7 @@ def main_process(first_dir = 1):
 
     print ("Step 1")
     # step 1: rotation and point
-    if stages_rot(first_dir,5,10) == 0:
+    if stages_rot(first_dir,6,12) == 0:
         print ("initial found failed")        
         return 0
 
@@ -465,13 +470,10 @@ def main_process(first_dir = 1):
                 print ("Finsih doing")
                 return 1
         else:
-            if i < max_towards_times:
-                continue
-            else:
-                print ("Didn't see objects")
-                return 0
+            print ("Didn't see objects")
+            return 0
 
-    rot_once(1,1,0,0)
+        rot_once(1,1,0,0)
 
 
 if __name__=='__main__':

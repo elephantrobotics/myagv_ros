@@ -5,6 +5,7 @@
     
     <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+     <!--node name="base2lodom_frame" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 1 /odom /base_footprint 50"/-->
 
 
 

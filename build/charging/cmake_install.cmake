@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/myagv_ros/src/charging
+# Install script for directory: /home/er/myagv_ros/src/charging
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/myagv_ros/install")
+  set(CMAKE_INSTALL_PREFIX "/home/er/myagv_ros/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,23 +37,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/myagv_ros/build/charging/catkin_generated/installspace/charging.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/er/myagv_ros/build/charging/catkin_generated/installspace/charging.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/charging/cmake" TYPE FILE FILES
-    "/home/ubuntu/myagv_ros/build/charging/catkin_generated/installspace/chargingConfig.cmake"
-    "/home/ubuntu/myagv_ros/build/charging/catkin_generated/installspace/chargingConfig-version.cmake"
+    "/home/er/myagv_ros/build/charging/catkin_generated/installspace/chargingConfig.cmake"
+    "/home/er/myagv_ros/build/charging/catkin_generated/installspace/chargingConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/charging" TYPE FILE FILES "/home/ubuntu/myagv_ros/src/charging/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/charging" TYPE FILE FILES "/home/er/myagv_ros/src/charging/package.xml")
 endif()
 

@@ -67,14 +67,14 @@ set(charging_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(charging_SOURCE_PREFIX /home/ubuntu/myagv_ros/src/charging)
-  set(charging_DEVEL_PREFIX /home/ubuntu/myagv_ros/devel)
+  set(charging_SOURCE_PREFIX /home/er/myagv_ros/src/charging)
+  set(charging_DEVEL_PREFIX /home/er/myagv_ros/devel)
   set(charging_INSTALL_PREFIX "")
   set(charging_PREFIX ${charging_DEVEL_PREFIX})
 else()
   set(charging_SOURCE_PREFIX "")
   set(charging_DEVEL_PREFIX "")
-  set(charging_INSTALL_PREFIX /home/ubuntu/myagv_ros/install)
+  set(charging_INSTALL_PREFIX /home/er/myagv_ros/install)
   set(charging_PREFIX ${charging_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/ubuntu/myagv_ros/install/lib;/home/ubuntu/myagv_ros/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/er/myagv_ros/install/lib;/home/er/myagv_ros/devel/lib;/home/er/catkin_ws/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)
@@ -211,7 +211,7 @@ foreach(depend ${depends})
   _unpack_libraries_with_build_configuration(charging_LIBRARIES ${charging_LIBRARIES})
 
   _list_append_unique(charging_LIBRARY_DIRS ${${charging_dep}_LIBRARY_DIRS})
-  list(APPEND charging_EXPORTED_TARGETS ${${charging_dep}_EXPORTED_TARGETS})
+  _list_append_deduplicate(charging_EXPORTED_TARGETS ${${charging_dep}_EXPORTED_TARGETS})
 endforeach()
 
 set(pkg_cfg_extras "")

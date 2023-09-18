@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/myagv_ros/install
+prefix=/home/er/myagv_ros/install
 
 Name: simple_navigation_goals
 Description: Description of simple_navigation_goals

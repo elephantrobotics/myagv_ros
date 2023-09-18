@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/openfile"
-  "/home/ubuntu/myagv_ros/devel/lib/auto_dock/openfile.pdb"
+  "/home/er/myagv_ros/devel/lib/auto_dock/openfile"
+  "/home/er/myagv_ros/devel/lib/auto_dock/openfile.pdb"
   "CMakeFiles/openfile.dir/src/openfile.cpp.o"
 )
 

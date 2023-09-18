@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "${prefix}/include".split(';') if "${prefix}/i
 PROJECT_CATKIN_DEPENDS = "geometry_msgs;message_runtime;nav_msgs;roscpp;sensor_msgs;std_msgs".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "robot_pose_ekf"
-PROJECT_SPACE_DIR = "/home/ubuntu/myagv_ros/install"
+PROJECT_SPACE_DIR = "/home/er/myagv_ros/install"
 PROJECT_VERSION = "1.15.0"

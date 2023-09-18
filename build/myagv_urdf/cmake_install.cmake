@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/myagv_ros/src/myagv_urdf
+# Install script for directory: /home/er/myagv_ros/src/myagv_urdf
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/myagv_ros/install")
+  set(CMAKE_INSTALL_PREFIX "/home/er/myagv_ros/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -37,23 +37,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
   set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdf.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/er/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdf.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_urdf/cmake" TYPE FILE FILES
-    "/home/ubuntu/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdfConfig.cmake"
-    "/home/ubuntu/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdfConfig-version.cmake"
+    "/home/er/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdfConfig.cmake"
+    "/home/er/myagv_ros/build/myagv_urdf/catkin_generated/installspace/myagv_urdfConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_urdf" TYPE FILE FILES "/home/ubuntu/myagv_ros/src/myagv_urdf/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/myagv_urdf" TYPE FILE FILES "/home/er/myagv_ros/src/myagv_urdf/package.xml")
 endif()
 

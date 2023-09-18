@@ -2,12 +2,9 @@
 <COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
   <asset>
     <contributor>
-      <author />
       <authoring_tool>Rhinoceros 7.5.21082.11001</authoring_tool>
       <comments>Output from Rhinoceros COLLADA Exporter</comments>
-      <copyright />
-      <source_data />
-    </contributor>
+     </contributor>
     <created>2022-07-23T06:16:30Z</created>
     <modified>2022-07-23T06:16:30Z</modified>
     <unit meter="0.0254" name="Inches" />
