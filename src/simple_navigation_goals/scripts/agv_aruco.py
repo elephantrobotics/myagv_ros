@@ -19,12 +19,7 @@ _id_get = 0
 
 def main():
     try:
-        print ("The main process would be " + str(main_process(first_dir = 1)) )
-        #print (stage_quick_rot())
-        #print (stage_slow_rot())
-        #front_once()
-        #move_to_center()
-        #stages_rot()
+        print ("The main process would be " + str(main_process(first_dir = -1)) )
     except rospy.exceptions.ROSException as e:
         print("Node has already been initialized, do nothing")
 
@@ -414,7 +409,7 @@ def move_to_center():
         
         #rotate and go forward
         rot_once(_dir, time_gap_input = 1, sp = 1, notIgnoreQR = False)
-        front_once(time_gap= l/100 * l_time_ratio , sp = 0.5)
+        front_once(time_gap= l/100 * l_time_ratio , sp = 0.29)
         
         #rotate back
         rot_once(-_dir, time_gap_input = 0.8, sp = 1, notIgnoreQR = False)
@@ -433,7 +428,7 @@ def main_process(first_dir = 1):
 
     print ("Step 1")
     # step 1: rotation and point
-    if stages_rot(first_dir,6,12) == 0:
+    if stages_rot(first_dir,5,10) == 0:
         print ("initial found failed")        
         return 0
 
@@ -445,7 +440,7 @@ def main_process(first_dir = 1):
 
     print ("Step 3")   
     # step 3: 
-    max_towards_times = 7
+    max_towards_times = 3
     min_towards_range = 20
 
     rot_once(1, 1 ,0,0)
@@ -470,10 +465,13 @@ def main_process(first_dir = 1):
                 print ("Finsih doing")
                 return 1
         else:
-            print ("Didn't see objects")
-            return 0
+            if i < max_towards_times:
+                continue
+            else:
+                print ("Didn't see objects")
+                return 0
 
-        rot_once(1,1,0,0)
+    rot_once(1,1,0,0)
 
 
 if __name__=='__main__':

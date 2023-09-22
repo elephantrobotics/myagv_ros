@@ -20,11 +20,42 @@ BUILD_GMOCK:BOOL=ON
 //Build dynamically-linked binaries
 BUILD_SHARED_LIBS:BOOL=ON
 
+//Path to a library.
+BULLET_COLLISION_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libBulletCollision.so
+
+//Path to a library.
+BULLET_COLLISION_LIBRARY_DEBUG:FILEPATH=BULLET_COLLISION_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+BULLET_DYNAMICS_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libBulletDynamics.so
+
+//Path to a library.
+BULLET_DYNAMICS_LIBRARY_DEBUG:FILEPATH=BULLET_DYNAMICS_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a file.
+BULLET_INCLUDE_DIR:PATH=/usr/include/bullet
+
+//Path to a library.
+BULLET_MATH_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libLinearMath.so
+
+//Path to a library.
+BULLET_MATH_LIBRARY_DEBUG:FILEPATH=BULLET_MATH_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+BULLET_SOFTBODY_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libBulletSoftBody.so
+
+//Path to a library.
+BULLET_SOFTBODY_LIBRARY_DEBUG:FILEPATH=BULLET_SOFTBODY_LIBRARY_DEBUG-NOTFOUND
+
 //The directory containing a CMake configuration file for Boost.
 Boost_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0
 
+Boost_FILESYSTEM_LIBRARY_RELEASE:STRING=/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0
+
 //Path to a file.
 Boost_INCLUDE_DIR:PATH=/usr/include
+
+Boost_SYSTEM_LIBRARY_RELEASE:STRING=/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 
 Boost_THREAD_LIBRARY_RELEASE:STRING=/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 
@@ -314,6 +345,9 @@ EMPY_EXECUTABLE:FILEPATH=EMPY_EXECUTABLE-NOTFOUND
 //Empy script
 EMPY_SCRIPT:STRING=/usr/lib/python3/dist-packages/em.py
 
+//The directory containing a CMake configuration file for Eigen3.
+Eigen3_DIR:PATH=/usr/lib/cmake/eigen3
+
 //The directory containing a CMake configuration file for GMock.
 GMock_DIR:PATH=GMock_DIR-NOTFOUND
 
@@ -378,6 +412,21 @@ Qt5_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/Qt5
 //Path to a library.
 RT_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/librt.so
 
+//Path to a library.
+SDLMAIN_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libSDLmain.a
+
+//Path to a file.
+SDL_IMAGE_INCLUDE_DIR:PATH=/usr/include/SDL
+
+//Path to a library.
+SDL_IMAGE_LIBRARY:FILEPATH=/usr/lib/aarch64-linux-gnu/libSDL_image.so
+
+//Path to a file.
+SDL_INCLUDE_DIR:PATH=/usr/include/SDL
+
+//Where the SDL Library can be found
+SDL_LIBRARY:STRING=/usr/lib/aarch64-linux-gnu/libSDLmain.a;/usr/lib/aarch64-linux-gnu/libSDL.so;-lpthread
+
 //Enable debian style python package layout
 SETUPTOOLS_DEB_LAYOUT:BOOL=ON
 
@@ -389,6 +438,9 @@ UBUNTU:BOOL=TRUE
 
 //LSB Distrib - codename tag
 UBUNTU_FOCAL:BOOL=TRUE
+
+//Path to a file.
+_file_name:FILEPATH=/home/er/myagv_ros/src/navigation/clear_costmap_recovery/test/clear_tests.launch
 
 //Path to a file.
 _gmock_INCLUDES:FILEPATH=/usr/src/googletest/googlemock/include/gmock/gmock.h
@@ -409,19 +461,58 @@ actionlib_DIR:PATH=/opt/ros/noetic/share/actionlib/cmake
 actionlib_msgs_DIR:PATH=/opt/ros/noetic/share/actionlib_msgs/cmake
 
 //Value Computed by CMake
+amcl_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/amcl
+
+//Value Computed by CMake
+amcl_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/amcl
+
+//Dependencies for the target
+amcl_sensors_LIB_DEPENDS:STATIC=general;amcl_map;general;amcl_pf;
+
+//The directory containing a CMake configuration file for angles.
+angles_DIR:PATH=/opt/ros/noetic/share/angles/cmake
+
+//Value Computed by CMake
 auto_dock_BINARY_DIR:STATIC=/home/er/myagv_ros/build/auto_dock
 
 //Value Computed by CMake
 auto_dock_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/auto_dock
 
+//Value Computed by CMake
+base_local_planner_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/base_local_planner
+
+//The directory containing a CMake configuration file for base_local_planner.
+base_local_planner_DIR:PATH=/home/er/myagv_ros/devel/share/base_local_planner/cmake
+
+//Dependencies for the target
+base_local_planner_LIB_DEPENDS:STATIC=general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libtf2.so;general;voxel_grid;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;general;Boost::thread;
+
+//Value Computed by CMake
+base_local_planner_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/base_local_planner
+
 //The directory containing a CMake configuration file for boost_atomic.
 boost_atomic_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_atomic-1.71.0
+
+//The directory containing a CMake configuration file for boost_filesystem.
+boost_filesystem_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_filesystem-1.71.0
 
 //The directory containing a CMake configuration file for boost_headers.
 boost_headers_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_headers-1.71.0
 
+//The directory containing a CMake configuration file for boost_system.
+boost_system_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_system-1.71.0
+
 //The directory containing a CMake configuration file for boost_thread.
 boost_thread_DIR:PATH=/usr/lib/aarch64-linux-gnu/cmake/boost_thread-1.71.0
+
+//Value Computed by CMake
+carrot_planner_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/carrot_planner
+
+//Dependencies for the target
+carrot_planner_LIB_DEPENDS:STATIC=general;base_local_planner;general;trajectory_planner_ros;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+carrot_planner_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/carrot_planner
 
 //The directory containing a CMake configuration file for catkin.
 catkin_DIR:PATH=/opt/ros/noetic/share/catkin/cmake
@@ -435,8 +526,59 @@ charging_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/charging
 //The directory containing a CMake configuration file for class_loader.
 class_loader_DIR:PATH=/opt/ros/noetic/share/class_loader/cmake
 
+//Value Computed by CMake
+clear_costmap_recovery_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/clear_costmap_recovery
+
+//The directory containing a CMake configuration file for clear_costmap_recovery.
+clear_costmap_recovery_DIR:PATH=/home/er/myagv_ros/devel/share/clear_costmap_recovery/cmake
+
+//Dependencies for the target
+clear_costmap_recovery_LIB_DEPENDS:STATIC=general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+clear_costmap_recovery_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/clear_costmap_recovery
+
+//The directory containing a CMake configuration file for cmake_modules.
+cmake_modules_DIR:PATH=/opt/ros/noetic/share/cmake_modules/cmake
+
+//Value Computed by CMake
+costmap_2d_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/costmap_2d
+
+//The directory containing a CMake configuration file for costmap_2d.
+costmap_2d_DIR:PATH=/home/er/myagv_ros/devel/share/costmap_2d/cmake
+
+//Dependencies for the target
+costmap_2d_LIB_DEPENDS:STATIC=general;Boost::system;general;Boost::thread;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libtf2.so;general;voxel_grid;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+costmap_2d_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/costmap_2d
+
 //The directory containing a CMake configuration file for cpp_common.
 cpp_common_DIR:PATH=/opt/ros/noetic/share/cpp_common/cmake
+
+//The directory containing a CMake configuration file for diagnostic_msgs.
+diagnostic_msgs_DIR:PATH=/opt/ros/noetic/share/diagnostic_msgs/cmake
+
+//The directory containing a CMake configuration file for diagnostic_updater.
+diagnostic_updater_DIR:PATH=/opt/ros/noetic/share/diagnostic_updater/cmake
+
+//Value Computed by CMake
+dwa_local_planner_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/dwa_local_planner
+
+//Dependencies for the target
+dwa_local_planner_LIB_DEPENDS:STATIC=general;base_local_planner;general;trajectory_planner_ros;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+dwa_local_planner_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/dwa_local_planner
+
+//The directory containing a CMake configuration file for dynamic_reconfigure.
+dynamic_reconfigure_DIR:PATH=/opt/ros/noetic/share/dynamic_reconfigure/cmake
+
+//Value Computed by CMake
+fake_localization_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/fake_localization
+
+//Value Computed by CMake
+fake_localization_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/fake_localization
 
 //The directory containing a CMake configuration file for gencpp.
 gencpp_DIR:PATH=/opt/ros/noetic/share/gencpp/cmake
@@ -458,6 +600,15 @@ genpy_DIR:PATH=/opt/ros/noetic/share/genpy/cmake
 
 //The directory containing a CMake configuration file for geometry_msgs.
 geometry_msgs_DIR:PATH=/opt/ros/noetic/share/geometry_msgs/cmake
+
+//Value Computed by CMake
+global_planner_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/global_planner
+
+//Dependencies for the target
+global_planner_LIB_DEPENDS:STATIC=general;navfn;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+global_planner_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/global_planner
 
 //Value Computed by CMake
 gmock_BINARY_DIR:STATIC=/home/er/myagv_ros/build/gtest/googlemock
@@ -514,11 +665,23 @@ interactive_markers_DIR:PATH=/opt/ros/noetic/share/interactive_markers/cmake
 //The directory containing a CMake configuration file for laser_geometry.
 laser_geometry_DIR:PATH=/opt/ros/noetic/share/laser_geometry/cmake
 
+//Dependencies for the target
+layers_LIB_DEPENDS:STATIC=general;costmap_2d;
+
 //Path to a library.
 lib:FILEPATH=/opt/ros/noetic/lib/libxmlrpcpp.so
 
 //The directory containing a CMake configuration file for map_msgs.
 map_msgs_DIR:PATH=/opt/ros/noetic/share/map_msgs/cmake
+
+//Value Computed by CMake
+map_server_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/map_server
+
+//Value Computed by CMake
+map_server_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/map_server
+
+//Dependencies for the target
+map_server_image_loader_LIB_DEPENDS:STATIC=general;/usr/lib/aarch64-linux-gnu/libBulletDynamics.so;general;/usr/lib/aarch64-linux-gnu/libBulletCollision.so;general;/usr/lib/aarch64-linux-gnu/libLinearMath.so;general;/usr/lib/aarch64-linux-gnu/libBulletSoftBody.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;general;/usr/lib/aarch64-linux-gnu/libSDLmain.a;general;/usr/lib/aarch64-linux-gnu/libSDL.so;general;-lpthread;general;/usr/lib/aarch64-linux-gnu/libSDL_image.so;
 
 //The directory containing a CMake configuration file for message_filters.
 message_filters_DIR:PATH=/opt/ros/noetic/share/message_filters/cmake
@@ -529,8 +692,26 @@ message_generation_DIR:PATH=/opt/ros/noetic/share/message_generation/cmake
 //The directory containing a CMake configuration file for message_runtime.
 message_runtime_DIR:PATH=/opt/ros/noetic/share/message_runtime/cmake
 
+//Value Computed by CMake
+move_base_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/move_base
+
+//Dependencies for the target
+move_base_LIB_DEPENDS:STATIC=general;base_local_planner;general;trajectory_planner_ros;general;clear_costmap_recovery;general;navfn;general;rotate_recovery;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+move_base_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/move_base
+
 //The directory containing a CMake configuration file for move_base_msgs.
 move_base_msgs_DIR:PATH=/opt/ros/noetic/share/move_base_msgs/cmake
+
+//Value Computed by CMake
+move_slow_and_clear_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/move_slow_and_clear
+
+//Dependencies for the target
+move_slow_and_clear_LIB_DEPENDS:STATIC=general;Boost::thread;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libtf2.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+move_slow_and_clear_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/move_slow_and_clear
 
 //Value Computed by CMake
 myagv_navigation_BINARY_DIR:STATIC=/home/er/myagv_ros/build/myagv_navigation
@@ -562,8 +743,29 @@ myagv_urdf_BINARY_DIR:STATIC=/home/er/myagv_ros/build/myagv_urdf
 //Value Computed by CMake
 myagv_urdf_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/myagv_urdf
 
+//Value Computed by CMake
+nav_core_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/nav_core
+
+//The directory containing a CMake configuration file for nav_core.
+nav_core_DIR:PATH=/home/er/myagv_ros/devel/share/nav_core/cmake
+
+//Value Computed by CMake
+nav_core_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/nav_core
+
 //The directory containing a CMake configuration file for nav_msgs.
 nav_msgs_DIR:PATH=/opt/ros/noetic/share/nav_msgs/cmake
+
+//Value Computed by CMake
+navfn_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/navfn
+
+//The directory containing a CMake configuration file for navfn.
+navfn_DIR:PATH=/home/er/myagv_ros/devel/share/navfn/cmake
+
+//Dependencies for the target
+navfn_LIB_DEPENDS:STATIC=general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+navfn_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/navfn
 
 //Value Computed by CMake
 navi_multi_goals_pub_rviz_plugin_BINARY_DIR:STATIC=/home/er/myagv_ros/build/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin
@@ -574,11 +776,20 @@ navi_multi_goals_pub_rviz_plugin_LIB_DEPENDS:STATIC=general;Qt5::Widgets;general
 //Value Computed by CMake
 navi_multi_goals_pub_rviz_plugin_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin
 
+//Value Computed by CMake
+navigation_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/navigation
+
+//Value Computed by CMake
+navigation_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/navigation
+
 //Path to a library.
 pkgcfg_lib_BFL_orocos-bfl:FILEPATH=/usr/lib/aarch64-linux-gnu/liborocos-bfl.so
 
 //Path to a library.
 pkgcfg_lib_JSONCPP_jsoncpp:FILEPATH=/usr/lib/aarch64-linux-gnu/libjsoncpp.so
+
+//Path to a library.
+pkgcfg_lib_YAMLCPP_yaml-cpp:FILEPATH=/usr/lib/aarch64-linux-gnu/libyaml-cpp.so
 
 //The directory containing a CMake configuration file for pluginlib.
 pluginlib_DIR:PATH=/opt/ros/noetic/share/pluginlib/cmake
@@ -591,6 +802,12 @@ robot_pose_ekf_BINARY_DIR:STATIC=/home/er/myagv_ros/build/robot_pose_ekf
 
 //Value Computed by CMake
 robot_pose_ekf_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/robot_pose_ekf
+
+//The directory containing a CMake configuration file for rosbag.
+rosbag_DIR:PATH=/opt/ros/noetic/share/rosbag/cmake
+
+//The directory containing a CMake configuration file for rosbag_storage.
+rosbag_storage_DIR:PATH=/opt/ros/noetic/share/rosbag_storage/cmake
 
 //The directory containing a CMake configuration file for rosconsole.
 rosconsole_DIR:PATH=/opt/ros/noetic/share/rosconsole/cmake
@@ -616,6 +833,9 @@ rosgraph_msgs_DIR:PATH=/opt/ros/noetic/share/rosgraph_msgs/cmake
 //The directory containing a CMake configuration file for roslib.
 roslib_DIR:PATH=/opt/ros/noetic/share/roslib/cmake
 
+//The directory containing a CMake configuration file for roslz4.
+roslz4_DIR:PATH=/opt/ros/noetic/share/roslz4/cmake
+
 //The directory containing a CMake configuration file for rospack.
 rospack_DIR:PATH=/opt/ros/noetic/share/rospack/cmake
 
@@ -627,6 +847,18 @@ rostest_DIR:PATH=/opt/ros/noetic/share/rostest/cmake
 
 //The directory containing a CMake configuration file for rostime.
 rostime_DIR:PATH=/opt/ros/noetic/share/rostime/cmake
+
+//Value Computed by CMake
+rotate_recovery_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/rotate_recovery
+
+//The directory containing a CMake configuration file for rotate_recovery.
+rotate_recovery_DIR:PATH=/home/er/myagv_ros/devel/share/rotate_recovery/cmake
+
+//Dependencies for the target
+rotate_recovery_LIB_DEPENDS:STATIC=general;base_local_planner;general;trajectory_planner_ros;general;costmap_2d;general;layers;general;/opt/ros/noetic/lib/libdynamic_reconfigure_config_init_mutex.so;general;/opt/ros/noetic/lib/liblaser_geometry.so;general;/opt/ros/noetic/lib/libtf.so;general;voxel_grid;general;/opt/ros/noetic/lib/libclass_loader.so;general;/usr/lib/aarch64-linux-gnu/libPocoFoundation.so;general;/usr/lib/aarch64-linux-gnu/libdl.so;general;/opt/ros/noetic/lib/libroslib.so;general;/opt/ros/noetic/lib/librospack.so;general;/usr/lib/aarch64-linux-gnu/libpython3.8.so;general;/usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libtinyxml2.so;general;/usr/lib/liborocos-kdl.so;general;/usr/lib/liborocos-kdl.so;general;/opt/ros/noetic/lib/libtf2_ros.so;general;/opt/ros/noetic/lib/libactionlib.so;general;/opt/ros/noetic/lib/libmessage_filters.so;general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/libtf2.so;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+rotate_recovery_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/rotate_recovery
 
 //The directory containing a CMake configuration file for rviz.
 rviz_DIR:PATH=/opt/ros/noetic/share/rviz/cmake
@@ -649,6 +881,9 @@ std_srvs_DIR:PATH=/opt/ros/noetic/share/std_srvs/cmake
 //The directory containing a CMake configuration file for tf2.
 tf2_DIR:PATH=/opt/ros/noetic/share/tf2/cmake
 
+//The directory containing a CMake configuration file for tf2_geometry_msgs.
+tf2_geometry_msgs_DIR:PATH=/opt/ros/noetic/share/tf2_geometry_msgs/cmake
+
 //The directory containing a CMake configuration file for tf2_msgs.
 tf2_msgs_DIR:PATH=/opt/ros/noetic/share/tf2_msgs/cmake
 
@@ -658,14 +893,35 @@ tf2_py_DIR:PATH=/opt/ros/noetic/share/tf2_py/cmake
 //The directory containing a CMake configuration file for tf2_ros.
 tf2_ros_DIR:PATH=/opt/ros/noetic/share/tf2_ros/cmake
 
+//The directory containing a CMake configuration file for tf2_sensor_msgs.
+tf2_sensor_msgs_DIR:PATH=/opt/ros/noetic/share/tf2_sensor_msgs/cmake
+
 //The directory containing a CMake configuration file for tf.
 tf_DIR:PATH=/opt/ros/noetic/share/tf/cmake
+
+//The directory containing a CMake configuration file for topic_tools.
+topic_tools_DIR:PATH=/opt/ros/noetic/share/topic_tools/cmake
+
+//Dependencies for the target
+trajectory_planner_ros_LIB_DEPENDS:STATIC=general;base_local_planner;
 
 //The directory containing a CMake configuration file for urdf.
 urdf_DIR:PATH=/opt/ros/noetic/share/urdf/cmake
 
 //The directory containing a CMake configuration file for visualization_msgs.
 visualization_msgs_DIR:PATH=/opt/ros/noetic/share/visualization_msgs/cmake
+
+//Value Computed by CMake
+voxel_grid_BINARY_DIR:STATIC=/home/er/myagv_ros/build/navigation/voxel_grid
+
+//The directory containing a CMake configuration file for voxel_grid.
+voxel_grid_DIR:PATH=/home/er/myagv_ros/devel/share/voxel_grid/cmake
+
+//Dependencies for the target
+voxel_grid_LIB_DEPENDS:STATIC=general;/opt/ros/noetic/lib/libroscpp.so;general;/usr/lib/aarch64-linux-gnu/libpthread.so;general;/usr/lib/aarch64-linux-gnu/libboost_chrono.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_filesystem.so.1.71.0;general;/opt/ros/noetic/lib/librosconsole.so;general;/opt/ros/noetic/lib/librosconsole_log4cxx.so;general;/opt/ros/noetic/lib/librosconsole_backend_interface.so;general;/usr/lib/aarch64-linux-gnu/liblog4cxx.so;general;/usr/lib/aarch64-linux-gnu/libboost_regex.so.1.71.0;general;/opt/ros/noetic/lib/libroscpp_serialization.so;general;/opt/ros/noetic/lib/libxmlrpcpp.so;general;/opt/ros/noetic/lib/librostime.so;general;/usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0;general;/opt/ros/noetic/lib/libcpp_common.so;general;/usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0;general;/usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4;
+
+//Value Computed by CMake
+voxel_grid_SOURCE_DIR:STATIC=/home/er/myagv_ros/src/navigation/voxel_grid
 
 //The directory containing a CMake configuration file for xmlrpcpp.
 xmlrpcpp_DIR:PATH=/opt/ros/noetic/share/xmlrpcpp/cmake
@@ -719,6 +975,22 @@ BFL_orocos-bfl_INCLUDEDIR:INTERNAL=
 BFL_orocos-bfl_LIBDIR:INTERNAL=
 BFL_orocos-bfl_PREFIX:INTERNAL=
 BFL_orocos-bfl_VERSION:INTERNAL=
+//ADVANCED property for variable: BULLET_COLLISION_LIBRARY
+BULLET_COLLISION_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_COLLISION_LIBRARY_DEBUG
+BULLET_COLLISION_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_DYNAMICS_LIBRARY
+BULLET_DYNAMICS_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_DYNAMICS_LIBRARY_DEBUG
+BULLET_DYNAMICS_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_MATH_LIBRARY
+BULLET_MATH_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_MATH_LIBRARY_DEBUG
+BULLET_MATH_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_SOFTBODY_LIBRARY
+BULLET_SOFTBODY_LIBRARY-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: BULLET_SOFTBODY_LIBRARY_DEBUG
+BULLET_SOFTBODY_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: Boost_DIR
 Boost_DIR-ADVANCED:INTERNAL=1
 //catkin environment
@@ -864,7 +1136,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=15
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=32
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -909,12 +1181,18 @@ CMAKE_UNAME:INTERNAL=/usr/bin/uname
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Boost
 FIND_PACKAGE_MESSAGE_DETAILS_Boost:INTERNAL=[/usr/lib/aarch64-linux-gnu/cmake/Boost-1.71.0/BoostConfig.cmake][cfound components: thread ][v1.71.0()]
+//Details about finding Bullet
+FIND_PACKAGE_MESSAGE_DETAILS_Bullet:INTERNAL=[/usr/lib/aarch64-linux-gnu/libBulletDynamics.so][/usr/lib/aarch64-linux-gnu/libBulletCollision.so][/usr/lib/aarch64-linux-gnu/libLinearMath.so][/usr/lib/aarch64-linux-gnu/libBulletSoftBody.so][/usr/include/bullet][v()]
 //Details about finding PY_em
 FIND_PACKAGE_MESSAGE_DETAILS_PY_em:INTERNAL=[/usr/lib/python3/dist-packages/em.py][v()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.1()]
 //Details about finding PythonInterp
 FIND_PACKAGE_MESSAGE_DETAILS_PythonInterp:INTERNAL=[/usr/bin/python3][v3.8.10()]
+//Details about finding SDL
+FIND_PACKAGE_MESSAGE_DETAILS_SDL:INTERNAL=[/usr/lib/aarch64-linux-gnu/libSDLmain.a;/usr/lib/aarch64-linux-gnu/libSDL.so;-lpthread][/usr/include/SDL][v1.2.15()]
+//Details about finding SDL_image
+FIND_PACKAGE_MESSAGE_DETAILS_SDL_image:INTERNAL=[/usr/lib/aarch64-linux-gnu/libSDL_image.so][/usr/include/SDL][v1.2.12()]
 //Details about finding Threads
 FIND_PACKAGE_MESSAGE_DETAILS_Threads:INTERNAL=[TRUE][v()]
 GMOCK_FROM_SOURCE_FOUND:INTERNAL=TRUE
@@ -937,6 +1215,12 @@ GTEST_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 GTEST_MAIN_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GTEST_MAIN_LIBRARY_DEBUG
 GTEST_MAIN_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//Have symbol drand48
+HAVE_DRAND48:INTERNAL=1
+//Have include sys/time.h
+HAVE_SYS_TIME_H:INTERNAL=1
+//Have include unistd.h
+HAVE_UNISTD_H:INTERNAL=1
 JSONCPP_CFLAGS:INTERNAL=-I/usr/include/jsoncpp
 JSONCPP_CFLAGS_I:INTERNAL=
 JSONCPP_CFLAGS_OTHER:INTERNAL=
@@ -972,6 +1256,10 @@ JSONCPP_jsoncpp_INCLUDEDIR:INTERNAL=
 JSONCPP_jsoncpp_LIBDIR:INTERNAL=
 JSONCPP_jsoncpp_PREFIX:INTERNAL=
 JSONCPP_jsoncpp_VERSION:INTERNAL=
+//Have include FL/Fl.H
+NAVFN_HAVE_FLTK:INTERNAL=1
+//Have include pgm.h
+NAVFN_HAVE_NETPBM:INTERNAL=
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PYTHON_EXECUTABLE
@@ -980,6 +1268,47 @@ PYTHON_EXECUTABLE-ADVANCED:INTERNAL=1
 //  And it needs to match.  But setuptools won't tell us where
 // it will install things.
 PYTHON_INSTALL_DIR:INTERNAL=lib/python3/dist-packages
+//ADVANCED property for variable: SDL_IMAGE_INCLUDE_DIR
+SDL_IMAGE_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SDL_IMAGE_LIBRARY
+SDL_IMAGE_LIBRARY-ADVANCED:INTERNAL=1
+//Path to a library.
+SDL_LIBRARY_TEMP:INTERNAL=/usr/lib/aarch64-linux-gnu/libSDL.so
+YAMLCPP_CFLAGS:INTERNAL=
+YAMLCPP_CFLAGS_I:INTERNAL=
+YAMLCPP_CFLAGS_OTHER:INTERNAL=
+YAMLCPP_FOUND:INTERNAL=1
+YAMLCPP_INCLUDEDIR:INTERNAL=/usr/include
+YAMLCPP_INCLUDE_DIRS:INTERNAL=
+YAMLCPP_LDFLAGS:INTERNAL=-L/usr//usr/lib/aarch64-linux-gnu;-lyaml-cpp
+YAMLCPP_LDFLAGS_OTHER:INTERNAL=
+YAMLCPP_LIBDIR:INTERNAL=/usr//usr/lib/aarch64-linux-gnu
+YAMLCPP_LIBRARIES:INTERNAL=yaml-cpp
+YAMLCPP_LIBRARY_DIRS:INTERNAL=/usr//usr/lib/aarch64-linux-gnu
+YAMLCPP_LIBS:INTERNAL=
+YAMLCPP_LIBS_L:INTERNAL=
+YAMLCPP_LIBS_OTHER:INTERNAL=
+YAMLCPP_LIBS_PATHS:INTERNAL=
+YAMLCPP_MODULE_NAME:INTERNAL=yaml-cpp
+YAMLCPP_PREFIX:INTERNAL=/usr
+YAMLCPP_STATIC_CFLAGS:INTERNAL=
+YAMLCPP_STATIC_CFLAGS_I:INTERNAL=
+YAMLCPP_STATIC_CFLAGS_OTHER:INTERNAL=
+YAMLCPP_STATIC_INCLUDE_DIRS:INTERNAL=
+YAMLCPP_STATIC_LDFLAGS:INTERNAL=-L/usr//usr/lib/aarch64-linux-gnu;-lyaml-cpp
+YAMLCPP_STATIC_LDFLAGS_OTHER:INTERNAL=
+YAMLCPP_STATIC_LIBDIR:INTERNAL=
+YAMLCPP_STATIC_LIBRARIES:INTERNAL=yaml-cpp
+YAMLCPP_STATIC_LIBRARY_DIRS:INTERNAL=/usr//usr/lib/aarch64-linux-gnu
+YAMLCPP_STATIC_LIBS:INTERNAL=
+YAMLCPP_STATIC_LIBS_L:INTERNAL=
+YAMLCPP_STATIC_LIBS_OTHER:INTERNAL=
+YAMLCPP_STATIC_LIBS_PATHS:INTERNAL=
+YAMLCPP_VERSION:INTERNAL=0.6.2
+YAMLCPP_yaml-cpp_INCLUDEDIR:INTERNAL=
+YAMLCPP_yaml-cpp_LIBDIR:INTERNAL=
+YAMLCPP_yaml-cpp_PREFIX:INTERNAL=
+YAMLCPP_yaml-cpp_VERSION:INTERNAL=
 //ADVANCED property for variable: YDLIDAR_SDK_INCLUDE_DIRS
 YDLIDAR_SDK_INCLUDE_DIRS-ADVANCED:INTERNAL=1
 //YDLIDAR_SDK include directories
@@ -996,12 +1325,18 @@ YDLIDAR_SDK_LIBRARY_DIRS:INTERNAL=
 _GNUInstallDirs_LAST_CMAKE_INSTALL_PREFIX:INTERNAL=/home/er/myagv_ros/install
 __pkg_config_arguments_BFL:INTERNAL=REQUIRED;orocos-bfl
 __pkg_config_arguments_JSONCPP:INTERNAL=jsoncpp
+__pkg_config_arguments_YAMLCPP:INTERNAL=yaml-cpp;QUIET
 __pkg_config_checked_BFL:INTERNAL=1
 __pkg_config_checked_JSONCPP:INTERNAL=1
+__pkg_config_checked_YAMLCPP:INTERNAL=1
 //ADVANCED property for variable: boost_atomic_DIR
 boost_atomic_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_filesystem_DIR
+boost_filesystem_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_headers_DIR
 boost_headers_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: boost_system_DIR
+boost_system_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: boost_thread_DIR
 boost_thread_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: gmock_build_tests
@@ -1020,5 +1355,7 @@ gtest_hide_internal_symbols-ADVANCED:INTERNAL=1
 pkgcfg_lib_BFL_orocos-bfl-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_JSONCPP_jsoncpp
 pkgcfg_lib_JSONCPP_jsoncpp-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib
+//ADVANCED property for variable: pkgcfg_lib_YAMLCPP_yaml-cpp
+pkgcfg_lib_YAMLCPP_yaml-cpp-ADVANCED:INTERNAL=1
+prefix_result:INTERNAL=/usr//usr/lib/aarch64-linux-gnu
 

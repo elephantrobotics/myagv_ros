@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: navfn
+Description: Description of navfn
+Version: 1.17.3
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lnavfn
+Requires: geometry_msgs message_runtime nav_core nav_msgs pluginlib roscpp sensor_msgs visualization_msgs

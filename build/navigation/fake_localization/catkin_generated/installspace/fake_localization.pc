@@ -1,0 +1,8 @@
+prefix=/home/er/myagv_ros/install
+
+Name: fake_localization
+Description: Description of fake_localization
+Version: 1.17.3
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs nav_msgs roscpp rospy

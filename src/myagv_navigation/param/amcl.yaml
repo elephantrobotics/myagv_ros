@@ -26,8 +26,8 @@ laser_max_range: 12.0
 # laser_lambda_short: 0.1
 # laser_model_type: "likelihood_field" # "likelihood_field" or "beam"
 # laser_likelihood_max_dist: 2.0
-update_min_d: 0.15
-update_min_a: 0.2
+update_min_d: 0.04
+update_min_a: 0.11
 
 resample_interval: 1
 

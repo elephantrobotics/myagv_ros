@@ -78,17 +78,6 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -112,6 +101,17 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -168,51 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
-
-# Convenience name for target.
-navi_multi_goals_pub_rviz_plugin: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
-
-.PHONY : navi_multi_goals_pub_rviz_plugin
-
-# fast build rule for target.
-navi_multi_goals_pub_rviz_plugin/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/build
-.PHONY : navi_multi_goals_pub_rviz_plugin/fast
-
-# Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_py: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/rule
-
-.PHONY : std_srvs_generate_messages_py
-
-# fast build rule for target.
-std_srvs_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_py.dir/build
-.PHONY : std_srvs_generate_messages_py/fast
-
-# Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-# Convenience name for target.
 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_eus.dir/rule:
 	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_eus.dir/rule
 .PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_eus.dir/rule
@@ -228,6 +183,21 @@ rviz_generate_messages_eus/fast:
 .PHONY : rviz_generate_messages_eus/fast
 
 # Convenience name for target.
+rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
+.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
+
+# Convenience name for target.
+navi_multi_goals_pub_rviz_plugin: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/rule
+
+.PHONY : navi_multi_goals_pub_rviz_plugin
+
+# fast build rule for target.
+navi_multi_goals_pub_rviz_plugin/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin.dir/build
+.PHONY : navi_multi_goals_pub_rviz_plugin/fast
+
+# Convenience name for target.
 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_nodejs.dir/rule:
 	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_nodejs.dir/rule
 .PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_nodejs.dir/rule
@@ -241,21 +211,6 @@ rviz_generate_messages_nodejs: rviz_navi_multi_goals_pub_plugin/navi_multi_goals
 rviz_generate_messages_nodejs/fast:
 	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_nodejs.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_nodejs.dir/build
 .PHONY : rviz_generate_messages_nodejs/fast
-
-# Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_lisp: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/rule
-
-.PHONY : std_srvs_generate_messages_lisp
-
-# fast build rule for target.
-std_srvs_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_lisp.dir/build
-.PHONY : std_srvs_generate_messages_lisp/fast
 
 # Convenience name for target.
 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_py.dir/rule:
@@ -286,21 +241,6 @@ map_msgs_generate_messages_cpp: rviz_navi_multi_goals_pub_plugin/navi_multi_goal
 map_msgs_generate_messages_cpp/fast:
 	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/map_msgs_generate_messages_cpp.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/map_msgs_generate_messages_cpp.dir/build
 .PHONY : map_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_cpp: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/rule
-
-.PHONY : std_srvs_generate_messages_cpp
-
-# fast build rule for target.
-std_srvs_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_cpp.dir/build
-.PHONY : std_srvs_generate_messages_cpp/fast
 
 # Convenience name for target.
 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/rviz_generate_messages_cpp.dir/rule:
@@ -393,21 +333,6 @@ map_msgs_generate_messages_nodejs/fast:
 .PHONY : map_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-.PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_eus: rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/rule
-
-.PHONY : std_srvs_generate_messages_eus
-
-# fast build rule for target.
-std_srvs_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/build.make rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/std_srvs_generate_messages_eus.dir/build
-.PHONY : std_srvs_generate_messages_eus/fast
-
-# Convenience name for target.
 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin_autogen.dir/rule:
 	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin_autogen.dir/rule
 .PHONY : rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/CMakeFiles/navi_multi_goals_pub_rviz_plugin_autogen.dir/rule
@@ -484,27 +409,22 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... list_install_components"
-	@echo "... test"
-	@echo "... navi_multi_goals_pub_rviz_plugin"
-	@echo "... std_srvs_generate_messages_py"
-	@echo "... std_srvs_generate_messages_nodejs"
 	@echo "... rviz_generate_messages_eus"
+	@echo "... navi_multi_goals_pub_rviz_plugin"
 	@echo "... install"
 	@echo "... rviz_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... install/local"
 	@echo "... rviz_generate_messages_py"
 	@echo "... map_msgs_generate_messages_cpp"
-	@echo "... std_srvs_generate_messages_cpp"
+	@echo "... test"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... rviz_generate_messages_cpp"
 	@echo "... rviz_generate_messages_lisp"
 	@echo "... map_msgs_generate_messages_lisp"
 	@echo "... map_msgs_generate_messages_py"
 	@echo "... map_msgs_generate_messages_eus"
 	@echo "... map_msgs_generate_messages_nodejs"
-	@echo "... std_srvs_generate_messages_eus"
+	@echo "... edit_cache"
 	@echo "... navi_multi_goals_pub_rviz_plugin_autogen"
 	@echo "... navi_multi_goals_pub_rviz_plugin_autogen/mocs_compilation.o"
 	@echo "... navi_multi_goals_pub_rviz_plugin_autogen/mocs_compilation.i"

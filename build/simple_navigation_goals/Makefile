@@ -102,16 +102,16 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
 
-# Special rule for the target test
-test/fast: test
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
 
-.PHONY : test/fast
+.PHONY : rebuild_cache/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -124,16 +124,16 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
 
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
+# Special rule for the target test
+test/fast: test
 
-.PHONY : rebuild_cache/fast
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,199 +168,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+simple_navigation_goals/CMakeFiles/move1.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/move1.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/move1.dir/rule
 
 # Convenience name for target.
-sensor_msgs_generate_messages_eus: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+move1: simple_navigation_goals/CMakeFiles/move1.dir/rule
 
-.PHONY : sensor_msgs_generate_messages_eus
+.PHONY : move1
 
 # fast build rule for target.
-sensor_msgs_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
-.PHONY : sensor_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_py: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_py
-
-# fast build rule for target.
-sensor_msgs_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
-.PHONY : sensor_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_eus: simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_eus
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
-.PHONY : actionlib_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-tf2_msgs_generate_messages_lisp: simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : tf2_msgs_generate_messages_lisp
-
-# fast build rule for target.
-tf2_msgs_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
-.PHONY : tf2_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-sensor_msgs_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
-.PHONY : sensor_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_lisp: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_lisp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
-.PHONY : sensor_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_py: simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
-
-.PHONY : tf_generate_messages_py
-
-# fast build rule for target.
-tf_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/build
-.PHONY : tf_generate_messages_py/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-sensor_msgs_generate_messages_cpp: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : sensor_msgs_generate_messages_cpp
-
-# fast build rule for target.
-sensor_msgs_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
-.PHONY : sensor_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-.PHONY : tf_generate_messages_nodejs
-
-# fast build rule for target.
-tf_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/build
-.PHONY : tf_generate_messages_nodejs/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_cpp: simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-.PHONY : tf_generate_messages_cpp
-
-# fast build rule for target.
-tf_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/build
-.PHONY : tf_generate_messages_cpp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
-.PHONY : actionlib_msgs_generate_messages_nodejs/fast
+move1/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/move1.dir/build.make simple_navigation_goals/CMakeFiles/move1.dir/build
+.PHONY : move1/fast
 
 # Convenience name for target.
 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
@@ -378,79 +198,64 @@ actionlib_generate_messages_nodejs/fast:
 .PHONY : actionlib_generate_messages_nodejs/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_eus: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+tf_generate_messages_cpp: simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/rule
 
-.PHONY : actionlib_generate_messages_eus
+.PHONY : tf_generate_messages_cpp
 
 # fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
+tf_generate_messages_cpp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_cpp: simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/rule
+tf_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/rule
 
-.PHONY : actionlib_msgs_generate_messages_cpp
+.PHONY : tf_generate_messages_nodejs
 
 # fast build rule for target.
-actionlib_msgs_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
-.PHONY : actionlib_msgs_generate_messages_cpp/fast
+tf_generate_messages_nodejs/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_lisp: simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/rule
+sensor_msgs_generate_messages_cpp: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : actionlib_msgs_generate_messages_lisp
+.PHONY : sensor_msgs_generate_messages_cpp
 
 # fast build rule for target.
-actionlib_msgs_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
-.PHONY : actionlib_msgs_generate_messages_lisp/fast
+sensor_msgs_generate_messages_cpp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_cpp.dir/build
+.PHONY : sensor_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_cpp: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+actionlib_generate_messages_py: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
-.PHONY : actionlib_generate_messages_cpp
+.PHONY : actionlib_generate_messages_py
 
 # fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_msgs_generate_messages_py: simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/rule
-
-.PHONY : actionlib_msgs_generate_messages_py
-
-# fast build rule for target.
-actionlib_msgs_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
-.PHONY : actionlib_msgs_generate_messages_py/fast
+actionlib_generate_messages_py/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
 
 # Convenience name for target.
 simple_navigation_goals/CMakeFiles/tf_generate_messages_eus.dir/rule:
@@ -468,64 +273,49 @@ tf_generate_messages_eus/fast:
 .PHONY : tf_generate_messages_eus/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
 
 # Convenience name for target.
-tf2_msgs_generate_messages_cpp: simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/rule
+tf_generate_messages_py: simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/rule
 
-.PHONY : tf2_msgs_generate_messages_cpp
+.PHONY : tf_generate_messages_py
 
 # fast build rule for target.
-tf2_msgs_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_cpp.dir/build
-.PHONY : tf2_msgs_generate_messages_cpp/fast
+tf_generate_messages_py/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/tf_generate_messages_py.dir/build
+.PHONY : tf_generate_messages_py/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-tf2_msgs_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/rule
+sensor_msgs_generate_messages_lisp: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : tf2_msgs_generate_messages_nodejs
+.PHONY : sensor_msgs_generate_messages_lisp
 
 # fast build rule for target.
-tf2_msgs_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_nodejs.dir/build
-.PHONY : tf2_msgs_generate_messages_nodejs/fast
+sensor_msgs_generate_messages_lisp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_lisp.dir/build
+.PHONY : sensor_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-tf2_msgs_generate_messages_py: simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/rule
+sensor_msgs_generate_messages_nodejs: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/rule
 
-.PHONY : tf2_msgs_generate_messages_py
+.PHONY : sensor_msgs_generate_messages_nodejs
 
 # fast build rule for target.
-tf2_msgs_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_py.dir/build
-.PHONY : tf2_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-simple_navigation_goals/CMakeFiles/move1.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/move1.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/move1.dir/rule
-
-# Convenience name for target.
-move1: simple_navigation_goals/CMakeFiles/move1.dir/rule
-
-.PHONY : move1
-
-# fast build rule for target.
-move1/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/move1.dir/build.make simple_navigation_goals/CMakeFiles/move1.dir/build
-.PHONY : move1/fast
+sensor_msgs_generate_messages_nodejs/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_nodejs.dir/build
+.PHONY : sensor_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 simple_navigation_goals/CMakeFiles/tf_generate_messages_lisp.dir/rule:
@@ -543,19 +333,79 @@ tf_generate_messages_lisp/fast:
 .PHONY : tf_generate_messages_lisp/fast
 
 # Convenience name for target.
-simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
-.PHONY : simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
+simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-tf2_msgs_generate_messages_eus: simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/rule
+sensor_msgs_generate_messages_py: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/rule
 
-.PHONY : tf2_msgs_generate_messages_eus
+.PHONY : sensor_msgs_generate_messages_py
 
 # fast build rule for target.
-tf2_msgs_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/tf2_msgs_generate_messages_eus.dir/build
-.PHONY : tf2_msgs_generate_messages_eus/fast
+sensor_msgs_generate_messages_py/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_py.dir/build
+.PHONY : sensor_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_lisp: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_generate_messages_lisp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+.PHONY : actionlib_generate_messages_lisp/fast
+
+# Convenience name for target.
+simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+sensor_msgs_generate_messages_eus: simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule
+
+.PHONY : sensor_msgs_generate_messages_eus
+
+# fast build rule for target.
+sensor_msgs_generate_messages_eus/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/sensor_msgs_generate_messages_eus.dir/build
+.PHONY : sensor_msgs_generate_messages_eus/fast
+
+# Convenience name for target.
+simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_cpp: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+
+.PHONY : actionlib_generate_messages_cpp
+
+# fast build rule for target.
+actionlib_generate_messages_cpp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_cpp.dir/build
+.PHONY : actionlib_generate_messages_cpp/fast
+
+# Convenience name for target.
+simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+.PHONY : simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_eus: simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_generate_messages_eus
+
+# fast build rule for target.
+actionlib_generate_messages_eus/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/build.make simple_navigation_goals/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
 
 src/move1.o: src/move1.cpp.o
 
@@ -594,35 +444,25 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... sensor_msgs_generate_messages_eus"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_eus"
-	@echo "... tf2_msgs_generate_messages_lisp"
-	@echo "... sensor_msgs_generate_messages_nodejs"
-	@echo "... sensor_msgs_generate_messages_lisp"
-	@echo "... tf_generate_messages_py"
-	@echo "... sensor_msgs_generate_messages_cpp"
-	@echo "... tf_generate_messages_nodejs"
-	@echo "... tf_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... actionlib_msgs_generate_messages_nodejs"
-	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... actionlib_generate_messages_eus"
-	@echo "... actionlib_msgs_generate_messages_cpp"
-	@echo "... actionlib_msgs_generate_messages_lisp"
-	@echo "... test"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... actionlib_msgs_generate_messages_py"
-	@echo "... tf_generate_messages_eus"
-	@echo "... tf2_msgs_generate_messages_cpp"
-	@echo "... tf2_msgs_generate_messages_nodejs"
-	@echo "... tf2_msgs_generate_messages_py"
-	@echo "... move1"
-	@echo "... tf_generate_messages_lisp"
-	@echo "... edit_cache"
-	@echo "... tf2_msgs_generate_messages_eus"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
+	@echo "... test"
+	@echo "... move1"
+	@echo "... actionlib_generate_messages_nodejs"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... sensor_msgs_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... tf_generate_messages_eus"
+	@echo "... tf_generate_messages_py"
+	@echo "... sensor_msgs_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_nodejs"
+	@echo "... tf_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... sensor_msgs_generate_messages_eus"
+	@echo "... actionlib_generate_messages_cpp"
+	@echo "... actionlib_generate_messages_eus"
 	@echo "... src/move1.o"
 	@echo "... src/move1.i"
 	@echo "... src/move1.s"

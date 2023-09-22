@@ -487,3 +487,80 @@ The target system is: Linux - 5.4.0-1073-raspi - aarch64
 The host system is: Linux - 5.4.0-1073-raspi - aarch64
 The target system is: Linux - 5.4.0-1073-raspi - aarch64
 The host system is: Linux - 5.4.0-1073-raspi - aarch64
+The target system is: Linux - 5.4.0-1073-raspi - aarch64
+The host system is: Linux - 5.4.0-1073-raspi - aarch64
+The target system is: Linux - 5.4.0-1073-raspi - aarch64
+The host system is: Linux - 5.4.0-1073-raspi - aarch64
+Determining if the include file unistd.h exists passed with the following output:
+Change Dir: /home/er/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_212e9/fast && /usr/bin/make -f CMakeFiles/cmTC_212e9.dir/build.make CMakeFiles/cmTC_212e9.dir/build
+make[1]: Entering directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_212e9.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_212e9.dir/CheckIncludeFile.c.o   -c /home/er/myagv_ros/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_212e9
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_212e9.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_212e9.dir/CheckIncludeFile.c.o  -o cmTC_212e9 
+make[1]: Leaving directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+
+
+
+Determining if the drand48 exist passed with the following output:
+Change Dir: /home/er/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_4955a/fast && /usr/bin/make -f CMakeFiles/cmTC_4955a.dir/build.make CMakeFiles/cmTC_4955a.dir/build
+make[1]: Entering directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_4955a.dir/CheckSymbolExists.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_4955a.dir/CheckSymbolExists.c.o   -c /home/er/myagv_ros/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_4955a
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4955a.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_4955a.dir/CheckSymbolExists.c.o  -o cmTC_4955a 
+make[1]: Leaving directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+
+
+File /home/er/myagv_ros/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <stdlib.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef drand48
+  return ((int*)(&drand48))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+Determining if the include file sys/time.h exists passed with the following output:
+Change Dir: /home/er/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8cd2e/fast && /usr/bin/make -f CMakeFiles/cmTC_8cd2e.dir/build.make CMakeFiles/cmTC_8cd2e.dir/build
+make[1]: Entering directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8cd2e.dir/CheckIncludeFile.c.o
+/usr/bin/cc    -o CMakeFiles/cmTC_8cd2e.dir/CheckIncludeFile.c.o   -c /home/er/myagv_ros/build/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_8cd2e
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8cd2e.dir/link.txt --verbose=1
+/usr/bin/cc      -rdynamic CMakeFiles/cmTC_8cd2e.dir/CheckIncludeFile.c.o  -o cmTC_8cd2e 
+make[1]: Leaving directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+
+
+
+The target system is: Linux - 5.4.0-1073-raspi - aarch64
+The host system is: Linux - 5.4.0-1073-raspi - aarch64
+Determining if the include file FL/Fl.H exists passed with the following output:
+Change Dir: /home/er/myagv_ros/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8f28c/fast && make[1]: Entering directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_8f28c.dir/build.make CMakeFiles/cmTC_8f28c.dir/build
+make[2]: Entering directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+Building CXX object CMakeFiles/cmTC_8f28c.dir/CheckIncludeFile.cxx.o
+/usr/bin/c++     -o CMakeFiles/cmTC_8f28c.dir/CheckIncludeFile.cxx.o -c /home/er/myagv_ros/build/CMakeFiles/CMakeTmp/CheckIncludeFile.cxx
+Linking CXX executable cmTC_8f28c
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8f28c.dir/link.txt --verbose=1
+/usr/bin/c++       -rdynamic CMakeFiles/cmTC_8f28c.dir/CheckIncludeFile.cxx.o  -o cmTC_8f28c 
+make[2]: Leaving directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory '/home/er/myagv_ros/build/CMakeFiles/CMakeTmp'
+
+
+

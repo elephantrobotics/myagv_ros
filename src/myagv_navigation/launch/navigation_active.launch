@@ -6,18 +6,18 @@
  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_link" args="0.065 0.0 0.08 3.14159265 0.0 0.0 /base_footprint /laser_frame 10" />
     <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu_link" args="-0.015 0.0 0.0 0.0 0.0 0.0 /base_footprint /imu_raw 10" /> 
     
-<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
-      <param name="output_frame" value="odom"/>
-      <param name="base_footprint_frame" value="base_footprint"/>
-      <param name="freq" value="30.0"/>
-        <param name="sensor_timeout" value="1.0"/>  
-      <param name="odom_used" value="true"/>
-      <param name="odom_data" value="odom"/>
-      <param name="imu_used" value="true"/>
-          <param name="imu_data" value="imu_raw_data"/>
-      <param name="vo_used" value="false"/>
+<!--<node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">-->
+<!--      <param name="output_frame" value="odom"/>-->
+<!--      <param name="base_footprint_frame" value="base_footprint"/>-->
+<!--      <param name="freq" value="30.0"/>-->
+<!--        <param name="sensor_timeout" value="1.0"/>  -->
+<!--      <param name="odom_used" value="true"/>-->
+<!--      <param name="odom_data" value="odom"/>-->
+<!--      <param name="imu_used" value="true"/>-->
+<!--          <param name="imu_data" value="imu_raw_data"/>-->
+<!--      <param name="vo_used" value="false"/>-->
       <!--remap name="odom_data" to="/odom"/-->
-  </node>
+<!--  </node>-->
   
   <arg name="map_file" default="$(find myagv_navigation)/map/map.yaml"/>
 
@@ -31,9 +31,9 @@
 
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
     <rosparam file="$(find myagv_navigation)/param/amcl.yaml" command="load" />
-    <param name="initial_pose_x"            value="0"/>
-    <param name="initial_pose_y"            value="0"/>
-    <param name="initial_pose_a"            value="0"/>
+    <param name="initial_pose_x"            value="-0.818"/>
+    <param name="initial_pose_y"            value="-0.066"/>
+    <param name="initial_pose_a"            value="-0.103"/>
   </node>      
 
 

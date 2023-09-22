@@ -113,17 +113,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -134,6 +123,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -166,21 +166,6 @@ preinstall/fast:
 depend:
 	cd /home/er/myagv_ros/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
-
-# Convenience name for target.
-auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-.PHONY : auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_py: auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_py
-
-# fast build rule for target.
-move_base_msgs_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/build.make auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
-.PHONY : move_base_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 auto_dock/CMakeFiles/move_base_msgs_generate_messages_cpp.dir/rule:
@@ -228,21 +213,6 @@ move_base_msgs_generate_messages_eus/fast:
 .PHONY : move_base_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/rule
-.PHONY : auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-# Convenience name for target.
-_catkin_empty_exported_target: auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/rule
-
-.PHONY : _catkin_empty_exported_target
-
-# fast build rule for target.
-_catkin_empty_exported_target/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/build.make auto_dock/CMakeFiles/_catkin_empty_exported_target.dir/build
-.PHONY : _catkin_empty_exported_target/fast
-
-# Convenience name for target.
 auto_dock/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule:
 	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 auto_dock/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
 .PHONY : auto_dock/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/rule
@@ -256,6 +226,21 @@ move_base_msgs_generate_messages_nodejs: auto_dock/CMakeFiles/move_base_msgs_gen
 move_base_msgs_generate_messages_nodejs/fast:
 	cd /home/er/myagv_ros/build && $(MAKE) -f auto_dock/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build.make auto_dock/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build
 .PHONY : move_base_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
+.PHONY : auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+move_base_msgs_generate_messages_py: auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/rule
+
+.PHONY : move_base_msgs_generate_messages_py
+
+# fast build rule for target.
+move_base_msgs_generate_messages_py/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/build.make auto_dock/CMakeFiles/move_base_msgs_generate_messages_py.dir/build
+.PHONY : move_base_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 auto_dock/CMakeFiles/record_pose.dir/rule:
@@ -477,20 +462,19 @@ help:
 	@echo "... install/local"
 	@echo "... install"
 	@echo "... list_install_components"
-	@echo "... move_base_msgs_generate_messages_py"
 	@echo "... move_base_msgs_generate_messages_cpp"
 	@echo "... goal_sending_0"
 	@echo "... move_base_msgs_generate_messages_eus"
-	@echo "... _catkin_empty_exported_target"
 	@echo "... move_base_msgs_generate_messages_nodejs"
+	@echo "... move_base_msgs_generate_messages_py"
 	@echo "... record_pose"
 	@echo "... send_goal"
 	@echo "... goal_sending"
 	@echo "... move_base_msgs_generate_messages_lisp"
 	@echo "... test"
-	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... openfile"
+	@echo "... edit_cache"
+	@echo "... rebuild_cache"
 	@echo "... src/goal_sending.o"
 	@echo "... src/goal_sending.i"
 	@echo "... src/goal_sending.s"

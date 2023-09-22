@@ -6,18 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/er/myagv_ros/build/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/navi_multi_goals_pub_rviz_plugin_autogen/UVLADIE3JM/moc_multi_navi_goal_panel.cpp
-../../../../../src/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/src/multi_navi_goal_panel.h
-/home/er/myagv_ros/src/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/src/multi_navi_goal_panel.h
-QtCore/qbytearray.h
--
-QtCore/qmetatype.h
--
-
-/home/er/myagv_ros/build/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/navi_multi_goals_pub_rviz_plugin_autogen/mocs_compilation.cpp
-UVLADIE3JM/moc_multi_navi_goal_panel.cpp
-/home/er/myagv_ros/build/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/navi_multi_goals_pub_rviz_plugin_autogen/UVLADIE3JM/moc_multi_navi_goal_panel.cpp
-
 /home/er/myagv_ros/src/rviz_navi_multi_goals_pub_plugin/navi_multi_goals_pub_rviz_plugin/src/multi_navi_goal_panel.cpp
 cstdio
 -
