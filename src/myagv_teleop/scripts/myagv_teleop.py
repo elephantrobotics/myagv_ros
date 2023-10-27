@@ -30,9 +30,6 @@ Moving around:
    j    k    l
    m    ,    .
 
-t : up (+z)
-b : down (-z)
-
 anything else : stop
 
 q/z : increase/decrease max speeds by 10%
