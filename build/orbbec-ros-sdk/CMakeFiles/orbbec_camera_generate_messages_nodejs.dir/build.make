@@ -98,8 +98,8 @@ orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_nodejs: /home/er/myagv
 /home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /opt/ros/noetic/lib/gennodejs/gen_nodejs.py
 /home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv
 /home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 /home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
+/home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv/GetCameraInfo.js: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Javascript code from orbbec_camera/GetCameraInfo.srv"
 	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gennodejs/cmake/../../../lib/gennodejs/gen_nodejs.py /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv -Iorbbec_camera:/home/er/myagv_ros/src/orbbec-ros-sdk/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p orbbec_camera -o /home/er/myagv_ros/devel/share/gennodejs/ros/orbbec_camera/srv
 

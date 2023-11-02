@@ -99,8 +99,8 @@ orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_eus: /home/er/myagv_ro
 /home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv
 /home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /opt/ros/noetic/share/std_msgs/msg/Header.msg
-/home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 /home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
+/home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv/GetCameraInfo.l: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from orbbec_camera/GetCameraInfo.srv"
 	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv -Iorbbec_camera:/home/er/myagv_ros/src/orbbec-ros-sdk/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p orbbec_camera -o /home/er/myagv_ros/devel/share/roseus/ros/orbbec_camera/srv
 

@@ -17,6 +17,6 @@
     <param name="controller_frequency" value="5.0"/> 
     <param name="controller_patience" value="3.0"/>
     <param name="clearing_rotation_allowed" value="true"/>
-
   </node>
+  
 </launch>
