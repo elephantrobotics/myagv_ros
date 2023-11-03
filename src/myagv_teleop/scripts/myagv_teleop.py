@@ -4,7 +4,7 @@ from __future__ import print_function
 
 import threading
 
-import roslib; roslib.load_manifest('teleop_twist_keyboard')
+import roslib; roslib.load_manifest('myagv_teleop')
 import rospy
 
 from geometry_msgs.msg import Twist
@@ -194,7 +194,7 @@ if __name__=="__main__":
     speed_limit = rospy.get_param("~speed_limit", 1.0)
     turn_limit = rospy.get_param("~turn_limit", 1.0)
     repeat = rospy.get_param("~repeat_rate", 0.0)
-    key_timeout = rospy.get_param("~key_timeout", 0.52)
+    key_timeout = rospy.get_param("~key_timeout", 0.49)
     stamped = rospy.get_param("~stamped", False)
     twist_frame = rospy.get_param("~frame_id", '')
     if stamped:
