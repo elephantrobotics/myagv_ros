@@ -368,7 +368,7 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
     odom_trans.transform.rotation = odom_quat;
 
     //send the transform
-    odomBroadcaster.sendTransform(odom_trans);
+    //odomBroadcaster.sendTransform(odom_trans);
 
     //publish the odometry message over ROS
     nav_msgs::Odometry msgl;

@@ -15,9 +15,9 @@ let CameraModels = require('./CameraModels.js');
 let KeyPoint = require('./KeyPoint.js');
 let Point3f = require('./Point3f.js');
 let Point2f = require('./Point2f.js');
+let std_msgs = _finder('std_msgs');
 let sensor_msgs = _finder('sensor_msgs');
 let geometry_msgs = _finder('geometry_msgs');
-let std_msgs = _finder('std_msgs');
 
 //-----------------------------------------------------------
 
