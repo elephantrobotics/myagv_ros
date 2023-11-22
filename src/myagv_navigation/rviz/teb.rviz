@@ -5,6 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Global Options1
+        - /Grid1
+        - /Odometry1
         - /Odometry1/Shape1
         - /RobotModel1/Links1
         - /Inflated Obstacles1/Position1
@@ -59,7 +61,7 @@ Visualization Manager:
         Z: 0
       Plane: XY
       Plane Cell Count: 80
-      Reference Frame: odom
+      Reference Frame: odom_combined
       Value: true
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
@@ -93,7 +95,7 @@ Visualization Manager:
         Shaft Length: 0.30000001192092896
         Shaft Radius: 0.019999999552965164
         Value: Arrow
-      Topic: /odom
+      Topic: /robot_pose_ekf/odom_combined
       Unreliable: false
       Value: true
     - Alpha: 1
@@ -312,7 +314,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -3.5050063133239746
+      Angle: -3.5850062370300293
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -322,10 +324,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 110.31625366210938
+      Scale: 410.36444091796875
       Target Frame: <Fixed Frame>
-      X: -0.13627944886684418
-      Y: 0.5294041633605957
+      X: 0.2612726092338562
+      Y: 0.2651318907737732
     Saved: ~
 Window Geometry:
   Displays:
@@ -345,5 +347,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1432
-  X: 206
-  Y: 44
+  X: 205
+  Y: 28
