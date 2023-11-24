@@ -24,7 +24,7 @@ boost/asio.hpp
 sensor_msgs/Imu.h
 -
 
-/home/er/myagv_ros/src/myagv_odometry/src/myAGV.cpp
+/home/er/myagv_ros/src/myagv_odometry/src/myAGV_test.cpp
 vector
 -
 iostream

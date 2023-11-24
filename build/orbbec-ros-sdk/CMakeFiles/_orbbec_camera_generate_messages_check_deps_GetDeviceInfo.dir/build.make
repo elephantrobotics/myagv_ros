@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/progress.make
 
 orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo:
-	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py orbbec_camera /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetDeviceInfo.srv std_msgs/Header:orbbec_camera/DeviceInfo
+	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py orbbec_camera /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetDeviceInfo.srv orbbec_camera/DeviceInfo:std_msgs/Header
 
 _orbbec_camera_generate_messages_check_deps_GetDeviceInfo: orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo
 _orbbec_camera_generate_messages_check_deps_GetDeviceInfo: orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/build.make

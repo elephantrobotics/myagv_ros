@@ -54,6 +54,10 @@ private:
 	double wx;
 	double wy;
 	double wz;
+	
+	double roll;
+	double pitch;
+	double yaw;
     
 	float Gyroscope_Xdata_Offset;
 	float Gyroscope_Ydata_Offset;

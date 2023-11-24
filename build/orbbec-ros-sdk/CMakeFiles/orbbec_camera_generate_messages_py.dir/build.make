@@ -99,9 +99,9 @@ orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_py: /home/er/myagv_ros
 
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv
-/home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
+/home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetCameraInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating Python code from SRV orbbec_camera/GetCameraInfo"
 	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetCameraInfo.srv -Iorbbec_camera:/home/er/myagv_ros/src/orbbec-ros-sdk/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p orbbec_camera -o /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv
 
@@ -112,8 +112,8 @@ orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_py: /home/er/myagv_ros
 
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetDeviceInfo.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetDeviceInfo.py: /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetDeviceInfo.srv
-/home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetDeviceInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetDeviceInfo.py: /home/er/myagv_ros/src/orbbec-ros-sdk/msg/DeviceInfo.msg
+/home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv/_GetDeviceInfo.py: /opt/ros/noetic/share/std_msgs/msg/Header.msg
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating Python code from SRV orbbec_camera/GetDeviceInfo"
 	cd /home/er/myagv_ros/build/orbbec-ros-sdk && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/er/myagv_ros/src/orbbec-ros-sdk/srv/GetDeviceInfo.srv -Iorbbec_camera:/home/er/myagv_ros/src/orbbec-ros-sdk/msg -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -Isensor_msgs:/opt/ros/noetic/share/sensor_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/noetic/share/geometry_msgs/cmake/../msg -p orbbec_camera -o /home/er/myagv_ros/devel/lib/python3/dist-packages/orbbec_camera/srv
 

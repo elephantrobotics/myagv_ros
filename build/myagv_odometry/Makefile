@@ -182,33 +182,6 @@ myagv_odometry_node/fast:
 	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build
 .PHONY : myagv_odometry_node/fast
 
-src/myAGV.o: src/myAGV.cpp.o
-
-.PHONY : src/myAGV.o
-
-# target to build an object file
-src/myAGV.cpp.o:
-	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o
-.PHONY : src/myAGV.cpp.o
-
-src/myAGV.i: src/myAGV.cpp.i
-
-.PHONY : src/myAGV.i
-
-# target to preprocess a source file
-src/myAGV.cpp.i:
-	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i
-.PHONY : src/myAGV.cpp.i
-
-src/myAGV.s: src/myAGV.cpp.s
-
-.PHONY : src/myAGV.s
-
-# target to generate assembly for a file
-src/myAGV.cpp.s:
-	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s
-.PHONY : src/myAGV.cpp.s
-
 src/myAGVSub.o: src/myAGVSub.cpp.o
 
 .PHONY : src/myAGVSub.o
@@ -236,6 +209,33 @@ src/myAGVSub.cpp.s:
 	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.s
 .PHONY : src/myAGVSub.cpp.s
 
+src/myAGV_test.o: src/myAGV_test.cpp.o
+
+.PHONY : src/myAGV_test.o
+
+# target to build an object file
+src/myAGV_test.cpp.o:
+	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o
+.PHONY : src/myAGV_test.cpp.o
+
+src/myAGV_test.i: src/myAGV_test.cpp.i
+
+.PHONY : src/myAGV_test.i
+
+# target to preprocess a source file
+src/myAGV_test.cpp.i:
+	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.i
+.PHONY : src/myAGV_test.cpp.i
+
+src/myAGV_test.s: src/myAGV_test.cpp.s
+
+.PHONY : src/myAGV_test.s
+
+# target to generate assembly for a file
+src/myAGV_test.cpp.s:
+	cd /home/er/myagv_ros/build && $(MAKE) -f myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.s
+.PHONY : src/myAGV_test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -250,12 +250,12 @@ help:
 	@echo "... edit_cache"
 	@echo "... test"
 	@echo "... myagv_odometry_node"
-	@echo "... src/myAGV.o"
-	@echo "... src/myAGV.i"
-	@echo "... src/myAGV.s"
 	@echo "... src/myAGVSub.o"
 	@echo "... src/myAGVSub.i"
 	@echo "... src/myAGVSub.s"
+	@echo "... src/myAGV_test.o"
+	@echo "... src/myAGV_test.i"
+	@echo "... src/myAGV_test.s"
 .PHONY : help
 
 

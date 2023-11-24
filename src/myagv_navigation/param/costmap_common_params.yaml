@@ -2,7 +2,6 @@ footprint: [[0.17, 0.12], [0.17,-0.12], [-0.17, -0.12], [-0.17, 0.12]]
 footprint_padding: 0.01
 
 transform_tolerance: 0.2
-map_type: costmap
 
 always_send_full_costmap: true
 
