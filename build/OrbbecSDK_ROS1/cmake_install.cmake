@@ -111,15 +111,15 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so"
-         RPATH "")
+         RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/er/myagv_ros/devel/lib/liborbbec_camera.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:"
-         NEW_RPATH "")
+         OLD_RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/opt/ros/noetic/lib:"
+         NEW_RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera.so")
     endif()
@@ -134,15 +134,15 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so"
-         RPATH "")
+         RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64")
   endif()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/er/myagv_ros/devel/lib/liborbbec_camera_nodelet.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:"
-         NEW_RPATH "")
+         OLD_RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/opt/ros/noetic/lib:"
+         NEW_RPATH ":/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/liborbbec_camera_nodelet.so")
     endif()
@@ -150,106 +150,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera" TYPE EXECUTABLE FILES "/home/er/myagv_ros/devel/lib/orbbec_camera/orbbec_camera_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:/home/er/myagv_ros/devel/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/orbbec_camera_node")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera" TYPE EXECUTABLE FILES "/home/er/myagv_ros/devel/lib/orbbec_camera/list_devices_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:/home/er/myagv_ros/devel/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_devices_node")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera" TYPE EXECUTABLE FILES "/home/er/myagv_ros/devel/lib/orbbec_camera/ob_cleanup_shm_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:/home/er/myagv_ros/devel/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/ob_cleanup_shm_node")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera" TYPE EXECUTABLE FILES "/home/er/myagv_ros/devel/lib/orbbec_camera/list_depth_work_mode_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:/home/er/myagv_ros/devel/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_depth_work_mode_node")
-    endif()
-  endif()
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node")
-    file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node"
-         RPATH "")
-  endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera" TYPE EXECUTABLE FILES "/home/er/myagv_ros/devel/lib/orbbec_camera/list_camera_profile_mode_node")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node")
-    file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node"
-         OLD_RPATH "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_calib3d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_core:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_features2d:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_flann:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_highgui:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgcodecs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_imgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ml:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_photo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stitching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_video:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videoio:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_aruco:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bgsegm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_bioinspired:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ccalib:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_datasets:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_objdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dnn_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_dpm:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_face:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_freetype:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_fuzzy:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hdf:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_hfs:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_img_hash:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_line_descriptor:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_optflow:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_phase_unwrapping:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_plot:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_quality:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_reg:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_rgbd:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_saliency:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_shape:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_stereo:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_structured_light:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_superres:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_surface_matching:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_text:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_tracking:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_videostab:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_viz:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_ximgproc:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xobjdetect:/home/er/myagv_ros/src/OrbbecSDK_ROS1/opencv_xphoto:/opt/ros/noetic/lib:/home/er/myagv_ros/devel/lib:"
-         NEW_RPATH "")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/orbbec_camera/list_camera_profile_mode_node")
-    endif()
-  endif()
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -273,10 +173,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/" TYPE DIRECTORY FILES "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64/" FILES_MATCHING REGEX "/[^/]*\\.so$" REGEX "/[^/]*\\.so\\.[^/]*$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/orbbec_camera" TYPE FILE FILES "/home/er/myagv_ros/src/OrbbecSDK_ROS1/LICENSE")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/" TYPE DIRECTORY FILES "/" FILES_MATCHING REGEX "/[^/]*\\.so$" REGEX "/[^/]*\\.so\\.[^/]*$")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/" TYPE DIRECTORY FILES "/home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/lib/arm64/" FILES_MATCHING REGEX "/[^/]*\\.so$" REGEX "/[^/]*\\.so\\.[^/]*$")
 endif()
 

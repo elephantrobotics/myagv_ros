@@ -2,7 +2,7 @@ prefix=/home/er/myagv_ros/devel
 
 Name: orbbec_camera
 Description: Description of orbbec_camera
-Version: 1.2.5
-Cflags: -I/home/er/myagv_ros/devel/include -I/home/er/myagv_ros/src/orbbec-ros-sdk/include
+Version: 1.3.9
+Cflags: -I/home/er/myagv_ros/devel/include -I/home/er/myagv_ros/src/OrbbecSDK_ROS1/include
 Libs: -L${prefix}/lib -lorbbec_camera
 Requires: camera_info_manager cv_bridge dynamic_reconfigure image_geometry image_transport message_filters message_runtime roscpp sensor_msgs std_srvs tf2 tf2_ros

@@ -5,4 +5,4 @@ PROJECT_CATKIN_DEPENDS = "camera_info_manager;cv_bridge;dynamic_reconfigure;imag
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "-lorbbec_camera".split(';') if "-lorbbec_camera" != "" else []
 PROJECT_NAME = "orbbec_camera"
 PROJECT_SPACE_DIR = "/home/er/myagv_ros/install"
-PROJECT_VERSION = "1.2.9"
+PROJECT_VERSION = "1.3.9"

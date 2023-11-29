@@ -95,6 +95,21 @@ Visualization Manager:
       Use rainbow: true
       Value: true
     - Alpha: 1
+      Class: rtabmap_rviz_plugins/MapGraph
+      Enabled: false
+      Global loop closure: 255; 0; 0
+      Landmark: 0; 128; 0
+      Local loop closure: 255; 255; 0
+      Merged neighbor: 255; 170; 0
+      Name: MapGraph
+      Neighbor: 0; 0; 255
+      Queue Size: 10
+      Topic: /rtabmap/mapGraph
+      Unreliable: false
+      User: 255; 0; 0
+      Value: false
+      Virtual: 255; 0; 255
+    - Alpha: 1
       Class: rviz/RobotModel
       Collision Enabled: false
       Enabled: true
@@ -172,12 +187,12 @@ Visualization Manager:
       Class: rviz/Map
       Color Scheme: map
       Draw Behind: false
-      Enabled: false
+      Enabled: true
       Name: Map
       Topic: /move_base/global_costmap/costmap
       Unreliable: false
       Use Timestamp: false
-      Value: false
+      Value: true
     - Alpha: 0.699999988079071
       Class: rviz/Map
       Color Scheme: costmap
@@ -233,8 +248,6 @@ Visualization Manager:
           Value: true
         odom:
           Value: true
-        odom_combined:
-          Value: true
       Marker Alpha: 1
       Marker Scale: 1
       Name: TF
@@ -244,8 +257,6 @@ Visualization Manager:
       Tree:
         map:
           odom:
-            {}
-          odom_combined:
             base_footprint:
               base_up:
                 {}
@@ -420,9 +431,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.394796371459961
+      Pitch: 0.9547964334487915
       Target Frame: <Fixed Frame>
-      Yaw: 2.0185842514038086
+      Yaw: 2.938584089279175
     Saved: ~
 Window Geometry:
   Displays:
@@ -444,5 +455,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1411
-  X: 236
-  Y: 75
+  X: 235
+  Y: 48

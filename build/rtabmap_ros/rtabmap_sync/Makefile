@@ -68,6 +68,28 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -78,18 +100,6 @@ test:
 test/fast: test
 
 .PHONY : test/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -113,27 +123,17 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -183,49 +183,19 @@ rtabmap_rgbdx_sync/fast:
 .PHONY : rtabmap_rgbdx_sync/fast
 
 # Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
+rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-rtabmap_rgbd_sync: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
+diagnostic_msgs_generate_messages_eus: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
 
-.PHONY : rtabmap_rgbd_sync
+.PHONY : diagnostic_msgs_generate_messages_eus
 
 # fast build rule for target.
-rtabmap_rgbd_sync/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build
-.PHONY : rtabmap_rgbd_sync/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
-
-# Convenience name for target.
-rtabmap_sync_plugins: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
-
-.PHONY : rtabmap_sync_plugins
-
-# fast build rule for target.
-rtabmap_sync_plugins/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build
-.PHONY : rtabmap_sync_plugins/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
-
-# Convenience name for target.
-rtabmap_sync: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
-
-.PHONY : rtabmap_sync
-
-# fast build rule for target.
-rtabmap_sync/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build
-.PHONY : rtabmap_sync/fast
+diagnostic_msgs_generate_messages_eus/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
+.PHONY : diagnostic_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_stereo_sync.dir/rule:
@@ -258,49 +228,19 @@ diagnostic_msgs_generate_messages_nodejs/fast:
 .PHONY : diagnostic_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-nodelet_generate_messages_cpp: rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+diagnostic_msgs_generate_messages_cpp: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : nodelet_generate_messages_cpp
+.PHONY : diagnostic_msgs_generate_messages_cpp
 
 # fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_nodejs: rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/rule
-
-.PHONY : nodelet_generate_messages_nodejs
-
-# fast build rule for target.
-nodelet_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
-.PHONY : nodelet_generate_messages_nodejs/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_py: rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/rule
-
-.PHONY : bond_generate_messages_py
-
-# fast build rule for target.
-bond_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/build
-.PHONY : bond_generate_messages_py/fast
+diagnostic_msgs_generate_messages_cpp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
+.PHONY : diagnostic_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgb_sync.dir/rule:
@@ -318,139 +258,19 @@ rtabmap_rgb_sync/fast:
 .PHONY : rtabmap_rgb_sync/fast
 
 # Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_cpp: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/rule
+diagnostic_msgs_generate_messages_lisp: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_cpp
+.PHONY : diagnostic_msgs_generate_messages_lisp
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_eus: rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-.PHONY : nodelet_generate_messages_eus
-
-# fast build rule for target.
-nodelet_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/build
-.PHONY : nodelet_generate_messages_eus/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_nodejs: rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/rule
-
-.PHONY : bond_generate_messages_nodejs
-
-# fast build rule for target.
-bond_generate_messages_nodejs/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/build
-.PHONY : bond_generate_messages_nodejs/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_lisp: rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/rule
-
-.PHONY : nodelet_generate_messages_lisp
-
-# fast build rule for target.
-nodelet_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/build
-.PHONY : nodelet_generate_messages_lisp/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_eus: rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/rule
-
-.PHONY : bond_generate_messages_eus
-
-# fast build rule for target.
-bond_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/build
-.PHONY : bond_generate_messages_eus/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_cpp: rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/rule
-
-.PHONY : bond_generate_messages_cpp
-
-# fast build rule for target.
-bond_generate_messages_cpp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/build
-.PHONY : bond_generate_messages_cpp/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_py: rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/rule
-
-.PHONY : nodelet_generate_messages_py
-
-# fast build rule for target.
-nodelet_generate_messages_py/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/build
-.PHONY : nodelet_generate_messages_py/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-bond_generate_messages_lisp: rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/rule
-
-.PHONY : bond_generate_messages_lisp
-
-# fast build rule for target.
-bond_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/build
-.PHONY : bond_generate_messages_lisp/fast
-
-# Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-diagnostic_msgs_generate_messages_eus: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/rule
-
-.PHONY : diagnostic_msgs_generate_messages_eus
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_eus/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
-.PHONY : diagnostic_msgs_generate_messages_eus/fast
+diagnostic_msgs_generate_messages_lisp/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
+.PHONY : diagnostic_msgs_generate_messages_lisp/fast
 
 # Convenience name for target.
 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_py.dir/rule:
@@ -468,19 +288,49 @@ diagnostic_msgs_generate_messages_py/fast:
 .PHONY : diagnostic_msgs_generate_messages_py/fast
 
 # Convenience name for target.
-rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule:
-	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
-.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
 
 # Convenience name for target.
-diagnostic_msgs_generate_messages_lisp: rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/rule
+rtabmap_sync: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/rule
 
-.PHONY : diagnostic_msgs_generate_messages_lisp
+.PHONY : rtabmap_sync
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_lisp/fast:
-	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_lisp/fast
+rtabmap_sync/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build
+.PHONY : rtabmap_sync/fast
+
+# Convenience name for target.
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
+
+# Convenience name for target.
+rtabmap_sync_plugins: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/rule
+
+.PHONY : rtabmap_sync_plugins
+
+# fast build rule for target.
+rtabmap_sync_plugins/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build
+.PHONY : rtabmap_sync_plugins/fast
+
+# Convenience name for target.
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule:
+	cd /home/er/myagv_ros/build && $(MAKE) -f CMakeFiles/Makefile2 rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
+.PHONY : rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
+
+# Convenience name for target.
+rtabmap_rgbd_sync: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/rule
+
+.PHONY : rtabmap_rgbd_sync
+
+# fast build rule for target.
+rtabmap_rgbd_sync/fast:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build
+.PHONY : rtabmap_rgbd_sync/fast
 
 src/CommonDataSubscriber.o: src/CommonDataSubscriber.cpp.o
 
@@ -921,33 +771,23 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/local"
-	@echo "... test"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rtabmap_rgbdx_sync"
-	@echo "... install/strip"
-	@echo "... rtabmap_rgbd_sync"
-	@echo "... rtabmap_sync_plugins"
-	@echo "... rtabmap_sync"
-	@echo "... rtabmap_stereo_sync"
-	@echo "... diagnostic_msgs_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_cpp"
+	@echo "... diagnostic_msgs_generate_messages_eus"
+	@echo "... test"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... nodelet_generate_messages_nodejs"
-	@echo "... bond_generate_messages_py"
-	@echo "... rtabmap_rgb_sync"
+	@echo "... rtabmap_stereo_sync"
+	@echo "... diagnostic_msgs_generate_messages_nodejs"
 	@echo "... diagnostic_msgs_generate_messages_cpp"
-	@echo "... nodelet_generate_messages_eus"
-	@echo "... list_install_components"
-	@echo "... bond_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_lisp"
-	@echo "... install"
-	@echo "... bond_generate_messages_eus"
-	@echo "... bond_generate_messages_cpp"
-	@echo "... nodelet_generate_messages_py"
-	@echo "... bond_generate_messages_lisp"
-	@echo "... diagnostic_msgs_generate_messages_eus"
-	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... rtabmap_rgb_sync"
 	@echo "... diagnostic_msgs_generate_messages_lisp"
+	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... rtabmap_sync"
+	@echo "... rtabmap_sync_plugins"
+	@echo "... install/strip"
+	@echo "... rtabmap_rgbd_sync"
 	@echo "... src/CommonDataSubscriber.o"
 	@echo "... src/CommonDataSubscriber.i"
 	@echo "... src/CommonDataSubscriber.s"

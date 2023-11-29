@@ -1,49 +1,75 @@
 <launch>
-  <!-- 使用map的topic而不是map文件-->
-  <arg name="use_map_topic" value="true"/>
-  <!-- 不可以使用PointCloud，只能使用LaserScan -->
-  <arg name="scan_topic" default="scan"/>
-  <arg name="map_topic" value="/rtabmap/grid_map"/>
+  <!-- Arguments -->
+  <arg name="open_rviz" default="true"/>
+  <arg name="rtabmap_viz" default="true"/>
+  <arg name="localization" default="false"/>
+  <arg name="database_path" default="~/.ros/rtabmap.db"/>
+  <arg     if="$(arg localization)" name="rtabmap_args" default=""/>
+  <arg unless="$(arg localization)" name="rtabmap_args" default="-d"/>
 
-  <node pkg="amcl" type="amcl" name="amcl" clear_params="true">
-    <param name="use_map_topic" value="$(arg use_map_topic)"/>
-    <!-- 使用rtabmap分布的Map，连接TF树 -->
-    <remap from="/map" to="/$(arg map_topic)"/>
-    <!--  Overall filter parameters -->
-    <param name="update_min_d" value="0.25"/>
-    <param name="update_min_a" value="0.2"/>
-    <param name="gui_publish_rate" value="10.0"/>
-    <param name="min_particles" value="500"/>
-    <param name="max_particles" value="2000"/>
-    <param name="kld_err" value="0.05"/>
-    <param name="kld_z" value="0.99"/>
-    <!-- Increase tolerance because the computer can get quite busy -->
-    <param name="transform_tolerance" value="1.0"/>   
-    <param name="recovery_alpha_slow" value="0.0"/>
-    <param name="recovery_alpha_fast" value="0.0"/>
-    <param name="resample_interval" value="1"/>
-    <!--  Laser model parameters -->
-    <param name="laser_max_beams" value="60"/>
-    <param name="laser_max_range" value="12.0"/>
-    <param name="laser_z_hit" value="0.5"/>
-    <param name="laser_z_short" value="0.05"/>
-    <param name="laser_z_max" value="0.05"/>
-    <param name="laser_z_rand" value="0.5"/>
-    <param name="laser_sigma_hit" value="0.2"/>
-    <param name="laser_lambda_short" value="0.1"/>
-    <param name="laser_model_type" value="likelihood_field"/>
-    <param name="laser_likelihood_max_dist" value="2.0"/>
-    <!--  Odometry model parameters --> 
-    <param name="odom_model_type" value="omni"/>
-    <param name="odom_alpha1" value="0.2"/>
-    <param name="odom_alpha2" value="0.2"/>
-    <param name="odom_alpha3" value="0.2"/>
-    <param name="odom_alpha4" value="0.2"/>
-    <param name="odom_alpha5" value="0.1"/>
-    <param name="base_frame_id" value="base_footprint"/>
-    <param name="odom_frame_id" value="odom_combined"/>
-    <remap from="scan" to="$(arg scan_topic)"/>
-  </node>
+  <!-- RTAB-Map -->
+  <group ns="rtabmap">
+    <node pkg="nodelet" type="nodelet" name="rgbd_sync" args="standalone rtabmap_sync/rgbd_sync" output="screen">
+      <remap from="rgb/image"       to="/camera/color/image_raw"/>
+      <remap from="depth/image"     to="/camera/depth/image_raw"/>
+      <remap from="rgb/camera_info" to="/camera/color/camera_info"/>
+    </node>
+
+    <node name="rtabmap" pkg="rtabmap_slam" type="rtabmap" output="screen" args="$(arg rtabmap_args)">
+      <param name="database_path"       type="string" value="$(arg database_path)"/>
+      <param name="frame_id"            type="string" value="base_footprint"/>
+      <param name="subscribe_rgb"   type="bool" value="false"/>
+      <param name="subscribe_depth" type="bool" value="false"/>
+      <param name="subscribe_rgbd" type="bool" value="true"/>
+      <param name="subscribe_scan"      type="bool"   value="true"/>
+      <param name="approx_sync"         type="bool"   value="true"/>
+
+      <!-- use actionlib to send goals to move_base -->
+      <param name="use_action_for_goal" type="bool" value="true"/>
+      <remap from="move_base"            to="/move_base"/>
+
+      <!-- inputs -->
+      <remap from="scan"            to="/scan"/>
+      <remap from="odom"            to="/odom"/>
+      <remap from="rgbd_image"       to="rgbd_image"/>
+      <remap from="rgb/image" to="/camera/color/image_raw"/>
+      <remap from="depth/image" to="/camera/depth/image_raw"/>
+      <remap from="rgb/camera_info" to="/camera/color/camera_info"/>
+      <param name="queue_size" type="int" value="50"/>
+
+      <!-- output -->
+      <remap from="grid_map" to="/map"/>
+
+      <!-- RTAB-Map's parameters -->
+      <param name="RGBD/ProximityPathMaxNeighbors" type="string" value="10"/>
+      <param name="RGBD/NeighborLinkRefining" type="string" value="true"/>
+      <param name="RGBD/ProximityBySpace"     type="string" value="true"/>
+      <param name="RGBD/AngularUpdate"        type="string" value="0.01"/>
+      <param name="RGBD/LinearUpdate"         type="string" value="0.01"/>
+      <param name="RGBD/OptimizeFromGraphEnd" type="string" value="false"/>
+      <param name="Grid/FromDepth"            type="string" value="false"/> <!-- occupancy grid from lidar -->
+      <param name="Reg/Force3DoF"             type="string" value="true"/>
+      <param name="Reg/Strategy"              type="string" value="1"/> <!-- 1=ICP -->
+      <!-- localization mode -->
+      <param     if="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="false"/>
+      <param unless="$(arg localization)" name="Mem/IncrementalMemory" type="string" value="true"/>
+      <param name="Mem/InitWMWithAllNodes" type="string" value="$(arg localization)"/> 
+      <!-- ICP parameters -->
+      <param name="Icp/VoxelSize"                 type="string" value="0.05"/>
+      <param name="Icp/MaxCorrespondenceDistance" type="string" value="0.1"/>
+    </node>
+
+    <!-- visualization with rtabmap_viz -->
+    <node if="$(arg rtabmap_viz)" pkg="rtabmap_viz" type="rtabmap_viz" name="rtabmap_viz" args="-d $(find rtabmap_viz)/launch/config/rgbd_gui.ini" output="screen">
+      <param name="subscribe_scan"   type="bool"   value="true"/>
+      <param name="subscribe_odom"   type="bool"   value="true"/>
+      <param name="frame_id"         type="string" value="base_footprint"/>
+      <param name="approx_sync"      type="bool"   value="true"/>
+
+      <remap from="odom"            to="/odom"/>
+      <remap from="scan"            to="/scan"/>
+    </node>
+  </group>
 
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
     <rosparam file="$(find myagv_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -62,28 +88,14 @@
       <param name="clearing_rotation_allowed" value="true"/>
   </node>
   
-  <!-- 开启3d导航 -->
-  <include file="$(find myagv_navigation)/launch/rtabmap_navigation.launch" />
-  <param name="move_base/global_costmap/static_layer/map_topic"   type="string" value="/rtabmap/grid_map"/>
-  <param name="move_base/local_costmap/static_layer/map_topic"    type="string" value="/rtabmap/grid_map"/>
-  
-  <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf" output="screen">
-    <param name="output_frame" value="odom_combined"/>
-    <param name="base_footprint_frame" value="base_footprint"/>
-    <param name="freq" value="30.0"/>
-    <param name="sensor_timeout" value="2.0"/>
-    <param name="odom_used" value="true"/>
-    <param name="odom_data" value="odom"/>
-    <param name="imu_used" value="true"/>
-    <param name="vo_used" value="false"/>
-    <remap from="imu_data" to="imu" />
-  </node>
-
   <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
-  args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" />  
+  args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" /> 
 
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/rtabmap.rviz" output="screen"/>  
+  <!-- rviz -->
+  <group if="$(arg open_rviz)">
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find myagv_navigation)/rviz/rtabmap_navigation.rviz"/>
+  </group>
 
 </launch>
-
 

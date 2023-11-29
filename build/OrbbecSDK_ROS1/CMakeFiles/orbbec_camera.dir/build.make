@@ -148,18 +148,18 @@ OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/ros_setup.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/orbbec_camera.dir/src/ros_setup.cpp.s"
 	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/ros_setup.cpp -o CMakeFiles/orbbec_camera.dir/src/ros_setup.cpp.s
 
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/flags.make
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o"
-	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o -c /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/flags.make
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o"
+	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o -c /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp
 
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.i"
-	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp > CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.i
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.i"
+	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp > CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.i
 
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.s"
-	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp -o CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.s
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.s"
+	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp -o CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.s
 
 # Object files for target orbbec_camera
 orbbec_camera_OBJECTS = \
@@ -170,7 +170,7 @@ orbbec_camera_OBJECTS = \
 "CMakeFiles/orbbec_camera.dir/src/ros_service.cpp.o" \
 "CMakeFiles/orbbec_camera.dir/src/utils.cpp.o" \
 "CMakeFiles/orbbec_camera.dir/src/ros_setup.cpp.o" \
-"CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o"
+"CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o"
 
 # External object files for target orbbec_camera
 orbbec_camera_EXTERNAL_OBJECTS =
@@ -182,7 +182,7 @@ orbbec_camera_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/ros_service.cpp.o
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/utils.cpp.o
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/ros_setup.cpp.o
-/home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o
+/home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/build.make
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: /opt/ros/noetic/lib/libcamera_info_manager.so
 /home/er/myagv_ros/devel/lib/liborbbec_camera.so: /opt/ros/noetic/lib/libcamera_calibration_parsers.so

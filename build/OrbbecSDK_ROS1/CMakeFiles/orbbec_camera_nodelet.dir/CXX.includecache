@@ -566,10 +566,22 @@ types.h
 utils.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/utils.h
 
-/home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/gst_decoder.h
+/home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jetson_nv_decoder.h
+utils.h
+/home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/utils.h
+opencv2/opencv.hpp
+-
 jpeg_decoder.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
-gst/gst.h
+NvJpegDecoder.h
+-
+NvUtils.h
+-
+NvV4l2Element.h
+-
+NvJpegDecoder.h
+-
+NvV4l2Element.h
 -
 
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
@@ -1023,12 +1035,12 @@ mutex
 -
 semaphore.h
 -
+pthread.h
+-
 
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/rk_mpp_decoder.h
 jpeg_decoder.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
-rga/RgaApi.h
--
 rockchip/mpp_buffer.h
 -
 rockchip/mpp_err.h
@@ -1134,7 +1146,7 @@ opencv2/opencv.hpp
 orbbec_camera/d2c_viewer.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/orbbec_camera/d2c_viewer.h
 
-/home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp
+/home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp
 orbbec_camera/jpeg_decoder.h
 -
 
@@ -1143,8 +1155,8 @@ orbbec_camera/ob_camera_node.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/orbbec_camera/ob_camera_node.h
 orbbec_camera/rk_mpp_decoder.h
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/orbbec_camera/rk_mpp_decoder.h
-orbbec_camera/gst_decoder.h
-/home/er/myagv_ros/src/OrbbecSDK_ROS1/src/orbbec_camera/gst_decoder.h
+orbbec_camera/jetson_nv_decoder.h
+/home/er/myagv_ros/src/OrbbecSDK_ROS1/src/orbbec_camera/jetson_nv_decoder.h
 
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/ob_camera_node_driver.cpp
 orbbec_camera/ob_camera_node_driver.h
@@ -1160,6 +1172,8 @@ sys/shm.h
 ros/package.h
 -
 regex
+-
+sys/mman.h
 -
 
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/ros_nodelet.cpp

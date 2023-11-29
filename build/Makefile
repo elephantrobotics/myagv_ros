@@ -1572,6 +1572,19 @@ _rtabmap_msgs_generate_messages_check_deps_ListLabels/fast:
 .PHONY : _rtabmap_msgs_generate_messages_check_deps_ListLabels/fast
 
 #=============================================================================
+# Target rules for targets named orbbec_camera_node
+
+# Build rule for target.
+orbbec_camera_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_node
+.PHONY : orbbec_camera_node
+
+# fast build rule for target.
+orbbec_camera_node/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_node.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_node.dir/build
+.PHONY : orbbec_camera_node/fast
+
+#=============================================================================
 # Target rules for targets named list_depth_work_mode_node
 
 # Build rule for target.
@@ -1581,21 +1594,8 @@ list_depth_work_mode_node: cmake_check_build_system
 
 # fast build rule for target.
 list_depth_work_mode_node/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/list_depth_work_mode_node.dir/build.make orbbec-ros-sdk/CMakeFiles/list_depth_work_mode_node.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/list_depth_work_mode_node.dir/build.make OrbbecSDK_ROS1/CMakeFiles/list_depth_work_mode_node.dir/build
 .PHONY : list_depth_work_mode_node/fast
-
-#=============================================================================
-# Target rules for targets named ob_cleanup_shm_node
-
-# Build rule for target.
-ob_cleanup_shm_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ob_cleanup_shm_node
-.PHONY : ob_cleanup_shm_node
-
-# fast build rule for target.
-ob_cleanup_shm_node/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/ob_cleanup_shm_node.dir/build.make orbbec-ros-sdk/CMakeFiles/ob_cleanup_shm_node.dir/build
-.PHONY : ob_cleanup_shm_node/fast
 
 #=============================================================================
 # Target rules for targets named list_devices_node
@@ -1607,125 +1607,21 @@ list_devices_node: cmake_check_build_system
 
 # fast build rule for target.
 list_devices_node/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/list_devices_node.dir/build.make orbbec-ros-sdk/CMakeFiles/list_devices_node.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/list_devices_node.dir/build.make OrbbecSDK_ROS1/CMakeFiles/list_devices_node.dir/build
 .PHONY : list_devices_node/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_node
+# Target rules for targets named orbbec_camera_nodelet
 
 # Build rule for target.
-orbbec_camera_node: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_node
-.PHONY : orbbec_camera_node
+orbbec_camera_nodelet: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_nodelet
+.PHONY : orbbec_camera_nodelet
 
 # fast build rule for target.
-orbbec_camera_node/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_node.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_node.dir/build
-.PHONY : orbbec_camera_node/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetCameraParams
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetCameraParams: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetCameraParams
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraParams
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetCameraParams/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraParams.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraParams.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraParams/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetCameraInfo
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetCameraInfo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetCameraInfo
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraInfo
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetCameraInfo/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraInfo.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraInfo.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraInfo/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_Extrinsics
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_Extrinsics: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_Extrinsics
-.PHONY : _orbbec_camera_generate_messages_check_deps_Extrinsics
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_Extrinsics/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Extrinsics.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Extrinsics.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_Extrinsics/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_SetBool
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_SetBool: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_SetBool
-.PHONY : _orbbec_camera_generate_messages_check_deps_SetBool
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_SetBool/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetBool.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetBool.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_SetBool/fast
-
-#=============================================================================
-# Target rules for targets named orbbec_camera_generate_messages_lisp
-
-# Build rule for target.
-orbbec_camera_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_lisp
-.PHONY : orbbec_camera_generate_messages_lisp
-
-# fast build rule for target.
-orbbec_camera_generate_messages_lisp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_lisp.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_lisp.dir/build
-.PHONY : orbbec_camera_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named orbbec_camera_generate_messages
-
-# Build rule for target.
-orbbec_camera_generate_messages: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages
-.PHONY : orbbec_camera_generate_messages
-
-# fast build rule for target.
-orbbec_camera_generate_messages/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages.dir/build
-.PHONY : orbbec_camera_generate_messages/fast
-
-#=============================================================================
-# Target rules for targets named dynamic_reconfigure_generate_messages_nodejs
-
-# Build rule for target.
-dynamic_reconfigure_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_nodejs
-.PHONY : dynamic_reconfigure_generate_messages_nodejs
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_nodejs/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetDeviceInfo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetDeviceInfo/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetDeviceInfo/fast
+orbbec_camera_nodelet/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/build
+.PHONY : orbbec_camera_nodelet/fast
 
 #=============================================================================
 # Target rules for targets named orbbec_camera_genpy
@@ -1737,47 +1633,190 @@ orbbec_camera_genpy: cmake_check_build_system
 
 # fast build rule for target.
 orbbec_camera_genpy/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_genpy.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_genpy.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_genpy.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_genpy.dir/build
 .PHONY : orbbec_camera_genpy/fast
 
 #=============================================================================
-# Target rules for targets named dynamic_reconfigure_generate_messages_py
+# Target rules for targets named orbbec_camera_gennodejs
 
 # Build rule for target.
-dynamic_reconfigure_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_py
-.PHONY : dynamic_reconfigure_generate_messages_py
+orbbec_camera_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_gennodejs
+.PHONY : orbbec_camera_gennodejs
 
 # fast build rule for target.
-dynamic_reconfigure_generate_messages_py/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_py/fast
+orbbec_camera_gennodejs/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_gennodejs.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_gennodejs.dir/build
+.PHONY : orbbec_camera_gennodejs/fast
 
 #=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_Metadata
+# Target rules for targets named orbbec_camera_generate_messages_lisp
 
 # Build rule for target.
-_orbbec_camera_generate_messages_check_deps_Metadata: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_Metadata
-.PHONY : _orbbec_camera_generate_messages_check_deps_Metadata
+orbbec_camera_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_lisp
+.PHONY : orbbec_camera_generate_messages_lisp
 
 # fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_Metadata/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Metadata.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Metadata.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_Metadata/fast
+orbbec_camera_generate_messages_lisp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_lisp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_lisp.dir/build
+.PHONY : orbbec_camera_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetBool
+# Target rules for targets named orbbec_camera_geneus
 
 # Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetBool: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetBool
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetBool
+orbbec_camera_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_geneus
+.PHONY : orbbec_camera_geneus
 
 # fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetBool/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetBool.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetBool.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetBool/fast
+orbbec_camera_geneus/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_geneus.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_geneus.dir/build
+.PHONY : orbbec_camera_geneus/fast
+
+#=============================================================================
+# Target rules for targets named orbbec_camera_gencpp
+
+# Build rule for target.
+orbbec_camera_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_gencpp
+.PHONY : orbbec_camera_gencpp
+
+# fast build rule for target.
+orbbec_camera_gencpp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_gencpp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_gencpp.dir/build
+.PHONY : orbbec_camera_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_lisp
+
+# Build rule for target.
+nodelet_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_lisp
+.PHONY : nodelet_generate_messages_lisp
+
+# fast build rule for target.
+nodelet_generate_messages_lisp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_lisp.dir/build
+.PHONY : nodelet_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named orbbec_camera_generate_messages
+
+# Build rule for target.
+orbbec_camera_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages
+.PHONY : orbbec_camera_generate_messages
+
+# fast build rule for target.
+orbbec_camera_generate_messages/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages.dir/build
+.PHONY : orbbec_camera_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named bond_generate_messages_eus
+
+# Build rule for target.
+bond_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_eus
+.PHONY : bond_generate_messages_eus
+
+# fast build rule for target.
+bond_generate_messages_eus/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_eus.dir/build.make OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_eus.dir/build
+.PHONY : bond_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named bond_generate_messages_cpp
+
+# Build rule for target.
+bond_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_cpp
+.PHONY : bond_generate_messages_cpp
+
+# fast build rule for target.
+bond_generate_messages_cpp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_cpp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_cpp.dir/build
+.PHONY : bond_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named orbbec_camera_genlisp
+
+# Build rule for target.
+orbbec_camera_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_genlisp
+.PHONY : orbbec_camera_genlisp
+
+# fast build rule for target.
+orbbec_camera_genlisp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_genlisp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_genlisp.dir/build
+.PHONY : orbbec_camera_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_py
+
+# Build rule for target.
+nodelet_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_py
+.PHONY : nodelet_generate_messages_py
+
+# fast build rule for target.
+nodelet_generate_messages_py/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_py.dir/build.make OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_py.dir/build
+.PHONY : nodelet_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named orbbec_camera_generate_messages_nodejs
+
+# Build rule for target.
+orbbec_camera_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_nodejs
+.PHONY : orbbec_camera_generate_messages_nodejs
+
+# fast build rule for target.
+orbbec_camera_generate_messages_nodejs/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_nodejs.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_nodejs.dir/build
+.PHONY : orbbec_camera_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named orbbec_camera_generate_messages_cpp
+
+# Build rule for target.
+orbbec_camera_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_cpp
+.PHONY : orbbec_camera_generate_messages_cpp
+
+# fast build rule for target.
+orbbec_camera_generate_messages_cpp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_cpp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_cpp.dir/build
+.PHONY : orbbec_camera_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named bond_generate_messages_lisp
+
+# Build rule for target.
+bond_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_lisp
+.PHONY : bond_generate_messages_lisp
+
+# fast build rule for target.
+bond_generate_messages_lisp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_lisp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_lisp.dir/build
+.PHONY : bond_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_eus
+
+# Build rule for target.
+nodelet_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_eus
+.PHONY : nodelet_generate_messages_eus
+
+# fast build rule for target.
+nodelet_generate_messages_eus/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_eus.dir/build.make OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_eus.dir/build
+.PHONY : nodelet_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named dynamic_reconfigure_generate_messages_cpp
@@ -1789,8 +1828,21 @@ dynamic_reconfigure_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 dynamic_reconfigure_generate_messages_cpp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named list_camera_profile_mode_node
+
+# Build rule for target.
+list_camera_profile_mode_node: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 list_camera_profile_mode_node
+.PHONY : list_camera_profile_mode_node
+
+# fast build rule for target.
+list_camera_profile_mode_node/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/list_camera_profile_mode_node.dir/build.make OrbbecSDK_ROS1/CMakeFiles/list_camera_profile_mode_node.dir/build
+.PHONY : list_camera_profile_mode_node/fast
 
 #=============================================================================
 # Target rules for targets named orbbec_camera
@@ -1802,7 +1854,7 @@ orbbec_camera: cmake_check_build_system
 
 # fast build rule for target.
 orbbec_camera/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera.dir/build
 .PHONY : orbbec_camera/fast
 
 #=============================================================================
@@ -1815,21 +1867,21 @@ _orbbec_camera_generate_messages_check_deps_SetString: cmake_check_build_system
 
 # fast build rule for target.
 _orbbec_camera_generate_messages_check_deps_SetString/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetString.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetString.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetString.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetString.dir/build
 .PHONY : _orbbec_camera_generate_messages_check_deps_SetString/fast
 
 #=============================================================================
-# Target rules for targets named dynamic_reconfigure_generate_messages_lisp
+# Target rules for targets named dynamic_reconfigure_generate_messages_nodejs
 
 # Build rule for target.
-dynamic_reconfigure_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_lisp
-.PHONY : dynamic_reconfigure_generate_messages_lisp
+dynamic_reconfigure_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_nodejs
+.PHONY : dynamic_reconfigure_generate_messages_nodejs
 
 # fast build rule for target.
-dynamic_reconfigure_generate_messages_lisp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
+dynamic_reconfigure_generate_messages_nodejs/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_nodejs.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_nodejs/fast
 
 #=============================================================================
 # Target rules for targets named orbbec_camera_generate_messages_py
@@ -1841,125 +1893,47 @@ orbbec_camera_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 orbbec_camera_generate_messages_py/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_py.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_py.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_py.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_py.dir/build
 .PHONY : orbbec_camera_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_geneus
+# Target rules for targets named dynamic_reconfigure_generate_messages_lisp
 
 # Build rule for target.
-orbbec_camera_geneus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_geneus
-.PHONY : orbbec_camera_geneus
+dynamic_reconfigure_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_lisp
+.PHONY : dynamic_reconfigure_generate_messages_lisp
 
 # fast build rule for target.
-orbbec_camera_geneus/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_geneus.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_geneus.dir/build
-.PHONY : orbbec_camera_geneus/fast
+dynamic_reconfigure_generate_messages_lisp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_lisp/fast
 
 #=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetString
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
 
 # Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetString: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetString
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetString
+_orbbec_camera_generate_messages_check_deps_GetDeviceInfo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetDeviceInfo
 
 # fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetString/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetString/fast
+_orbbec_camera_generate_messages_check_deps_GetDeviceInfo/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetDeviceInfo.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetDeviceInfo/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_gennodejs
+# Target rules for targets named dynamic_reconfigure_generate_messages_py
 
 # Build rule for target.
-orbbec_camera_gennodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_gennodejs
-.PHONY : orbbec_camera_gennodejs
+dynamic_reconfigure_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_py
+.PHONY : dynamic_reconfigure_generate_messages_py
 
 # fast build rule for target.
-orbbec_camera_gennodejs/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_gennodejs.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_gennodejs.dir/build
-.PHONY : orbbec_camera_gennodejs/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_DeviceInfo
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_DeviceInfo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_DeviceInfo
-.PHONY : _orbbec_camera_generate_messages_check_deps_DeviceInfo
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_DeviceInfo/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_DeviceInfo.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_DeviceInfo.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_DeviceInfo/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetInt32
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetInt32: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetInt32
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetInt32
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_GetInt32/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetInt32.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetInt32.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_GetInt32/fast
-
-#=============================================================================
-# Target rules for targets named _orbbec_camera_generate_messages_check_deps_SetInt32
-
-# Build rule for target.
-_orbbec_camera_generate_messages_check_deps_SetInt32: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_SetInt32
-.PHONY : _orbbec_camera_generate_messages_check_deps_SetInt32
-
-# fast build rule for target.
-_orbbec_camera_generate_messages_check_deps_SetInt32/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetInt32.dir/build.make orbbec-ros-sdk/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetInt32.dir/build
-.PHONY : _orbbec_camera_generate_messages_check_deps_SetInt32/fast
-
-#=============================================================================
-# Target rules for targets named orbbec_camera_gencpp
-
-# Build rule for target.
-orbbec_camera_gencpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_gencpp
-.PHONY : orbbec_camera_gencpp
-
-# fast build rule for target.
-orbbec_camera_gencpp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_gencpp.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_gencpp.dir/build
-.PHONY : orbbec_camera_gencpp/fast
-
-#=============================================================================
-# Target rules for targets named dynamic_reconfigure_generate_messages_eus
-
-# Build rule for target.
-dynamic_reconfigure_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_eus
-.PHONY : dynamic_reconfigure_generate_messages_eus
-
-# fast build rule for target.
-dynamic_reconfigure_generate_messages_eus/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build
-.PHONY : dynamic_reconfigure_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named dynamic_reconfigure_gencfg
-
-# Build rule for target.
-dynamic_reconfigure_gencfg: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_gencfg
-.PHONY : dynamic_reconfigure_gencfg
-
-# fast build rule for target.
-dynamic_reconfigure_gencfg/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make orbbec-ros-sdk/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
-.PHONY : dynamic_reconfigure_gencfg/fast
+dynamic_reconfigure_generate_messages_py/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_py.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_py/fast
 
 #=============================================================================
 # Target rules for targets named orbbec_camera_generate_messages_eus
@@ -1971,47 +1945,216 @@ orbbec_camera_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 orbbec_camera_generate_messages_eus/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_eus.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_eus.dir/build
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_eus.dir/build.make OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_eus.dir/build
 .PHONY : orbbec_camera_generate_messages_eus/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_genlisp
+# Target rules for targets named dynamic_reconfigure_gencfg
 
 # Build rule for target.
-orbbec_camera_genlisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_genlisp
-.PHONY : orbbec_camera_genlisp
+dynamic_reconfigure_gencfg: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_gencfg
+.PHONY : dynamic_reconfigure_gencfg
 
 # fast build rule for target.
-orbbec_camera_genlisp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_genlisp.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_genlisp.dir/build
-.PHONY : orbbec_camera_genlisp/fast
+dynamic_reconfigure_gencfg/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_gencfg.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_gencfg.dir/build
+.PHONY : dynamic_reconfigure_gencfg/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_generate_messages_cpp
+# Target rules for targets named nodelet_generate_messages_cpp
 
 # Build rule for target.
-orbbec_camera_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_cpp
-.PHONY : orbbec_camera_generate_messages_cpp
+nodelet_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_cpp
+.PHONY : nodelet_generate_messages_cpp
 
 # fast build rule for target.
-orbbec_camera_generate_messages_cpp/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_cpp.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_cpp.dir/build
-.PHONY : orbbec_camera_generate_messages_cpp/fast
+nodelet_generate_messages_cpp/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_cpp.dir/build
+.PHONY : nodelet_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named orbbec_camera_generate_messages_nodejs
+# Target rules for targets named dynamic_reconfigure_generate_messages_eus
 
 # Build rule for target.
-orbbec_camera_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 orbbec_camera_generate_messages_nodejs
-.PHONY : orbbec_camera_generate_messages_nodejs
+dynamic_reconfigure_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 dynamic_reconfigure_generate_messages_eus
+.PHONY : dynamic_reconfigure_generate_messages_eus
 
 # fast build rule for target.
-orbbec_camera_generate_messages_nodejs/fast:
-	$(MAKE) -f orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_nodejs.dir/build.make orbbec-ros-sdk/CMakeFiles/orbbec_camera_generate_messages_nodejs.dir/build
-.PHONY : orbbec_camera_generate_messages_nodejs/fast
+dynamic_reconfigure_generate_messages_eus/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build.make OrbbecSDK_ROS1/CMakeFiles/dynamic_reconfigure_generate_messages_eus.dir/build
+.PHONY : dynamic_reconfigure_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetCameraParams
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetCameraParams: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetCameraParams
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraParams
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetCameraParams/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraParams.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraParams.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraParams/fast
+
+#=============================================================================
+# Target rules for targets named nodelet_generate_messages_nodejs
+
+# Build rule for target.
+nodelet_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_nodejs
+.PHONY : nodelet_generate_messages_nodejs
+
+# fast build rule for target.
+nodelet_generate_messages_nodejs/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make OrbbecSDK_ROS1/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
+.PHONY : nodelet_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named bond_generate_messages_nodejs
+
+# Build rule for target.
+bond_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_nodejs
+.PHONY : bond_generate_messages_nodejs
+
+# fast build rule for target.
+bond_generate_messages_nodejs/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_nodejs.dir/build.make OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_nodejs.dir/build
+.PHONY : bond_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named bond_generate_messages_py
+
+# Build rule for target.
+bond_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_py
+.PHONY : bond_generate_messages_py
+
+# fast build rule for target.
+bond_generate_messages_py/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_py.dir/build.make OrbbecSDK_ROS1/CMakeFiles/bond_generate_messages_py.dir/build
+.PHONY : bond_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetCameraInfo
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetCameraInfo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetCameraInfo
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraInfo
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetCameraInfo/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraInfo.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetCameraInfo.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetCameraInfo/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_Extrinsics
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_Extrinsics: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_Extrinsics
+.PHONY : _orbbec_camera_generate_messages_check_deps_Extrinsics
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_Extrinsics/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Extrinsics.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Extrinsics.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_Extrinsics/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_SetBool
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_SetBool: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_SetBool
+.PHONY : _orbbec_camera_generate_messages_check_deps_SetBool
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_SetBool/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetBool.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetBool.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_SetBool/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_Metadata
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_Metadata: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_Metadata
+.PHONY : _orbbec_camera_generate_messages_check_deps_Metadata
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_Metadata/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Metadata.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_Metadata.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_Metadata/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetBool
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetBool: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetBool
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetBool
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetBool/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetBool.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetBool.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetBool/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetString
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetString: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetString
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetString
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetString/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetString/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_GetInt32
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetInt32: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_GetInt32
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetInt32
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_GetInt32/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetInt32.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetInt32.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_GetInt32/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_DeviceInfo
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_DeviceInfo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_DeviceInfo
+.PHONY : _orbbec_camera_generate_messages_check_deps_DeviceInfo
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_DeviceInfo/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_DeviceInfo.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_DeviceInfo.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_DeviceInfo/fast
+
+#=============================================================================
+# Target rules for targets named _orbbec_camera_generate_messages_check_deps_SetInt32
+
+# Build rule for target.
+_orbbec_camera_generate_messages_check_deps_SetInt32: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _orbbec_camera_generate_messages_check_deps_SetInt32
+.PHONY : _orbbec_camera_generate_messages_check_deps_SetInt32
+
+# fast build rule for target.
+_orbbec_camera_generate_messages_check_deps_SetInt32/fast:
+	$(MAKE) -f OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetInt32.dir/build.make OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_SetInt32.dir/build
+.PHONY : _orbbec_camera_generate_messages_check_deps_SetInt32/fast
 
 #=============================================================================
 # Target rules for targets named move_base_msgs_generate_messages_cpp
@@ -2846,43 +2989,17 @@ rtabmap_rgbdx_sync/fast:
 .PHONY : rtabmap_rgbdx_sync/fast
 
 #=============================================================================
-# Target rules for targets named rtabmap_rgbd_sync
+# Target rules for targets named diagnostic_msgs_generate_messages_eus
 
 # Build rule for target.
-rtabmap_rgbd_sync: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_rgbd_sync
-.PHONY : rtabmap_rgbd_sync
+diagnostic_msgs_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_eus
+.PHONY : diagnostic_msgs_generate_messages_eus
 
 # fast build rule for target.
-rtabmap_rgbd_sync/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build
-.PHONY : rtabmap_rgbd_sync/fast
-
-#=============================================================================
-# Target rules for targets named rtabmap_sync_plugins
-
-# Build rule for target.
-rtabmap_sync_plugins: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_sync_plugins
-.PHONY : rtabmap_sync_plugins
-
-# fast build rule for target.
-rtabmap_sync_plugins/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build
-.PHONY : rtabmap_sync_plugins/fast
-
-#=============================================================================
-# Target rules for targets named rtabmap_sync
-
-# Build rule for target.
-rtabmap_sync: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_sync
-.PHONY : rtabmap_sync
-
-# fast build rule for target.
-rtabmap_sync/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build
-.PHONY : rtabmap_sync/fast
+diagnostic_msgs_generate_messages_eus/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
+.PHONY : diagnostic_msgs_generate_messages_eus/fast
 
 #=============================================================================
 # Target rules for targets named rtabmap_stereo_sync
@@ -2911,43 +3028,17 @@ diagnostic_msgs_generate_messages_nodejs/fast:
 .PHONY : diagnostic_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
-# Target rules for targets named nodelet_generate_messages_cpp
+# Target rules for targets named diagnostic_msgs_generate_messages_cpp
 
 # Build rule for target.
-nodelet_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_cpp
-.PHONY : nodelet_generate_messages_cpp
+diagnostic_msgs_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_cpp
+.PHONY : diagnostic_msgs_generate_messages_cpp
 
 # fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_nodejs
-
-# Build rule for target.
-nodelet_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_nodejs
-.PHONY : nodelet_generate_messages_nodejs
-
-# fast build rule for target.
-nodelet_generate_messages_nodejs/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_nodejs.dir/build
-.PHONY : nodelet_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named bond_generate_messages_py
-
-# Build rule for target.
-bond_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_py
-.PHONY : bond_generate_messages_py
-
-# fast build rule for target.
-bond_generate_messages_py/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_py.dir/build
-.PHONY : bond_generate_messages_py/fast
+diagnostic_msgs_generate_messages_cpp/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
+.PHONY : diagnostic_msgs_generate_messages_cpp/fast
 
 #=============================================================================
 # Target rules for targets named rtabmap_rgb_sync
@@ -2963,121 +3054,17 @@ rtabmap_rgb_sync/fast:
 .PHONY : rtabmap_rgb_sync/fast
 
 #=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_cpp
+# Target rules for targets named diagnostic_msgs_generate_messages_lisp
 
 # Build rule for target.
-diagnostic_msgs_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_cpp
-.PHONY : diagnostic_msgs_generate_messages_cpp
+diagnostic_msgs_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_lisp
+.PHONY : diagnostic_msgs_generate_messages_lisp
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_cpp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_eus
-
-# Build rule for target.
-nodelet_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_eus
-.PHONY : nodelet_generate_messages_eus
-
-# fast build rule for target.
-nodelet_generate_messages_eus/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_eus.dir/build
-.PHONY : nodelet_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named bond_generate_messages_nodejs
-
-# Build rule for target.
-bond_generate_messages_nodejs: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_nodejs
-.PHONY : bond_generate_messages_nodejs
-
-# fast build rule for target.
-bond_generate_messages_nodejs/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_nodejs.dir/build
-.PHONY : bond_generate_messages_nodejs/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_lisp
-
-# Build rule for target.
-nodelet_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_lisp
-.PHONY : nodelet_generate_messages_lisp
-
-# fast build rule for target.
-nodelet_generate_messages_lisp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_lisp.dir/build
-.PHONY : nodelet_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named bond_generate_messages_eus
-
-# Build rule for target.
-bond_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_eus
-.PHONY : bond_generate_messages_eus
-
-# fast build rule for target.
-bond_generate_messages_eus/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_eus.dir/build
-.PHONY : bond_generate_messages_eus/fast
-
-#=============================================================================
-# Target rules for targets named bond_generate_messages_cpp
-
-# Build rule for target.
-bond_generate_messages_cpp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_cpp
-.PHONY : bond_generate_messages_cpp
-
-# fast build rule for target.
-bond_generate_messages_cpp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_cpp.dir/build
-.PHONY : bond_generate_messages_cpp/fast
-
-#=============================================================================
-# Target rules for targets named nodelet_generate_messages_py
-
-# Build rule for target.
-nodelet_generate_messages_py: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 nodelet_generate_messages_py
-.PHONY : nodelet_generate_messages_py
-
-# fast build rule for target.
-nodelet_generate_messages_py/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/nodelet_generate_messages_py.dir/build
-.PHONY : nodelet_generate_messages_py/fast
-
-#=============================================================================
-# Target rules for targets named bond_generate_messages_lisp
-
-# Build rule for target.
-bond_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 bond_generate_messages_lisp
-.PHONY : bond_generate_messages_lisp
-
-# fast build rule for target.
-bond_generate_messages_lisp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/bond_generate_messages_lisp.dir/build
-.PHONY : bond_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_eus
-
-# Build rule for target.
-diagnostic_msgs_generate_messages_eus: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_eus
-.PHONY : diagnostic_msgs_generate_messages_eus
-
-# fast build rule for target.
-diagnostic_msgs_generate_messages_eus/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_eus.dir/build
-.PHONY : diagnostic_msgs_generate_messages_eus/fast
+diagnostic_msgs_generate_messages_lisp/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
+.PHONY : diagnostic_msgs_generate_messages_lisp/fast
 
 #=============================================================================
 # Target rules for targets named diagnostic_msgs_generate_messages_py
@@ -3093,17 +3080,43 @@ diagnostic_msgs_generate_messages_py/fast:
 .PHONY : diagnostic_msgs_generate_messages_py/fast
 
 #=============================================================================
-# Target rules for targets named diagnostic_msgs_generate_messages_lisp
+# Target rules for targets named rtabmap_sync
 
 # Build rule for target.
-diagnostic_msgs_generate_messages_lisp: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 diagnostic_msgs_generate_messages_lisp
-.PHONY : diagnostic_msgs_generate_messages_lisp
+rtabmap_sync: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_sync
+.PHONY : rtabmap_sync
 
 # fast build rule for target.
-diagnostic_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/diagnostic_msgs_generate_messages_lisp.dir/build
-.PHONY : diagnostic_msgs_generate_messages_lisp/fast
+rtabmap_sync/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build
+.PHONY : rtabmap_sync/fast
+
+#=============================================================================
+# Target rules for targets named rtabmap_sync_plugins
+
+# Build rule for target.
+rtabmap_sync_plugins: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_sync_plugins
+.PHONY : rtabmap_sync_plugins
+
+# fast build rule for target.
+rtabmap_sync_plugins/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync_plugins.dir/build
+.PHONY : rtabmap_sync_plugins/fast
+
+#=============================================================================
+# Target rules for targets named rtabmap_rgbd_sync
+
+# Build rule for target.
+rtabmap_rgbd_sync: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rtabmap_rgbd_sync
+.PHONY : rtabmap_rgbd_sync
+
+# fast build rule for target.
+rtabmap_rgbd_sync/fast:
+	$(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_rgbd_sync.dir/build
+.PHONY : rtabmap_rgbd_sync/fast
 
 #=============================================================================
 # Target rules for targets named octomap_msgs_generate_messages_cpp
@@ -4136,40 +4149,51 @@ help:
 	@echo "... _rtabmap_msgs_generate_messages_check_deps_SetGoal"
 	@echo "... _rtabmap_msgs_generate_messages_check_deps_Link"
 	@echo "... _rtabmap_msgs_generate_messages_check_deps_ListLabels"
-	@echo "... list_depth_work_mode_node"
-	@echo "... ob_cleanup_shm_node"
-	@echo "... list_devices_node"
 	@echo "... orbbec_camera_node"
+	@echo "... list_depth_work_mode_node"
+	@echo "... list_devices_node"
+	@echo "... orbbec_camera_nodelet"
+	@echo "... orbbec_camera_genpy"
+	@echo "... orbbec_camera_gennodejs"
+	@echo "... orbbec_camera_generate_messages_lisp"
+	@echo "... orbbec_camera_geneus"
+	@echo "... orbbec_camera_gencpp"
+	@echo "... nodelet_generate_messages_lisp"
+	@echo "... orbbec_camera_generate_messages"
+	@echo "... bond_generate_messages_eus"
+	@echo "... bond_generate_messages_cpp"
+	@echo "... orbbec_camera_genlisp"
+	@echo "... nodelet_generate_messages_py"
+	@echo "... orbbec_camera_generate_messages_nodejs"
+	@echo "... orbbec_camera_generate_messages_cpp"
+	@echo "... bond_generate_messages_lisp"
+	@echo "... nodelet_generate_messages_eus"
+	@echo "... dynamic_reconfigure_generate_messages_cpp"
+	@echo "... list_camera_profile_mode_node"
+	@echo "... orbbec_camera"
+	@echo "... _orbbec_camera_generate_messages_check_deps_SetString"
+	@echo "... dynamic_reconfigure_generate_messages_nodejs"
+	@echo "... orbbec_camera_generate_messages_py"
+	@echo "... dynamic_reconfigure_generate_messages_lisp"
+	@echo "... _orbbec_camera_generate_messages_check_deps_GetDeviceInfo"
+	@echo "... dynamic_reconfigure_generate_messages_py"
+	@echo "... orbbec_camera_generate_messages_eus"
+	@echo "... dynamic_reconfigure_gencfg"
+	@echo "... nodelet_generate_messages_cpp"
+	@echo "... dynamic_reconfigure_generate_messages_eus"
 	@echo "... _orbbec_camera_generate_messages_check_deps_GetCameraParams"
+	@echo "... nodelet_generate_messages_nodejs"
+	@echo "... bond_generate_messages_nodejs"
+	@echo "... bond_generate_messages_py"
 	@echo "... _orbbec_camera_generate_messages_check_deps_GetCameraInfo"
 	@echo "... _orbbec_camera_generate_messages_check_deps_Extrinsics"
 	@echo "... _orbbec_camera_generate_messages_check_deps_SetBool"
-	@echo "... orbbec_camera_generate_messages_lisp"
-	@echo "... orbbec_camera_generate_messages"
-	@echo "... dynamic_reconfigure_generate_messages_nodejs"
-	@echo "... _orbbec_camera_generate_messages_check_deps_GetDeviceInfo"
-	@echo "... orbbec_camera_genpy"
-	@echo "... dynamic_reconfigure_generate_messages_py"
 	@echo "... _orbbec_camera_generate_messages_check_deps_Metadata"
 	@echo "... _orbbec_camera_generate_messages_check_deps_GetBool"
-	@echo "... dynamic_reconfigure_generate_messages_cpp"
-	@echo "... orbbec_camera"
-	@echo "... _orbbec_camera_generate_messages_check_deps_SetString"
-	@echo "... dynamic_reconfigure_generate_messages_lisp"
-	@echo "... orbbec_camera_generate_messages_py"
-	@echo "... orbbec_camera_geneus"
 	@echo "... _orbbec_camera_generate_messages_check_deps_GetString"
-	@echo "... orbbec_camera_gennodejs"
-	@echo "... _orbbec_camera_generate_messages_check_deps_DeviceInfo"
 	@echo "... _orbbec_camera_generate_messages_check_deps_GetInt32"
+	@echo "... _orbbec_camera_generate_messages_check_deps_DeviceInfo"
 	@echo "... _orbbec_camera_generate_messages_check_deps_SetInt32"
-	@echo "... orbbec_camera_gencpp"
-	@echo "... dynamic_reconfigure_generate_messages_eus"
-	@echo "... dynamic_reconfigure_gencfg"
-	@echo "... orbbec_camera_generate_messages_eus"
-	@echo "... orbbec_camera_genlisp"
-	@echo "... orbbec_camera_generate_messages_cpp"
-	@echo "... orbbec_camera_generate_messages_nodejs"
 	@echo "... move_base_msgs_generate_messages_cpp"
 	@echo "... goal_sending_0"
 	@echo "... move_base_msgs_generate_messages_eus"
@@ -4234,26 +4258,16 @@ help:
 	@echo "... rtabmap_save_objects_example"
 	@echo "... rtabmap_external_loop_detection_example"
 	@echo "... rtabmap_rgbdx_sync"
-	@echo "... rtabmap_rgbd_sync"
-	@echo "... rtabmap_sync_plugins"
-	@echo "... rtabmap_sync"
+	@echo "... diagnostic_msgs_generate_messages_eus"
 	@echo "... rtabmap_stereo_sync"
 	@echo "... diagnostic_msgs_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_cpp"
-	@echo "... nodelet_generate_messages_nodejs"
-	@echo "... bond_generate_messages_py"
-	@echo "... rtabmap_rgb_sync"
 	@echo "... diagnostic_msgs_generate_messages_cpp"
-	@echo "... nodelet_generate_messages_eus"
-	@echo "... bond_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_lisp"
-	@echo "... bond_generate_messages_eus"
-	@echo "... bond_generate_messages_cpp"
-	@echo "... nodelet_generate_messages_py"
-	@echo "... bond_generate_messages_lisp"
-	@echo "... diagnostic_msgs_generate_messages_eus"
-	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... rtabmap_rgb_sync"
 	@echo "... diagnostic_msgs_generate_messages_lisp"
+	@echo "... diagnostic_msgs_generate_messages_py"
+	@echo "... rtabmap_sync"
+	@echo "... rtabmap_sync_plugins"
+	@echo "... rtabmap_rgbd_sync"
 	@echo "... octomap_msgs_generate_messages_cpp"
 	@echo "... topic_tools_generate_messages_py"
 	@echo "... topic_tools_generate_messages_eus"

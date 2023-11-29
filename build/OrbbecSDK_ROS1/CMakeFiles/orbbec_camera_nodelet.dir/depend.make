@@ -275,22 +275,22 @@ OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/d2c_viewer.cpp.o: /usr/i
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/d2c_viewer.cpp.o: /usr/include/opencv4/opencv2/viz/vizcore.hpp
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/d2c_viewer.cpp.o: /usr/include/opencv4/opencv2/viz/widgets.hpp
 
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/ObSensor.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/h/ObTypes.h
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/h/Property.h
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Context.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Device.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Error.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Filter.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Frame.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Pipeline.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/RecordPlayback.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Sensor.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/StreamProfile.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Types.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Version.hpp
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/mjpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/mjpeg_decoder.cpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/ObSensor.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/h/ObTypes.h
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/h/Property.h
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Context.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Device.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Error.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Filter.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Frame.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Pipeline.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/RecordPlayback.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Sensor.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/StreamProfile.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Types.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Version.hpp
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/jpeg_decoder.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/src/jpeg_decoder.cpp
 
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/devel/include/orbbec_camera/DeviceInfo.h
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/devel/include/orbbec_camera/Extrinsics.h
@@ -338,7 +338,7 @@ OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /h
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/SDK/include/libobsensor/hpp/Version.hpp
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/constants.h
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/d2c_viewer.h
-OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/gst_decoder.h
+OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jetson_nv_decoder.h
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/jpeg_decoder.h
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/json.hpp
 OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_nodelet.dir/src/ob_camera_node.cpp.o: /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/ob_camera_node.h

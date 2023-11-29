@@ -1017,6 +1017,8 @@ mutex
 -
 semaphore.h
 -
+pthread.h
+-
 
 /home/er/myagv_ros/src/OrbbecSDK_ROS1/include/orbbec_camera/ros_sensor.h
 constants.h

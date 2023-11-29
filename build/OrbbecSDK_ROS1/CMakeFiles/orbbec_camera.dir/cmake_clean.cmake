@@ -2,7 +2,7 @@ file(REMOVE_RECURSE
   "/home/er/myagv_ros/devel/lib/liborbbec_camera.pdb"
   "/home/er/myagv_ros/devel/lib/liborbbec_camera.so"
   "CMakeFiles/orbbec_camera.dir/src/d2c_viewer.cpp.o"
-  "CMakeFiles/orbbec_camera.dir/src/mjpeg_decoder.cpp.o"
+  "CMakeFiles/orbbec_camera.dir/src/jpeg_decoder.cpp.o"
   "CMakeFiles/orbbec_camera.dir/src/ob_camera_node.cpp.o"
   "CMakeFiles/orbbec_camera.dir/src/ob_camera_node_driver.cpp.o"
   "CMakeFiles/orbbec_camera.dir/src/ros_sensor.cpp.o"
