@@ -1,7 +1,7 @@
 <launch>
   <!-- Arguments -->
   <arg name="open_rviz" default="true"/>
-  <arg name="rtabmap_viz" default="true"/>
+  <arg name="rtabmap_viz" default="false"/>
   <arg name="localization" default="false"/>
   <arg name="database_path" default="~/.ros/rtabmap.db"/>
   <arg     if="$(arg localization)" name="rtabmap_args" default=""/>

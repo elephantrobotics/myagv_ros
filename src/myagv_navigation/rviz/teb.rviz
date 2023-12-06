@@ -56,7 +56,7 @@ Visualization Manager:
         Z: 0
       Plane: XY
       Plane Cell Count: 80
-      Reference Frame: odom_combined
+      Reference Frame: odom
       Value: true
     - Angle Tolerance: 0.10000000149011612
       Class: rviz/Odometry
@@ -308,7 +308,7 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: -2.805006265640259
+      Angle: -3.020005941390991
       Class: rviz/TopDownOrtho
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
@@ -341,5 +341,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1432
-  X: 272
-  Y: 87
+  X: 271
+  Y: 60

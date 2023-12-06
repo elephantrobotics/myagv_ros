@@ -34,8 +34,12 @@
 
 
     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
-    <param name="planner_frequency" value="1.0"/>
-     <param name="planner_patience" value="2.0"/>
+      <param name="planner_frequency" value="1.0"/>
+      <param name="planner_patience" value="2.0"/>
+      <!--param name="lethal_cost" value="253"/>
+      <param name="neutral_cost" value="66"/>
+      <param name="cost_factor" value="0.55"/-->
+    
 
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
     <param name="controller_frequency" value="5.0"/> 

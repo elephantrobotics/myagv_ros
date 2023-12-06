@@ -57,18 +57,18 @@ include myagv_odometry/CMakeFiles/myagv_odometry_node.dir/progress.make
 # Include the compile flags for this target's objects.
 include myagv_odometry/CMakeFiles/myagv_odometry_node.dir/flags.make
 
-myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/flags.make
-myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o: /home/er/myagv_ros/src/myagv_odometry/src/myAGV_test.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o"
-	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o -c /home/er/myagv_ros/src/myagv_odometry/src/myAGV_test.cpp
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/flags.make
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o: /home/er/myagv_ros/src/myagv_odometry/src/myAGV.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o"
+	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o -c /home/er/myagv_ros/src/myagv_odometry/src/myAGV.cpp
 
-myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.i"
-	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/er/myagv_ros/src/myagv_odometry/src/myAGV_test.cpp > CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.i
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i"
+	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/er/myagv_ros/src/myagv_odometry/src/myAGV.cpp > CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.i
 
-myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.s"
-	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/myagv_odometry/src/myAGV_test.cpp -o CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.s
+myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s"
+	cd /home/er/myagv_ros/build/myagv_odometry && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/myagv_odometry/src/myAGV.cpp -o CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.s
 
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/flags.make
 myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o: /home/er/myagv_ros/src/myagv_odometry/src/myAGVSub.cpp
@@ -85,13 +85,13 @@ myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.s: cmake_forc
 
 # Object files for target myagv_odometry_node
 myagv_odometry_node_OBJECTS = \
-"CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o" \
+"CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o" \
 "CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o"
 
 # External object files for target myagv_odometry_node
 myagv_odometry_node_EXTERNAL_OBJECTS =
 
-/home/er/myagv_ros/devel/lib/myagv_odometry/myagv_odometry_node: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV_test.cpp.o
+/home/er/myagv_ros/devel/lib/myagv_odometry/myagv_odometry_node: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGV.cpp.o
 /home/er/myagv_ros/devel/lib/myagv_odometry/myagv_odometry_node: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/src/myAGVSub.cpp.o
 /home/er/myagv_ros/devel/lib/myagv_odometry/myagv_odometry_node: myagv_odometry/CMakeFiles/myagv_odometry_node.dir/build.make
 /home/er/myagv_ros/devel/lib/myagv_odometry/myagv_odometry_node: /opt/ros/noetic/lib/libtf.so

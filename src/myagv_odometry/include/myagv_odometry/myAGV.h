@@ -34,6 +34,7 @@ public:
 private:
 	bool readSpeed();
 	void writeSpeed(double movex, double movey, double rot);
+	void start();
 	void restore();
 	void restoreRun();
 

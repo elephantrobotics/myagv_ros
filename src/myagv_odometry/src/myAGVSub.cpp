@@ -22,11 +22,9 @@ int main(int argc, char* argv[])
 	if (!myAGV.init())
 		ROS_ERROR("myAGV initialized failed!");
 	ROS_INFO("myAGV initialized successful!");
-
+	
 	ros::Subscriber sub = n.subscribe("cmd_vel", 50, cmdCallback);
 	ros::Rate loop_rate(100);
-
-	//ros::Duration(1).sleep();
 	
 	while (ros::ok())
 	{

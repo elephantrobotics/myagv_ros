@@ -11,7 +11,7 @@ tf_listener = tf2_ros.TransformListener(tf_buffer)
 
 while not rospy.is_shutdown():
     try:
-        transform = tf_buffer.lookup_transform('map', 'base_up', rospy.Time(0), rospy.Duration(1.0))
+        transform = tf_buffer.lookup_transform('odom', 'base_footprint', rospy.Time(0), rospy.Duration(1.0))
         # 获取变换矩阵
         translation = transform.transform.translation
         rotation = transform.transform.rotation
