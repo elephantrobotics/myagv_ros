@@ -1,7 +1,7 @@
 # Planner selection
 base_global_planner: "global_planner/GlobalPlanner"  
 
-base_local_planner: "teb_local_planner/TebLocalPlannerROS"
+# base_local_planner: "teb_local_planner/TebLocalPlannerROS"
 
 GlobalPlanner:                                  # Also see: http://wiki.ros.org/global_planner
   old_navfn_behavior: false                     # Exactly mirror behavior of navfn, use defaults for other boolean parameters, default false

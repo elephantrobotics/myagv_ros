@@ -153,9 +153,9 @@ int main(int argc, char* argv[])
     int len, type;
     int axis_value, button_value;
     int number_of_axis, number_of_buttons ;
-    int x = 0;
-    int y = 0;
-    int theta = 0;
+    float x = 0;
+    float y = 0;
+    float theta = 0;
  
     memset(&map, 0, sizeof(ps2_map_t));
  
@@ -189,12 +189,12 @@ int main(int argc, char* argv[])
                 theta = 0;
                 }     
                 if(map.yy == -32767){
-                x = 1;
+                x = 0.5;
                 // y = 0;
                 // theta = 0;
                 }
                 if(map.yy == 32767){
-                x = -1;
+                x = -0.5;
                 // y = 0;
                 // theta = 0;
                 }
@@ -205,12 +205,12 @@ int main(int argc, char* argv[])
                 }
                 if(map.xx == -32767){
                 // x = 0;
-                y = 1;
+                y = 0.5;
                 // theta = 0;
                 }
                 if(map.xx == 32767){
                 // x = 0;
-                y = -1;
+                y = -0.5;
                 // theta = 0;
                 }
                 if(map.xx == 0){
@@ -221,12 +221,12 @@ int main(int argc, char* argv[])
                 if(map.l1 == 1){
                 // x = 0;
                 // y = 0;
-                theta = 1;
+                theta = 0.5;
                 }
                 if(map.r1 == 1){
                 // x = 0;
                 // y = 0;
-                theta = -1;
+                theta = -0.5;
                 } 
                 if(map.r1 == 0 && map.l1 == 0){
                 // x = 0;

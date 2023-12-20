@@ -32,9 +32,6 @@
       <remap from="scan"            to="/scan"/>
       <remap from="odom"            to="/odom"/>
       <remap from="rgbd_image"       to="rgbd_image"/>
-      <remap from="rgb/image" to="/camera/color/image_raw"/>
-      <remap from="depth/image" to="/camera/depth/image_raw"/>
-      <remap from="rgb/camera_info" to="/camera/color/camera_info"/>
       <param name="queue_size" type="int" value="50"/>
 
       <!-- output -->
@@ -76,11 +73,8 @@
     <rosparam file="$(find myagv_navigation)/param/costmap_common_params.yaml" command="load" ns="local_costmap" />
     <rosparam file="$(find myagv_navigation)/param/local_costmap_params.yaml" command="load" />
     <rosparam file="$(find myagv_navigation)/param/global_costmap_params.yaml" command="load" />
+    <rosparam file="$(find myagv_navigation)/param/base_global_planner_param.yaml" command="load" ns="move_base" /> 
     <rosparam file="$(find myagv_navigation)/param/planner.yaml" command="load" />
-
-    <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
-      <param name="planner_frequency" value="1.0"/>
-      <param name="planner_patience" value="2.0"/>
 
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
       <param name="controller_frequency" value="5.0"/> 

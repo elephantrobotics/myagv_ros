@@ -9,7 +9,7 @@ local_costmap:
    resolution: 0.02
    transform_tolerance: 1.2
    #cost_scaling_factor: 5.0
-   inflation_radius: 0.25
+   inflation_radius: 1.75
    #map_type: costmap
 
    plugins:

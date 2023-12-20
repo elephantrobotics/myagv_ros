@@ -49,7 +49,7 @@
   <arg name="queue_size"              default="10"/>
   <arg name="wait_for_transform"      default="0.2"/>
   <arg name="args"                    default=""/>              <!-- delete_db_on_start, udebug -->
-  <arg name="rtabmap_args"            default="$(arg args)"/>   <!-- deprecated, use "args" argument -->
+  <arg name="rtabmap_args"            default="-d"/>   <!-- deprecated, use "args" argument -->
   <arg name="gdb"                     default="false"/>         <!-- Launch nodes in gdb for debugging (apt install xterm gdb) -->
   <arg     if="$(arg gdb)" name="launch_prefix" default="xterm -e gdb -q -ex run --args"/>
   <arg unless="$(arg gdb)" name="launch_prefix" default=""/>
@@ -78,13 +78,13 @@
   <!-- Already synchronized RGB-D related topic, with rtabmap_sync/rgbd_sync nodelet -->
   <arg name="rgbd_sync"               default="false"/>         <!-- pre-sync rgb_topic, depth_topic, camera_info_topic -->
   <arg name="approx_rgbd_sync"        default="true"/>          <!-- false=exact synchronization -->
-  <arg name="subscribe_rgbd"          default="$(arg rgbd_sync)"/>
-  <arg name="rgbd_topic"              default="rgbd_image" />
+  <arg name="subscribe_rgbd"          default="true"/>
+  <arg name="rgbd_topic"              default="/camera/rgbd_image" />
   <arg name="depth_scale"             default="1.0" />         <!-- Deprecated, use rgbd_depth_scale instead -->
   <arg name="rgbd_depth_scale"        default="$(arg depth_scale)" />
   <arg name="rgbd_decimation"         default="1" />
 
-  <arg name="compressed"              default="false"/>         <!-- If you want to subscribe to compressed image topics -->
+  <arg name="compressed"              default="true"/>         <!-- If you want to subscribe to compressed image topics -->
   <arg name="rgb_image_transport"     default="compressed"/>    <!-- Common types: compressed, theora (see "rosrun image_transport list_transports") -->
   <arg name="depth_image_transport"   default="compressedDepth"/>  <!-- Depth compatible types: compressedDepth (see "rosrun image_transport list_transports") -->
 
@@ -92,7 +92,7 @@
   <arg name="gen_cloud_decimation"    default="4"/>
   <arg name="gen_cloud_voxel"         default="0.05"/>
 
-  <arg name="subscribe_scan"          default="false"/>
+  <arg name="subscribe_scan"          default="true"/>
   <arg name="scan_topic"              default="/scan"/>
   <arg name="subscribe_scan_cloud"    default="$(arg gen_cloud)"/>
   <arg name="scan_cloud_topic"        default="/scan_cloud"/>
@@ -110,9 +110,9 @@
   <arg name="gen_depth_fill_iterations"  default="1" />
   <arg name="gen_depth_fill_holes_error" default="0.1" />
 
-  <arg name="visual_odometry"          default="true"/>          <!-- Launch rtabmap visual odometry node -->
+  <arg name="visual_odometry"          default="false"/>          <!-- Launch rtabmap visual odometry node -->
   <arg name="icp_odometry"             default="false"/>         <!-- Launch rtabmap icp odometry node -->
-  <arg name="odom_topic"               default="odom"/>          <!-- Odometry topic name -->
+  <arg name="odom_topic"               default="/odom"/>          <!-- Odometry topic name -->
   <arg name="vo_frame_id"              default="$(arg odom_topic)"/> <!-- Visual/Icp odometry frame ID for TF -->
   <arg name="publish_tf_odom"          default="true"/>
   <arg name="odom_tf_angular_variance" default="0.001"/>         <!-- If TF is used to get odometry, this is the default angular variance -->
@@ -475,4 +475,8 @@
     <param name="approx_sync_max_interval" type="double" value="$(arg approx_sync_max_interval)"/>
   </node>
   
+  <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
+  args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" />
+
 </launch>
+

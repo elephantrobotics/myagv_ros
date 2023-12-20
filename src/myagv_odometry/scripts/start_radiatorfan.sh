@@ -1,5 +1,6 @@
 #!/bin/bash
-python_script="/home/er/myagv_ros/src/myagv_odometry/scripts/start_ydlidar.py"
+sudo chmod a+rw /dev/ttyS0
+python_script="/home/er/myagv_ros/src/myagv_odometry/scripts/start_radiatorfan.py"
 
 if [ -f "$python_script" ];then
     python "$python_script"

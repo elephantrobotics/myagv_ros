@@ -32,7 +32,7 @@ update_min_a: 0.2
 resample_interval: 1
 
 ## Increase tolerance because the computer can get quite busy 
-transform_tolerance: 2.0
+transform_tolerance: 0.3
 recovery_alpha_slow: 0.001
 recovery_alpha_fast: 0.1
 
