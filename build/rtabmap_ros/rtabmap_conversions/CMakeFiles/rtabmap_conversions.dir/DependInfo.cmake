@@ -38,7 +38,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/opencv4"
   "/usr/include/eigen3"
   "/usr/include/pcl-1.10"
-  "/home/er/myagv_ros/devel/include/rtabmap-0.21"
+  "/usr/local/include/rtabmap-0.21"
   "/usr/include/ni"
   "/usr/include/openni2"
   "/usr/include/aarch64-linux-gnu/qt5"

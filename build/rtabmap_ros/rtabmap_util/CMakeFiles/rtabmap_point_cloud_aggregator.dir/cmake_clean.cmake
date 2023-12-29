@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/er/myagv_ros/devel/lib/rtabmap_util/rtabmap_point_cloud_aggregator"
-  "/home/er/myagv_ros/devel/lib/rtabmap_util/rtabmap_point_cloud_aggregator.pdb"
+  "/home/er/myagv_ros/devel/lib/rtabmap_util/point_cloud_aggregator"
+  "/home/er/myagv_ros/devel/lib/rtabmap_util/point_cloud_aggregator.pdb"
   "CMakeFiles/rtabmap_point_cloud_aggregator.dir/src/PointCloudAggregatorNode.cpp.o"
 )
 

@@ -1,5 +1,4 @@
 -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include
--I/home/er/myagv_ros/devel/include/rtabmap-0.21
 -I/home/er/myagv_ros/devel/include
 -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_conversions/include
 -I/opt/ros/noetic/include
@@ -12,6 +11,7 @@
 -I/usr/include/aarch64-linux-gnu
 -I/usr/include/OGRE/Overlay
 -I/usr/include/OGRE
+-I/usr/local/include/rtabmap-0.21
 -I/usr/include/opencv4
 -I/usr/include/ni
 -I/usr/include/aarch64-linux-gnu/qt5

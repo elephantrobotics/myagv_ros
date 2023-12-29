@@ -80,6 +80,13 @@ rtabmap_map_assembler_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: rtabmap_ros/rtabmap_util/CMakeFiles/rtabmap_map_assembler.dir/src/MapAssemblerNode.cpp.o
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: rtabmap_ros/rtabmap_util/CMakeFiles/rtabmap_map_assembler.dir/build.make
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_util_plugins.so
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/libroscpp_serialization.so
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/librostime.so
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_date_time.so.1.71.0
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/libcpp_common.so
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/libimage_transport.so
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/libpcl_ros_filter.so
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/libpcl_ros_tf.so
@@ -105,7 +112,7 @@ rtabmap_map_assembler_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libtinyxml2.so
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_conversions.so
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libpcl_kdtree.so
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libpcl_search.so
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libpcl_surface.so
@@ -122,8 +129,8 @@ rtabmap_map_assembler_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libvtkGUISupportQt-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libvtkRenderingVolumeOpenGL2-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /opt/ros/noetic/lib/liboctomap.so.1.9.8
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libQt5Widgets.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libQt5Core.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libQt5Gui.so.5.12.8
@@ -267,9 +274,9 @@ rtabmap_map_assembler_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_core.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_util/map_assembler: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0

@@ -92,7 +92,7 @@ rtabmap_rgbdx_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libtinyxml2.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_conversions.so
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libpcl_kdtree.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libpcl_search.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libpcl_surface.so
@@ -109,8 +109,8 @@ rtabmap_rgbdx_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libvtkGUISupportQt-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libvtkRenderingVolumeOpenGL2-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /opt/ros/noetic/lib/liboctomap.so.1.9.8
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libQt5Widgets.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libQt5Core.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libQt5Gui.so.5.12.8
@@ -255,8 +255,8 @@ rtabmap_rgbdx_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libqhull.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/libOpenNI.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libboost_system.so
@@ -268,7 +268,7 @@ rtabmap_rgbdx_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libpng.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libtiff.so
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libexpat.so
-/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_sync/rgbdx_sync: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0

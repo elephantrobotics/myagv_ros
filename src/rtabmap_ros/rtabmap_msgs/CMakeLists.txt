@@ -22,9 +22,12 @@ add_message_files(
    ScanDescriptor.msg
    MapData.msg
    MapGraph.msg
-   NodeData.msg
+   Node.msg
+   SensorData.msg
    Link.msg
    OdomInfo.msg
+   LandmarkDetection.msg
+   LandmarkDetections.msg
    Point2f.msg
    Point3f.msg
    Goal.msg

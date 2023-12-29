@@ -28,6 +28,7 @@
   <!-- Localization-only mode -->
   <arg name="localization"            default="false"/>
   <arg name="initial_pose"            default=""/>             <!-- Format: "x y z roll pitch yaw" or "x y z qx qy qz qw". Default: see "RGBD/StartAtOrigin" doc -->
+  <arg name="loc_thr"                 default="0.0"/>          <!-- In localization mode, setting this threshold will make rtabmap publishing diagnostics about if the robot is localized (under that error threshold). -->
 
   <!-- sim time for convenience, if playing a rosbag -->
   <arg name="use_sim_time"            default="false"/>
@@ -63,9 +64,9 @@
   <arg name="approx_sync_max_interval"  default="0"/> <!-- (sec) 0 means infinite interval duration (used with approx_sync=true) -->
 
   <!-- RGB-D related topics -->
-  <arg name="rgb_topic"               default="/camera/color/image_raw" />
-  <arg name="depth_topic"             default="/camera/depth/image_raw" />
-  <arg name="camera_info_topic"       default="/camera/color/camera_info" />
+  <arg name="rgb_topic"               default="/camera/rgb/image_rect_color" />
+  <arg name="depth_topic"             default="/camera/depth_registered/image_raw" />
+  <arg name="camera_info_topic"       default="/camera/rgb/camera_info" />
   <arg name="depth_camera_info_topic" default="$(arg camera_info_topic)" />
 
   <!-- stereo related topics -->
@@ -366,6 +367,7 @@
       <param name="publish_tf"           type="bool"   value="$(arg publish_tf_map)"/>
       <param name="initial_pose"         type="string" value="$(arg initial_pose)"/>
       <param name="gen_scan"             type="bool"   value="$(arg gen_scan)"/>
+      <param name="loc_thr"              type="double" value="$(arg loc_thr)"/>
       <param name="ground_truth_frame_id"       type="string" value="$(arg ground_truth_frame_id)"/>
       <param name="ground_truth_base_frame_id"  type="string" value="$(arg ground_truth_base_frame_id)"/>
       <param name="odom_tf_angular_variance" type="double" value="$(arg odom_tf_angular_variance)"/>
@@ -474,5 +476,5 @@
     <param name="approx_sync" type="bool"   value="$(arg approx_sync)"/>
     <param name="approx_sync_max_interval" type="double" value="$(arg approx_sync_max_interval)"/>
   </node>
-  
+
 </launch>

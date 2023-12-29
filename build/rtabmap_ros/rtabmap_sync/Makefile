@@ -629,6 +629,33 @@ src/impl/CommonDataSubscriberScan.cpp.s:
 	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberScan.cpp.s
 .PHONY : src/impl/CommonDataSubscriberScan.cpp.s
 
+src/impl/CommonDataSubscriberSensorData.o: src/impl/CommonDataSubscriberSensorData.cpp.o
+
+.PHONY : src/impl/CommonDataSubscriberSensorData.o
+
+# target to build an object file
+src/impl/CommonDataSubscriberSensorData.cpp.o:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o
+.PHONY : src/impl/CommonDataSubscriberSensorData.cpp.o
+
+src/impl/CommonDataSubscriberSensorData.i: src/impl/CommonDataSubscriberSensorData.cpp.i
+
+.PHONY : src/impl/CommonDataSubscriberSensorData.i
+
+# target to preprocess a source file
+src/impl/CommonDataSubscriberSensorData.cpp.i:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.i
+.PHONY : src/impl/CommonDataSubscriberSensorData.cpp.i
+
+src/impl/CommonDataSubscriberSensorData.s: src/impl/CommonDataSubscriberSensorData.cpp.s
+
+.PHONY : src/impl/CommonDataSubscriberSensorData.s
+
+# target to generate assembly for a file
+src/impl/CommonDataSubscriberSensorData.cpp.s:
+	cd /home/er/myagv_ros/build && $(MAKE) -f rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.s
+.PHONY : src/impl/CommonDataSubscriberSensorData.cpp.s
+
 src/impl/CommonDataSubscriberStereo.o: src/impl/CommonDataSubscriberStereo.cpp.o
 
 .PHONY : src/impl/CommonDataSubscriberStereo.o
@@ -821,6 +848,9 @@ help:
 	@echo "... src/impl/CommonDataSubscriberScan.o"
 	@echo "... src/impl/CommonDataSubscriberScan.i"
 	@echo "... src/impl/CommonDataSubscriberScan.s"
+	@echo "... src/impl/CommonDataSubscriberSensorData.o"
+	@echo "... src/impl/CommonDataSubscriberSensorData.i"
+	@echo "... src/impl/CommonDataSubscriberSensorData.s"
 	@echo "... src/impl/CommonDataSubscriberStereo.o"
 	@echo "... src/impl/CommonDataSubscriberStereo.i"
 	@echo "... src/impl/CommonDataSubscriberStereo.s"

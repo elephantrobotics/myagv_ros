@@ -80,7 +80,7 @@ rtabmap_wifi_signal_pub_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: rtabmap_ros/rtabmap_demos/CMakeFiles/rtabmap_wifi_signal_pub.dir/src/WifiSignalPubNode.cpp.o
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: rtabmap_ros/rtabmap_demos/CMakeFiles/rtabmap_wifi_signal_pub.dir/build.make
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_conversions.so
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libpcl_kdtree.so
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libpcl_search.so
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libpcl_surface.so
@@ -97,8 +97,8 @@ rtabmap_wifi_signal_pub_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libvtkGUISupportQt-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libvtkRenderingVolumeOpenGL2-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /opt/ros/noetic/lib/liboctomap.so.1.9.8
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libQt5Widgets.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libQt5Core.so.5.12.8
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libQt5Gui.so.5.12.8
@@ -242,9 +242,9 @@ rtabmap_wifi_signal_pub_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
-/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_core.so.0.21.3
+/home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0
 /home/er/myagv_ros/devel/lib/rtabmap_demos/wifi_signal_pub: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0

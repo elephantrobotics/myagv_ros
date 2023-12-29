@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/progress.make
 
 OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString:
-	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py orbbec_camera /home/er/myagv_ros/src/OrbbecSDK_ROS1/srv/GetString.srv 
+	cd /home/er/myagv_ros/build/OrbbecSDK_ROS1 && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py orbbec_camera /home/er/myagv_ros/src/OrbbecSDK_ROS1/srv/GetString.srv 
 
 _orbbec_camera_generate_messages_check_deps_GetString: OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString
 _orbbec_camera_generate_messages_check_deps_GetString: OrbbecSDK_ROS1/CMakeFiles/_orbbec_camera_generate_messages_check_deps_GetString.dir/build.make

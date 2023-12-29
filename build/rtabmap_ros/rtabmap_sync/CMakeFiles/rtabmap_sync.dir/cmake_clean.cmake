@@ -8,6 +8,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBD.cpp.o"
   "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBDX.cpp.o"
   "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberScan.cpp.o"
+  "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o"
   "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberStereo.cpp.o"
 )
 

@@ -45,9 +45,12 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/ScanDescriptor.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/MapData.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/MapGraph.msg"
-    "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/NodeData.msg"
+    "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/Node.msg"
+    "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/SensorData.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/Link.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/OdomInfo.msg"
+    "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/LandmarkDetection.msg"
+    "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/LandmarkDetections.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/Point2f.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/Point3f.msg"
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_msgs/msg/Goal.msg"
@@ -104,7 +107,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python3" -m compileall "/home/er/myagv_ros/devel/lib/python3/dist-packages/rtabmap_msgs")
+  execute_process(COMMAND "/home/er/.pyenv/shims/python3" -m compileall "/home/er/myagv_ros/devel/lib/python3/dist-packages/rtabmap_msgs")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

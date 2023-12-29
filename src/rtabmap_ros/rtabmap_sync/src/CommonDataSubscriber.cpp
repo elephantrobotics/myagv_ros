@@ -30,7 +30,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace rtabmap_sync {
 
 CommonDataSubscriber::CommonDataSubscriber(bool gui) :
-		SyncDiagnostic(0.5),
 		queueSize_(10),
 		approxSync_(true),
 		subscribedToDepth_(!gui),
@@ -38,6 +37,7 @@ CommonDataSubscriber::CommonDataSubscriber(bool gui) :
 		subscribedToRGB_(!gui),
 		subscribedToOdom_(false),
 		subscribedToRGBD_(false),
+		subscribedToSensorData_(false),
 		subscribedToScan2d_(false),
 		subscribedToScan3d_(false),
 		subscribedToScanDescriptor_(false),
@@ -190,6 +190,11 @@ CommonDataSubscriber::CommonDataSubscriber(bool gui) :
 		SYNC_INIT(rgbdXOdomDataScanDesc),
 		SYNC_INIT(rgbdXOdomDataInfo),
 #endif
+
+        // SensorData
+        SYNC_INIT(sensorDataInfo),
+        SYNC_INIT(sensorDataOdom),
+        SYNC_INIT(sensorDataOdomInfo),
 
 #ifdef RTABMAP_SYNC_MULTI_RGBD
 		// 2 RGBD
@@ -356,7 +361,8 @@ CommonDataSubscriber::CommonDataSubscriber(bool gui) :
 void CommonDataSubscriber::setupCallbacks(
 		ros::NodeHandle & nh,
 		ros::NodeHandle & pnh,
-		const std::string & name)
+		const std::string & name,
+		std::vector<diagnostic_updater::DiagnosticTask*> otherTasks)
 {
 	bool subscribeScan2d = false;
 	bool subscribeScan3d = false;
@@ -379,6 +385,7 @@ void CommonDataSubscriber::setupCallbacks(
 	pnh.param("subscribe_scan_descriptor", subscribeScanDesc, subscribeScanDesc);
 	pnh.param("subscribe_stereo",    subscribedToStereo_, subscribedToStereo_);
 	pnh.param("subscribe_rgbd",      subscribedToRGBD_, subscribedToRGBD_);
+	pnh.param("subscribe_sensor_data", subscribedToSensorData_, subscribedToSensorData_);
 	pnh.param("subscribe_odom_info", subscribeOdomInfo, subscribeOdomInfo);
 	pnh.param("subscribe_user_data", subscribeUserData, subscribeUserData);
 	pnh.param("subscribe_odom",      subscribeOdom, subscribeOdom);
@@ -402,21 +409,51 @@ void CommonDataSubscriber::setupCallbacks(
 		ROS_WARN("rtabmap: Parameters subscribe_stereo and subscribe_rgb cannot be true at the same time. Parameter subscribe_rgb is set to false.");
 		subscribedToRGB_ = false;
 	}
-	if(subscribedToDepth_ && subscribedToRGBD_)
+	if(subscribedToRGBD_)
 	{
-		ROS_WARN("rtabmap: Parameters subscribe_depth and subscribe_rgbd cannot be true at the same time. Parameter subscribe_depth is set to false.");
-		subscribedToDepth_ = false;
-		subscribedToRGB_ = false;
+		if(subscribedToDepth_)
+		{
+			ROS_WARN("rtabmap: Parameters subscribe_depth and subscribe_rgbd cannot be true at the same time. Parameter subscribe_depth is set to false.");
+			subscribedToDepth_ = false;
+			subscribedToRGB_ = false;
+		}
+		if(subscribedToRGB_)
+		{
+			ROS_WARN("rtabmap: Parameters subscribe_rgb and subscribe_rgbd cannot be true at the same time. Parameter subscribe_rgb is set to false.");
+			subscribedToRGB_ = false;
+		}
+		if(subscribedToStereo_)
+		{
+			ROS_WARN("rtabmap: Parameters subscribe_stereo and subscribe_rgbd cannot be true at the same time. Parameter subscribe_stereo is set to false.");
+			subscribedToStereo_ = false;
+		}
 	}
-	if(subscribedToRGB_ && subscribedToRGBD_)
+	if(subscribedToSensorData_)
 	{
-		ROS_WARN("rtabmap: Parameters subscribe_rgb and subscribe_rgbd cannot be true at the same time. Parameter subscribe_rgb is set to false.");
-		subscribedToRGB_ = false;
-	}
-	if(subscribedToStereo_ && subscribedToRGBD_)
-	{
-		ROS_WARN("rtabmap: Parameters subscribe_stereo and subscribe_rgbd cannot be true at the same time. Parameter subscribe_stereo is set to false.");
-		subscribedToStereo_ = false;
+		if(!subscribedToRGBD_)
+		{
+			if(subscribedToDepth_)
+			{
+				ROS_WARN("rtabmap: Parameters subscribe_depth and subscribe_sensor_data cannot be true at the same time. Parameter subscribe_depth is set to false.");
+				subscribedToDepth_ = false;
+				subscribedToRGB_ = false;
+			}
+			if(subscribedToRGB_)
+			{
+				ROS_WARN("rtabmap: Parameters subscribe_rgb and subscribe_sensor_data cannot be true at the same time. Parameter subscribe_rgb is set to false.");
+				subscribedToRGB_ = false;
+			}
+			if(subscribedToStereo_)
+			{
+				ROS_WARN("rtabmap: Parameters subscribe_stereo and subscribe_sensor_data cannot be true at the same time. Parameter subscribe_stereo is set to false.");
+				subscribedToStereo_ = false;
+			}
+		}
+		else
+		{
+			ROS_WARN("rtabmap: Parameters subscribe_sensor_data and subscribe_rgbd cannot be true at the same time. Parameter subscribe_rgbd is set to false.");
+			subscribedToRGBD_ = false;
+		}
 	}
 	if(subscribeScan2d && subscribeScan3d)
 	{
@@ -432,6 +469,21 @@ void CommonDataSubscriber::setupCallbacks(
 	{
 		ROS_WARN("rtabmap: Parameters subscribe_scan_cloud and subscribe_scan_descriptor cannot be true at the same time. Parameter subscribe_scan_cloud is set to false.");
 		subscribeScan3d = false;
+	}
+	if(subscribedToSensorData_ && subscribeScan2d)
+	{
+		ROS_WARN("rtabmap: Parameters subscribe_sensor_data and subscribe_scan cannot be true at the same time. Parameter subscribe_scan_cloud is set to false.");
+		subscribeScan2d = false;
+	}
+	if(subscribedToSensorData_ && subscribeScan3d)
+	{
+		ROS_WARN("rtabmap: Parameters subscribe_sensor_data and subscribe_scan_cloud cannot be true at the same time. Parameter subscribe_scan_cloud is set to false.");
+		subscribeScan3d = false;
+	}
+	if(subscribedToSensorData_ && subscribeScanDesc)
+	{
+		ROS_WARN("rtabmap: Parameters subscribe_sensor_data and subscribe_scan_descriptor cannot be true at the same time. Parameter subscribe_scan_descriptor is set to false.");
+		subscribeScanDesc = false;
 	}
 	if(subscribeScan2d || subscribeScan3d || subscribeScanDesc)
 	{
@@ -469,6 +521,7 @@ void CommonDataSubscriber::setupCallbacks(
 	ROS_INFO("%s: subscribe_rgb = %s", name.c_str(), subscribedToRGB_?"true":"false");
 	ROS_INFO("%s: subscribe_stereo = %s", name.c_str(), subscribedToStereo_?"true":"false");
 	ROS_INFO("%s: subscribe_rgbd = %s (rgbd_cameras=%d)", name.c_str(), subscribedToRGBD_?"true":"false", rgbdCameras);
+	ROS_INFO("%s: subscribe_sensor_data = %s", name.c_str(), subscribedToSensorData_?"true":"false");
 	ROS_INFO("%s: subscribe_odom_info = %s", name.c_str(), subscribeOdomInfo?"true":"false");
 	ROS_INFO("%s: subscribe_user_data = %s", name.c_str(), subscribeUserData?"true":"false");
 	ROS_INFO("%s: subscribe_scan = %s", name.c_str(), subscribeScan2d?"true":"false");
@@ -518,22 +571,8 @@ void CommonDataSubscriber::setupCallbacks(
 	}
 	else if(subscribedToRGBD_)
 	{
-		if(rgbdCameras == 0)
-		{
-			setupRGBDXCallbacks(
-					nh,
-					pnh,
-					subscribedToOdom_,
-					subscribeUserData,
-					subscribeScan2d,
-					subscribeScan3d,
-					subscribeScanDesc,
-					subscribeOdomInfo,
-					queueSize_,
-					approxSync_);
-		}
 #ifdef RTABMAP_SYNC_MULTI_RGBD
-		else if(rgbdCameras >= 6)
+		if(rgbdCameras >= 6)
 		{
 			if(rgbdCameras > 6)
 			{
@@ -619,6 +658,20 @@ void CommonDataSubscriber::setupCallbacks(
 					"but you will have to synchronize RGBDImage topics yourself.");
 		}
 #endif
+		else if(rgbdCameras == 0)
+		{
+			setupRGBDXCallbacks(
+					nh,
+					pnh,
+					subscribedToOdom_,
+					subscribeUserData,
+					subscribeScan2d,
+					subscribeScan3d,
+					subscribeScanDesc,
+					subscribeOdomInfo,
+					queueSize_,
+					approxSync_);
+		}
 		else
 		{
 			setupRGBDCallbacks(
@@ -647,6 +700,16 @@ void CommonDataSubscriber::setupCallbacks(
 					queueSize_,
 					approxSync_);
 	}
+	else if(subscribedToSensorData_)
+	{
+		setupSensorDataCallbacks(
+					nh,
+					pnh,
+					subscribedToOdom_,
+					subscribeOdomInfo,
+					queueSize_,
+					approxSync_);
+	}
 	else if(subscribedToOdom_)
 	{
 		setupOdomCallbacks(
@@ -661,7 +724,8 @@ void CommonDataSubscriber::setupCallbacks(
 	if(subscribedToDepth_ || subscribedToStereo_ || subscribedToRGBD_ || subscribedToScan2d_ || subscribedToScan3d_ || subscribedToScanDescriptor_ || subscribedToRGB_ || subscribedToOdom_)
 	{
 		ROS_INFO("%s", subscribedTopicsMsg_.c_str());
-		initDiagnostic("",
+		syncDiagnostic_.reset(new SyncDiagnostic(nh, pnh, name, 0.5));
+		syncDiagnostic_->init("",
 			uFormat("%s: Did not receive data since 5 seconds! Make sure the input topics are "
 					"published (\"$ rostopic hz my_topic\") and the timestamps in their "
 					"header are set. If topics are coming from different computers, make sure "
@@ -670,7 +734,8 @@ void CommonDataSubscriber::setupCallbacks(
 					approxSync_?
 							uFormat("If topics are not published at the same rate, you could increase \"queue_size\" parameter (current=%d).", queueSize_).c_str():
 							"Parameter \"approx_sync\" is false, which means that input topics should have all the exact timestamp for the callback to be called.",
-					subscribedTopicsMsg_.c_str()));
+					subscribedTopicsMsg_.c_str()),
+					otherTasks);
 		
 	}
 }
@@ -1042,6 +1107,14 @@ void CommonDataSubscriber::commonSingleCameraCallback(
 			localKeyPointsMsgs,
 			localPoints3dMsgs,
 			localDescriptorsMsgs);
+}
+
+void CommonDataSubscriber::tick(const ros::Time & stamp, double targetFrequency)
+{
+	if(syncDiagnostic_.get())
+	{
+		syncDiagnostic_->tick(stamp, targetFrequency);
+	}
 }
 
 } /* namespace rtabmap_sync */

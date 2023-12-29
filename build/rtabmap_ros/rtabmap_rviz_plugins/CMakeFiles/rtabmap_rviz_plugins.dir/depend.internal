@@ -3,8 +3,6 @@
 
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rtabmap_rviz_plugins/moc_InfoDisplay.cpp.o
  /home/er/myagv_ros/build/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/moc_InfoDisplay.cpp
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Transform.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Info.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapGraph.h
@@ -552,20 +550,22 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rta
  /usr/include/opencv4/opencv2/viz/viz3d.hpp
  /usr/include/opencv4/opencv2/viz/vizcore.hpp
  /usr/include/opencv4/opencv2/viz/widgets.hpp
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Transform.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rtabmap_rviz_plugins/moc_MapCloudDisplay.cpp.o
  /home/er/myagv_ros/build/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/moc_MapCloudDisplay.cpp
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Transform.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/EnvSensor.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/GPS.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/GlobalDescriptor.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/KeyPoint.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/LandmarkDetection.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapGraph.h
- /home/er/myagv_ros/devel/include/rtabmap_msgs/NodeData.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/Node.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point2f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point3f.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/SensorData.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/MapCloudDisplay.h
  /opt/ros/noetic/include/class_loader/class_loader.hpp
  /opt/ros/noetic/include/class_loader/class_loader_core.hpp
@@ -576,6 +576,7 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rta
  /opt/ros/noetic/include/class_loader/visibility_control.hpp
  /opt/ros/noetic/include/geometry_msgs/Point.h
  /opt/ros/noetic/include/geometry_msgs/Pose.h
+ /opt/ros/noetic/include/geometry_msgs/PoseWithCovariance.h
  /opt/ros/noetic/include/geometry_msgs/Quaternion.h
  /opt/ros/noetic/include/geometry_msgs/Transform.h
  /opt/ros/noetic/include/geometry_msgs/TransformStamped.h
@@ -666,8 +667,12 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rta
  /opt/ros/noetic/include/rviz/properties/status_property.h
  /opt/ros/noetic/include/rviz/properties/string_property.h
  /opt/ros/noetic/include/rviz/rviz_export.h
+ /opt/ros/noetic/include/sensor_msgs/CameraInfo.h
+ /opt/ros/noetic/include/sensor_msgs/Image.h
+ /opt/ros/noetic/include/sensor_msgs/Imu.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud2.h
  /opt/ros/noetic/include/sensor_msgs/PointField.h
+ /opt/ros/noetic/include/sensor_msgs/RegionOfInterest.h
  /opt/ros/noetic/include/std_msgs/Header.h
  /opt/ros/noetic/include/tf2/LinearMath/MinMax.h
  /opt/ros/noetic/include/tf2/LinearMath/QuadWord.h
@@ -1235,6 +1240,8 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rta
  /usr/include/opencv4/opencv2/viz/viz3d.hpp
  /usr/include/opencv4/opencv2/viz/vizcore.hpp
  /usr/include/opencv4/opencv2/viz/widgets.hpp
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Transform.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rtabmap_rviz_plugins/moc_MapGraphDisplay.cpp.o
  /home/er/myagv_ros/build/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/moc_MapGraphDisplay.cpp
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
@@ -1593,32 +1600,6 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/include/rta
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs.h
  /usr/include/aarch64-linux-gnu/qt5/QtGui/qwindowdefs_win.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/InfoDisplay.cpp.o
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/CameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GPS.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/IMU.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Landmark.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/LaserScan.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Link.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/SensorData.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Signature.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Statistics.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Transform.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UException.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMath.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModel.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModels.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/EnvSensor.h
@@ -1626,14 +1607,16 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/InfoDis
  /home/er/myagv_ros/devel/include/rtabmap_msgs/GlobalDescriptor.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Info.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/KeyPoint.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/LandmarkDetection.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapGraph.h
- /home/er/myagv_ros/devel/include/rtabmap_msgs/NodeData.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/Node.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/OdomInfo.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point2f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point3f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/RGBDImage.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/SensorData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/UserData.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_conversions/include/rtabmap_conversions/MsgConversion.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/InfoDisplay.h
@@ -1743,6 +1726,7 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/InfoDis
  /opt/ros/noetic/include/sensor_msgs/ChannelFloat32.h
  /opt/ros/noetic/include/sensor_msgs/CompressedImage.h
  /opt/ros/noetic/include/sensor_msgs/Image.h
+ /opt/ros/noetic/include/sensor_msgs/Imu.h
  /opt/ros/noetic/include/sensor_msgs/LaserScan.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud2.h
@@ -2238,47 +2222,33 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/InfoDis
  /usr/include/pcl-1.10/pcl/point_traits.h
  /usr/include/pcl-1.10/pcl/point_types.h
  /usr/include/pcl-1.10/pcl/register_point_struct.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/CameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GPS.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/IMU.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Landmark.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/LaserScan.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Link.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/SensorData.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Signature.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Statistics.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Transform.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UException.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMath.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapCloudDisplay.cpp.o
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/CameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Compression.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GPS.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Graph.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/IMU.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Landmark.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/LaserScan.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Link.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Parameters.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/ProgressState.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/SensorData.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Signature.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Statistics.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Transform.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Version.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/impl/util3d.hpp
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/util3d.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/util3d_filtering.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/util3d_transforms.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/Posix/UThreadC.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UException.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMath.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/USemaphore.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UThread.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UThreadC.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/Win32/UThreadC.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModel.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModels.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/EnvSensor.h
@@ -2289,14 +2259,16 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapClou
  /home/er/myagv_ros/devel/include/rtabmap_msgs/GlobalDescriptor.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Info.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/KeyPoint.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/LandmarkDetection.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapGraph.h
- /home/er/myagv_ros/devel/include/rtabmap_msgs/NodeData.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/Node.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/OdomInfo.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point2f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point3f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/RGBDImage.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/SensorData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/UserData.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_conversions/include/rtabmap_conversions/MsgConversion.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/MapCloudDisplay.h
@@ -2424,6 +2396,7 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapClou
  /opt/ros/noetic/include/sensor_msgs/ChannelFloat32.h
  /opt/ros/noetic/include/sensor_msgs/CompressedImage.h
  /opt/ros/noetic/include/sensor_msgs/Image.h
+ /opt/ros/noetic/include/sensor_msgs/Imu.h
  /opt/ros/noetic/include/sensor_msgs/LaserScan.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud2.h
@@ -3092,33 +3065,47 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapClou
  /usr/include/pcl-1.10/pcl/point_traits.h
  /usr/include/pcl-1.10/pcl/point_types.h
  /usr/include/pcl-1.10/pcl/register_point_struct.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/CameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Compression.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GPS.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Graph.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/IMU.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Landmark.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/LaserScan.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Link.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Parameters.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/ProgressState.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/SensorData.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Signature.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Statistics.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Transform.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Version.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/impl/util3d.hpp
+ /usr/local/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/util3d.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/util3d_filtering.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/util3d_transforms.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/Posix/UThreadC.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UException.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMath.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/USemaphore.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UThread.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UThreadC.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/Win32/UThreadC.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapGraphDisplay.cpp.o
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/CameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GPS.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/IMU.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Landmark.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/LaserScan.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Link.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/SensorData.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Signature.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Statistics.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/Transform.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UException.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMath.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
- /home/er/myagv_ros/devel/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModel.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/CameraModels.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/EnvSensor.h
@@ -3126,14 +3113,16 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapGrap
  /home/er/myagv_ros/devel/include/rtabmap_msgs/GlobalDescriptor.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Info.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/KeyPoint.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/LandmarkDetection.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Link.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/MapGraph.h
- /home/er/myagv_ros/devel/include/rtabmap_msgs/NodeData.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/Node.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/OdomInfo.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point2f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/Point3f.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/RGBDImage.h
+ /home/er/myagv_ros/devel/include/rtabmap_msgs/SensorData.h
  /home/er/myagv_ros/devel/include/rtabmap_msgs/UserData.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_conversions/include/rtabmap_conversions/MsgConversion.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/MapGraphDisplay.h
@@ -3246,6 +3235,7 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapGrap
  /opt/ros/noetic/include/sensor_msgs/ChannelFloat32.h
  /opt/ros/noetic/include/sensor_msgs/CompressedImage.h
  /opt/ros/noetic/include/sensor_msgs/Image.h
+ /opt/ros/noetic/include/sensor_msgs/Imu.h
  /opt/ros/noetic/include/sensor_msgs/LaserScan.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud.h
  /opt/ros/noetic/include/sensor_msgs/PointCloud2.h
@@ -3843,6 +3833,32 @@ rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/MapGrap
  /usr/include/pcl-1.10/pcl/point_traits.h
  /usr/include/pcl-1.10/pcl/point_types.h
  /usr/include/pcl-1.10/pcl/register_point_struct.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/CameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/EnvSensor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GPS.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GeodeticCoords.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/GlobalDescriptor.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/IMU.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Landmark.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/LaserScan.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Link.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/OdometryInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/RegistrationInfo.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/SensorData.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Signature.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Statistics.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/StereoCameraModel.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/Transform.h
+ /usr/local/include/rtabmap-0.21/rtabmap/core/rtabmap_core_export.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UConversion.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UDestroyer.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UEvent.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UException.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/ULogger.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMath.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/UMutex.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/Win32/UWin32.h
+ /usr/local/include/rtabmap-0.21/rtabmap/utilite/utilite_export.h
 rtabmap_ros/rtabmap_rviz_plugins/CMakeFiles/rtabmap_rviz_plugins.dir/src/OrbitOrientedViewController.cpp.o
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/include/rtabmap_rviz_plugins/OrbitOrientedViewController.h
  /home/er/myagv_ros/src/rtabmap_ros/rtabmap_rviz_plugins/src/OrbitOrientedViewController.cpp

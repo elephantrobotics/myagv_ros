@@ -151,6 +151,10 @@ private:
 			const nav_msgs::OdometryConstPtr & odomMsg,
 			const rtabmap_msgs::UserDataConstPtr & userDataMsg,
 			const rtabmap_msgs::OdomInfoConstPtr& odomInfoMsg);
+	virtual void commonSensorDataCallback(
+			const rtabmap_msgs::SensorDataConstPtr & sensorDataMsg,
+			const nav_msgs::OdometryConstPtr & odomMsg,
+			const rtabmap_msgs::OdomInfoConstPtr& odomInfoMsg);
 
 	void defaultCallback(const sensor_msgs::ImageConstPtr & imageMsg); // no odom
 
@@ -399,6 +403,19 @@ private:
 	ros::Time previousStamp_;
 
 	rtabmap_util::ULogToRosout ulogToRosout_;
+
+	class LocalizationStatusTask : public diagnostic_updater::DiagnosticTask
+	{
+	public:
+		LocalizationStatusTask();
+		void setLocalizationThreshold(double value);
+		void updateStatus(const cv::Mat & covariance, bool twoDMapping);
+		void run(diagnostic_updater::DiagnosticStatusWrapper &stat);
+	private:
+		double localizationThreshold_;
+		double localizationError_;
+	};
+	LocalizationStatusTask localizationDiagnostic_;
 };
 
 }

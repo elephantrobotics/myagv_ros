@@ -218,9 +218,9 @@ rtabmap_conversions_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
-/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/local/lib/librtabmap_core.so.0.21.3
+/home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0
 /home/er/myagv_ros/devel/lib/librtabmap_conversions.so: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0

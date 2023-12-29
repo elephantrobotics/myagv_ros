@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/progress.make
 
 robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus:
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py robot_pose_ekf /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv 
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/genmsg/cmake/../../../lib/genmsg/genmsg_check_deps.py robot_pose_ekf /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv 
 
 _robot_pose_ekf_generate_messages_check_deps_GetStatus: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus
 _robot_pose_ekf_generate_messages_check_deps_GetStatus: robot_pose_ekf/CMakeFiles/_robot_pose_ekf_generate_messages_check_deps_GetStatus.dir/build.make

@@ -161,6 +161,19 @@ rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscrib
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberOdom.cpp.s"
 	cd /home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberOdom.cpp -o CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberOdom.cpp.s
 
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/flags.make
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o: /home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberSensorData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o"
+	cd /home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o -c /home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberSensorData.cpp
+
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.i"
+	cd /home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberSensorData.cpp > CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.i
+
+rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.s"
+	cd /home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberSensorData.cpp -o CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.s
+
 # Object files for target rtabmap_sync
 rtabmap_sync_OBJECTS = \
 "CMakeFiles/rtabmap_sync.dir/src/CommonDataSubscriber.cpp.o" \
@@ -170,7 +183,8 @@ rtabmap_sync_OBJECTS = \
 "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBD.cpp.o" \
 "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBDX.cpp.o" \
 "CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberScan.cpp.o" \
-"CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberOdom.cpp.o"
+"CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberOdom.cpp.o" \
+"CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o"
 
 # External object files for target rtabmap_sync
 rtabmap_sync_EXTERNAL_OBJECTS =
@@ -183,6 +197,7 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBDX.cpp.o
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberScan.cpp.o
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberOdom.cpp.o
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/build.make
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /opt/ros/noetic/lib/libimage_transport.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /opt/ros/noetic/lib/libnodeletlib.so
@@ -197,7 +212,7 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libboost_program_options.so.1.71.0
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libtinyxml2.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_conversions.so
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libpcl_kdtree.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libpcl_search.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libpcl_surface.so
@@ -214,8 +229,8 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libvtkGUISupportQt-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libvtkRenderingVolumeOpenGL2-7.1.so.7.1p.1
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /opt/ros/noetic/lib/liboctomap.so.1.9.8
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libQt5Widgets.so.5.12.8
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libQt5Core.so.5.12.8
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libQt5Gui.so.5.12.8
@@ -360,8 +375,8 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libboost_system.so.1.71.0
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libboost_thread.so.1.71.0
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libconsole_bridge.so.0.4
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_gui.so.0.21.2
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_core.so.0.21.2
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_gui.so.0.21.3
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_core.so.0.21.3
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libqhull.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/libOpenNI.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libboost_system.so
@@ -373,7 +388,7 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libpng.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libtiff.so
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libexpat.so
-/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /home/er/myagv_ros/devel/lib/librtabmap_utilite.so.0.21.2
+/home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/local/lib/librtabmap_utilite.so.0.21.3
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libopencv_highgui.so.4.2.0
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libopencv_stitching.so.4.2.0
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libopencv_photo.so.4.2.0
@@ -466,7 +481,7 @@ rtabmap_sync_EXTERNAL_OBJECTS =
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libQt5Gui.so.5.12.8
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: /usr/lib/aarch64-linux-gnu/libQt5Core.so.5.12.8
 /home/er/myagv_ros/devel/lib/librtabmap_sync.so: rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX shared library /home/er/myagv_ros/devel/lib/librtabmap_sync.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared library /home/er/myagv_ros/devel/lib/librtabmap_sync.so"
 	cd /home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rtabmap_sync.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

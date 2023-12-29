@@ -168,10 +168,11 @@ import struct
 
 import geometry_msgs.msg
 import rtabmap_msgs.msg
+import sensor_msgs.msg
 import std_msgs.msg
 
 class GetMap2Response(genpy.Message):
-  _md5sum = "8904e9de7a55d5e843050af01d4f6b96"
+  _md5sum = "76e7e98705d080822083ef0a96245bb9"
   _type = "rtabmap_msgs/GetMap2Response"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """#response
@@ -191,7 +192,7 @@ MapGraph graph
 ##################
 # Graph data
 ##################
-NodeData[] nodes
+Node[] nodes
 
 
 
@@ -291,10 +292,11 @@ int32 type
 geometry_msgs/Transform transform
 float64[36] information
 ================================================================================
-MSG: rtabmap_msgs/NodeData
+MSG: rtabmap_msgs/Node
+#class rtabmap::Signature
 
 int32 id
-int32 mapId
+int32 map_id
 int32 weight
 float64 stamp
 string label
@@ -302,88 +304,19 @@ string label
 # Pose from odometry not corrected
 geometry_msgs/Pose pose
 
-# Ground truth (optional)
-geometry_msgs/Pose groundTruthPose
-
-# GPS (optional)
-GPS gps
-
-# compressed image in /camera_link frame
-# use rtabmap::util3d::uncompressImage() from "rtabmap/core/util3d.h"
-uint8[] image
-
-# compressed depth image in /camera_link frame
-# use rtabmap::util3d::uncompressImage() from "rtabmap/core/util3d.h"
-uint8[] depth
-
-# Camera models
-float32[] fx
-float32[] fy
-float32[] cx
-float32[] cy
-float32[] width
-float32[] height
-float32[] baseline
-# local transform (/base_link -> /camera_link)
-geometry_msgs/Transform[] localTransform
-
-# compressed 2D or 3D laser scan
-# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
-uint8[] laserScan
-int32 laserScanMaxPts
-float32 laserScanMaxRange
-int32 laserScanFormat
-# local transform (/base_link -> /base_laser)
-geometry_msgs/Transform laserScanLocalTransform
-
-# compressed user data
-# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
-uint8[] userData
-
-# compressed occupancy grid
-# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
-uint8[] grid_ground
-uint8[] grid_obstacles
-uint8[] grid_empty_cells
-float32 grid_cell_size
-Point3f grid_view_point
-
 # std::multimap<wordId, index>
 # std::vector<cv::Keypoint>
 # std::vector<cv::Point3f>
-int32[] wordIdKeys
-int32[] wordIdValues
-KeyPoint[] wordKpts
-Point3f[] wordPts
+int32[] word_id_keys
+int32[] word_id_values
+KeyPoint[] word_kpts
+Point3f[] word_pts
 # compressed descriptors
 # use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
-uint8[] wordDescriptors
+uint8[] word_descriptors
 
-GlobalDescriptor[] globalDescriptors
+SensorData data
 
-EnvSensor[] env_sensors
-
-================================================================================
-MSG: rtabmap_msgs/GPS
-
-float64 stamp      # in seconds
-float64 longitude  # DD format
-float64 latitude   # DD format
-float64 altitude   # in meters
-float64 error      # in meters
-float64 bearing    # North 0->360 deg
-================================================================================
-MSG: rtabmap_msgs/Point3f
-#class cv::Point3f
-#{
-#    float x;
-#    float y;
-#    float z;
-#}
-
-float32 x
-float32 y
-float32 z
 ================================================================================
 MSG: rtabmap_msgs/KeyPoint
 #class cv::KeyPoint
@@ -413,6 +346,321 @@ MSG: rtabmap_msgs/Point2f
 float32 x
 float32 y
 ================================================================================
+MSG: rtabmap_msgs/Point3f
+#class cv::Point3f
+#{
+#    float x;
+#    float y;
+#    float z;
+#}
+
+float32 x
+float32 y
+float32 z
+================================================================================
+MSG: rtabmap_msgs/SensorData
+#class rtabmap::SensorData
+
+Header header
+
+# For RGB-D, left corresponds to rgb camera, and right corresponds to depth camera.
+
+# Raw images
+sensor_msgs/Image left
+sensor_msgs/Image right
+
+# Compressed images
+# use rtabmap::util3d::uncompressImage() from "rtabmap/core/util3d.h"
+uint8[] left_compressed
+uint8[] right_compressed
+
+# Camera info
+sensor_msgs/CameraInfo[] left_camera_info
+sensor_msgs/CameraInfo[] right_camera_info
+
+# Transform from base frame to camera frame
+geometry_msgs/Transform[] local_transform
+
+# raw 2d or 3D laser scan
+sensor_msgs/PointCloud2 laser_scan
+# compressed 2D or 3D laser scan
+# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
+uint8[] laser_scan_compressed
+int32 laser_scan_max_pts
+float32 laser_scan_max_range
+int32 laser_scan_format
+# local transform (base frame -> laser frame)
+geometry_msgs/Transform laser_scan_local_transform
+
+# compressed user data
+# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
+uint8[] user_data
+
+# compressed occupancy grid
+# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
+uint8[] grid_ground
+uint8[] grid_obstacles
+uint8[] grid_empty_cells
+float32 grid_cell_size
+Point3f grid_view_point
+
+# Local features
+KeyPoint[] key_points
+Point3f[] points
+# compressed descriptors
+# use rtabmap::util3d::uncompressData() from "rtabmap/core/util3d.h"
+uint8[] descriptors
+
+GlobalDescriptor[] global_descriptors
+
+EnvSensor[] env_sensors
+
+sensor_msgs/Imu imu
+geometry_msgs/Transform imu_local_transform
+
+LandmarkDetection[] landmarks
+
+# Ground truth
+geometry_msgs/Pose ground_truth_pose
+
+# GPS
+GPS gps
+
+================================================================================
+MSG: sensor_msgs/Image
+# This message contains an uncompressed image
+# (0, 0) is at top-left corner of image
+#
+
+Header header        # Header timestamp should be acquisition time of image
+                     # Header frame_id should be optical frame of camera
+                     # origin of frame should be optical center of camera
+                     # +x should point to the right in the image
+                     # +y should point down in the image
+                     # +z should point into to plane of the image
+                     # If the frame_id here and the frame_id of the CameraInfo
+                     # message associated with the image conflict
+                     # the behavior is undefined
+
+uint32 height         # image height, that is, number of rows
+uint32 width          # image width, that is, number of columns
+
+# The legal values for encoding are in file src/image_encodings.cpp
+# If you want to standardize a new string format, join
+# ros-users@lists.sourceforge.net and send an email proposing a new encoding.
+
+string encoding       # Encoding of pixels -- channel meaning, ordering, size
+                      # taken from the list of strings in include/sensor_msgs/image_encodings.h
+
+uint8 is_bigendian    # is this data bigendian?
+uint32 step           # Full row length in bytes
+uint8[] data          # actual matrix data, size is (step * rows)
+
+================================================================================
+MSG: sensor_msgs/CameraInfo
+# This message defines meta information for a camera. It should be in a
+# camera namespace on topic "camera_info" and accompanied by up to five
+# image topics named:
+#
+#   image_raw - raw data from the camera driver, possibly Bayer encoded
+#   image            - monochrome, distorted
+#   image_color      - color, distorted
+#   image_rect       - monochrome, rectified
+#   image_rect_color - color, rectified
+#
+# The image_pipeline contains packages (image_proc, stereo_image_proc)
+# for producing the four processed image topics from image_raw and
+# camera_info. The meaning of the camera parameters are described in
+# detail at http://www.ros.org/wiki/image_pipeline/CameraInfo.
+#
+# The image_geometry package provides a user-friendly interface to
+# common operations using this meta information. If you want to, e.g.,
+# project a 3d point into image coordinates, we strongly recommend
+# using image_geometry.
+#
+# If the camera is uncalibrated, the matrices D, K, R, P should be left
+# zeroed out. In particular, clients may assume that K[0] == 0.0
+# indicates an uncalibrated camera.
+
+#######################################################################
+#                     Image acquisition info                          #
+#######################################################################
+
+# Time of image acquisition, camera coordinate frame ID
+Header header    # Header timestamp should be acquisition time of image
+                 # Header frame_id should be optical frame of camera
+                 # origin of frame should be optical center of camera
+                 # +x should point to the right in the image
+                 # +y should point down in the image
+                 # +z should point into the plane of the image
+
+
+#######################################################################
+#                      Calibration Parameters                         #
+#######################################################################
+# These are fixed during camera calibration. Their values will be the #
+# same in all messages until the camera is recalibrated. Note that    #
+# self-calibrating systems may "recalibrate" frequently.              #
+#                                                                     #
+# The internal parameters can be used to warp a raw (distorted) image #
+# to:                                                                 #
+#   1. An undistorted image (requires D and K)                        #
+#   2. A rectified image (requires D, K, R)                           #
+# The projection matrix P projects 3D points into the rectified image.#
+#######################################################################
+
+# The image dimensions with which the camera was calibrated. Normally
+# this will be the full camera resolution in pixels.
+uint32 height
+uint32 width
+
+# The distortion model used. Supported models are listed in
+# sensor_msgs/distortion_models.h. For most cameras, "plumb_bob" - a
+# simple model of radial and tangential distortion - is sufficient.
+string distortion_model
+
+# The distortion parameters, size depending on the distortion model.
+# For "plumb_bob", the 5 parameters are: (k1, k2, t1, t2, k3).
+float64[] D
+
+# Intrinsic camera matrix for the raw (distorted) images.
+#     [fx  0 cx]
+# K = [ 0 fy cy]
+#     [ 0  0  1]
+# Projects 3D points in the camera coordinate frame to 2D pixel
+# coordinates using the focal lengths (fx, fy) and principal point
+# (cx, cy).
+float64[9]  K # 3x3 row-major matrix
+
+# Rectification matrix (stereo cameras only)
+# A rotation matrix aligning the camera coordinate system to the ideal
+# stereo image plane so that epipolar lines in both stereo images are
+# parallel.
+float64[9]  R # 3x3 row-major matrix
+
+# Projection/camera matrix
+#     [fx'  0  cx' Tx]
+# P = [ 0  fy' cy' Ty]
+#     [ 0   0   1   0]
+# By convention, this matrix specifies the intrinsic (camera) matrix
+#  of the processed (rectified) image. That is, the left 3x3 portion
+#  is the normal camera intrinsic matrix for the rectified image.
+# It projects 3D points in the camera coordinate frame to 2D pixel
+#  coordinates using the focal lengths (fx', fy') and principal point
+#  (cx', cy') - these may differ from the values in K.
+# For monocular cameras, Tx = Ty = 0. Normally, monocular cameras will
+#  also have R = the identity and P[1:3,1:3] = K.
+# For a stereo pair, the fourth column [Tx Ty 0]' is related to the
+#  position of the optical center of the second camera in the first
+#  camera's frame. We assume Tz = 0 so both cameras are in the same
+#  stereo image plane. The first camera always has Tx = Ty = 0. For
+#  the right (second) camera of a horizontal stereo pair, Ty = 0 and
+#  Tx = -fx' * B, where B is the baseline between the cameras.
+# Given a 3D point [X Y Z]', the projection (x, y) of the point onto
+#  the rectified image is given by:
+#  [u v w]' = P * [X Y Z 1]'
+#         x = u / w
+#         y = v / w
+#  This holds for both images of a stereo pair.
+float64[12] P # 3x4 row-major matrix
+
+
+#######################################################################
+#                      Operational Parameters                         #
+#######################################################################
+# These define the image region actually captured by the camera       #
+# driver. Although they affect the geometry of the output image, they #
+# may be changed freely without recalibrating the camera.             #
+#######################################################################
+
+# Binning refers here to any camera setting which combines rectangular
+#  neighborhoods of pixels into larger "super-pixels." It reduces the
+#  resolution of the output image to
+#  (width / binning_x) x (height / binning_y).
+# The default values binning_x = binning_y = 0 is considered the same
+#  as binning_x = binning_y = 1 (no subsampling).
+uint32 binning_x
+uint32 binning_y
+
+# Region of interest (subwindow of full camera resolution), given in
+#  full resolution (unbinned) image coordinates. A particular ROI
+#  always denotes the same window of pixels on the camera sensor,
+#  regardless of binning settings.
+# The default setting of roi (all values 0) is considered the same as
+#  full resolution (roi.width = width, roi.height = height).
+RegionOfInterest roi
+
+================================================================================
+MSG: sensor_msgs/RegionOfInterest
+# This message is used to specify a region of interest within an image.
+#
+# When used to specify the ROI setting of the camera when the image was
+# taken, the height and width fields should either match the height and
+# width fields for the associated image; or height = width = 0
+# indicates that the full resolution image was captured.
+
+uint32 x_offset  # Leftmost pixel of the ROI
+                 # (0 if the ROI includes the left edge of the image)
+uint32 y_offset  # Topmost pixel of the ROI
+                 # (0 if the ROI includes the top edge of the image)
+uint32 height    # Height of ROI
+uint32 width     # Width of ROI
+
+# True if a distinct rectified ROI should be calculated from the "raw"
+# ROI in this message. Typically this should be False if the full image
+# is captured (ROI not used), and True if a subwindow is captured (ROI
+# used).
+bool do_rectify
+
+================================================================================
+MSG: sensor_msgs/PointCloud2
+# This message holds a collection of N-dimensional points, which may
+# contain additional information such as normals, intensity, etc. The
+# point data is stored as a binary blob, its layout described by the
+# contents of the "fields" array.
+
+# The point cloud data may be organized 2d (image-like) or 1d
+# (unordered). Point clouds organized as 2d images may be produced by
+# camera depth sensors such as stereo or time-of-flight.
+
+# Time of sensor data acquisition, and the coordinate frame ID (for 3d
+# points).
+Header header
+
+# 2D structure of the point cloud. If the cloud is unordered, height is
+# 1 and width is the length of the point cloud.
+uint32 height
+uint32 width
+
+# Describes the channels and their layout in the binary data blob.
+PointField[] fields
+
+bool    is_bigendian # Is this data bigendian?
+uint32  point_step   # Length of a point in bytes
+uint32  row_step     # Length of a row in bytes
+uint8[] data         # Actual point data, size is (row_step*height)
+
+bool is_dense        # True if there are no invalid points
+
+================================================================================
+MSG: sensor_msgs/PointField
+# This message holds the description of one point entry in the
+# PointCloud2 message format.
+uint8 INT8    = 1
+uint8 UINT8   = 2
+uint8 INT16   = 3
+uint8 UINT16  = 4
+uint8 INT32   = 5
+uint8 UINT32  = 6
+uint8 FLOAT32 = 7
+uint8 FLOAT64 = 8
+
+string name      # Name of field
+uint32 offset    # Offset from start of point struct
+uint8  datatype  # Datatype enumeration, see above
+uint32 count     # How many elements in the field
+
+================================================================================
 MSG: rtabmap_msgs/GlobalDescriptor
 
 Header header
@@ -429,7 +677,80 @@ Header header
 
 # EnvSensor
 int32 type
-float64 value"""
+float64 value
+================================================================================
+MSG: sensor_msgs/Imu
+# This is a message to hold data from an IMU (Inertial Measurement Unit)
+#
+# Accelerations should be in m/s^2 (not in g's), and rotational velocity should be in rad/sec
+#
+# If the covariance of the measurement is known, it should be filled in (if all you know is the 
+# variance of each measurement, e.g. from the datasheet, just put those along the diagonal)
+# A covariance matrix of all zeros will be interpreted as "covariance unknown", and to use the
+# data a covariance will have to be assumed or gotten from some other source
+#
+# If you have no estimate for one of the data elements (e.g. your IMU doesn't produce an orientation 
+# estimate), please set element 0 of the associated covariance matrix to -1
+# If you are interpreting this message, please check for a value of -1 in the first element of each 
+# covariance matrix, and disregard the associated estimate.
+
+Header header
+
+geometry_msgs/Quaternion orientation
+float64[9] orientation_covariance # Row major about x, y, z axes
+
+geometry_msgs/Vector3 angular_velocity
+float64[9] angular_velocity_covariance # Row major about x, y, z axes
+
+geometry_msgs/Vector3 linear_acceleration
+float64[9] linear_acceleration_covariance # Row major x, y z 
+
+================================================================================
+MSG: rtabmap_msgs/LandmarkDetection
+
+# header.stamp: the timestamp of the detection (e.g. image timestamp)
+# header.frame_id: the base frame of pose (e.g., camera optical frame)
+std_msgs/Header header
+
+# Landmark's frame id
+string landmark_frame_id
+
+# Landmark's unique ID: should be >0
+int32 id
+
+# Size in meters of the landmark/tag (optional, set 0 to not use it).
+float32 size
+
+# Pose of the landmark in header.frame_id frame.
+# If covariance is unknown, keep it as null matrix.
+# rtabmap_slam/rtabmap's landmark_angular_variance and
+# landmark_linear_variance parameters can be used
+# for convenience if covariance is null.
+geometry_msgs/PoseWithCovariance pose
+
+
+
+================================================================================
+MSG: geometry_msgs/PoseWithCovariance
+# This represents a pose in free space with uncertainty.
+
+Pose pose
+
+# Row-major representation of the 6x6 covariance matrix
+# The orientation parameters use a fixed-axis representation.
+# In order, the parameters are:
+# (x, y, z, rotation about X axis, rotation about Y axis, rotation about Z axis)
+float64[36] covariance
+
+================================================================================
+MSG: rtabmap_msgs/GPS
+
+float64 stamp      # in seconds
+float64 longitude  # DD format
+float64 latitude   # DD format
+float64 altitude   # in meters
+float64 error      # in meters
+float64 bearing    # North 0->360 deg"""
   __slots__ = ['data']
   _slot_types = ['rtabmap_msgs/MapData']
 
@@ -515,7 +836,7 @@ float64 value"""
       buff.write(_struct_I.pack(length))
       for val1 in self.data.nodes:
         _x = val1
-        buff.write(_get_struct_3id().pack(_x.id, _x.mapId, _x.weight, _x.stamp))
+        buff.write(_get_struct_3id().pack(_x.id, _x.map_id, _x.weight, _x.stamp))
         _x = val1.label
         length = len(_x)
         if python3 or type(_x) == unicode:
@@ -529,179 +850,160 @@ float64 value"""
         _v8 = _v6.orientation
         _x = _v8
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _v9 = val1.groundTruthPose
-        _v10 = _v9.position
-        _x = _v10
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v11 = _v9.orientation
-        _x = _v11
-        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _v12 = val1.gps
-        _x = _v12
-        buff.write(_get_struct_6d().pack(_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing))
-        _x = val1.image
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.depth
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.fx)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.fx))
-        length = len(val1.fy)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.fy))
-        length = len(val1.cx)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.cx))
-        length = len(val1.cy)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.cy))
-        length = len(val1.width)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.width))
-        length = len(val1.height)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.height))
-        length = len(val1.baseline)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(struct.Struct(pattern).pack(*val1.baseline))
-        length = len(val1.localTransform)
-        buff.write(_struct_I.pack(length))
-        for val2 in val1.localTransform:
-          _v13 = val2.translation
-          _x = _v13
-          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-          _v14 = val2.rotation
-          _x = _v14
-          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _x = val1.laserScan
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1
-        buff.write(_get_struct_ifi().pack(_x.laserScanMaxPts, _x.laserScanMaxRange, _x.laserScanFormat))
-        _v15 = val1.laserScanLocalTransform
-        _v16 = _v15.translation
-        _x = _v16
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v17 = _v15.rotation
-        _x = _v17
-        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _x = val1.userData
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_ground
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_obstacles
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_empty_cells
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_cell_size
-        buff.write(_get_struct_f().pack(_x))
-        _v18 = val1.grid_view_point
-        _x = _v18
-        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
-        length = len(val1.wordIdKeys)
+        length = len(val1.word_id_keys)
         buff.write(_struct_I.pack(length))
         pattern = '<%si'%length
-        buff.write(struct.Struct(pattern).pack(*val1.wordIdKeys))
-        length = len(val1.wordIdValues)
+        buff.write(struct.Struct(pattern).pack(*val1.word_id_keys))
+        length = len(val1.word_id_values)
         buff.write(_struct_I.pack(length))
         pattern = '<%si'%length
-        buff.write(struct.Struct(pattern).pack(*val1.wordIdValues))
-        length = len(val1.wordKpts)
+        buff.write(struct.Struct(pattern).pack(*val1.word_id_values))
+        length = len(val1.word_kpts)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.wordKpts:
-          _v19 = val2.pt
-          _x = _v19
+        for val2 in val1.word_kpts:
+          _v9 = val2.pt
+          _x = _v9
           buff.write(_get_struct_2f().pack(_x.x, _x.y))
           _x = val2
           buff.write(_get_struct_3f2i().pack(_x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-        length = len(val1.wordPts)
+        length = len(val1.word_pts)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.wordPts:
+        for val2 in val1.word_pts:
           _x = val2
           buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
-        _x = val1.wordDescriptors
+        _x = val1.word_descriptors
         length = len(_x)
         # - if encoded as a list instead, serialize as bytes instead of string
         if type(_x) in [list, tuple]:
           buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
         else:
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.globalDescriptors)
+        _v10 = val1.data
+        _v11 = _v10.header
+        _x = _v11.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v12 = _v11.stamp
+        _x = _v12
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v11.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v13 = _v10.left
+        _v14 = _v13.header
+        _x = _v14.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v15 = _v14.stamp
+        _x = _v15
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v14.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v13
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        _x = _v13.encoding
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v13
+        buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
+        _x = _v13.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v16 = _v10.right
+        _v17 = _v16.header
+        _x = _v17.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v18 = _v17.stamp
+        _x = _v18
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v17.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v16
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        _x = _v16.encoding
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v16
+        buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
+        _x = _v16.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.left_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.right_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        length = len(_v10.left_camera_info)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.globalDescriptors:
-          _v20 = val2.header
-          _x = _v20.seq
+        for val3 in _v10.left_camera_info:
+          _v19 = val3.header
+          _x = _v19.seq
           buff.write(_get_struct_I().pack(_x))
-          _v21 = _v20.stamp
-          _x = _v21
+          _v20 = _v19.stamp
+          _x = _v20
           buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-          _x = _v20.frame_id
+          _x = _v19.frame_id
           length = len(_x)
           if python3 or type(_x) == unicode:
             _x = _x.encode('utf-8')
             length = len(_x)
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2.type
-          buff.write(_get_struct_i().pack(_x))
-          _x = val2.info
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.height, _x.width))
+          _x = val3.distortion_model
           length = len(_x)
-          # - if encoded as a list instead, serialize as bytes instead of string
-          if type(_x) in [list, tuple]:
-            buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-          else:
-            buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2.data
-          length = len(_x)
-          # - if encoded as a list instead, serialize as bytes instead of string
-          if type(_x) in [list, tuple]:
-            buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-          else:
-            buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.env_sensors)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          length = len(val3.D)
+          buff.write(_struct_I.pack(length))
+          pattern = '<%sd'%length
+          buff.write(struct.Struct(pattern).pack(*val3.D))
+          buff.write(_get_struct_9d().pack(*val3.K))
+          buff.write(_get_struct_9d().pack(*val3.R))
+          buff.write(_get_struct_12d().pack(*val3.P))
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.binning_x, _x.binning_y))
+          _v21 = val3.roi
+          _x = _v21
+          buff.write(_get_struct_4IB().pack(_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify))
+        length = len(_v10.right_camera_info)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.env_sensors:
-          _v22 = val2.header
+        for val3 in _v10.right_camera_info:
+          _v22 = val3.header
           _x = _v22.seq
           buff.write(_get_struct_I().pack(_x))
           _v23 = _v22.stamp
@@ -713,8 +1015,263 @@ float64 value"""
             _x = _x.encode('utf-8')
             length = len(_x)
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.height, _x.width))
+          _x = val3.distortion_model
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          length = len(val3.D)
+          buff.write(_struct_I.pack(length))
+          pattern = '<%sd'%length
+          buff.write(struct.Struct(pattern).pack(*val3.D))
+          buff.write(_get_struct_9d().pack(*val3.K))
+          buff.write(_get_struct_9d().pack(*val3.R))
+          buff.write(_get_struct_12d().pack(*val3.P))
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.binning_x, _x.binning_y))
+          _v24 = val3.roi
+          _x = _v24
+          buff.write(_get_struct_4IB().pack(_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify))
+        length = len(_v10.local_transform)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.local_transform:
+          _v25 = val3.translation
+          _x = _v25
+          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+          _v26 = val3.rotation
+          _x = _v26
+          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _v27 = _v10.laser_scan
+        _v28 = _v27.header
+        _x = _v28.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v29 = _v28.stamp
+        _x = _v29
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v28.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v27
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        length = len(_v27.fields)
+        buff.write(_struct_I.pack(length))
+        for val4 in _v27.fields:
+          _x = val4.name
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val4
+          buff.write(_get_struct_IBI().pack(_x.offset, _x.datatype, _x.count))
+        _x = _v27
+        buff.write(_get_struct_B2I().pack(_x.is_bigendian, _x.point_step, _x.row_step))
+        _x = _v27.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v27.is_dense
+        buff.write(_get_struct_B().pack(_x))
+        _x = _v10.laser_scan_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10
+        buff.write(_get_struct_ifi().pack(_x.laser_scan_max_pts, _x.laser_scan_max_range, _x.laser_scan_format))
+        _v30 = _v10.laser_scan_local_transform
+        _v31 = _v30.translation
+        _x = _v31
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v32 = _v30.rotation
+        _x = _v32
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _x = _v10.user_data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.grid_ground
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.grid_obstacles
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.grid_empty_cells
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v10.grid_cell_size
+        buff.write(_get_struct_f().pack(_x))
+        _v33 = _v10.grid_view_point
+        _x = _v33
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
+        length = len(_v10.key_points)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.key_points:
+          _v34 = val3.pt
+          _x = _v34
+          buff.write(_get_struct_2f().pack(_x.x, _x.y))
+          _x = val3
+          buff.write(_get_struct_3f2i().pack(_x.size, _x.angle, _x.response, _x.octave, _x.class_id))
+        length = len(_v10.points)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.points:
+          _x = val3
+          buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
+        _x = _v10.descriptors
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        length = len(_v10.global_descriptors)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.global_descriptors:
+          _v35 = val3.header
+          _x = _v35.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v36 = _v35.stamp
+          _x = _v36
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v35.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3.type
+          buff.write(_get_struct_i().pack(_x))
+          _x = val3.info
+          length = len(_x)
+          # - if encoded as a list instead, serialize as bytes instead of string
+          if type(_x) in [list, tuple]:
+            buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+          else:
+            buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3.data
+          length = len(_x)
+          # - if encoded as a list instead, serialize as bytes instead of string
+          if type(_x) in [list, tuple]:
+            buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+          else:
+            buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        length = len(_v10.env_sensors)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.env_sensors:
+          _v37 = val3.header
+          _x = _v37.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v38 = _v37.stamp
+          _x = _v38
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v37.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3
           buff.write(_get_struct_id().pack(_x.type, _x.value))
+        _v39 = _v10.imu
+        _v40 = _v39.header
+        _x = _v40.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v41 = _v40.stamp
+        _x = _v41
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v40.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v42 = _v39.orientation
+        _x = _v42
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        buff.write(_get_struct_9d().pack(*_v39.orientation_covariance))
+        _v43 = _v39.angular_velocity
+        _x = _v43
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_9d().pack(*_v39.angular_velocity_covariance))
+        _v44 = _v39.linear_acceleration
+        _x = _v44
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_get_struct_9d().pack(*_v39.linear_acceleration_covariance))
+        _v45 = _v10.imu_local_transform
+        _v46 = _v45.translation
+        _x = _v46
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v47 = _v45.rotation
+        _x = _v47
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        length = len(_v10.landmarks)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v10.landmarks:
+          _v48 = val3.header
+          _x = _v48.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v49 = _v48.stamp
+          _x = _v49
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v48.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3.landmark_frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3
+          buff.write(_get_struct_if().pack(_x.id, _x.size))
+          _v50 = val3.pose
+          _v51 = _v50.pose
+          _v52 = _v51.position
+          _x = _v52
+          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+          _v53 = _v51.orientation
+          _x = _v53
+          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+          buff.write(_get_struct_36d().pack(*_v50.covariance))
+        _v54 = _v10.ground_truth_pose
+        _v55 = _v54.position
+        _x = _v55
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v56 = _v54.orientation
+        _x = _v56
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _v57 = _v10.gps
+        _x = _v57
+        buff.write(_get_struct_6d().pack(_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -773,13 +1330,13 @@ float64 value"""
       self.data.graph.poses = []
       for i in range(0, length):
         val1 = geometry_msgs.msg.Pose()
-        _v24 = val1.position
-        _x = _v24
+        _v58 = val1.position
+        _x = _v58
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v25 = val1.orientation
-        _x = _v25
+        _v59 = val1.orientation
+        _x = _v59
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
@@ -794,14 +1351,14 @@ float64 value"""
         start = end
         end += 12
         (_x.fromId, _x.toId, _x.type,) = _get_struct_3i().unpack(str[start:end])
-        _v26 = val1.transform
-        _v27 = _v26.translation
-        _x = _v27
+        _v60 = val1.transform
+        _v61 = _v60.translation
+        _x = _v61
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v28 = _v26.rotation
-        _x = _v28
+        _v62 = _v60.rotation
+        _x = _v62
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
@@ -814,11 +1371,11 @@ float64 value"""
       (length,) = _struct_I.unpack(str[start:end])
       self.data.nodes = []
       for i in range(0, length):
-        val1 = rtabmap_msgs.msg.NodeData()
+        val1 = rtabmap_msgs.msg.Node()
         _x = val1
         start = end
         end += 20
-        (_x.id, _x.mapId, _x.weight, _x.stamp,) = _get_struct_3id().unpack(str[start:end])
+        (_x.id, _x.map_id, _x.weight, _x.stamp,) = _get_struct_3id().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -828,171 +1385,17 @@ float64 value"""
           val1.label = str[start:end].decode('utf-8', 'rosmsg')
         else:
           val1.label = str[start:end]
-        _v29 = val1.pose
-        _v30 = _v29.position
-        _x = _v30
+        _v63 = val1.pose
+        _v64 = _v63.position
+        _x = _v64
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v31 = _v29.orientation
-        _x = _v31
+        _v65 = _v63.orientation
+        _x = _v65
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        _v32 = val1.groundTruthPose
-        _v33 = _v32.position
-        _x = _v33
-        start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v34 = _v32.orientation
-        _x = _v34
-        start = end
-        end += 32
-        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        _v35 = val1.gps
-        _x = _v35
-        start = end
-        end += 48
-        (_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing,) = _get_struct_6d().unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.image = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.depth = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.fx = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.fy = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.cx = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.cy = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.width = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.height = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.baseline = s.unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        val1.localTransform = []
-        for i in range(0, length):
-          val2 = geometry_msgs.msg.Transform()
-          _v36 = val2.translation
-          _x = _v36
-          start = end
-          end += 24
-          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-          _v37 = val2.rotation
-          _x = _v37
-          start = end
-          end += 32
-          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-          val1.localTransform.append(val2)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.laserScan = str[start:end]
-        _x = val1
-        start = end
-        end += 12
-        (_x.laserScanMaxPts, _x.laserScanMaxRange, _x.laserScanFormat,) = _get_struct_ifi().unpack(str[start:end])
-        _v38 = val1.laserScanLocalTransform
-        _v39 = _v38.translation
-        _x = _v39
-        start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v40 = _v38.rotation
-        _x = _v40
-        start = end
-        end += 32
-        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.userData = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_ground = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_obstacles = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_empty_cells = str[start:end]
-        start = end
-        end += 4
-        (val1.grid_cell_size,) = _get_struct_f().unpack(str[start:end])
-        _v41 = val1.grid_view_point
-        _x = _v41
-        start = end
-        end += 12
-        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -1000,7 +1403,7 @@ float64 value"""
         start = end
         s = struct.Struct(pattern)
         end += s.size
-        val1.wordIdKeys = s.unpack(str[start:end])
+        val1.word_id_keys = s.unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -1008,15 +1411,15 @@ float64 value"""
         start = end
         s = struct.Struct(pattern)
         end += s.size
-        val1.wordIdValues = s.unpack(str[start:end])
+        val1.word_id_values = s.unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.wordKpts = []
+        val1.word_kpts = []
         for i in range(0, length):
           val2 = rtabmap_msgs.msg.KeyPoint()
-          _v42 = val2.pt
-          _x = _v42
+          _v66 = val2.pt
+          _x = _v66
           start = end
           end += 8
           (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
@@ -1024,36 +1427,151 @@ float64 value"""
           start = end
           end += 20
           (_x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_3f2i().unpack(str[start:end])
-          val1.wordKpts.append(val2)
+          val1.word_kpts.append(val2)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.wordPts = []
+        val1.word_pts = []
         for i in range(0, length):
           val2 = rtabmap_msgs.msg.Point3f()
           _x = val2
           start = end
           end += 12
           (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
-          val1.wordPts.append(val2)
+          val1.word_pts.append(val2)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
         start = end
         end += length
-        val1.wordDescriptors = str[start:end]
+        val1.word_descriptors = str[start:end]
+        _v67 = val1.data
+        _v68 = _v67.header
+        start = end
+        end += 4
+        (_v68.seq,) = _get_struct_I().unpack(str[start:end])
+        _v69 = _v68.stamp
+        _x = _v69
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.globalDescriptors = []
+        start = end
+        end += length
+        if python3:
+          _v68.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v68.frame_id = str[start:end]
+        _v70 = _v67.left
+        _v71 = _v70.header
+        start = end
+        end += 4
+        (_v71.seq,) = _get_struct_I().unpack(str[start:end])
+        _v72 = _v71.stamp
+        _x = _v72
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v71.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v71.frame_id = str[start:end]
+        _x = _v70
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v70.encoding = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v70.encoding = str[start:end]
+        _x = _v70
+        start = end
+        end += 5
+        (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v70.data = str[start:end]
+        _v73 = _v67.right
+        _v74 = _v73.header
+        start = end
+        end += 4
+        (_v74.seq,) = _get_struct_I().unpack(str[start:end])
+        _v75 = _v74.stamp
+        _x = _v75
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v74.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v74.frame_id = str[start:end]
+        _x = _v73
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v73.encoding = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v73.encoding = str[start:end]
+        _x = _v73
+        start = end
+        end += 5
+        (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v73.data = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.left_compressed = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.right_compressed = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.left_camera_info = []
         for i in range(0, length):
-          val2 = rtabmap_msgs.msg.GlobalDescriptor()
-          _v43 = val2.header
+          val3 = sensor_msgs.msg.CameraInfo()
+          _v76 = val3.header
           start = end
           end += 4
-          (_v43.seq,) = _get_struct_I().unpack(str[start:end])
-          _v44 = _v43.stamp
-          _x = _v44
+          (_v76.seq,) = _get_struct_I().unpack(str[start:end])
+          _v77 = _v76.stamp
+          _x = _v77
           start = end
           end += 8
           (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
@@ -1063,37 +1581,62 @@ float64 value"""
           start = end
           end += length
           if python3:
-            _v43.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+            _v76.frame_id = str[start:end].decode('utf-8', 'rosmsg')
           else:
-            _v43.frame_id = str[start:end]
+            _v76.frame_id = str[start:end]
+          _x = val3
           start = end
-          end += 4
-          (val2.type,) = _get_struct_i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          start = end
-          end += length
-          val2.info = str[start:end]
+          end += 8
+          (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
           start = end
           end += 4
           (length,) = _struct_I.unpack(str[start:end])
           start = end
           end += length
-          val2.data = str[start:end]
-          val1.globalDescriptors.append(val2)
+          if python3:
+            val3.distortion_model = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.distortion_model = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          pattern = '<%sd'%length
+          start = end
+          s = struct.Struct(pattern)
+          end += s.size
+          val3.D = s.unpack(str[start:end])
+          start = end
+          end += 72
+          val3.K = _get_struct_9d().unpack(str[start:end])
+          start = end
+          end += 72
+          val3.R = _get_struct_9d().unpack(str[start:end])
+          start = end
+          end += 96
+          val3.P = _get_struct_12d().unpack(str[start:end])
+          _x = val3
+          start = end
+          end += 8
+          (_x.binning_x, _x.binning_y,) = _get_struct_2I().unpack(str[start:end])
+          _v78 = val3.roi
+          _x = _v78
+          start = end
+          end += 17
+          (_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify,) = _get_struct_4IB().unpack(str[start:end])
+          _v78.do_rectify = bool(_v78.do_rectify)
+          _v67.left_camera_info.append(val3)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.env_sensors = []
+        _v67.right_camera_info = []
         for i in range(0, length):
-          val2 = rtabmap_msgs.msg.EnvSensor()
-          _v45 = val2.header
+          val3 = sensor_msgs.msg.CameraInfo()
+          _v79 = val3.header
           start = end
           end += 4
-          (_v45.seq,) = _get_struct_I().unpack(str[start:end])
-          _v46 = _v45.stamp
-          _x = _v46
+          (_v79.seq,) = _get_struct_I().unpack(str[start:end])
+          _v80 = _v79.stamp
+          _x = _v80
           start = end
           end += 8
           (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
@@ -1103,14 +1646,403 @@ float64 value"""
           start = end
           end += length
           if python3:
-            _v45.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+            _v79.frame_id = str[start:end].decode('utf-8', 'rosmsg')
           else:
-            _v45.frame_id = str[start:end]
-          _x = val2
+            _v79.frame_id = str[start:end]
+          _x = val3
+          start = end
+          end += 8
+          (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val3.distortion_model = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.distortion_model = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          pattern = '<%sd'%length
+          start = end
+          s = struct.Struct(pattern)
+          end += s.size
+          val3.D = s.unpack(str[start:end])
+          start = end
+          end += 72
+          val3.K = _get_struct_9d().unpack(str[start:end])
+          start = end
+          end += 72
+          val3.R = _get_struct_9d().unpack(str[start:end])
+          start = end
+          end += 96
+          val3.P = _get_struct_12d().unpack(str[start:end])
+          _x = val3
+          start = end
+          end += 8
+          (_x.binning_x, _x.binning_y,) = _get_struct_2I().unpack(str[start:end])
+          _v81 = val3.roi
+          _x = _v81
+          start = end
+          end += 17
+          (_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify,) = _get_struct_4IB().unpack(str[start:end])
+          _v81.do_rectify = bool(_v81.do_rectify)
+          _v67.right_camera_info.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.local_transform = []
+        for i in range(0, length):
+          val3 = geometry_msgs.msg.Transform()
+          _v82 = val3.translation
+          _x = _v82
+          start = end
+          end += 24
+          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+          _v83 = val3.rotation
+          _x = _v83
+          start = end
+          end += 32
+          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+          _v67.local_transform.append(val3)
+        _v84 = _v67.laser_scan
+        _v85 = _v84.header
+        start = end
+        end += 4
+        (_v85.seq,) = _get_struct_I().unpack(str[start:end])
+        _v86 = _v85.stamp
+        _x = _v86
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v85.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v85.frame_id = str[start:end]
+        _x = _v84
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v84.fields = []
+        for i in range(0, length):
+          val4 = sensor_msgs.msg.PointField()
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val4.name = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val4.name = str[start:end]
+          _x = val4
+          start = end
+          end += 9
+          (_x.offset, _x.datatype, _x.count,) = _get_struct_IBI().unpack(str[start:end])
+          _v84.fields.append(val4)
+        _x = _v84
+        start = end
+        end += 9
+        (_x.is_bigendian, _x.point_step, _x.row_step,) = _get_struct_B2I().unpack(str[start:end])
+        _v84.is_bigendian = bool(_v84.is_bigendian)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v84.data = str[start:end]
+        start = end
+        end += 1
+        (_v84.is_dense,) = _get_struct_B().unpack(str[start:end])
+        _v84.is_dense = bool(_v84.is_dense)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.laser_scan_compressed = str[start:end]
+        _x = _v67
+        start = end
+        end += 12
+        (_x.laser_scan_max_pts, _x.laser_scan_max_range, _x.laser_scan_format,) = _get_struct_ifi().unpack(str[start:end])
+        _v87 = _v67.laser_scan_local_transform
+        _v88 = _v87.translation
+        _x = _v88
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v89 = _v87.rotation
+        _x = _v89
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.user_data = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.grid_ground = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.grid_obstacles = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.grid_empty_cells = str[start:end]
+        start = end
+        end += 4
+        (_v67.grid_cell_size,) = _get_struct_f().unpack(str[start:end])
+        _v90 = _v67.grid_view_point
+        _x = _v90
+        start = end
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.key_points = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.KeyPoint()
+          _v91 = val3.pt
+          _x = _v91
+          start = end
+          end += 8
+          (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
+          _x = val3
+          start = end
+          end += 20
+          (_x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_3f2i().unpack(str[start:end])
+          _v67.key_points.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.points = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.Point3f()
+          _x = val3
+          start = end
+          end += 12
+          (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
+          _v67.points.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v67.descriptors = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.global_descriptors = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.GlobalDescriptor()
+          _v92 = val3.header
+          start = end
+          end += 4
+          (_v92.seq,) = _get_struct_I().unpack(str[start:end])
+          _v93 = _v92.stamp
+          _x = _v93
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v92.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v92.frame_id = str[start:end]
+          start = end
+          end += 4
+          (val3.type,) = _get_struct_i().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          val3.info = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          val3.data = str[start:end]
+          _v67.global_descriptors.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.env_sensors = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.EnvSensor()
+          _v94 = val3.header
+          start = end
+          end += 4
+          (_v94.seq,) = _get_struct_I().unpack(str[start:end])
+          _v95 = _v94.stamp
+          _x = _v95
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v94.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v94.frame_id = str[start:end]
+          _x = val3
           start = end
           end += 12
           (_x.type, _x.value,) = _get_struct_id().unpack(str[start:end])
-          val1.env_sensors.append(val2)
+          _v67.env_sensors.append(val3)
+        _v96 = _v67.imu
+        _v97 = _v96.header
+        start = end
+        end += 4
+        (_v97.seq,) = _get_struct_I().unpack(str[start:end])
+        _v98 = _v97.stamp
+        _x = _v98
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v97.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v97.frame_id = str[start:end]
+        _v99 = _v96.orientation
+        _x = _v99
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v96.orientation_covariance = _get_struct_9d().unpack(str[start:end])
+        _v100 = _v96.angular_velocity
+        _x = _v100
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v96.angular_velocity_covariance = _get_struct_9d().unpack(str[start:end])
+        _v101 = _v96.linear_acceleration
+        _x = _v101
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v96.linear_acceleration_covariance = _get_struct_9d().unpack(str[start:end])
+        _v102 = _v67.imu_local_transform
+        _v103 = _v102.translation
+        _x = _v103
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v104 = _v102.rotation
+        _x = _v104
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v67.landmarks = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.LandmarkDetection()
+          _v105 = val3.header
+          start = end
+          end += 4
+          (_v105.seq,) = _get_struct_I().unpack(str[start:end])
+          _v106 = _v105.stamp
+          _x = _v106
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v105.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v105.frame_id = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val3.landmark_frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.landmark_frame_id = str[start:end]
+          _x = val3
+          start = end
+          end += 8
+          (_x.id, _x.size,) = _get_struct_if().unpack(str[start:end])
+          _v107 = val3.pose
+          _v108 = _v107.pose
+          _v109 = _v108.position
+          _x = _v109
+          start = end
+          end += 24
+          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+          _v110 = _v108.orientation
+          _x = _v110
+          start = end
+          end += 32
+          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+          start = end
+          end += 288
+          _v107.covariance = _get_struct_36d().unpack(str[start:end])
+          _v67.landmarks.append(val3)
+        _v111 = _v67.ground_truth_pose
+        _v112 = _v111.position
+        _x = _v112
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v113 = _v111.orientation
+        _x = _v113
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        _v114 = _v67.gps
+        _x = _v114
+        start = end
+        end += 48
+        (_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing,) = _get_struct_6d().unpack(str[start:end])
         self.data.nodes.append(val1)
       return self
     except struct.error as e:
@@ -1149,229 +2081,465 @@ float64 value"""
       length = len(self.data.graph.poses)
       buff.write(_struct_I.pack(length))
       for val1 in self.data.graph.poses:
-        _v47 = val1.position
-        _x = _v47
+        _v115 = val1.position
+        _x = _v115
         buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v48 = val1.orientation
-        _x = _v48
+        _v116 = val1.orientation
+        _x = _v116
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
       length = len(self.data.graph.links)
       buff.write(_struct_I.pack(length))
       for val1 in self.data.graph.links:
         _x = val1
         buff.write(_get_struct_3i().pack(_x.fromId, _x.toId, _x.type))
-        _v49 = val1.transform
-        _v50 = _v49.translation
-        _x = _v50
+        _v117 = val1.transform
+        _v118 = _v117.translation
+        _x = _v118
         buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v51 = _v49.rotation
-        _x = _v51
+        _v119 = _v117.rotation
+        _x = _v119
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
         buff.write(val1.information.tostring())
       length = len(self.data.nodes)
       buff.write(_struct_I.pack(length))
       for val1 in self.data.nodes:
         _x = val1
-        buff.write(_get_struct_3id().pack(_x.id, _x.mapId, _x.weight, _x.stamp))
+        buff.write(_get_struct_3id().pack(_x.id, _x.map_id, _x.weight, _x.stamp))
         _x = val1.label
         length = len(_x)
         if python3 or type(_x) == unicode:
           _x = _x.encode('utf-8')
           length = len(_x)
         buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _v52 = val1.pose
-        _v53 = _v52.position
-        _x = _v53
+        _v120 = val1.pose
+        _v121 = _v120.position
+        _x = _v121
         buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v54 = _v52.orientation
-        _x = _v54
+        _v122 = _v120.orientation
+        _x = _v122
         buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _v55 = val1.groundTruthPose
-        _v56 = _v55.position
-        _x = _v56
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v57 = _v55.orientation
-        _x = _v57
-        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _v58 = val1.gps
-        _x = _v58
-        buff.write(_get_struct_6d().pack(_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing))
-        _x = val1.image
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.depth
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.fx)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.fx.tostring())
-        length = len(val1.fy)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.fy.tostring())
-        length = len(val1.cx)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.cx.tostring())
-        length = len(val1.cy)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.cy.tostring())
-        length = len(val1.width)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.width.tostring())
-        length = len(val1.height)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.height.tostring())
-        length = len(val1.baseline)
-        buff.write(_struct_I.pack(length))
-        pattern = '<%sf'%length
-        buff.write(val1.baseline.tostring())
-        length = len(val1.localTransform)
-        buff.write(_struct_I.pack(length))
-        for val2 in val1.localTransform:
-          _v59 = val2.translation
-          _x = _v59
-          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-          _v60 = val2.rotation
-          _x = _v60
-          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _x = val1.laserScan
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1
-        buff.write(_get_struct_ifi().pack(_x.laserScanMaxPts, _x.laserScanMaxRange, _x.laserScanFormat))
-        _v61 = val1.laserScanLocalTransform
-        _v62 = _v61.translation
-        _x = _v62
-        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
-        _v63 = _v61.rotation
-        _x = _v63
-        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
-        _x = val1.userData
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_ground
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_obstacles
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_empty_cells
-        length = len(_x)
-        # - if encoded as a list instead, serialize as bytes instead of string
-        if type(_x) in [list, tuple]:
-          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
-        else:
-          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        _x = val1.grid_cell_size
-        buff.write(_get_struct_f().pack(_x))
-        _v64 = val1.grid_view_point
-        _x = _v64
-        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
-        length = len(val1.wordIdKeys)
+        length = len(val1.word_id_keys)
         buff.write(_struct_I.pack(length))
         pattern = '<%si'%length
-        buff.write(val1.wordIdKeys.tostring())
-        length = len(val1.wordIdValues)
+        buff.write(val1.word_id_keys.tostring())
+        length = len(val1.word_id_values)
         buff.write(_struct_I.pack(length))
         pattern = '<%si'%length
-        buff.write(val1.wordIdValues.tostring())
-        length = len(val1.wordKpts)
+        buff.write(val1.word_id_values.tostring())
+        length = len(val1.word_kpts)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.wordKpts:
-          _v65 = val2.pt
-          _x = _v65
+        for val2 in val1.word_kpts:
+          _v123 = val2.pt
+          _x = _v123
           buff.write(_get_struct_2f().pack(_x.x, _x.y))
           _x = val2
           buff.write(_get_struct_3f2i().pack(_x.size, _x.angle, _x.response, _x.octave, _x.class_id))
-        length = len(val1.wordPts)
+        length = len(val1.word_pts)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.wordPts:
+        for val2 in val1.word_pts:
           _x = val2
           buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
-        _x = val1.wordDescriptors
+        _x = val1.word_descriptors
         length = len(_x)
         # - if encoded as a list instead, serialize as bytes instead of string
         if type(_x) in [list, tuple]:
           buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
         else:
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.globalDescriptors)
+        _v124 = val1.data
+        _v125 = _v124.header
+        _x = _v125.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v126 = _v125.stamp
+        _x = _v126
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v125.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v127 = _v124.left
+        _v128 = _v127.header
+        _x = _v128.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v129 = _v128.stamp
+        _x = _v129
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v128.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v127
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        _x = _v127.encoding
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v127
+        buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
+        _x = _v127.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v130 = _v124.right
+        _v131 = _v130.header
+        _x = _v131.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v132 = _v131.stamp
+        _x = _v132
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v131.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v130
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        _x = _v130.encoding
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v130
+        buff.write(_get_struct_BI().pack(_x.is_bigendian, _x.step))
+        _x = _v130.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.left_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.right_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        length = len(_v124.left_camera_info)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.globalDescriptors:
-          _v66 = val2.header
-          _x = _v66.seq
+        for val3 in _v124.left_camera_info:
+          _v133 = val3.header
+          _x = _v133.seq
           buff.write(_get_struct_I().pack(_x))
-          _v67 = _v66.stamp
-          _x = _v67
+          _v134 = _v133.stamp
+          _x = _v134
           buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-          _x = _v66.frame_id
+          _x = _v133.frame_id
           length = len(_x)
           if python3 or type(_x) == unicode:
             _x = _x.encode('utf-8')
             length = len(_x)
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2.type
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.height, _x.width))
+          _x = val3.distortion_model
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          length = len(val3.D)
+          buff.write(_struct_I.pack(length))
+          pattern = '<%sd'%length
+          buff.write(val3.D.tostring())
+          buff.write(val3.K.tostring())
+          buff.write(val3.R.tostring())
+          buff.write(val3.P.tostring())
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.binning_x, _x.binning_y))
+          _v135 = val3.roi
+          _x = _v135
+          buff.write(_get_struct_4IB().pack(_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify))
+        length = len(_v124.right_camera_info)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.right_camera_info:
+          _v136 = val3.header
+          _x = _v136.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v137 = _v136.stamp
+          _x = _v137
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v136.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.height, _x.width))
+          _x = val3.distortion_model
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          length = len(val3.D)
+          buff.write(_struct_I.pack(length))
+          pattern = '<%sd'%length
+          buff.write(val3.D.tostring())
+          buff.write(val3.K.tostring())
+          buff.write(val3.R.tostring())
+          buff.write(val3.P.tostring())
+          _x = val3
+          buff.write(_get_struct_2I().pack(_x.binning_x, _x.binning_y))
+          _v138 = val3.roi
+          _x = _v138
+          buff.write(_get_struct_4IB().pack(_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify))
+        length = len(_v124.local_transform)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.local_transform:
+          _v139 = val3.translation
+          _x = _v139
+          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+          _v140 = val3.rotation
+          _x = _v140
+          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _v141 = _v124.laser_scan
+        _v142 = _v141.header
+        _x = _v142.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v143 = _v142.stamp
+        _x = _v143
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v142.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v141
+        buff.write(_get_struct_2I().pack(_x.height, _x.width))
+        length = len(_v141.fields)
+        buff.write(_struct_I.pack(length))
+        for val4 in _v141.fields:
+          _x = val4.name
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val4
+          buff.write(_get_struct_IBI().pack(_x.offset, _x.datatype, _x.count))
+        _x = _v141
+        buff.write(_get_struct_B2I().pack(_x.is_bigendian, _x.point_step, _x.row_step))
+        _x = _v141.data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v141.is_dense
+        buff.write(_get_struct_B().pack(_x))
+        _x = _v124.laser_scan_compressed
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124
+        buff.write(_get_struct_ifi().pack(_x.laser_scan_max_pts, _x.laser_scan_max_range, _x.laser_scan_format))
+        _v144 = _v124.laser_scan_local_transform
+        _v145 = _v144.translation
+        _x = _v145
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v146 = _v144.rotation
+        _x = _v146
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _x = _v124.user_data
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.grid_ground
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.grid_obstacles
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.grid_empty_cells
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _x = _v124.grid_cell_size
+        buff.write(_get_struct_f().pack(_x))
+        _v147 = _v124.grid_view_point
+        _x = _v147
+        buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
+        length = len(_v124.key_points)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.key_points:
+          _v148 = val3.pt
+          _x = _v148
+          buff.write(_get_struct_2f().pack(_x.x, _x.y))
+          _x = val3
+          buff.write(_get_struct_3f2i().pack(_x.size, _x.angle, _x.response, _x.octave, _x.class_id))
+        length = len(_v124.points)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.points:
+          _x = val3
+          buff.write(_get_struct_3f().pack(_x.x, _x.y, _x.z))
+        _x = _v124.descriptors
+        length = len(_x)
+        # - if encoded as a list instead, serialize as bytes instead of string
+        if type(_x) in [list, tuple]:
+          buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
+        else:
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        length = len(_v124.global_descriptors)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.global_descriptors:
+          _v149 = val3.header
+          _x = _v149.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v150 = _v149.stamp
+          _x = _v150
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v149.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3.type
           buff.write(_get_struct_i().pack(_x))
-          _x = val2.info
+          _x = val3.info
           length = len(_x)
           # - if encoded as a list instead, serialize as bytes instead of string
           if type(_x) in [list, tuple]:
             buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
           else:
             buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2.data
+          _x = val3.data
           length = len(_x)
           # - if encoded as a list instead, serialize as bytes instead of string
           if type(_x) in [list, tuple]:
             buff.write(struct.Struct('<I%sB'%length).pack(length, *_x))
           else:
             buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-        length = len(val1.env_sensors)
+        length = len(_v124.env_sensors)
         buff.write(_struct_I.pack(length))
-        for val2 in val1.env_sensors:
-          _v68 = val2.header
-          _x = _v68.seq
+        for val3 in _v124.env_sensors:
+          _v151 = val3.header
+          _x = _v151.seq
           buff.write(_get_struct_I().pack(_x))
-          _v69 = _v68.stamp
-          _x = _v69
+          _v152 = _v151.stamp
+          _x = _v152
           buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
-          _x = _v68.frame_id
+          _x = _v151.frame_id
           length = len(_x)
           if python3 or type(_x) == unicode:
             _x = _x.encode('utf-8')
             length = len(_x)
           buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
-          _x = val2
+          _x = val3
           buff.write(_get_struct_id().pack(_x.type, _x.value))
+        _v153 = _v124.imu
+        _v154 = _v153.header
+        _x = _v154.seq
+        buff.write(_get_struct_I().pack(_x))
+        _v155 = _v154.stamp
+        _x = _v155
+        buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+        _x = _v154.frame_id
+        length = len(_x)
+        if python3 or type(_x) == unicode:
+          _x = _x.encode('utf-8')
+          length = len(_x)
+        buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+        _v156 = _v153.orientation
+        _x = _v156
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        buff.write(_v153.orientation_covariance.tostring())
+        _v157 = _v153.angular_velocity
+        _x = _v157
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_v153.angular_velocity_covariance.tostring())
+        _v158 = _v153.linear_acceleration
+        _x = _v158
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        buff.write(_v153.linear_acceleration_covariance.tostring())
+        _v159 = _v124.imu_local_transform
+        _v160 = _v159.translation
+        _x = _v160
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v161 = _v159.rotation
+        _x = _v161
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        length = len(_v124.landmarks)
+        buff.write(_struct_I.pack(length))
+        for val3 in _v124.landmarks:
+          _v162 = val3.header
+          _x = _v162.seq
+          buff.write(_get_struct_I().pack(_x))
+          _v163 = _v162.stamp
+          _x = _v163
+          buff.write(_get_struct_2I().pack(_x.secs, _x.nsecs))
+          _x = _v162.frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3.landmark_frame_id
+          length = len(_x)
+          if python3 or type(_x) == unicode:
+            _x = _x.encode('utf-8')
+            length = len(_x)
+          buff.write(struct.Struct('<I%ss'%length).pack(length, _x))
+          _x = val3
+          buff.write(_get_struct_if().pack(_x.id, _x.size))
+          _v164 = val3.pose
+          _v165 = _v164.pose
+          _v166 = _v165.position
+          _x = _v166
+          buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+          _v167 = _v165.orientation
+          _x = _v167
+          buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+          buff.write(_v164.covariance.tostring())
+        _v168 = _v124.ground_truth_pose
+        _v169 = _v168.position
+        _x = _v169
+        buff.write(_get_struct_3d().pack(_x.x, _x.y, _x.z))
+        _v170 = _v168.orientation
+        _x = _v170
+        buff.write(_get_struct_4d().pack(_x.x, _x.y, _x.z, _x.w))
+        _v171 = _v124.gps
+        _x = _v171
+        buff.write(_get_struct_6d().pack(_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -1431,13 +2599,13 @@ float64 value"""
       self.data.graph.poses = []
       for i in range(0, length):
         val1 = geometry_msgs.msg.Pose()
-        _v70 = val1.position
-        _x = _v70
+        _v172 = val1.position
+        _x = _v172
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v71 = val1.orientation
-        _x = _v71
+        _v173 = val1.orientation
+        _x = _v173
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
@@ -1452,14 +2620,14 @@ float64 value"""
         start = end
         end += 12
         (_x.fromId, _x.toId, _x.type,) = _get_struct_3i().unpack(str[start:end])
-        _v72 = val1.transform
-        _v73 = _v72.translation
-        _x = _v73
+        _v174 = val1.transform
+        _v175 = _v174.translation
+        _x = _v175
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v74 = _v72.rotation
-        _x = _v74
+        _v176 = _v174.rotation
+        _x = _v176
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
@@ -1472,11 +2640,11 @@ float64 value"""
       (length,) = _struct_I.unpack(str[start:end])
       self.data.nodes = []
       for i in range(0, length):
-        val1 = rtabmap_msgs.msg.NodeData()
+        val1 = rtabmap_msgs.msg.Node()
         _x = val1
         start = end
         end += 20
-        (_x.id, _x.mapId, _x.weight, _x.stamp,) = _get_struct_3id().unpack(str[start:end])
+        (_x.id, _x.map_id, _x.weight, _x.stamp,) = _get_struct_3id().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -1486,171 +2654,17 @@ float64 value"""
           val1.label = str[start:end].decode('utf-8', 'rosmsg')
         else:
           val1.label = str[start:end]
-        _v75 = val1.pose
-        _v76 = _v75.position
-        _x = _v76
+        _v177 = val1.pose
+        _v178 = _v177.position
+        _x = _v178
         start = end
         end += 24
         (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v77 = _v75.orientation
-        _x = _v77
+        _v179 = _v177.orientation
+        _x = _v179
         start = end
         end += 32
         (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        _v78 = val1.groundTruthPose
-        _v79 = _v78.position
-        _x = _v79
-        start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v80 = _v78.orientation
-        _x = _v80
-        start = end
-        end += 32
-        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        _v81 = val1.gps
-        _x = _v81
-        start = end
-        end += 48
-        (_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing,) = _get_struct_6d().unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.image = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.depth = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.fx = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.fy = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.cx = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.cy = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.width = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.height = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        pattern = '<%sf'%length
-        start = end
-        s = struct.Struct(pattern)
-        end += s.size
-        val1.baseline = numpy.frombuffer(str[start:end], dtype=numpy.float32, count=length)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        val1.localTransform = []
-        for i in range(0, length):
-          val2 = geometry_msgs.msg.Transform()
-          _v82 = val2.translation
-          _x = _v82
-          start = end
-          end += 24
-          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-          _v83 = val2.rotation
-          _x = _v83
-          start = end
-          end += 32
-          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-          val1.localTransform.append(val2)
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.laserScan = str[start:end]
-        _x = val1
-        start = end
-        end += 12
-        (_x.laserScanMaxPts, _x.laserScanMaxRange, _x.laserScanFormat,) = _get_struct_ifi().unpack(str[start:end])
-        _v84 = val1.laserScanLocalTransform
-        _v85 = _v84.translation
-        _x = _v85
-        start = end
-        end += 24
-        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
-        _v86 = _v84.rotation
-        _x = _v86
-        start = end
-        end += 32
-        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.userData = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_ground = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_obstacles = str[start:end]
-        start = end
-        end += 4
-        (length,) = _struct_I.unpack(str[start:end])
-        start = end
-        end += length
-        val1.grid_empty_cells = str[start:end]
-        start = end
-        end += 4
-        (val1.grid_cell_size,) = _get_struct_f().unpack(str[start:end])
-        _v87 = val1.grid_view_point
-        _x = _v87
-        start = end
-        end += 12
-        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -1658,7 +2672,7 @@ float64 value"""
         start = end
         s = struct.Struct(pattern)
         end += s.size
-        val1.wordIdKeys = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
+        val1.word_id_keys = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
@@ -1666,15 +2680,15 @@ float64 value"""
         start = end
         s = struct.Struct(pattern)
         end += s.size
-        val1.wordIdValues = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
+        val1.word_id_values = numpy.frombuffer(str[start:end], dtype=numpy.int32, count=length)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.wordKpts = []
+        val1.word_kpts = []
         for i in range(0, length):
           val2 = rtabmap_msgs.msg.KeyPoint()
-          _v88 = val2.pt
-          _x = _v88
+          _v180 = val2.pt
+          _x = _v180
           start = end
           end += 8
           (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
@@ -1682,36 +2696,151 @@ float64 value"""
           start = end
           end += 20
           (_x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_3f2i().unpack(str[start:end])
-          val1.wordKpts.append(val2)
+          val1.word_kpts.append(val2)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.wordPts = []
+        val1.word_pts = []
         for i in range(0, length):
           val2 = rtabmap_msgs.msg.Point3f()
           _x = val2
           start = end
           end += 12
           (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
-          val1.wordPts.append(val2)
+          val1.word_pts.append(val2)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
         start = end
         end += length
-        val1.wordDescriptors = str[start:end]
+        val1.word_descriptors = str[start:end]
+        _v181 = val1.data
+        _v182 = _v181.header
+        start = end
+        end += 4
+        (_v182.seq,) = _get_struct_I().unpack(str[start:end])
+        _v183 = _v182.stamp
+        _x = _v183
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.globalDescriptors = []
+        start = end
+        end += length
+        if python3:
+          _v182.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v182.frame_id = str[start:end]
+        _v184 = _v181.left
+        _v185 = _v184.header
+        start = end
+        end += 4
+        (_v185.seq,) = _get_struct_I().unpack(str[start:end])
+        _v186 = _v185.stamp
+        _x = _v186
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v185.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v185.frame_id = str[start:end]
+        _x = _v184
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v184.encoding = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v184.encoding = str[start:end]
+        _x = _v184
+        start = end
+        end += 5
+        (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v184.data = str[start:end]
+        _v187 = _v181.right
+        _v188 = _v187.header
+        start = end
+        end += 4
+        (_v188.seq,) = _get_struct_I().unpack(str[start:end])
+        _v189 = _v188.stamp
+        _x = _v189
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v188.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v188.frame_id = str[start:end]
+        _x = _v187
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v187.encoding = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v187.encoding = str[start:end]
+        _x = _v187
+        start = end
+        end += 5
+        (_x.is_bigendian, _x.step,) = _get_struct_BI().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v187.data = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.left_compressed = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.right_compressed = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.left_camera_info = []
         for i in range(0, length):
-          val2 = rtabmap_msgs.msg.GlobalDescriptor()
-          _v89 = val2.header
+          val3 = sensor_msgs.msg.CameraInfo()
+          _v190 = val3.header
           start = end
           end += 4
-          (_v89.seq,) = _get_struct_I().unpack(str[start:end])
-          _v90 = _v89.stamp
-          _x = _v90
+          (_v190.seq,) = _get_struct_I().unpack(str[start:end])
+          _v191 = _v190.stamp
+          _x = _v191
           start = end
           end += 8
           (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
@@ -1721,37 +2850,62 @@ float64 value"""
           start = end
           end += length
           if python3:
-            _v89.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+            _v190.frame_id = str[start:end].decode('utf-8', 'rosmsg')
           else:
-            _v89.frame_id = str[start:end]
+            _v190.frame_id = str[start:end]
+          _x = val3
           start = end
-          end += 4
-          (val2.type,) = _get_struct_i().unpack(str[start:end])
-          start = end
-          end += 4
-          (length,) = _struct_I.unpack(str[start:end])
-          start = end
-          end += length
-          val2.info = str[start:end]
+          end += 8
+          (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
           start = end
           end += 4
           (length,) = _struct_I.unpack(str[start:end])
           start = end
           end += length
-          val2.data = str[start:end]
-          val1.globalDescriptors.append(val2)
+          if python3:
+            val3.distortion_model = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.distortion_model = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          pattern = '<%sd'%length
+          start = end
+          s = struct.Struct(pattern)
+          end += s.size
+          val3.D = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+          start = end
+          end += 72
+          val3.K = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+          start = end
+          end += 72
+          val3.R = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+          start = end
+          end += 96
+          val3.P = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=12)
+          _x = val3
+          start = end
+          end += 8
+          (_x.binning_x, _x.binning_y,) = _get_struct_2I().unpack(str[start:end])
+          _v192 = val3.roi
+          _x = _v192
+          start = end
+          end += 17
+          (_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify,) = _get_struct_4IB().unpack(str[start:end])
+          _v192.do_rectify = bool(_v192.do_rectify)
+          _v181.left_camera_info.append(val3)
         start = end
         end += 4
         (length,) = _struct_I.unpack(str[start:end])
-        val1.env_sensors = []
+        _v181.right_camera_info = []
         for i in range(0, length):
-          val2 = rtabmap_msgs.msg.EnvSensor()
-          _v91 = val2.header
+          val3 = sensor_msgs.msg.CameraInfo()
+          _v193 = val3.header
           start = end
           end += 4
-          (_v91.seq,) = _get_struct_I().unpack(str[start:end])
-          _v92 = _v91.stamp
-          _x = _v92
+          (_v193.seq,) = _get_struct_I().unpack(str[start:end])
+          _v194 = _v193.stamp
+          _x = _v194
           start = end
           end += 8
           (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
@@ -1761,14 +2915,403 @@ float64 value"""
           start = end
           end += length
           if python3:
-            _v91.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+            _v193.frame_id = str[start:end].decode('utf-8', 'rosmsg')
           else:
-            _v91.frame_id = str[start:end]
-          _x = val2
+            _v193.frame_id = str[start:end]
+          _x = val3
+          start = end
+          end += 8
+          (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val3.distortion_model = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.distortion_model = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          pattern = '<%sd'%length
+          start = end
+          s = struct.Struct(pattern)
+          end += s.size
+          val3.D = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=length)
+          start = end
+          end += 72
+          val3.K = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+          start = end
+          end += 72
+          val3.R = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+          start = end
+          end += 96
+          val3.P = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=12)
+          _x = val3
+          start = end
+          end += 8
+          (_x.binning_x, _x.binning_y,) = _get_struct_2I().unpack(str[start:end])
+          _v195 = val3.roi
+          _x = _v195
+          start = end
+          end += 17
+          (_x.x_offset, _x.y_offset, _x.height, _x.width, _x.do_rectify,) = _get_struct_4IB().unpack(str[start:end])
+          _v195.do_rectify = bool(_v195.do_rectify)
+          _v181.right_camera_info.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.local_transform = []
+        for i in range(0, length):
+          val3 = geometry_msgs.msg.Transform()
+          _v196 = val3.translation
+          _x = _v196
+          start = end
+          end += 24
+          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+          _v197 = val3.rotation
+          _x = _v197
+          start = end
+          end += 32
+          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+          _v181.local_transform.append(val3)
+        _v198 = _v181.laser_scan
+        _v199 = _v198.header
+        start = end
+        end += 4
+        (_v199.seq,) = _get_struct_I().unpack(str[start:end])
+        _v200 = _v199.stamp
+        _x = _v200
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v199.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v199.frame_id = str[start:end]
+        _x = _v198
+        start = end
+        end += 8
+        (_x.height, _x.width,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v198.fields = []
+        for i in range(0, length):
+          val4 = sensor_msgs.msg.PointField()
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val4.name = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val4.name = str[start:end]
+          _x = val4
+          start = end
+          end += 9
+          (_x.offset, _x.datatype, _x.count,) = _get_struct_IBI().unpack(str[start:end])
+          _v198.fields.append(val4)
+        _x = _v198
+        start = end
+        end += 9
+        (_x.is_bigendian, _x.point_step, _x.row_step,) = _get_struct_B2I().unpack(str[start:end])
+        _v198.is_bigendian = bool(_v198.is_bigendian)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v198.data = str[start:end]
+        start = end
+        end += 1
+        (_v198.is_dense,) = _get_struct_B().unpack(str[start:end])
+        _v198.is_dense = bool(_v198.is_dense)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.laser_scan_compressed = str[start:end]
+        _x = _v181
+        start = end
+        end += 12
+        (_x.laser_scan_max_pts, _x.laser_scan_max_range, _x.laser_scan_format,) = _get_struct_ifi().unpack(str[start:end])
+        _v201 = _v181.laser_scan_local_transform
+        _v202 = _v201.translation
+        _x = _v202
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v203 = _v201.rotation
+        _x = _v203
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.user_data = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.grid_ground = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.grid_obstacles = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.grid_empty_cells = str[start:end]
+        start = end
+        end += 4
+        (_v181.grid_cell_size,) = _get_struct_f().unpack(str[start:end])
+        _v204 = _v181.grid_view_point
+        _x = _v204
+        start = end
+        end += 12
+        (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.key_points = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.KeyPoint()
+          _v205 = val3.pt
+          _x = _v205
+          start = end
+          end += 8
+          (_x.x, _x.y,) = _get_struct_2f().unpack(str[start:end])
+          _x = val3
+          start = end
+          end += 20
+          (_x.size, _x.angle, _x.response, _x.octave, _x.class_id,) = _get_struct_3f2i().unpack(str[start:end])
+          _v181.key_points.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.points = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.Point3f()
+          _x = val3
+          start = end
+          end += 12
+          (_x.x, _x.y, _x.z,) = _get_struct_3f().unpack(str[start:end])
+          _v181.points.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        _v181.descriptors = str[start:end]
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.global_descriptors = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.GlobalDescriptor()
+          _v206 = val3.header
+          start = end
+          end += 4
+          (_v206.seq,) = _get_struct_I().unpack(str[start:end])
+          _v207 = _v206.stamp
+          _x = _v207
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v206.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v206.frame_id = str[start:end]
+          start = end
+          end += 4
+          (val3.type,) = _get_struct_i().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          val3.info = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          val3.data = str[start:end]
+          _v181.global_descriptors.append(val3)
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.env_sensors = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.EnvSensor()
+          _v208 = val3.header
+          start = end
+          end += 4
+          (_v208.seq,) = _get_struct_I().unpack(str[start:end])
+          _v209 = _v208.stamp
+          _x = _v209
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v208.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v208.frame_id = str[start:end]
+          _x = val3
           start = end
           end += 12
           (_x.type, _x.value,) = _get_struct_id().unpack(str[start:end])
-          val1.env_sensors.append(val2)
+          _v181.env_sensors.append(val3)
+        _v210 = _v181.imu
+        _v211 = _v210.header
+        start = end
+        end += 4
+        (_v211.seq,) = _get_struct_I().unpack(str[start:end])
+        _v212 = _v211.stamp
+        _x = _v212
+        start = end
+        end += 8
+        (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        start = end
+        end += length
+        if python3:
+          _v211.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+        else:
+          _v211.frame_id = str[start:end]
+        _v213 = _v210.orientation
+        _x = _v213
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v210.orientation_covariance = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+        _v214 = _v210.angular_velocity
+        _x = _v214
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v210.angular_velocity_covariance = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+        _v215 = _v210.linear_acceleration
+        _x = _v215
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        start = end
+        end += 72
+        _v210.linear_acceleration_covariance = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=9)
+        _v216 = _v181.imu_local_transform
+        _v217 = _v216.translation
+        _x = _v217
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v218 = _v216.rotation
+        _x = _v218
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        start = end
+        end += 4
+        (length,) = _struct_I.unpack(str[start:end])
+        _v181.landmarks = []
+        for i in range(0, length):
+          val3 = rtabmap_msgs.msg.LandmarkDetection()
+          _v219 = val3.header
+          start = end
+          end += 4
+          (_v219.seq,) = _get_struct_I().unpack(str[start:end])
+          _v220 = _v219.stamp
+          _x = _v220
+          start = end
+          end += 8
+          (_x.secs, _x.nsecs,) = _get_struct_2I().unpack(str[start:end])
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            _v219.frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            _v219.frame_id = str[start:end]
+          start = end
+          end += 4
+          (length,) = _struct_I.unpack(str[start:end])
+          start = end
+          end += length
+          if python3:
+            val3.landmark_frame_id = str[start:end].decode('utf-8', 'rosmsg')
+          else:
+            val3.landmark_frame_id = str[start:end]
+          _x = val3
+          start = end
+          end += 8
+          (_x.id, _x.size,) = _get_struct_if().unpack(str[start:end])
+          _v221 = val3.pose
+          _v222 = _v221.pose
+          _v223 = _v222.position
+          _x = _v223
+          start = end
+          end += 24
+          (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+          _v224 = _v222.orientation
+          _x = _v224
+          start = end
+          end += 32
+          (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+          start = end
+          end += 288
+          _v221.covariance = numpy.frombuffer(str[start:end], dtype=numpy.float64, count=36)
+          _v181.landmarks.append(val3)
+        _v225 = _v181.ground_truth_pose
+        _v226 = _v225.position
+        _x = _v226
+        start = end
+        end += 24
+        (_x.x, _x.y, _x.z,) = _get_struct_3d().unpack(str[start:end])
+        _v227 = _v225.orientation
+        _x = _v227
+        start = end
+        end += 32
+        (_x.x, _x.y, _x.z, _x.w,) = _get_struct_4d().unpack(str[start:end])
+        _v228 = _v181.gps
+        _x = _v228
+        start = end
+        end += 48
+        (_x.stamp, _x.longitude, _x.latitude, _x.altitude, _x.error, _x.bearing,) = _get_struct_6d().unpack(str[start:end])
         self.data.nodes.append(val1)
       return self
     except struct.error as e:
@@ -1778,6 +3321,12 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
+_struct_12d = None
+def _get_struct_12d():
+    global _struct_12d
+    if _struct_12d is None:
+        _struct_12d = struct.Struct("<12d")
+    return _struct_12d
 _struct_2I = None
 def _get_struct_2I():
     global _struct_2I
@@ -1832,6 +3381,12 @@ def _get_struct_3id():
     if _struct_3id is None:
         _struct_3id = struct.Struct("<3id")
     return _struct_3id
+_struct_4IB = None
+def _get_struct_4IB():
+    global _struct_4IB
+    if _struct_4IB is None:
+        _struct_4IB = struct.Struct("<4IB")
+    return _struct_4IB
 _struct_4d = None
 def _get_struct_4d():
     global _struct_4d
@@ -1850,6 +3405,36 @@ def _get_struct_7d():
     if _struct_7d is None:
         _struct_7d = struct.Struct("<7d")
     return _struct_7d
+_struct_9d = None
+def _get_struct_9d():
+    global _struct_9d
+    if _struct_9d is None:
+        _struct_9d = struct.Struct("<9d")
+    return _struct_9d
+_struct_B = None
+def _get_struct_B():
+    global _struct_B
+    if _struct_B is None:
+        _struct_B = struct.Struct("<B")
+    return _struct_B
+_struct_B2I = None
+def _get_struct_B2I():
+    global _struct_B2I
+    if _struct_B2I is None:
+        _struct_B2I = struct.Struct("<B2I")
+    return _struct_B2I
+_struct_BI = None
+def _get_struct_BI():
+    global _struct_BI
+    if _struct_BI is None:
+        _struct_BI = struct.Struct("<BI")
+    return _struct_BI
+_struct_IBI = None
+def _get_struct_IBI():
+    global _struct_IBI
+    if _struct_IBI is None:
+        _struct_IBI = struct.Struct("<IBI")
+    return _struct_IBI
 _struct_f = None
 def _get_struct_f():
     global _struct_f
@@ -1868,6 +3453,12 @@ def _get_struct_id():
     if _struct_id is None:
         _struct_id = struct.Struct("<id")
     return _struct_id
+_struct_if = None
+def _get_struct_if():
+    global _struct_if
+    if _struct_if is None:
+        _struct_if = struct.Struct("<if")
+    return _struct_if
 _struct_ifi = None
 def _get_struct_ifi():
     global _struct_ifi
@@ -1876,6 +3467,6 @@ def _get_struct_ifi():
     return _struct_ifi
 class GetMap2(object):
   _type          = 'rtabmap_msgs/GetMap2'
-  _md5sum = '07d04226ea1aa896bb51266a21c4b414'
+  _md5sum = '3e23f9a253a7dd6dbe67701cee06fea3'
   _request_class  = GetMap2Request
   _response_class = GetMap2Response

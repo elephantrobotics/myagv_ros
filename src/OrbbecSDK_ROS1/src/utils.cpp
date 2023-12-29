@@ -68,7 +68,7 @@ OBFormat OBFormatFromString(const std::string &format) {
     return OB_FORMAT_POINT;
   } else if (fixed_format == "RGB_POINT") {
     return OB_FORMAT_RGB_POINT;
-  } else if (fixed_format == "REL") {
+  } else if (fixed_format == "RLE") {
     return OB_FORMAT_RLE;
   } else if (fixed_format == "RGB888" || fixed_format == "RGB") {
     return OB_FORMAT_RGB888;
@@ -124,7 +124,7 @@ std::string OBFormatToString(const OBFormat &format) {
     case OB_FORMAT_RGB_POINT:
       return "RGB_POINT";
     case OB_FORMAT_RLE:
-      return "REL";
+      return "RLE";
     case OB_FORMAT_RGB888:
       return "RGB888";
     case OB_FORMAT_BGR:
@@ -152,15 +152,18 @@ sensor_msgs::CameraInfo convertToCameraInfo(OBCameraIntrinsic intrinsic,
                                             OBCameraDistortion distortion, int width) {
   (void)width;
   sensor_msgs::CameraInfo info;
-  info.distortion_model = sensor_msgs::distortion_models::PLUMB_BOB;
+  info.distortion_model = sensor_msgs::distortion_models::RATIONAL_POLYNOMIAL;
   info.width = intrinsic.width;
   info.height = intrinsic.height;
-  info.D.resize(5, 0.0);
+  info.D.resize(8, 0.0);
   info.D[0] = distortion.k1;
   info.D[1] = distortion.k2;
   info.D[2] = distortion.p1;
   info.D[3] = distortion.p2;
   info.D[4] = distortion.k3;
+  info.D[5] = distortion.k4;
+  info.D[6] = distortion.k5;
+  info.D[7] = distortion.k6;
 
   info.K.fill(0.0);
   info.K[0] = intrinsic.fx;

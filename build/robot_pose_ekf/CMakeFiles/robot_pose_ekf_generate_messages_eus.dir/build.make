@@ -60,11 +60,11 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus: /home/er/myagv_r
 /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/srv/GetStatus.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/srv/GetStatus.l: /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from robot_pose_ekf/GetStatus.srv"
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/srv
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/srv
 
 /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/manifest.l: /opt/ros/noetic/lib/geneus/gen_eus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp manifest code for robot_pose_ekf"
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf robot_pose_ekf std_msgs
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf robot_pose_ekf std_msgs
 
 robot_pose_ekf_generate_messages_eus: robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_eus
 robot_pose_ekf_generate_messages_eus: /home/er/myagv_ros/devel/share/roseus/ros/robot_pose_ekf/srv/GetStatus.l

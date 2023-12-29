@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include robot_pose_ekf/CMakeFiles/clean_test_results_robot_pose_ekf.dir/progress.make
 
 robot_pose_ekf/CMakeFiles/clean_test_results_robot_pose_ekf:
-	cd /home/er/myagv_ros/build/robot_pose_ekf && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/er/myagv_ros/build/test_results/robot_pose_ekf
+	cd /home/er/myagv_ros/build/robot_pose_ekf && /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/catkin/cmake/test/remove_test_results.py /home/er/myagv_ros/build/test_results/robot_pose_ekf
 
 clean_test_results_robot_pose_ekf: robot_pose_ekf/CMakeFiles/clean_test_results_robot_pose_ekf
 clean_test_results_robot_pose_ekf: robot_pose_ekf/CMakeFiles/clean_test_results_robot_pose_ekf.dir/build.make

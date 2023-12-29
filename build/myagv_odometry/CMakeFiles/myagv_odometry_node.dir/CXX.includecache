@@ -38,6 +38,12 @@ myagv_odometry/myAGV.h
 std_msgs/Int8.h
 /home/er/myagv_ros/src/myagv_odometry/src/std_msgs/Int8.h
 
+/home/er/myagv_ros/src/myagv_odometry/src/myAGVSub.cpp
+myagv_odometry/myAGV.h
+/home/er/myagv_ros/src/myagv_odometry/src/myagv_odometry/myAGV.h
+iostream
+-
+
 /opt/ros/noetic/include/geometry_msgs/Point.h
 string
 -
@@ -718,6 +724,8 @@ ros/datatypes.h
 vector
 -
 map
+-
+memory
 -
 boost/array.hpp
 -

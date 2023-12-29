@@ -40,7 +40,7 @@ template<>
 struct MD5Sum< ::rtabmap_msgs::GetMap2 > {
   static const char* value()
   {
-    return "07d04226ea1aa896bb51266a21c4b414";
+    return "3e23f9a253a7dd6dbe67701cee06fea3";
   }
 
   static const char* value(const ::rtabmap_msgs::GetMap2&) { return value(); }

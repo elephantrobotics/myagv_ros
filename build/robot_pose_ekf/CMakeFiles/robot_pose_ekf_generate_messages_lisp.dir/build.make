@@ -59,7 +59,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp: /home/er/myagv_
 /home/er/myagv_ros/devel/share/common-lisp/ros/robot_pose_ekf/srv/GetStatus.lisp: /opt/ros/noetic/lib/genlisp/gen_lisp.py
 /home/er/myagv_ros/devel/share/common-lisp/ros/robot_pose_ekf/srv/GetStatus.lisp: /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Lisp code from robot_pose_ekf/GetStatus.srv"
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/share/common-lisp/ros/robot_pose_ekf/srv
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/genlisp/cmake/../../../lib/genlisp/gen_lisp.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/share/common-lisp/ros/robot_pose_ekf/srv
 
 robot_pose_ekf_generate_messages_lisp: robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_lisp
 robot_pose_ekf_generate_messages_lisp: /home/er/myagv_ros/devel/share/common-lisp/ros/robot_pose_ekf/srv/GetStatus.lisp

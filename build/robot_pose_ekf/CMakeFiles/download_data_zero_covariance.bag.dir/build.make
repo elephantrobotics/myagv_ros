@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include robot_pose_ekf/CMakeFiles/download_data_zero_covariance.bag.dir/progress.make
 
 robot_pose_ekf/CMakeFiles/download_data_zero_covariance.bag:
-	cd /home/er/myagv_ros/build/robot_pose_ekf && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/robot_pose_ekf/zero_covariance_indexed.bag /home/er/myagv_ros/devel/share/robot_pose_ekf/test/zero_covariance_indexed.bag 1f1f4e361a9e0b0f6b1379b2dd011088 --ignore-error
+	cd /home/er/myagv_ros/build/robot_pose_ekf && /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/robot_pose_ekf/zero_covariance_indexed.bag /home/er/myagv_ros/devel/share/robot_pose_ekf/test/zero_covariance_indexed.bag 1f1f4e361a9e0b0f6b1379b2dd011088 --ignore-error
 
 download_data_zero_covariance.bag: robot_pose_ekf/CMakeFiles/download_data_zero_covariance.bag
 download_data_zero_covariance.bag: robot_pose_ekf/CMakeFiles/download_data_zero_covariance.bag.dir/build.make

@@ -6,5 +6,5 @@ CXX_FLAGS = -fPIC
 
 CXX_DEFINES = -DCOSTMAP_2D_POINTCLOUD2 -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"rtabmap_costmap_plugins\" -Drtabmap_costmap_plugins2_EXPORTS
 
-CXX_INCLUDES = -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_costmap_plugins/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2 
+CXX_INCLUDES = -I/home/er/myagv_ros/src/rtabmap_ros/rtabmap_costmap_plugins/include -I/home/er/mercury_x1_ros/devel/include -I/home/er/mercury_x1_ros/src/navigation-melodic/costmap_2d/include -I/home/er/mercury_x1_ros/src/navigation-melodic/voxel_grid/include -I/opt/ros/noetic/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -I/usr/include/pcl-1.10 -I/usr/include/vtk-7.1 -I/usr/include/freetype2 
 

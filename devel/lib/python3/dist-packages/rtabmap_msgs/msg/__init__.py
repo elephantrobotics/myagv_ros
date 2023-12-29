@@ -6,9 +6,12 @@ from ._GlobalDescriptor import *
 from ._Goal import *
 from ._Info import *
 from ._KeyPoint import *
+from ._LandmarkDetection import *
+from ._LandmarkDetections import *
 from ._Link import *
 from ._MapData import *
 from ._MapGraph import *
+from ._Node import *
 from ._NodeData import *
 from ._OdomInfo import *
 from ._Path import *
@@ -17,4 +20,5 @@ from ._Point3f import *
 from ._RGBDImage import *
 from ._RGBDImages import *
 from ._ScanDescriptor import *
+from ._SensorData import *
 from ._UserData import *

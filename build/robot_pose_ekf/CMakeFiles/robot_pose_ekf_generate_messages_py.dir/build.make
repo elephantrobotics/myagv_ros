@@ -60,12 +60,12 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py: /home/er/myagv_ro
 /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/_GetStatus.py: /opt/ros/noetic/lib/genpy/gensrv_py.py
 /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/_GetStatus.py: /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code from SRV robot_pose_ekf/GetStatus"
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/gensrv_py.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv
 
 /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/__init__.py: /opt/ros/noetic/lib/genpy/genmsg_py.py
 /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/__init__.py: /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/_GetStatus.py
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Python srv __init__.py for robot_pose_ekf"
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv --initpy
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/genpy/cmake/../../../lib/genpy/genmsg_py.py -o /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv --initpy
 
 robot_pose_ekf_generate_messages_py: robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_py
 robot_pose_ekf_generate_messages_py: /home/er/myagv_ros/devel/lib/python3/dist-packages/robot_pose_ekf/srv/_GetStatus.py

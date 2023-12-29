@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include robot_pose_ekf/CMakeFiles/download_data_ekf_test2_indexed.bag.dir/progress.make
 
 robot_pose_ekf/CMakeFiles/download_data_ekf_test2_indexed.bag:
-	cd /home/er/myagv_ros/build/robot_pose_ekf && /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/robot_pose_ekf/ekf_test2_indexed.bag /home/er/myagv_ros/devel/share/robot_pose_ekf/test/ekf_test2_indexed.bag 71addef0ed900e05b301e0b4fdca99e2 --ignore-error
+	cd /home/er/myagv_ros/build/robot_pose_ekf && /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/catkin/cmake/test/download_checkmd5.py http://download.ros.org/data/robot_pose_ekf/ekf_test2_indexed.bag /home/er/myagv_ros/devel/share/robot_pose_ekf/test/ekf_test2_indexed.bag 71addef0ed900e05b301e0b4fdca99e2 --ignore-error
 
 download_data_ekf_test2_indexed.bag: robot_pose_ekf/CMakeFiles/download_data_ekf_test2_indexed.bag
 download_data_ekf_test2_indexed.bag: robot_pose_ekf/CMakeFiles/download_data_ekf_test2_indexed.bag.dir/build.make

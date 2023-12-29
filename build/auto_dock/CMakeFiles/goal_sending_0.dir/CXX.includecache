@@ -899,6 +899,8 @@ vector
 -
 map
 -
+memory
+-
 boost/array.hpp
 -
 boost/call_traits.hpp

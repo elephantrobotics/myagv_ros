@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberRGBD.cpp" "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBD.cpp.o"
   "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberRGBDX.cpp" "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberRGBDX.cpp.o"
   "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberScan.cpp" "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberScan.cpp.o"
+  "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberSensorData.cpp" "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberSensorData.cpp.o"
   "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_sync/src/impl/CommonDataSubscriberStereo.cpp" "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_sync/CMakeFiles/rtabmap_sync.dir/src/impl/CommonDataSubscriberStereo.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -37,9 +38,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/home/er/myagv_ros/devel/include"
   "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_conversions/include"
   "/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
-  "/home/er/myagv_ros/devel/include/rtabmap-0.21"
   "/opt/ros/noetic/include"
   "/usr/include/opencv4"
+  "/usr/local/include/rtabmap-0.21"
   "/usr/include/pcl-1.10"
   "/usr/include/eigen3"
   "/usr/include/ni"

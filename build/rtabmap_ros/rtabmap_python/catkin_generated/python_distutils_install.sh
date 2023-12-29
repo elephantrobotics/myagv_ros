@@ -24,7 +24,7 @@ echo_and_run mkdir -p "$DESTDIR/home/er/myagv_ros/install/lib/python3/dist-packa
 echo_and_run /usr/bin/env \
     PYTHONPATH="/home/er/myagv_ros/install/lib/python3/dist-packages:/home/er/myagv_ros/build/lib/python3/dist-packages:$PYTHONPATH" \
     CATKIN_BINARY_DIR="/home/er/myagv_ros/build" \
-    "/usr/bin/python3" \
+    "/home/er/.pyenv/shims/python3" \
     "/home/er/myagv_ros/src/rtabmap_ros/rtabmap_python/setup.py" \
     egg_info --egg-base /home/er/myagv_ros/build/rtabmap_ros/rtabmap_python \
     build --build-base "/home/er/myagv_ros/build/rtabmap_ros/rtabmap_python" \

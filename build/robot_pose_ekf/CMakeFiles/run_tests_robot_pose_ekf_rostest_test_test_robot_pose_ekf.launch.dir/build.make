@@ -54,7 +54,7 @@ CMAKE_BINARY_DIR = /home/er/myagv_ros/build
 include robot_pose_ekf/CMakeFiles/run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch.dir/progress.make
 
 robot_pose_ekf/CMakeFiles/run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch:
-	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/er/myagv_ros/build/test_results/robot_pose_ekf/rostest-test_test_robot_pose_ekf.xml "/usr/bin/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/er/myagv_ros/src/robot_pose_ekf --package=robot_pose_ekf --results-filename test_test_robot_pose_ekf.xml --results-base-dir \"/home/er/myagv_ros/build/test_results\" /home/er/myagv_ros/src/robot_pose_ekf/test/test_robot_pose_ekf.launch "
+	cd /home/er/myagv_ros/build/robot_pose_ekf && ../catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/catkin/cmake/test/run_tests.py /home/er/myagv_ros/build/test_results/robot_pose_ekf/rostest-test_test_robot_pose_ekf.xml "/home/er/.pyenv/shims/python3 /opt/ros/noetic/share/rostest/cmake/../../../bin/rostest --pkgdir=/home/er/myagv_ros/src/robot_pose_ekf --package=robot_pose_ekf --results-filename test_test_robot_pose_ekf.xml --results-base-dir \"/home/er/myagv_ros/build/test_results\" /home/er/myagv_ros/src/robot_pose_ekf/test/test_robot_pose_ekf.launch "
 
 run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch: robot_pose_ekf/CMakeFiles/run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch
 run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch: robot_pose_ekf/CMakeFiles/run_tests_robot_pose_ekf_rostest_test_test_robot_pose_ekf.launch.dir/build.make

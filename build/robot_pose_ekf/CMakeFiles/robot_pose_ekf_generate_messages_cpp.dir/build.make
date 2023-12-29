@@ -61,7 +61,7 @@ robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp: /home/er/myagv_r
 /home/er/myagv_ros/devel/include/robot_pose_ekf/GetStatus.h: /opt/ros/noetic/share/gencpp/msg.h.template
 /home/er/myagv_ros/devel/include/robot_pose_ekf/GetStatus.h: /opt/ros/noetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/er/myagv_ros/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code from robot_pose_ekf/GetStatus.srv"
-	cd /home/er/myagv_ros/src/robot_pose_ekf && /home/er/myagv_ros/build/catkin_generated/env_cached.sh /usr/bin/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/include/robot_pose_ekf -e /opt/ros/noetic/share/gencpp/cmake/..
+	cd /home/er/myagv_ros/src/robot_pose_ekf && /home/er/myagv_ros/build/catkin_generated/env_cached.sh /home/er/.pyenv/shims/python3 /opt/ros/noetic/share/gencpp/cmake/../../../lib/gencpp/gen_cpp.py /home/er/myagv_ros/src/robot_pose_ekf/srv/GetStatus.srv -Istd_msgs:/opt/ros/noetic/share/std_msgs/cmake/../msg -p robot_pose_ekf -o /home/er/myagv_ros/devel/include/robot_pose_ekf -e /opt/ros/noetic/share/gencpp/cmake/..
 
 robot_pose_ekf_generate_messages_cpp: robot_pose_ekf/CMakeFiles/robot_pose_ekf_generate_messages_cpp
 robot_pose_ekf_generate_messages_cpp: /home/er/myagv_ros/devel/include/robot_pose_ekf/GetStatus.h
