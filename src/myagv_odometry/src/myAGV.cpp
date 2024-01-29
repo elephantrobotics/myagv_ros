@@ -70,27 +70,8 @@ bool MyAGV::init()
     pub_imu_raw =  n.advertise<sensor_msgs::Imu>("imu_raw_data", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
     pub_v = n.advertise<std_msgs::Int8>("Voltage", 1000);
-    start();
     restore(); //first restore,abort current err,don't restore
     return true;
-}
-
-void MyAGV::start()
-{    
-    // Pause for 100 milliseconds
-    std::this_thread::sleep_for(std::chrono::milliseconds(100));
-    // ESP32 starts transmitting serial port information
-    unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x06, 0x01, 0x08};
-    
-    std::cout << "Sending data: ";
-    for (int i = 0; i < 6; ++i) 
-    {
-        std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(cmd[i]) << " ";
-    }
-    std::cout << std::dec << std::endl;
-    // Write command data to the serial port
-    boost::asio::write(sp, boost::asio::buffer(cmd));
-    std::this_thread::sleep_for(std::chrono::milliseconds(50)); 
 }
 
 void MyAGV::restore()
