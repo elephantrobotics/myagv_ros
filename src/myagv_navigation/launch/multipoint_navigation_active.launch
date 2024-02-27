@@ -32,7 +32,9 @@
     <rosparam file="$(find myagv_navigation)/param/planner.yaml" command="load" />
     
     <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
-
+    <param name="planner_frequency" value="1.0"/>
+    <param name="planner_patience"  value="2.0"/>
+    
     <param name="base_local_planner" value="base_local_planner/TrajectoryPlannerROS"/>
     <param name="controller_frequency" value="5.0"/> 
     <param name="controller_patience" value="3.0"/>
