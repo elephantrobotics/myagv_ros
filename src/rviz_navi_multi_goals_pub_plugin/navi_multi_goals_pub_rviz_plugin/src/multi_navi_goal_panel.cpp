@@ -19,7 +19,6 @@
 
 namespace navi_multi_goals_pub_rviz_plugin {
 
-
     MultiNaviGoalsPanel::MultiNaviGoalsPanel(QWidget *parent)
             : rviz::Panel(parent), nh_(), maxNumGoal_(1) {
 
@@ -39,14 +38,14 @@ namespace navi_multi_goals_pub_rviz_plugin {
         QVBoxLayout *root_layout = new QVBoxLayout;
         // create a panel about "maxNumGoal"
         QHBoxLayout *maxNumGoal_layout = new QHBoxLayout;
-        maxNumGoal_layout->addWidget(new QLabel("目标最大数量"));
+        maxNumGoal_layout->addWidget(new QLabel("Maximum number of targets"));
         output_maxNumGoal_editor_ = new QLineEdit;
         maxNumGoal_layout->addWidget(output_maxNumGoal_editor_);
-        output_maxNumGoal_button_ = new QPushButton("确定");
+        output_maxNumGoal_button_ = new QPushButton("Define");
         maxNumGoal_layout->addWidget(output_maxNumGoal_button_);
         root_layout->addLayout(maxNumGoal_layout);
 
-        cycle_checkbox_ = new QCheckBox("循环");
+        cycle_checkbox_ = new QCheckBox("Loop");
         root_layout->addWidget(cycle_checkbox_);
         // creat a QTable to contain the poseArray
         poseArray_table_ = new QTableWidget;
@@ -54,11 +53,11 @@ namespace navi_multi_goals_pub_rviz_plugin {
         root_layout->addWidget(poseArray_table_);
         //creat a manipulate layout
         QHBoxLayout *manipulate_layout = new QHBoxLayout;
-        output_reset_button_ = new QPushButton("重置");
+        output_reset_button_ = new QPushButton("Reset");
         manipulate_layout->addWidget(output_reset_button_);
-        output_cancel_button_ = new QPushButton("取消");
+        output_cancel_button_ = new QPushButton("Cancel");
         manipulate_layout->addWidget(output_cancel_button_);
-        output_startNavi_button_ = new QPushButton("开始导航!");
+        output_startNavi_button_ = new QPushButton("Start Navigation");
         manipulate_layout->addWidget(output_startNavi_button_);
         root_layout->addLayout(manipulate_layout);
 
@@ -77,16 +76,14 @@ namespace navi_multi_goals_pub_rviz_plugin {
         connect(output_startNavi_button_, SIGNAL(clicked()), this, SLOT(startNavi()));
         connect(cycle_checkbox_, SIGNAL(clicked(bool)), this, SLOT(checkCycle()));
         connect(output_timer, SIGNAL(timeout()), this, SLOT(startSpin()));
-
-
     }
 
-// 更新maxNumGoal命名
+    // 更新maxNumGoal命名
     void MultiNaviGoalsPanel::updateMaxNumGoal() {
         setMaxNumGoal(output_maxNumGoal_editor_->text());
     }
 
-// set up the maximum number of goals
+    // set up the maximum number of goals
     void MultiNaviGoalsPanel::setMaxNumGoal(const QString &new_maxNumGoal) {
         // 检查maxNumGoal是否发生改变.
         if (new_maxNumGoal != output_maxNumGoal_) {
@@ -97,7 +94,7 @@ namespace navi_multi_goals_pub_rviz_plugin {
                 nh_.setParam("maxNumGoal_", 1);
                 maxNumGoal_ = 1;
             } else {
-//                velocity_publisher_ = nh_.advertise<geometry_msgs::Twist>(output_maxNumGoal_.toStdString(), 1);
+                //velocity_publisher_ = nh_.advertise<geometry_msgs::Twist>(output_maxNumGoal_.toStdString(), 1);
                 nh_.setParam("maxNumGoal_", output_maxNumGoal_.toInt());
                 maxNumGoal_ = output_maxNumGoal_.toInt();
             }
@@ -134,7 +131,7 @@ namespace navi_multi_goals_pub_rviz_plugin {
     //update the table of pose
     void MultiNaviGoalsPanel::updatePoseTable() {
         poseArray_table_->setRowCount(maxNumGoal_);
-//        pose_array_.poses.resize(maxNumGoal_);
+        // pose_array_.poses.resize(maxNumGoal_);
         QStringList pose_header;
         pose_header << "x" << "y" << "yaw";
         poseArray_table_->setHorizontalHeaderLabels(pose_header);
@@ -300,7 +297,7 @@ namespace navi_multi_goals_pub_rviz_plugin {
         return done;
     }
 
-// spin for subscribing
+    // spin for subscribing
     void MultiNaviGoalsPanel::startSpin() {
         if (ros::ok()) {
             ros::spinOnce();
