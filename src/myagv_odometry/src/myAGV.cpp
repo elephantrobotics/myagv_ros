@@ -9,7 +9,7 @@
 const unsigned char header[2] = { 0xfe, 0xfe };
 
 boost::asio::io_service iosev;
-boost::asio::serial_port sp(iosev, "/dev/ttyS0");
+boost::asio::serial_port sp(iosev, "/dev/ttyAMA2");
 
 boost::array<double, 36> odom_pose_covariance = {
     {1e-9, 0, 0, 0, 0, 0,
