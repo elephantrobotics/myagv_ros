@@ -1,2 +1,0 @@
-
--DCATKIN_DEVEL_PREFIX=/home/ubuntu/myagv_ros/src/navstack_pub/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/myagv_ros/src/navstack_pub/install -G Unix Makefiles

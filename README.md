@@ -1,27 +1,89 @@
 # myagv_ros
 myAGV ROS package
 
-Package Download and Install
+## Package Download and Install
 
 ```bash
-$ git clone https://github.com/elephantrobotics/myagv_ros.git
+$ git clone -b myagv_ros_2023JN https://github.com/elephantrobotics/myagv_ros.git myagv_ros/src
 $ cd ~/myagv_ros
-$ source ./devel/setup.bash
+$ catkin_make
+$ source devel/setup.bash
 ```
 
-# myAGV_testTool
+## LIDAR
 
-**Before using the test tool, you need to install pyqt5**
+First, check if the LiDAR is powered on. If it is not turned on, the terminal needs to power on the LiDAR through a script file. If the LiDAR is powered on, you can skip the step of powering on the LiDAR.
 
-```bash
-$ sudo apt-get install python3-pyqt5
-$ sudo apt-get install qt5-default qttools5-dev-tools
+```
+cd myagv_ros/src/myagv_odometry/scripts
+./start_ydlidar.sh
 ```
 
-**Download and use it**
+## gmapping
 
-```bash
-$ git clone https://github.com/elephantrobotics/myagv_ros.git
-$ cd ~/myagv_ros/myAGV_testTool
-$ python3 main.py
 ```
+roslaunch myagv_odometry myagv_active.launch
+```
+
+```
+roslaunch myagv_navigation myagv_slam_laser.launch
+```
+
+```
+roslaunch myagv_teleop myagv_teleop.launch
+```
+
+```
+cd ~/myagv_ros/src/myagv_navigation/map
+rosrun map_server map_saver
+```
+
+## navigation
+
+```
+roslaunch myagv_odometry myagv_active.launch
+```
+
+```
+roslaunch myagv_navigation navigation_active.launch
+```
+
+## rtabmap mapping
+
+Prerequisite: Only the JN version is compatible with this algorithm, and you need to purchase an additional astra pro2 depth camera
+
+```
+cd myagv_ros/src/myagv_odometry/scripts
+./start_ydlidar.sh
+```
+
+```
+roslaunch myagv_odometry myagv_active.launch
+```
+
+```
+roslaunch orbbec_camera astra_pro2.launch
+```
+
+```
+roslaunch 3d_navigation_active.launch
+```
+
+```
+roslaunch myagv_teleop myagv_teleop.launch
+```
+
+## rtabmap mapping and navigation
+
+```
+roslaunch myagv_odometry myagv_active.launch
+```
+
+```
+roslaunch orbbec_camera astra_pro2.launch
+```
+
+```
+roslaunch 3d_navigation_active.launch
+```
+

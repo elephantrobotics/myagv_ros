@@ -1,1 +1,0 @@
-/usr/bin/aarch64-linux-gnu-g++ -fPIC -shared -Wl,-soname,libgtest.so -o libgtest.so CMakeFiles/gtest.dir/src/gtest-all.cc.o   -L/home/ubuntu/myagv_ros/src/navstack_pub/build/gtest/googlemock/gtest/src  -Wl,-rpath,/home/ubuntu/myagv_ros/src/navstack_pub/build/gtest/googlemock/gtest/src -lpthread 
