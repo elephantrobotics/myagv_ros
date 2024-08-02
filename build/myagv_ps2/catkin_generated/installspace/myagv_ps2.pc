@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/myagv_ros/install
-
-Name: myagv_ps2
-Description: Description of myagv_ps2
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/myagv_ros/devel
-
-Name: myagv_teleop
-Description: Description of myagv_teleop
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

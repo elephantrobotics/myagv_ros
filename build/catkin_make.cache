@@ -1,2 +1,0 @@
-auto_dock:charging:myagv_navigation:myagv_odometry:myagv_ps2:myagv_teleop:myagv_urdf:robot_pose_ekf:simple_navigation_goals:ydlidar_ros_driver
--DCATKIN_DEVEL_PREFIX=/home/ubuntu/myagv_ros/devel -DCMAKE_INSTALL_PREFIX=/home/ubuntu/myagv_ros/install -G Unix Makefiles

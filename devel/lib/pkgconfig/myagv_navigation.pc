@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/myagv_ros/devel
-
-Name: myagv_navigation
-Description: Description of myagv_navigation
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
