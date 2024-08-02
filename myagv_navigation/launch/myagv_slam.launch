@@ -1,8 +1,0 @@
-<launch>
-
-
-
-    <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/gmapping.rviz"/>
-
-</launch>
-
