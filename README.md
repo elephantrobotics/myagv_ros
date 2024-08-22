@@ -46,7 +46,7 @@ roslaunch myagv_odometry myagv_active.launch
 ```
 
 ```
-roslaunch myagv_navigation navigation_active.launch
+roslaunch myagv_navigation multipoint_navigation_active.launch
 ```
 
 ## rtabmap mapping
@@ -67,7 +67,7 @@ roslaunch orbbec_camera astra_pro2.launch
 ```
 
 ```
-roslaunch 3d_navigation_active.launch
+roslaunch myagv_navigation rtabmap_mapping.launch
 ```
 
 ```
@@ -85,7 +85,7 @@ roslaunch orbbec_camera astra_pro2.launch
 ```
 
 ```
-roslaunch 3d_navigation_active.launch
+roslaunch myagv_navigation 3d_navigation_active.launch
 ```
 ![navigation_rtabmap2](https://github.com/user-attachments/assets/f2c57196-4441-4b76-935d-d34b7a6c2196)
 
