@@ -116,7 +116,7 @@ bool MyAGV::readSpeed()
     int i, length = 0, count = 0;
     unsigned char checkSum;
     unsigned char buf_header[1] = {0};
-    unsigned char buf[27] = {0};
+    unsigned char buf[39] = {0};
 
     size_t ret;
     boost::system::error_code er2;
@@ -156,18 +156,18 @@ bool MyAGV::readSpeed()
         restoreRun();
         return false;
     }
-    if (ret != 27) {
+    if (ret != 39) {
         ROS_ERROR("Read error %zu",ret);
         return false;
     }
 
     int index = 0;
     int check = 0;//ilter time older than imu message buffer
-    for (int i = 0; i < 26; ++i)
+    for (int i = 0; i < 38; ++i)
         check += buf[index + i];
-    if (check % 256 != buf[index + 26])
+    if (check % 256 != buf[index + 38])
 	{
-		ROS_ERROR("error 3! %d -- %d ",check,buf[index+26]);	
+		ROS_ERROR("error 3! %d -- %d ",check,buf[index+38]);	
     	return false;
 	}
 
@@ -501,6 +501,7 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
     } 
     lastTime = currentTime;
 }
+
 
 
 
