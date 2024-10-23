@@ -5,7 +5,6 @@ import time
 import cv2
 import cv2.aruco as aruco
 
-
 from std_msgs.msg import Int8
 from geometry_msgs.msg import Twist
 
@@ -14,10 +13,9 @@ cam_id = 0
 
 cam = cv2.VideoCapture(cam_id)
 
-calibrationFile = "calibrationFileName.xml"
-calibrationParams = cv2.FileStorage(calibrationFile, cv2.FILE_STORAGE_READ)
-dist_coeffs = calibrationParams.getNode("distCoeffs").mat()
-
+dist_coeffs = np.array(([[3.41360787e-01, -2.52114260e+00, -1.28012469e-03,  6.70503562e-03,
+             2.57018000e+00]]))
+print(dist_coeffs)
 
 font = cv2.FONT_HERSHEY_SIMPLEX  # font for displaying text (below)
 ret, frame = cam.read()
@@ -31,14 +29,13 @@ center = (size[1] / 2, size[0] / 2)
 # Camera internals
 camera_matrix = np.array([[focal_length, 0, center[0]], [0, focal_length, center[1]],[0, 0, 1]], dtype="double")
 
-
+print(camera_matrix,dist_coeffs)
 
 cv2.namedWindow("show",0)
 
 # importing aruco dictionary
-aruco_dict = cv2.aruco.getPredefinedDictionary(cv2.aruco.DICT_6X6_250)
+
 marker_length = 0.032   # -- Here, the measurement unit is metre.0.055 is for orgianl big
-aruco_params = cv2.aruco.DetectorParameters()
 
 # use to get the attitude in terms of euler 321
 R_flip = np.zeros((3, 3), dtype=np.float32)
@@ -196,8 +193,10 @@ def getArucoCode(display_mode = True ):
         # read frame once
     ret, frame = cam.read()
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    aruco_dict = aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
-    parameters = aruco.DetectorParameters()
+    aruco_dict = cv2.aruco.getPredefinedDictionary(aruco.DICT_6X6_250)
+    
+    parameters = cv2.aruco.DetectorParameters()
+    
 
     corners, ids, rejectedImgPoints = aruco.detectMarkers(
         gray, aruco_dict, parameters=parameters)

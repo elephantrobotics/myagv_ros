@@ -17,11 +17,6 @@ aruco_detector_res = None
 ids = None
 _id_get = 0
 
-def main():
-    try:
-        print ("The main process would be " + str(main_process(first_dir = -1)) )
-    except rospy.exceptions.ROSException as e:
-        print("Node has already been initialized, do nothing")
 
 rospy.init_node('qcode_detect', anonymous=True)
 rate = rospy.Rate(30)
@@ -38,14 +33,13 @@ def movelittle():
 def pub_vel(x, y , theta):
     twist = Twist()
 
-    twist.linear.x = x;
-    twist.linear.y = y;
+    twist.linear.x = x
+    twist.linear.y = y
     twist.linear.z = 0
-    twist.angular.x = 0;
-    twist.angular.y = 0;
+    twist.angular.x = 0
+    twist.angular.y = 0
     twist.angular.z = theta
     pub.publish(twist)
-
 
 def stop():
     pub_vel(0,0,0)
@@ -148,10 +142,6 @@ def faceToQr(_st, _detect_res):
         time.sleep(1)
         return _st + 1
 
-
-
-
-
 def goPosition(cmd = 0):
     state = 0
     protect_sec = 6
@@ -177,7 +167,6 @@ def goPosition(cmd = 0):
                 break
                 cmd = 10 # stop
             
-
         if aruco_detector_res is not None:
             if len(aruco_detector_res) == 1:
                 pass
@@ -271,10 +260,8 @@ def goPosition(cmd = 0):
             else:
                 stop()
                 break
-
             pass
 
-        
         else:
             pub_vel(0,0,0)
 
@@ -320,10 +307,10 @@ def stage_quick_rot(fir_dir = 1, first_rot_times = 3, second_rot_times = 6):
 		print ("Nothing find in this round")		
 		return 0
 
-	if rot_dir_times(fir_dir,first_rot_times) is 1:
+	if rot_dir_times(fir_dir,first_rot_times) == 1:
 		print("counter clock found")
 		return 1
-	if rot_dir_times(-fir_dir,second_rot_times) is 1:
+	if rot_dir_times(-fir_dir,second_rot_times) == 1:
 		print("clock found")
 		return 1
 	print ("nothing found")
@@ -332,8 +319,8 @@ def stage_quick_rot(fir_dir = 1, first_rot_times = 3, second_rot_times = 6):
 
 def stage_slow_rot(slow_rot_times = 6):
     _dir = 1
-    sp = 0.8
-    time_gap = 1
+    sp = 0.5
+    time_gap = 0.40
 
     #pre read some data 
     rot_once(1,1,0)
@@ -341,7 +328,7 @@ def stage_slow_rot(slow_rot_times = 6):
     for i in range(slow_rot_times):
         res = aruco_detector.process_qr_data()
 
-        if res is not -1:
+        if res != -1:
             _perc = res[2]
 
             if _perc < 0.4:
@@ -352,12 +339,11 @@ def stage_slow_rot(slow_rot_times = 6):
                 print ("slow move sucess ")
                 stop()
                 return 1
-            time_use = 0.4
 
-            rot_once(_dir, time_use, sp ,notIgnoreQR=False)
+            rot_once(_dir, time_gap, sp ,notIgnoreQR=False)
             
         else:
-            if rot_once(1,1,0) is not 1:
+            if rot_once(1,1,0) != 1:
                 print ("miss the target")
                 return -1           
             
@@ -382,7 +368,7 @@ def front_once(time_gap = 0.5, sp = 0.32):  #20 cm for 0.32sp with 0.5sec
 
 def stages_rot(_dir = 1, _first_dir_times = 3, _second_dir_times = 6):
     if stage_quick_rot(_dir, _first_dir_times, _second_dir_times):
-        if stage_slow_rot(6):
+        if stage_slow_rot(9):
             return 1
     return 0
 
@@ -397,7 +383,7 @@ def move_to_center():
     
     res = aruco_detector.process_qr_data()
 
-    if res is not -1:
+    if res != -1:
         l, angle = res[0] , res[1]
         print ("Step 2 :  found angle is " + str(angle))
         if angle > center_range :
@@ -409,7 +395,7 @@ def move_to_center():
         
         #rotate and go forward
         rot_once(_dir, time_gap_input = 1, sp = 1, notIgnoreQR = False)
-        front_once(time_gap= l/100 * l_time_ratio , sp = 0.29)
+        front_once(time_gap= l/100 * l_time_ratio , sp = 0.5)
         
         #rotate back
         rot_once(-_dir, time_gap_input = 0.8, sp = 1, notIgnoreQR = False)
@@ -428,51 +414,53 @@ def main_process(first_dir = 1):
 
     print ("Step 1")
     # step 1: rotation and point
-    if stages_rot(first_dir,5,10) == 0:
+    if stages_rot(first_dir,2,5) == 0:
         print ("initial found failed")        
         return 0
 
-    print ("Step 2")
+    # print ("Step 2")
     # step 2: move to center
-    if move_to_center() == 0:  
-        print ("Target not found") 
-        return 0
+    # if move_to_center() == 0:  
+    #    print ("Target not found") 
+    #    return 0
 
-    print ("Step 3")   
-    # step 3: 
-    max_towards_times = 3
-    min_towards_range = 20
-
-    rot_once(1, 1 ,0,0)
-
-    for i in range(max_towards_times):
-        res = aruco_detector.process_qr_data()
-        if res is not -1:
-            l = res[0]
-            ag = res[1]
+    print ("Step 2")   
+    # step 2: 
+    while True:
+        res = aruco_detector.process_qr_data() #获取aruco二维码信息
+        if res != -1:
+            l = res[0] # 摄像头到二维码的距离
+            ag = res[1]# 摄像头到二维码的角度
             print ("l is " + str(l) + " angle is " + str(ag))
-            if l > min_towards_range:
 
-                if stage_slow_rot(6):
-                    front_once()
+            if 30 < l:
+                if stage_slow_rot(6):   #如果对齐二维码
+                    front_once(2.5,0.01)#前进时间长
+                    continue
                 else:
-                    stages_rot(1,2,4)
+                    stages_rot(1,2,4)   #没对齐二维码旋转对齐   
 
-                print ("Finish a round: " + str(i+1))
-            else:
+            elif 10 < l < 30 :       
+                if stage_slow_rot(6):   #如果对齐二维码
+                    front_once(1.9,0.01)  #前进
+                    continue
+                else:
+                    stages_rot(1,2,4)   #没对齐二维码旋转对齐
+
+            elif l < 10:
                 #one time up
-                front_once(2, sp=0.2)
-                print ("Finsih doing")
-                return 1
-        else:
-            if i < max_towards_times:
+                front_once(0.21, sp=0.01)#前进
+                print ("Finsih doing") 
                 continue
-            else:
-                print ("Didn't see objects")
-                return 0
+                
+        else:#获取不到aruco二维码信息就退出循环
+            print("Can't detect aruco.")
+            break
 
     rot_once(1,1,0,0)
 
-
 if __name__=='__main__':
-    main()
+    try:
+        print ("The main process would be " + str(main_process(first_dir = -1)) )
+    except rospy.exceptions.ROSException as e:
+        print("Node has already been initialized, do nothing")
