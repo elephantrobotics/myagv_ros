@@ -25,7 +25,6 @@ from actionlib_msgs.msg import GoalID
 from geometry_msgs.msg import Point
 from geometry_msgs.msg import Twist
 
-
 global socket_res
 socket_res = None
 
@@ -47,10 +46,6 @@ angle_table = {
 
 # 抓取点上方
 pick_top = [
-    # [-117.68, 13.09, -7.82, 2.46, 86.3, -30.14],       #P1点
-    # [-73.91, 4.48, 8.96, -0.43, 72.24, 13.88],       #P2点
-    # [-106.96, 33.39, -34.8, 3.86, 79.18, -15.38],     #P3点
-    # [-74.61, 35.77, -39.63, -1.49, 86.04, 14.85]         #P4点
     [-116.54, 11.77, -11.07, -0.43, 90.61, -27.07],
     [-76.64, 14.15, -13.53, -2.1, 95.0, 13.09],
     [-110.08, 34.45, -22.32, -2.46, 67.47, -13.53],
@@ -59,9 +54,6 @@ pick_top = [
 
 # 放置点
 place_coords = [
-    # [51.41, 20.91, -21.18, 0.26, 47.01, 0],
-    # [82.17, 9.49, -10.63, -1.31, 62.87, 0],
-    # [112.23, 17.92, -15.38, -1.49, 56.25, 0]
     [69.52, 22.5, -44.56, 0.96, 73.91, -4.13],
     [100.72, 25.66, -44.64, -6.59, 74.61, -2.98],
     [131.13, 36.73, -51.32, -13.71, 62.22, -4.74]
@@ -189,7 +181,7 @@ def pick():
         mc.send_coords(current_coords,50,mode=1) #z轴下降
 
         time.sleep(2)
-        mc.set_gripper_value(10, 30) #闭合夹爪进行抓取
+        mc.set_gripper_value(5, 30) #闭合夹爪进行抓取
         time.sleep(1)
 
         current_coords[2]+=60
@@ -242,15 +234,9 @@ if __name__ == '__main__':
    
     goal_1 = [(-1.8894099950790405,0.6915320158004761,-0.7476189288897872,0.6641279524050221)]
     goal_2 = [(-1.1645034551620483,1.5066015243530273,-0.03527231359038596,0.9993777383422053)]
+    goal_3 = [(-1.7634624004364014,0.6029707193374634,-0.7010442389772473,0.7131177847991257)]
 
     map_navigation = MapNavigation()
-    #server_ip = '192.168.1.101'
-    #server_port = 9005
-
-    # ip = '192.168.1.103'
-    # port = 9000
-    # 使用socket通信控制机械臂
-    #mc = MyCobotSocket(ip, port)
 
     plist = get_port_list()
     print(plist)
@@ -272,11 +258,13 @@ if __name__ == '__main__':
     server_socket.bind((HOST, PORT))
     server_socket.listen(3)
     server_socket.settimeout(None)
+
     # Register the Ctrl+C signal handler
     global running_flag 
     running_flag = True
     signal.signal(signal.SIGINT, signal_handler)
     print("Waiting for the client to connect")
+    
     result = server_socket.accept()
     conn = result[0] 
     address = result[1]
@@ -285,24 +273,43 @@ if __name__ == '__main__':
     # get stop res
     stop_thread = threading.Thread(target=get_stop_res)
     stop_thread.start()
+
+    nav_times = 0
   
     while running_flag:
         #loop
         if socket_res == 'go_to_feed':
-            for goal in goal_1:
-                x_goal, y_goal, orientation_z, orientation_w = goal
-                flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
-                if flag_feed_goalReached:
-                    time.sleep(0.1)
-                    print("start agv_aruco")
-                    os.system('python agv_aruco.py')
-                    time.sleep(1)
-                    mc.send_angles([85.42, 11.68, -25.46, 1.93, 86.13, 0], 50)         
-                    socket_connect('arrive_feed')
-                    map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
-                    socket_res = None
-                else:
-                    print("failed")
+            if nav_times < 1:
+                nav_times +=1
+                for goal in goal_1:
+                    x_goal, y_goal, orientation_z, orientation_w = goal
+                    flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
+                    if flag_feed_goalReached:
+                        time.sleep(0.1)
+                        print("start agv_aruco")
+                        os.system('python agv_aruco.py')
+                        time.sleep(1)
+                        mc.send_angles([85.42, 11.68, -25.46, 1.93, 86.13, 0], 50)         
+                        socket_connect('arrive_feed')
+                        map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
+                        socket_res = None
+                    else:
+                        print("failed")
+            else :
+                for goal in goal_3:
+                    x_goal, y_goal, orientation_z, orientation_w = goal
+                    flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
+                    if flag_feed_goalReached:
+                        time.sleep(0.1)
+                        print("start agv_aruco")
+                        os.system('python agv_aruco.py')
+                        time.sleep(1)
+                        mc.send_angles([85.42, 11.68, -25.46, 1.93, 86.13, 0], 50)         
+                        socket_connect('arrive_feed')
+                        map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
+                        socket_res = None
+                    else:
+                        print("failed")
         
         if socket_res == 'picking_finished':
             time.sleep(2)
@@ -340,22 +347,42 @@ if __name__ == '__main__':
             pub_vel(-0.1,0,0)
             time.sleep(2)
             pub_vel(0,0,-0.1)
+            time.sleep(3.5)
+            pub_vel(0.1,0,0)
             time.sleep(2)
             socket_res = 'go_to_feed'
 
         # single
         if socket_res == 'single_go_to_feed':
-            for goal in goal_1:
-                x_goal, y_goal, orientation_z, orientation_w = goal
-                flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
-                if flag_feed_goalReached:
-                    time.sleep(0.1)
-                    print("start agv_aruco")
-                    os.system('python agv_aruco.py')         
-                    map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
-                    socket_res = None
-                else:
-                    print("failed")
+            if nav_times < 1:
+                nav_times +=1
+                for goal in goal_1:
+                    x_goal, y_goal, orientation_z, orientation_w = goal
+                    flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
+                    if flag_feed_goalReached:
+                        time.sleep(0.1)
+                        print("start agv_aruco")
+                        os.system('python agv_aruco.py')
+                        time.sleep(1)
+                        mc.send_angles([85.42, 11.68, -25.46, 1.93, 86.13, 0], 50)           
+                        map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
+                        socket_res = None
+                    else:
+                        print("failed")
+            else:
+                for goal in goal_3:
+                    x_goal, y_goal, orientation_z, orientation_w = goal
+                    flag_feed_goalReached = map_navigation.navigate(x_goal, y_goal, orientation_z, orientation_w)
+                    if flag_feed_goalReached:
+                        time.sleep(0.1)
+                        print("start agv_aruco")
+                        os.system('python agv_aruco.py')
+                        time.sleep(1)
+                        mc.send_angles([85.42, 11.68, -25.46, 1.93, 86.13, 0], 50)         
+                        map_navigation.set_pose(-1.8611218929290771,0.028858069330453873,-0.6969873407167377,0.7170834309064812,0.06853892326654787)
+                        socket_res = None
+                    else:
+                        print("failed")
 
         if socket_res == 'single_picking_finished':
             time.sleep(2)
@@ -392,6 +419,8 @@ if __name__ == '__main__':
             pub_vel(-0.1,0,0)
             time.sleep(2)
             pub_vel(0,0,-0.1)
+            time.sleep(3.5)
+            pub_vel(0.1,0,0)
             time.sleep(2)
             pub_vel(0,0,0)
             socket_res = None
