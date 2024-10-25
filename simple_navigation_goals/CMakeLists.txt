@@ -161,14 +161,9 @@ include_directories(
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-  scripts/map_navigation.py
   scripts/agv_aruco.py
   scripts/aruco_detector.py
   scripts/agv_socket_server.py
-  scripts/pose_publisher.py
-  scripts/test_auto_charing.py
-  scripts/all.py
-  scripts/end.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
