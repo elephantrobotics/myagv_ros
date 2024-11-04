@@ -1,4 +1,5 @@
 <launch>
+
     <arg name="scan_topic" default="scan" />
 
     <node pkg="gmapping" type="slam_gmapping" name="gmapping" output="screen" clear_params="true">
@@ -37,4 +38,5 @@
         <param name="lasamplestep" value="0.005"/>
         <remap from="scan" to="$(arg scan_topic)"/>
     </node>
+
 </launch>

@@ -20,7 +20,6 @@
     <param name="initial_pose_a"            value="0"/>
   </node>      
 
-
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
 
     <rosparam file="$(find myagv_navigation)/param/costmap_common_params.yaml" command="load" ns="global_costmap" />
@@ -41,6 +40,5 @@
   </node>
 
   <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/teb.rviz"/>
-
 
 </launch>
