@@ -4,11 +4,11 @@
 #include <time.h>
 
 #include "myagv_odometry/myAGV.h"
-#include "std_msgs/Int8.h"
 
 const unsigned char header[2] = { 0xfe, 0xfe };
 
 boost::asio::io_service iosev;
+
 boost::asio::serial_port sp(iosev, "/dev/ttyAMA2");
 
 boost::array<double, 36> odom_pose_covariance = {
@@ -25,16 +25,6 @@ boost::array<double, 36> odom_twist_covariance = {
     0, 0, 0, 1e6, 0, 0,
     0, 0, 0, 0, 1e6, 0,
     0, 0, 0, 0, 0, 1e-9} };
-
-void send()
-{
-    ;
-}
-
-void receive()
-{
-    ;
-}
 
 MyAGV::MyAGV()
 {
@@ -69,7 +59,7 @@ bool MyAGV::init()
     pub_imu =  n.advertise<sensor_msgs::Imu>("imu_data", 20);
     pub_imu_raw =  n.advertise<sensor_msgs::Imu>("imu_raw_data", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
-    pub_v = n.advertise<std_msgs::Int8>("Voltage", 1000);
+    pub_voltage = n.advertise<std_msgs::Float32>("Voltage", 10);
     restore(); //first restore,abort current err,don't restore
     return true;
 }
@@ -116,7 +106,7 @@ bool MyAGV::readSpeed()
     int i, length = 0, count = 0;
     unsigned char checkSum;
     unsigned char buf_header[1] = {0};
-    unsigned char buf[27] = {0};
+    unsigned char buf[TOTAL_RECEIVE_SIZE] = {0};
 
     size_t ret;
     boost::system::error_code er2;
@@ -156,18 +146,18 @@ bool MyAGV::readSpeed()
         restoreRun();
         return false;
     }
-    if (ret != 27) {
+    if (ret != TOTAL_RECEIVE_SIZE) {
         ROS_ERROR("Read error %zu",ret);
         return false;
     }
 
     int index = 0;
     int check = 0;//ilter time older than imu message buffer
-    for (int i = 0; i < 26; ++i)
+    for (int i = 0; i < (TOTAL_RECEIVE_SIZE-1); ++i)
         check += buf[index + i];
-    if (check % 256 != buf[index + 26])
+    if (check % 256 != buf[index + (TOTAL_RECEIVE_SIZE-1)])
 	{
-		ROS_ERROR("error 3! %d -- %d ",check,buf[index+26]);	
+		ROS_ERROR("Error:Serial port verification failed! check:%d -- %d ",check,buf[index+(TOTAL_RECEIVE_SIZE-1)]);	
     	return false;
 	}
 
@@ -183,6 +173,11 @@ bool MyAGV::readSpeed()
     imu_data.angular_velocity.y = ((buf[index + 11] + buf[index + 12] * 256 ) - 10000) * 0.1;
     imu_data.angular_velocity.z = ((buf[index + 13] + buf[index + 14] * 256 ) - 10000) * 0.1;
 
+    Battery_voltage = (float)buf[index + 16] / 10.0f;
+    Backup_Battery_voltage = (float)buf[index + 17] / 10.0f;
+
+    //ROS_INFO("Battery_voltage:%f",Battery_voltage);
+
     //std::cout << "Received message is: "  << "|" << vx << "," << vy << "," << vtheta << "|"
                                       //  << imu_data.linear_acceleration.x << "," << imu_data.linear_acceleration.y << "," << imu_data.linear_acceleration.z << "|"
                                    //  << imu_data.angular_velocity.x << "," << imu_data.angular_velocity.y << "," << imu_data.angular_velocity.z << std::endl;
@@ -193,59 +188,6 @@ bool MyAGV::readSpeed()
 
 void MyAGV::writeSpeed(double movex, double movey, double rot)
 {
-    if (movex == 10 && movey == 10 && rot == 10)
-    {
-        char buf[7] = {0xfe, 0xfe ,0x01 ,0x01 ,0x01 ,0x03};
-        boost::asio::write(sp, boost::asio::buffer(buf));
-        unsigned char buf_header[1] = {0};
-
-        size_t ret;
-        boost::system::error_code er2;
-        bool header_found = false;
-        time_t now_t = time(NULL);
-        while (true) {
-            
-            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-            
-            if (ret != 1) {
-                continue;
-            }
-            if (buf_header[0] != header[0]) {
-                continue;
-            }
-            bool header_2_found = false;
-            while (!header_2_found) {
-                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                if (ret != 1) {
-                    continue;
-                }
-                if (buf_header[0] != header[0]) {
-                    continue;
-                }
-                header_2_found = true;
-            }
-            header_found = true;
-            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-            if (buf_header[0] == 0x01)
-            {
-                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                if (buf_header[0] == 0x01)
-                {
-                    ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                    std_msgs::Int8 msg;
-                    msg.data = (int)buf_header[0] / 10;
-                    ROS_INFO("Voltage: %d", msg.data);
-                    pub_v.publish(msg);
-                    break;
-                }
-            }
-            if (time(NULL) - now_t > 3)
-            {
-                ROS_ERROR("Get Voltage timeout");
-                break;
-            }
-        }
-    }else{
     if (movex > 1.0) movex = 1.0;
     if (movex < -1.0) movex = -1.0;
     if (movey > 1.0) movey = 1.0;
@@ -265,8 +207,8 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     buf[3] = y_send;
     buf[4] = rot_send;
     buf[5] = check;
-    
-    boost::asio::write(sp, boost::asio::buffer(buf));}
+
+    boost::asio::write(sp, boost::asio::buffer(buf));
 }
 
 float MyAGV::invSqrt(float number)
@@ -373,6 +315,13 @@ void MyAGV::MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay
 	imu_data.orientation.x = q1;
 	imu_data.orientation.y = q2;
 	imu_data.orientation.z = q3;
+}
+
+void MyAGV::Publish_Voltage()
+{
+    std_msgs::Float32 voltage_msg;
+    voltage_msg.data = Battery_voltage;
+    pub_voltage.publish(voltage_msg);
 }
 
 void MyAGV::publisherImuSensor()
@@ -497,6 +446,8 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
             publisherOdom();
             publisherImuSensor();
             //publisherImuSensorRaw();
+            Publish_Voltage();
+
         }
     } 
     lastTime = currentTime;
