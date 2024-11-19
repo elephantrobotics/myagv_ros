@@ -4,7 +4,6 @@
 #include <time.h>
 
 #include "myagv_odometry/myAGV.h"
-#include "std_msgs/Int8.h"
 
 const unsigned char header[2] = { 0xfe, 0xfe };
 
@@ -25,16 +24,6 @@ boost::array<double, 36> odom_twist_covariance = {
     0, 0, 0, 1e6, 0, 0,
     0, 0, 0, 0, 1e6, 0,
     0, 0, 0, 0, 0, 1e-9} };
-
-void send()
-{
-    ;
-}
-
-void receive()
-{
-    ;
-}
 
 MyAGV::MyAGV()
 {
@@ -60,16 +49,16 @@ bool MyAGV::init()
     sp.set_option(boost::asio::serial_port::stop_bits(boost::asio::serial_port::stop_bits::one));
     sp.set_option(boost::asio::serial_port::character_size(8));
     Gyroscope_Xdata_Offset = 0.0f; 
-  	Gyroscope_Ydata_Offset = 0.0f; 
-  	Gyroscope_Zdata_Offset = 0.0f;
+    Gyroscope_Ydata_Offset = 0.0f; 
+    Gyroscope_Zdata_Offset = 0.0f;
     Offest_Count = 0;
     ros::Time::init();
- 
+
     lastTime = ros::Time::now();
     pub_imu =  n.advertise<sensor_msgs::Imu>("imu_data", 20);
     pub_imu_raw =  n.advertise<sensor_msgs::Imu>("imu_raw_data", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
-    pub_v = n.advertise<std_msgs::Int8>("Voltage", 1000);
+    pub_voltage = n.advertise<std_msgs::Float32>("Voltage", 10);
     restore(); //first restore,abort current err,don't restore
     return true;
 }
@@ -79,12 +68,12 @@ void MyAGV::restore()
     // Clear serial port buffer by reading at least 1 byte
     boost::asio::streambuf clear_buffer; 
     boost::asio::read(sp, clear_buffer, boost::asio::transfer_at_least(1));
-    
+
     // Pause for 100 milliseconds
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     // Motor Stall Recovery
     unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x00, 0x01, 0x02};
-    
+
     std::cout << "Sending data: ";
     for (int i = 0; i < 6; ++i) 
     {
@@ -116,7 +105,7 @@ bool MyAGV::readSpeed()
     int i, length = 0, count = 0;
     unsigned char checkSum;
     unsigned char buf_header[1] = {0};
-    unsigned char buf[27] = {0};
+    unsigned char buf[TOTAL_RECEIVE_SIZE] = {0};
 
     size_t ret;
     boost::system::error_code er2;
@@ -145,7 +134,7 @@ bool MyAGV::readSpeed()
     }
 
     ret = boost::asio::read(sp, boost::asio::buffer(buf), er2);  // ready break
-	if ((buf[0] + buf[1] + buf[2] + buf[3]) == buf[4]) {
+    if ((buf[0] + buf[1] + buf[2] + buf[3]) == buf[4]) {
         int wheel_num = 0;
         for (int i = 0; i < 4; ++i) {
             if (buf[i] == 1) {
@@ -156,20 +145,20 @@ bool MyAGV::readSpeed()
         restoreRun();
         return false;
     }
-    if (ret != 27) {
+    if (ret != TOTAL_RECEIVE_SIZE) {
         ROS_ERROR("Read error %zu",ret);
         return false;
     }
 
     int index = 0;
     int check = 0;//ilter time older than imu message buffer
-    for (int i = 0; i < 26; ++i)
+    for (int i = 0; i < (TOTAL_RECEIVE_SIZE-1); ++i)
         check += buf[index + i];
-    if (check % 256 != buf[index + 26])
-	{
-		ROS_ERROR("error 3! %d -- %d ",check,buf[index+26]);	
-    	return false;
-	}
+    if (check % 256 != buf[index + (TOTAL_RECEIVE_SIZE-1)])
+    {
+        ROS_ERROR("Error:Serial port verification failed! check:%d -- %d ",check,buf[index+(TOTAL_RECEIVE_SIZE-1)]);	
+        return false;
+    }
 
     vx = (static_cast<double>(buf[index]) - 128.0) * 0.01;
     vy = (static_cast<double>(buf[index + 1]) - 128.0) * 0.01;
@@ -183,9 +172,11 @@ bool MyAGV::readSpeed()
     imu_data.angular_velocity.y = ((buf[index + 11] + buf[index + 12] * 256 ) - 10000) * 0.1;
     imu_data.angular_velocity.z = ((buf[index + 13] + buf[index + 14] * 256 ) - 10000) * 0.1;
 
+    Battery_voltage = (float)buf[index + 16] / 10.0f;
+    Backup_Battery_voltage = (float)buf[index + 17] / 10.0f;
     //std::cout << "Received message is: "  << "|" << vx << "," << vy << "," << vtheta << "|"
-                                      //  << imu_data.linear_acceleration.x << "," << imu_data.linear_acceleration.y << "," << imu_data.linear_acceleration.z << "|"
-                                   //  << imu_data.angular_velocity.x << "," << imu_data.angular_velocity.y << "," << imu_data.angular_velocity.z << std::endl;
+                                        //  << imu_data.linear_acceleration.x << "," << imu_data.linear_acceleration.y << "," << imu_data.linear_acceleration.z << "|"
+                                    //  << imu_data.angular_velocity.x << "," << imu_data.angular_velocity.y << "," << imu_data.angular_velocity.z << std::endl;
     //std::cout << "current pos is: " << x << "," << y << "," << theta << std::endl;
 
     return true;
@@ -193,59 +184,6 @@ bool MyAGV::readSpeed()
 
 void MyAGV::writeSpeed(double movex, double movey, double rot)
 {
-    if (movex == 10 && movey == 10 && rot == 10)
-    {
-        char buf[7] = {0xfe, 0xfe ,0x01 ,0x01 ,0x01 ,0x03};
-        boost::asio::write(sp, boost::asio::buffer(buf));
-        unsigned char buf_header[1] = {0};
-
-        size_t ret;
-        boost::system::error_code er2;
-        bool header_found = false;
-        time_t now_t = time(NULL);
-        while (true) {
-            
-            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-            
-            if (ret != 1) {
-                continue;
-            }
-            if (buf_header[0] != header[0]) {
-                continue;
-            }
-            bool header_2_found = false;
-            while (!header_2_found) {
-                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                if (ret != 1) {
-                    continue;
-                }
-                if (buf_header[0] != header[0]) {
-                    continue;
-                }
-                header_2_found = true;
-            }
-            header_found = true;
-            ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-            if (buf_header[0] == 0x01)
-            {
-                ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                if (buf_header[0] == 0x01)
-                {
-                    ret = boost::asio::read(sp, boost::asio::buffer(buf_header), er2);
-                    std_msgs::Int8 msg;
-                    msg.data = (int)buf_header[0] / 10;
-                    ROS_INFO("Voltage: %d", msg.data);
-                    pub_v.publish(msg);
-                    break;
-                }
-            }
-            if (time(NULL) - now_t > 3)
-            {
-                ROS_ERROR("Get Voltage timeout");
-                break;
-            }
-        }
-    }else{
     if (movex > 1.0) movex = 1.0;
     if (movex < -1.0) movex = -1.0;
     if (movey > 1.0) movey = 1.0;
@@ -265,13 +203,13 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     buf[3] = y_send;
     buf[4] = rot_send;
     buf[5] = check;
-    
-    boost::asio::write(sp, boost::asio::buffer(buf));}
+
+    boost::asio::write(sp, boost::asio::buffer(buf));
 }
 
 float MyAGV::invSqrt(float number)
 {
-	volatile long i;
+    volatile long i;
     volatile float x, y;
     volatile const float f = 1.5F;
 
@@ -282,22 +220,22 @@ float MyAGV::invSqrt(float number)
     y = * (( float * ) &i);
     y = y * ( f - ( x * y * y ) );
 
-	return y;
+    return y;
 }
 
 void MyAGV::accelerometerOffset(float gx, float gy, float gz)
 {
-	Gyroscope_Xdata_Offset += gx; 
-  	Gyroscope_Ydata_Offset += gy; 
-  	Gyroscope_Zdata_Offset += gz;
+    Gyroscope_Xdata_Offset += gx; 
+    Gyroscope_Ydata_Offset += gy; 
+    Gyroscope_Zdata_Offset += gz;
     // std::cout << "data" << Gyroscope_Xdata_Offset << Gyroscope_Ydata_Offset << Gyroscope_Zdata_Offset << std::endl;
 
-  	if (Offest_Count == OFFSET_COUNT)
-  	{
-  		Gyroscope_Xdata_Offset = Gyroscope_Xdata_Offset / OFFSET_COUNT;
-  		Gyroscope_Ydata_Offset = Gyroscope_Ydata_Offset / OFFSET_COUNT;
-  		Gyroscope_Zdata_Offset = Gyroscope_Zdata_Offset / OFFSET_COUNT;
-  	}
+    if (Offest_Count == OFFSET_COUNT)
+    {
+        Gyroscope_Xdata_Offset = Gyroscope_Xdata_Offset / OFFSET_COUNT;
+        Gyroscope_Ydata_Offset = Gyroscope_Ydata_Offset / OFFSET_COUNT;
+        Gyroscope_Zdata_Offset = Gyroscope_Zdata_Offset / OFFSET_COUNT;
+    }
 }
 
 volatile float twoKp = twoKpDef;											
@@ -307,125 +245,130 @@ volatile float integralFBx = 0.0f,  integralFBy = 0.0f, integralFBz = 0.0f;
 
 void MyAGV::MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az)
 {
-	float recipNorm;
-	float halfvx, halfvy, halfvz;
-	float halfex, halfey, halfez;
-	float qa, qb, qc;
+    float recipNorm;
+    float halfvx, halfvy, halfvz;
+    float halfex, halfey, halfez;
+    float qa, qb, qc;
 
-	
-	if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) {
+    if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) 
+    {
+        recipNorm = invSqrt(ax * ax + ay * ay + az * az);
+        ax *= recipNorm;
+        ay *= recipNorm;
+        az *= recipNorm;        
 
-		
-		recipNorm = invSqrt(ax * ax + ay * ay + az * az);
-		ax *= recipNorm;
-		ay *= recipNorm;
-		az *= recipNorm;        
+        
+        halfvx = q1 * q3 - q0 * q2;
+        halfvy = q0 * q1 + q2 * q3;
+        halfvz = q0 * q0 - 0.5f + q3 * q3;
 
-		
-		halfvx = q1 * q3 - q0 * q2;
-		halfvy = q0 * q1 + q2 * q3;
-		halfvz = q0 * q0 - 0.5f + q3 * q3;
-	
-		
-		halfex = (ay * halfvz - az * halfvy);
-		halfey = (az * halfvx - ax * halfvz);
-		halfez = (ax * halfvy - ay * halfvx);
+        
+        halfex = (ay * halfvz - az * halfvy);
+        halfey = (az * halfvx - ax * halfvz);
+        halfez = (ax * halfvy - ay * halfvx);
 
-		
-		if(twoKi > 0.0f) {
-			integralFBx += twoKi * halfex * (1.0f / sampleFreq);	
-			integralFBy += twoKi * halfey * (1.0f / sampleFreq);
-			integralFBz += twoKi * halfez * (1.0f / sampleFreq);
-			gx += integralFBx;				
-			gy += integralFBy;
-			gz += integralFBz;
-		}
-		else {
-			integralFBx = 0.0f;				
-			integralFBy = 0.0f;
-			integralFBz = 0.0f;
-		}
+        
+        if(twoKi > 0.0f) {
+            integralFBx += twoKi * halfex * (1.0f / sampleFreq);	
+            integralFBy += twoKi * halfey * (1.0f / sampleFreq);
+            integralFBz += twoKi * halfez * (1.0f / sampleFreq);
+            gx += integralFBx;				
+            gy += integralFBy;
+            gz += integralFBz;
+        }
+        else {
+            integralFBx = 0.0f;				
+            integralFBy = 0.0f;
+            integralFBz = 0.0f;
+        }
 
-	
-		gx += twoKp * halfex;
-		gy += twoKp * halfey;
-		gz += twoKp * halfez;
-	}
-	
-	gx *= (0.5f * (1.0f / sampleFreq));		
-	gy *= (0.5f * (1.0f / sampleFreq));
-	gz *= (0.5f * (1.0f / sampleFreq));
-	qa = q0;
-	qb = q1;
-	qc = q2;
-	q0 += (-qb * gx - qc * gy - q3 * gz);
-	q1 += (qa * gx + qc * gz - q3 * gy);
-	q2 += (qa * gy - qb * gz + q3 * gx);
-	q3 += (qa * gz + qb * gy - qc * gx); 
-	
-	recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
-	q0 *= recipNorm;
-	q1 *= recipNorm;
-	q2 *= recipNorm;
-	q3 *= recipNorm;
 
-	imu_data.orientation.w = q0;
-	imu_data.orientation.x = q1;
-	imu_data.orientation.y = q2;
-	imu_data.orientation.z = q3;
+        gx += twoKp * halfex;
+        gy += twoKp * halfey;
+        gz += twoKp * halfez;
+    }
+
+    gx *= (0.5f * (1.0f / sampleFreq));		
+    gy *= (0.5f * (1.0f / sampleFreq));
+    gz *= (0.5f * (1.0f / sampleFreq));
+    qa = q0;
+    qb = q1;
+    qc = q2;
+    q0 += (-qb * gx - qc * gy - q3 * gz);
+    q1 += (qa * gx + qc * gz - q3 * gy);
+    q2 += (qa * gy - qb * gz + q3 * gx);
+    q3 += (qa * gz + qb * gy - qc * gx); 
+
+    recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
+    q0 *= recipNorm;
+    q1 *= recipNorm;
+    q2 *= recipNorm;
+    q3 *= recipNorm;
+
+    imu_data.orientation.w = q0;
+    imu_data.orientation.x = q1;
+    imu_data.orientation.y = q2;
+    imu_data.orientation.z = q3;
+}
+
+void MyAGV::Publish_Voltage()
+{
+    std_msgs::Float32 voltage_msg;
+    voltage_msg.data = Battery_voltage;
+    pub_voltage.publish(voltage_msg);
 }
 
 void MyAGV::publisherImuSensor()
 {
-	sensor_msgs::Imu ImuSensor;
+    sensor_msgs::Imu ImuSensor;
 
-	ImuSensor.header.stamp = ros::Time::now(); 
-	ImuSensor.header.frame_id = "/imu";
+    ImuSensor.header.stamp = ros::Time::now(); 
+    ImuSensor.header.frame_id = "/imu";
 
-	ImuSensor.orientation.x = 0.0; 
-	ImuSensor.orientation.y = 0.0; 
-	ImuSensor.orientation.z = imu_data.orientation.z;
-	ImuSensor.orientation.w = imu_data.orientation.w;
+    ImuSensor.orientation.x = 0.0; 
+    ImuSensor.orientation.y = 0.0; 
+    ImuSensor.orientation.z = imu_data.orientation.z;
+    ImuSensor.orientation.w = imu_data.orientation.w;
 
-	ImuSensor.orientation_covariance[0] = 1e6;
-	ImuSensor.orientation_covariance[4] = 1e6;
-	ImuSensor.orientation_covariance[8] = 1e-6;
+    ImuSensor.orientation_covariance[0] = 1e6;
+    ImuSensor.orientation_covariance[4] = 1e6;
+    ImuSensor.orientation_covariance[8] = 1e-6;
 
-	ImuSensor.angular_velocity.x = 0.0;		
-	ImuSensor.angular_velocity.y = 0.0;		
-	ImuSensor.angular_velocity.z = imu_data.angular_velocity.z;
+    ImuSensor.angular_velocity.x = 0.0;		
+    ImuSensor.angular_velocity.y = 0.0;		
+    ImuSensor.angular_velocity.z = imu_data.angular_velocity.z;
 
-	ImuSensor.angular_velocity_covariance[0] = 1e6;
-	ImuSensor.angular_velocity_covariance[4] = 1e6;
-	ImuSensor.angular_velocity_covariance[8] = 1e-6;
+    ImuSensor.angular_velocity_covariance[0] = 1e6;
+    ImuSensor.angular_velocity_covariance[4] = 1e6;
+    ImuSensor.angular_velocity_covariance[8] = 1e-6;
 
-	ImuSensor.linear_acceleration.x = 0; 
-	ImuSensor.linear_acceleration.y = 0; 
-	ImuSensor.linear_acceleration.z = 0;  
+    ImuSensor.linear_acceleration.x = 0; 
+    ImuSensor.linear_acceleration.y = 0; 
+    ImuSensor.linear_acceleration.z = 0;  
 
-	pub_imu.publish(ImuSensor); 
+    pub_imu.publish(ImuSensor); 
 }
 void MyAGV::publisherImuSensorRaw()
 {
-	sensor_msgs::Imu ImuSensorRaw;
+    sensor_msgs::Imu ImuSensorRaw;
 
-	ImuSensorRaw.header.stamp = ros::Time::now(); 
-	ImuSensorRaw.header.frame_id = "/imu_raw";
+    ImuSensorRaw.header.stamp = ros::Time::now(); 
+    ImuSensorRaw.header.frame_id = "/imu_raw";
 
-	ImuSensorRaw.orientation.x = 0.0; 
-	ImuSensorRaw.orientation.y = 0.0; 
-	ImuSensorRaw.orientation.z = 0.0;
-	ImuSensorRaw.orientation.w = 1.0;
+    ImuSensorRaw.orientation.x = 0.0; 
+    ImuSensorRaw.orientation.y = 0.0; 
+    ImuSensorRaw.orientation.z = 0.0;
+    ImuSensorRaw.orientation.w = 1.0;
 
-	ImuSensorRaw.angular_velocity.x = imu_data.angular_velocity.x;		
-	ImuSensorRaw.angular_velocity.y = imu_data.angular_velocity.y;		
-	ImuSensorRaw.angular_velocity.z = imu_data.angular_velocity.z;
+    ImuSensorRaw.angular_velocity.x = imu_data.angular_velocity.x;		
+    ImuSensorRaw.angular_velocity.y = imu_data.angular_velocity.y;		
+    ImuSensorRaw.angular_velocity.z = imu_data.angular_velocity.z;
 
-	ImuSensorRaw.linear_acceleration.x = imu_data.linear_acceleration.x; 
-	ImuSensorRaw.linear_acceleration.y = imu_data.linear_acceleration.y; 
-	ImuSensorRaw.linear_acceleration.z = imu_data.linear_acceleration.z;  
+    ImuSensorRaw.linear_acceleration.x = imu_data.linear_acceleration.x; 
+    ImuSensorRaw.linear_acceleration.y = imu_data.linear_acceleration.y; 
+    ImuSensorRaw.linear_acceleration.z = imu_data.linear_acceleration.z;  
 
-	pub_imu.publish(ImuSensorRaw); 
+    pub_imu.publish(ImuSensorRaw); 
 }
 void MyAGV::publisherOdom()
 {   
@@ -444,7 +387,7 @@ void MyAGV::publisherOdom()
     odom_trans.transform.rotation = odom_quat;
 
     //odomBroadcaster.sendTransform(odom_trans);
-    
+
     nav_msgs::Odometry msgl;
     msgl.header.stamp = ros::Time::now();
     msgl.header.frame_id = "odom";
@@ -497,6 +440,7 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
             publisherOdom();
             publisherImuSensor();
             //publisherImuSensorRaw();
+            Publish_Voltage();
         }
     } 
     lastTime = currentTime;

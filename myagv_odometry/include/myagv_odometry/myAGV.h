@@ -9,12 +9,13 @@
 #include <tf/transform_broadcaster.h>
 #include <boost/asio.hpp>
 #include <sensor_msgs/Imu.h>
+#include "std_msgs/Float32.h"
 
 
-//#define sampleFreq	20.5f				// sample frequency in Hz
+//#define sampleFreq	20.5f			// sample frequency in Hz
 #define twoKpDef	1.0f				// (2.0f * 0.5f)	// 2 * proportional gain
 #define twoKiDef	0.0f				// (2.0f * 0.0f)	// 2 * integral gain
-
+#define TOTAL_RECEIVE_SIZE 27         	// 27 字节 //The length of the data sent by the esp32 //esp32发送过来的数据的长度
 #define OFFSET_COUNT 	200
 
 class MyAGV
@@ -30,6 +31,7 @@ public:
 	void publisherOdom();
 	void publisherImuSensor();
 	void publisherImuSensorRaw();
+	void Publish_Voltage();
 
 private:
 	bool readSpeed();
@@ -63,10 +65,11 @@ private:
 	float Gyroscope_Ydata_Offset;
 	float Gyroscope_Zdata_Offset;
 	float sampleFreq;
+	float Battery_voltage,Backup_Battery_voltage;
 	unsigned short Offest_Count;
     sensor_msgs::Imu imu_data;
 	ros::NodeHandle n;
-	ros::Publisher pub_odom,pub_v,pub_imu,pub,pub_imu_raw;
+	ros::Publisher pub_odom,pub_voltage,pub_imu,pub,pub_imu_raw;
 	tf::TransformBroadcaster odomBroadcaster;
 };
 
