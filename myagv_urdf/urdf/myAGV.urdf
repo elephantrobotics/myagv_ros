@@ -1,18 +1,6 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="myAGV">
 
-    <!-- <link name="base_footprint">
-        <visual>
-        <geometry>
-            <mesh filename="package://myagv_urdf/urdf/myagv_all.dae" scale="1 1 1"/>
-        </geometry>
-        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
-        <material name="black">
-            <color rgba="0.7 0.5 0.0 0.5"/>
-        </material>
-        </visual>   
-    </link> -->
-
     <link name="base_footprint">
         <visual>
         <geometry>

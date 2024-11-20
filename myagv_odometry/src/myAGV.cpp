@@ -48,15 +48,10 @@ bool MyAGV::init()
     sp.set_option(boost::asio::serial_port::parity(boost::asio::serial_port::parity::none));
     sp.set_option(boost::asio::serial_port::stop_bits(boost::asio::serial_port::stop_bits::one));
     sp.set_option(boost::asio::serial_port::character_size(8));
-    Gyroscope_Xdata_Offset = 0.0f; 
-    Gyroscope_Ydata_Offset = 0.0f; 
-    Gyroscope_Zdata_Offset = 0.0f;
-    Offest_Count = 0;
     ros::Time::init();
 
     lastTime = ros::Time::now();
     pub_imu =  n.advertise<sensor_msgs::Imu>("imu_data", 20);
-    pub_imu_raw =  n.advertise<sensor_msgs::Imu>("imu_raw_data", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
     pub_voltage = n.advertise<std_msgs::Float32>("Voltage", 10);
     restore(); //first restore,abort current err,don't restore
@@ -174,6 +169,30 @@ bool MyAGV::readSpeed()
 
     Battery_voltage = (float)buf[index + 16] / 10.0f;
     Backup_Battery_voltage = (float)buf[index + 17] / 10.0f;
+
+    roll  = (int16_t)((buf[index + 26] << 8) | (buf[index + 27] & 0xff)) * 0.01;
+    pitch = (int16_t)((buf[index + 28] << 8) | (buf[index + 29] & 0xff)) * 0.01;
+    yaw   = (int16_t)((buf[index + 30] << 8) | (buf[index + 31] & 0xff)) * 0.01;
+
+    ROS_INFO("yaw:%f",yaw);
+
+    //*******************************************************************************************记录变化的θ，用来计算里程计
+    if (!initialized)
+    {
+        present_theta = last_theta = yaw;
+        initialized = true;
+    }
+
+    present_theta = yaw;
+    delta_theta = present_theta - last_theta;
+    
+    if(delta_theta< 0.1 && delta_theta > -0.1) delta_theta=0;
+
+    accumulated_theta += delta_theta;
+    
+    last_theta = present_theta;
+    //*******************************************************************************************
+
     //std::cout << "Received message is: "  << "|" << vx << "," << vy << "," << vtheta << "|"
                                         //  << imu_data.linear_acceleration.x << "," << imu_data.linear_acceleration.y << "," << imu_data.linear_acceleration.z << "|"
                                     //  << imu_data.angular_velocity.x << "," << imu_data.angular_velocity.y << "," << imu_data.angular_velocity.z << std::endl;
@@ -207,110 +226,6 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     boost::asio::write(sp, boost::asio::buffer(buf));
 }
 
-float MyAGV::invSqrt(float number)
-{
-    volatile long i;
-    volatile float x, y;
-    volatile const float f = 1.5F;
-
-    x = number * 0.5F;
-    y = number;
-    i = * (( long * ) &y);
-    i = 0x5f375a86 - ( i >> 1 );
-    y = * (( float * ) &i);
-    y = y * ( f - ( x * y * y ) );
-
-    return y;
-}
-
-void MyAGV::accelerometerOffset(float gx, float gy, float gz)
-{
-    Gyroscope_Xdata_Offset += gx; 
-    Gyroscope_Ydata_Offset += gy; 
-    Gyroscope_Zdata_Offset += gz;
-    // std::cout << "data" << Gyroscope_Xdata_Offset << Gyroscope_Ydata_Offset << Gyroscope_Zdata_Offset << std::endl;
-
-    if (Offest_Count == OFFSET_COUNT)
-    {
-        Gyroscope_Xdata_Offset = Gyroscope_Xdata_Offset / OFFSET_COUNT;
-        Gyroscope_Ydata_Offset = Gyroscope_Ydata_Offset / OFFSET_COUNT;
-        Gyroscope_Zdata_Offset = Gyroscope_Zdata_Offset / OFFSET_COUNT;
-    }
-}
-
-volatile float twoKp = twoKpDef;											
-volatile float twoKi = twoKiDef;											
-volatile float q0 = 1.0f, q1 = 0.0f, q2 = 0.0f, q3 = 0.0f;					
-volatile float integralFBx = 0.0f,  integralFBy = 0.0f, integralFBz = 0.0f;	
-
-void MyAGV::MahonyAHRSupdateIMU(float gx, float gy, float gz, float ax, float ay, float az)
-{
-    float recipNorm;
-    float halfvx, halfvy, halfvz;
-    float halfex, halfey, halfez;
-    float qa, qb, qc;
-
-    if(!((ax == 0.0f) && (ay == 0.0f) && (az == 0.0f))) 
-    {
-        recipNorm = invSqrt(ax * ax + ay * ay + az * az);
-        ax *= recipNorm;
-        ay *= recipNorm;
-        az *= recipNorm;        
-
-        
-        halfvx = q1 * q3 - q0 * q2;
-        halfvy = q0 * q1 + q2 * q3;
-        halfvz = q0 * q0 - 0.5f + q3 * q3;
-
-        
-        halfex = (ay * halfvz - az * halfvy);
-        halfey = (az * halfvx - ax * halfvz);
-        halfez = (ax * halfvy - ay * halfvx);
-
-        
-        if(twoKi > 0.0f) {
-            integralFBx += twoKi * halfex * (1.0f / sampleFreq);	
-            integralFBy += twoKi * halfey * (1.0f / sampleFreq);
-            integralFBz += twoKi * halfez * (1.0f / sampleFreq);
-            gx += integralFBx;				
-            gy += integralFBy;
-            gz += integralFBz;
-        }
-        else {
-            integralFBx = 0.0f;				
-            integralFBy = 0.0f;
-            integralFBz = 0.0f;
-        }
-
-
-        gx += twoKp * halfex;
-        gy += twoKp * halfey;
-        gz += twoKp * halfez;
-    }
-
-    gx *= (0.5f * (1.0f / sampleFreq));		
-    gy *= (0.5f * (1.0f / sampleFreq));
-    gz *= (0.5f * (1.0f / sampleFreq));
-    qa = q0;
-    qb = q1;
-    qc = q2;
-    q0 += (-qb * gx - qc * gy - q3 * gz);
-    q1 += (qa * gx + qc * gz - q3 * gy);
-    q2 += (qa * gy - qb * gz + q3 * gx);
-    q3 += (qa * gz + qb * gy - qc * gx); 
-
-    recipNorm = invSqrt(q0 * q0 + q1 * q1 + q2 * q2 + q3 * q3);
-    q0 *= recipNorm;
-    q1 *= recipNorm;
-    q2 *= recipNorm;
-    q3 *= recipNorm;
-
-    imu_data.orientation.w = q0;
-    imu_data.orientation.x = q1;
-    imu_data.orientation.y = q2;
-    imu_data.orientation.z = q3;
-}
-
 void MyAGV::Publish_Voltage()
 {
     std_msgs::Float32 voltage_msg;
@@ -323,54 +238,36 @@ void MyAGV::publisherImuSensor()
     sensor_msgs::Imu ImuSensor;
 
     ImuSensor.header.stamp = ros::Time::now(); 
-    ImuSensor.header.frame_id = "/imu";
+    ImuSensor.header.frame_id = "imu";
 
-    ImuSensor.orientation.x = 0.0; 
-    ImuSensor.orientation.y = 0.0; 
-    ImuSensor.orientation.z = imu_data.orientation.z;
-    ImuSensor.orientation.w = imu_data.orientation.w;
+    tf::Quaternion qua;
+    qua.setRPY(0, 0, yaw * M_PI / 180.0);
+
+    ImuSensor.orientation.x = qua[0]; 
+    ImuSensor.orientation.y = qua[1]; 
+    ImuSensor.orientation.z = qua[2];
+    ImuSensor.orientation.w = qua[3];
+
+    ImuSensor.angular_velocity.x = imu_data.angular_velocity.x;		
+    ImuSensor.angular_velocity.y = imu_data.angular_velocity.y;		
+    ImuSensor.angular_velocity.z = imu_data.angular_velocity.z;
+
+    ImuSensor.linear_acceleration.x = imu_data.linear_acceleration.x;
+    ImuSensor.linear_acceleration.y = imu_data.linear_acceleration.y;
+    ImuSensor.linear_acceleration.z = imu_data.linear_acceleration.z;
 
     ImuSensor.orientation_covariance[0] = 1e6;
     ImuSensor.orientation_covariance[4] = 1e6;
     ImuSensor.orientation_covariance[8] = 1e-6;
 
-    ImuSensor.angular_velocity.x = 0.0;		
-    ImuSensor.angular_velocity.y = 0.0;		
-    ImuSensor.angular_velocity.z = imu_data.angular_velocity.z;
-
     ImuSensor.angular_velocity_covariance[0] = 1e6;
     ImuSensor.angular_velocity_covariance[4] = 1e6;
     ImuSensor.angular_velocity_covariance[8] = 1e-6;
 
-    ImuSensor.linear_acceleration.x = 0; 
-    ImuSensor.linear_acceleration.y = 0; 
-    ImuSensor.linear_acceleration.z = 0;  
-
     pub_imu.publish(ImuSensor); 
 }
-void MyAGV::publisherImuSensorRaw()
-{
-    sensor_msgs::Imu ImuSensorRaw;
 
-    ImuSensorRaw.header.stamp = ros::Time::now(); 
-    ImuSensorRaw.header.frame_id = "/imu_raw";
-
-    ImuSensorRaw.orientation.x = 0.0; 
-    ImuSensorRaw.orientation.y = 0.0; 
-    ImuSensorRaw.orientation.z = 0.0;
-    ImuSensorRaw.orientation.w = 1.0;
-
-    ImuSensorRaw.angular_velocity.x = imu_data.angular_velocity.x;		
-    ImuSensorRaw.angular_velocity.y = imu_data.angular_velocity.y;		
-    ImuSensorRaw.angular_velocity.z = imu_data.angular_velocity.z;
-
-    ImuSensorRaw.linear_acceleration.x = imu_data.linear_acceleration.x; 
-    ImuSensorRaw.linear_acceleration.y = imu_data.linear_acceleration.y; 
-    ImuSensorRaw.linear_acceleration.z = imu_data.linear_acceleration.z;  
-
-    pub_imu.publish(ImuSensorRaw); 
-}
-void MyAGV::publisherOdom()
+void MyAGV::publisherOdom(double dt)
 {   
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = ros::Time::now();
@@ -378,15 +275,23 @@ void MyAGV::publisherOdom()
     odom_trans.child_frame_id = "base_footprint";
 
     geometry_msgs::Quaternion odom_quat;
-    double compensated_yaw = theta*1.22;
-    odom_quat = tf::createQuaternionMsgFromYaw(theta); 
+
+    theta = accumulated_theta * M_PI / 180.0;
+    odom_quat = tf::createQuaternionMsgFromYaw(theta);
+
+    double delta_x = (vx * cos(theta) - vy * sin(theta)) * dt;
+    double delta_y = (vx * sin(theta) + vy * cos(theta)) * dt;
+
+    x += delta_x;
+    y += delta_y;
+
     odom_trans.transform.translation.x = x; 
     odom_trans.transform.translation.y = y; 
 
     odom_trans.transform.translation.z = 0.0;
     odom_trans.transform.rotation = odom_quat;
 
-    //odomBroadcaster.sendTransform(odom_trans);
+    //odomBroadcaster.sendTransform(odom_trans);    // robot_pose_ekf ros package instead
 
     nav_msgs::Odometry msgl;
     msgl.header.stamp = ros::Time::now();
@@ -411,40 +316,12 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
 {   
     currentTime = ros::Time::now();    
     double dt = (currentTime - lastTime).toSec();
-    sampleFreq = 1.0f/dt;
     if (true ==  readSpeed()) 
     {    
-        double delta_x = (vx * cos(theta) - vy * sin(theta)) * dt;
-        double delta_y = (vx * sin(theta) + vy * cos(theta)) * dt;
-        double delta_th = vtheta * dt;
-
-        x += delta_x;
-        y += delta_y;
-        theta += delta_th;
-        if (Offest_Count < OFFSET_COUNT)
-        {
-            Offest_Count++;
-            accelerometerOffset(imu_data.angular_velocity.x, imu_data.angular_velocity.y, imu_data.angular_velocity.z);
-        }
-        else
-        {
-            Offest_Count = OFFSET_COUNT;
-            // std::cout << " g_offset=" <<Gyroscope_Xdata_Offset <<" "<< Gyroscope_Ydata_Offset <<" "<< Gyroscope_Zdata_Offset << std::endl;
-            // std::cout <<"imu0=" << imu_data.angular_velocity.x  << " "<< imu_data.angular_velocity.y << " "  <<  imu_data.angular_velocity.z   << std::endl;
-            imu_data.angular_velocity.x = imu_data.angular_velocity.x - Gyroscope_Xdata_Offset;
-            imu_data.angular_velocity.y = imu_data.angular_velocity.y - Gyroscope_Ydata_Offset;
-            imu_data.angular_velocity.z = imu_data.angular_velocity.z - Gyroscope_Zdata_Offset;
-            // std::cout <<"imu=" << imu_data.angular_velocity.x  << " "<< imu_data.angular_velocity.y << " "  <<  imu_data.angular_velocity.z   << std::endl;
-            MahonyAHRSupdateIMU(0.0, 0.0, imu_data.angular_velocity.z, 0.0, 0.0, imu_data.linear_acceleration.z);
-            writeSpeed(linearX, linearY, angularZ);
-            publisherOdom();
-            publisherImuSensor();
-            //publisherImuSensorRaw();
-            Publish_Voltage();
-        }
+        writeSpeed(linearX, linearY, angularZ);
+        publisherOdom(dt);
+        publisherImuSensor();
+        Publish_Voltage();
     } 
     lastTime = currentTime;
 }
-
-
-
