@@ -276,6 +276,7 @@ void MyAGV::publisherOdom(double dt)
 
     geometry_msgs::Quaternion odom_quat;
 
+    ROS_INFO("accumulated_theta:%f",accumulated_theta);
     theta = accumulated_theta * M_PI / 180.0;
     odom_quat = tf::createQuaternionMsgFromYaw(theta);
 
@@ -287,8 +288,8 @@ void MyAGV::publisherOdom(double dt)
 
     odom_trans.transform.translation.x = x; 
     odom_trans.transform.translation.y = y; 
-
     odom_trans.transform.translation.z = 0.0;
+
     odom_trans.transform.rotation = odom_quat;
 
     //odomBroadcaster.sendTransform(odom_trans);    // robot_pose_ekf ros package instead
