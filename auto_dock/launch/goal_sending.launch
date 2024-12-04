@@ -1,5 +1,0 @@
-<launch>
-    <node name="goal_sending" pkg="auto_dock" type="goal_sending"  output="screen" >
-        <param name="file_name"   type="string" value="/home/ubuntu/myagv_ros/src/auto_dock/data/1.json"/>  
-    </node>
-</launch>
