@@ -41,6 +41,8 @@ set(ORBBEC_LIBS_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDK/lib/${HOST_PLATFORM})
 set(ORBBEC_INCLUDE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/SDK/include/)
 set(CMAKE_BUILD_RPATH "${CMAKE_BUILD_RPATH}:${ORBBEC_LIBS_DIR}")
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_RPATH}:${ORBBEC_LIBS_DIR}")
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
+set(image_geometry_DIR /usr/local/share/image_geometry/cmake) 
 if (USE_NV_HW_DECODER)
   set(JETSON_MULTI_MEDIA_API_DIR /usr/src/jetson_multimedia_api)
   set(JETSON_MULTI_MEDIA_API_CLASS_DIR ${JETSON_MULTI_MEDIA_API_DIR}/samples/common/classes)
@@ -83,7 +85,7 @@ set(SERVICE_FILES
   SetString.srv
 )
 
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4.8.0 REQUIRED)
 find_package(Eigen3 REQUIRED)
 find_package(Boost REQUIRED)
 find_package(PkgConfig REQUIRED)

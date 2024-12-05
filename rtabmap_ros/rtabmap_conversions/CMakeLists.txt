@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.5)
 project(rtabmap_conversions)
 
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
+
 find_package(catkin REQUIRED COMPONENTS
              cv_bridge roscpp sensor_msgs std_msgs geometry_msgs
              tf tf_conversions eigen_conversions laser_geometry pcl_conversions 
