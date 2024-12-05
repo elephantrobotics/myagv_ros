@@ -1,7 +1,9 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(compressed_image_transport)
 
-find_package(OpenCV REQUIRED)
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
+
+find_package(OpenCV 4.8.0 REQUIRED)
 find_package(catkin REQUIRED COMPONENTS cv_bridge dynamic_reconfigure image_transport)
 
 find_package(PkgConfig REQUIRED)
