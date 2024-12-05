@@ -5,7 +5,9 @@ if (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
 #  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Werror")
 endif()
 
-find_package(OpenCV REQUIRED)
+set(cv_bridge_DIR /usr/local/share/cv_bridge/cmake)
+
+find_package(OpenCV 4.8.0 REQUIRED)
 find_package(catkin REQUIRED cv_bridge dynamic_reconfigure image_transport)
 
 # generate the dynamic_reconfigure config file
