@@ -427,7 +427,8 @@ bool MapsManager::hasSubscribers() const
 			octoMapObstacleCloud_.getNumSubscribers() != 0 ||
 			octoMapGroundCloud_.getNumSubscribers() != 0 ||
 			octoMapEmptySpace_.getNumSubscribers() != 0 ||
-			octoMapProj_.getNumSubscribers() != 0;
+			octoMapProj_.getNumSubscribers() != 0 ||
+			elevationMapPub_.getNumSubscribers() != 0;
 }
 
 bool MapsManager::isMapUpdated() const
@@ -629,8 +630,7 @@ std::map<int, rtabmap::Transform> MapsManager::updateMapCaches(
 						}
 						else
 						{
-							viewPoint = data.gridViewPoint();
-							localMaps_.add(iter->first, ground, obstacles, emptyCells, localMapMaker_->getCellSize(), viewPoint);
+							localMaps_.add(iter->first, ground, obstacles, emptyCells, data.gridCellSize(), data.gridViewPoint());
 						}
 					}
 					else
@@ -668,8 +668,7 @@ std::map<int, rtabmap::Transform> MapsManager::updateMapCaches(
 						}
 						else
 						{
-							viewPoint = data.gridViewPoint();
-							localMaps_.add(iter->first, ground, obstacles, emptyCells, localMapMaker_->getCellSize(), viewPoint);
+							localMaps_.add(iter->first, ground, obstacles, emptyCells, data.gridCellSize(), data.gridViewPoint());
 						}
 
 						// put back
@@ -1486,7 +1485,11 @@ void MapsManager::publishMaps(
 		(elevationMapPub_.getNumSubscribers() && !latched_.at(&elevationMapPub_)))
 	{
 		grid_map_msgs::GridMap msg;
+#if RTABMAP_VERSION_MAJOR>0 || (RTABMAP_VERSION_MAJOR==0 && RTABMAP_VERSION_MINOR>21) || (RTABMAP_VERSION_MAJOR==0 && RTABMAP_VERSION_MINOR==21 && RTABMAP_VERSION_PATCH>=8)
+		grid_map::GridMapRosConverter::toMessage(*elevationMap_->gridMap(), msg);
+#else
 		grid_map::GridMapRosConverter::toMessage(elevationMap_->gridMap(), msg);
+#endif
 		msg.info.header.frame_id = mapFrameId;
 		msg.info.header.stamp = stamp;
 		elevationMapPub_.publish(msg);

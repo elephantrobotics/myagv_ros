@@ -99,11 +99,24 @@ private:
 		ros::NodeHandle & nh = getNodeHandle();
 		ros::NodeHandle & pnh = getPrivateNodeHandle();
 
-		int queueSize = 5;
+		int queueSize = 1;
+		int syncQueueSize = 5;
 		int count = 2;
 		bool approx=true;
 		double approxSyncMaxInterval = 0.0;
-		pnh.param("queue_size", queueSize, queueSize);
+		pnh.param("topic_queue_size", queueSize, queueSize);
+		if(pnh.hasParam("queue_size") && !pnh.hasParam("sync_queue_size"))
+		{
+			pnh.param("queue_size", syncQueueSize, syncQueueSize);
+			ROS_WARN("Parameter \"queue_size\" has been renamed "
+					"to \"sync_queue_size\" and will be removed "
+					"in future versions! The value (%d) is copied to "
+					"\"sync_queue_size\".", syncQueueSize);
+		}
+		else
+		{
+			pnh.param("sync_queue_size", syncQueueSize, syncQueueSize);
+		}
 		pnh.param("frame_id", frameId_, frameId_);
 		pnh.param("fixed_frame_id", fixedFrameId_, fixedFrameId_);
 		pnh.param("approx_sync", approx, approx);
@@ -112,24 +125,24 @@ private:
 		pnh.param("wait_for_transform_duration", waitForTransformDuration_, waitForTransformDuration_);
 		pnh.param("xyz_output", xyzOutput_, xyzOutput_);
 
-		cloudSub_1_.subscribe(nh, "cloud1", 1);
-		cloudSub_2_.subscribe(nh, "cloud2", 1);
+		cloudSub_1_.subscribe(nh, "cloud1", queueSize);
+		cloudSub_2_.subscribe(nh, "cloud2", queueSize);
 
 		std::string subscribedTopicsMsg;
 		if(count == 4)
 		{
-			cloudSub_3_.subscribe(nh, "cloud3", 1);
-			cloudSub_4_.subscribe(nh, "cloud4", 1);
+			cloudSub_3_.subscribe(nh, "cloud3", queueSize);
+			cloudSub_4_.subscribe(nh, "cloud4", queueSize);
 			if(approx)
 			{
-				approxSync4_ = new message_filters::Synchronizer<ApproxSync4Policy>(ApproxSync4Policy(queueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_, cloudSub_4_);
+				approxSync4_ = new message_filters::Synchronizer<ApproxSync4Policy>(ApproxSync4Policy(syncQueueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_, cloudSub_4_);
 				if(approxSyncMaxInterval > 0.0)
 					approxSync4_->setMaxIntervalDuration(ros::Duration(approxSyncMaxInterval));
 				approxSync4_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds4_callback, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 			}
 			else
 			{
-				exactSync4_ = new message_filters::Synchronizer<ExactSync4Policy>(ExactSync4Policy(queueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_, cloudSub_4_);
+				exactSync4_ = new message_filters::Synchronizer<ExactSync4Policy>(ExactSync4Policy(syncQueueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_, cloudSub_4_);
 				exactSync4_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds4_callback, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3, boost::placeholders::_4));
 			}
 			subscribedTopicsMsg = uFormat("\n%s subscribed to (%s sync%s):\n   %s,\n   %s,\n   %s,\n   %s",
@@ -143,17 +156,17 @@ private:
 		}
 		else if(count == 3)
 		{
-			cloudSub_3_.subscribe(nh, "cloud3", 1);
+			cloudSub_3_.subscribe(nh, "cloud3", queueSize);
 			if(approx)
 			{
-				approxSync3_ = new message_filters::Synchronizer<ApproxSync3Policy>(ApproxSync3Policy(queueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_);
+				approxSync3_ = new message_filters::Synchronizer<ApproxSync3Policy>(ApproxSync3Policy(syncQueueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_);
 				if(approxSyncMaxInterval > 0.0)
 					approxSync3_->setMaxIntervalDuration(ros::Duration(approxSyncMaxInterval));
 				approxSync3_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds3_callback, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3));
 			}
 			else
 			{
-				exactSync3_ = new message_filters::Synchronizer<ExactSync3Policy>(ExactSync3Policy(queueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_);
+				exactSync3_ = new message_filters::Synchronizer<ExactSync3Policy>(ExactSync3Policy(syncQueueSize), cloudSub_1_, cloudSub_2_, cloudSub_3_);
 				exactSync3_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds3_callback, this, boost::placeholders::_1, boost::placeholders::_2, boost::placeholders::_3));
 			}
 			subscribedTopicsMsg = uFormat("\n%s subscribed to (%s sync%s):\n   %s,\n   %s,\n   %s",
@@ -168,14 +181,14 @@ private:
 		{
 			if(approx)
 			{
-				approxSync2_ = new message_filters::Synchronizer<ApproxSync2Policy>(ApproxSync2Policy(queueSize), cloudSub_1_, cloudSub_2_);
+				approxSync2_ = new message_filters::Synchronizer<ApproxSync2Policy>(ApproxSync2Policy(syncQueueSize), cloudSub_1_, cloudSub_2_);
 				if(approxSyncMaxInterval > 0.0)
 					approxSync2_->setMaxIntervalDuration(ros::Duration(approxSyncMaxInterval));
 				approxSync2_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds2_callback, this, boost::placeholders::_1, boost::placeholders::_2));
 			}
 			else
 			{
-				exactSync2_ = new message_filters::Synchronizer<ExactSync2Policy>(ExactSync2Policy(queueSize), cloudSub_1_, cloudSub_2_);
+				exactSync2_ = new message_filters::Synchronizer<ExactSync2Policy>(ExactSync2Policy(syncQueueSize), cloudSub_1_, cloudSub_2_);
 				exactSync2_->registerCallback(boost::bind(&rtabmap_util::PointCloudAggregator::clouds2_callback, this, boost::placeholders::_1, boost::placeholders::_2));
 			}
 			subscribedTopicsMsg = uFormat("\n%s subscribed to (%s sync%s):\n   %s,\n   %s",
@@ -289,11 +302,11 @@ private:
 				   cloudMsgs[0]->header.stamp != cloudMsgs[i]->header.stamp)
 				{
 					// approx sync
-					cloudDisplacement = rtabmap_conversions::getTransform(
+					cloudDisplacement = rtabmap_conversions::getMovingTransform(
 							frameId, //sourceTargetFrame
 							fixedFrameId_, //fixedFrame
-							cloudMsgs[i]->header.stamp, //stampSource
 							cloudMsgs[0]->header.stamp, //stampTarget
+							cloudMsgs[i]->header.stamp, //stampSource
 							tfListener_,
 							waitForTransformDuration_);
 				}

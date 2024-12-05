@@ -1778,10 +1778,7 @@ void CoreWrapper::commonSensorDataCallback(
 	}
 
 	SensorData data = rtabmap_conversions::sensorDataFromROS(*sensorDataMsg);
-	if(lastPoseIntermediate_)
-	{
-		data.setId(-1);
-	}
+	data.setId(lastPoseIntermediate_?-1:0);
 
 	OdometryInfo odomInfo;
 	if(odomInfoMsg.get())
@@ -1941,11 +1938,11 @@ void CoreWrapper::process(
 				globalPose *= sensorToBase; // transform global pose from sensor frame to robot base frame
 
 				// Correction of the global pose accounting the odometry movement since we received it
-				Transform correction = rtabmap_conversions::getTransform(
+				Transform correction = rtabmap_conversions::getMovingTransform(
 						frameId_,
 						odomFrameId,
-						globalPose_.header.stamp,
 						lastPoseStamp_,
+						globalPose_.header.stamp,
 						tfListener_,
 						waitForTransform_?waitForTransformDuration_:0.0);
 				if(!correction.isNull())
@@ -2282,7 +2279,7 @@ void CoreWrapper::process(
 			}
 
 			// If not intermediate node
-			if(data.id() > 0)
+			if(data.id() >= 0)
 			{
 				localizationDiagnostic_.updateStatus(rtabmap_.getStatistics().localizationCovariance(), twoDMapping_);
 				tick(stamp, rate_>0?rate_:1000.0/(timeMsgConversion+timeRtabmap+timeUpdateMaps+timePublishMaps));

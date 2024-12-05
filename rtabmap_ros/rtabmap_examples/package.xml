@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>rtabmap_examples</name>
-  <version>0.21.1</version>
+  <version>0.21.9</version>
   <description>RTAB-Map's example launch files.</description>
   <maintainer email="matlabbe@gmail.com">Mathieu Labbe</maintainer>
   <author>Mathieu Labbe</author>
@@ -27,6 +27,7 @@
   
   <exec_depend>robot_localization</exec_depend>
   <exec_depend>imu_filter_madgwick</exec_depend>
+  <exec_depend>imu_complementary_filter</exec_depend>
   <exec_depend>realsense2_camera</exec_depend>
   <exec_depend>velodyne_pointcloud</exec_depend>
 

@@ -34,13 +34,17 @@ For the RTAB-Map libraries and standalone application, visit [RTAB-Map's home pa
             <td><a href="http://build.ros.org/job/Nbin_ufv8_uFv8__rtabmap_ros__ubuntu_focal_arm64__binary/"><img src="http://build.ros.org/buildStatus/icon?job=Nbin_ufv8_uFv8__rtabmap_ros__ubuntu_focal_arm64__binary" alt="Build Status"/></td>
         </tr>
         <tr>
-            <td rowspan="3">ROS 2</td>
+            <td rowspan="4">ROS 2</td>
             <td>Humble</td>
             <td><a href="http://build.ros2.org/job/Hbin_uJ64__rtabmap_ros__ubuntu_jammy_amd64__binary/"><img src="http://build.ros2.org/buildStatus/icon?job=Hbin_uJ64__rtabmap_ros__ubuntu_jammy_amd64__binary" alt="Build Status"/></td>
         </tr>
         <tr>
             <td>Iron</td>
             <td><a href="http://build.ros2.org/job/Ibin_uJ64__rtabmap_ros__ubuntu_jammy_amd64__binary/"><img src="http://build.ros2.org/buildStatus/icon?job=Ibin_uJ64__rtabmap_ros__ubuntu_jammy_amd64__binary" alt="Build Status"/></td>
+        </tr>
+        <tr>
+            <td>Jazzy</td>
+            <td><a href="http://build.ros2.org/job/Jbin_uN64__rtabmap_ros__ubuntu_noble_amd64__binary/"><img src="http://build.ros2.org/buildStatus/icon?job=Jbin_uN64__rtabmap_ros__ubuntu_noble_amd64__binary" alt="Build Status"/></td>
         </tr>
         <tr>
             <td>Rolling</td>
@@ -59,9 +63,9 @@ For the RTAB-Map libraries and standalone application, visit [RTAB-Map's home pa
 # Installation 
 
 ## ROS2 distribution
-**Under construction**: see [ros2 branch](https://github.com/introlab/rtabmap_ros/tree/ros2#rtabmap_ros).
+See [ros2 branch](https://github.com/introlab/rtabmap_ros/tree/ros2#rtabmap_ros).
 
-## ROS distribution 
+## ROS1 distribution 
 RTAB-Map is released as binaries in the ROS distribution.
 
 ```bash
