@@ -1,10 +1,5 @@
 <launch>
 
-    
- <!--arg name="map_file" default="$(find myagv_navigation)/map/myagv.yaml"/-->
- <!--node name="map_server_for_test" pkg="map_server" type="map_server" args="$(arg map_file)"-->
- <!--/node-->
-
     <!-- amcl -->
     <node pkg="amcl" type="amcl" name="amcl" output="screen">
         <param name="base_frame_id" value="base_footprint"/>
@@ -28,7 +23,6 @@
         <param name="odom_alpha4" value="0.25"/>
         <param name="odom_alpha5" value="0.25"/>
         <param name="odom_frame_id" value="odom"/>
-        <!--param name="odom_frame_id" value="odom_combined"/-->
         <param name="odom_model_type" value="omni"/>
         <param name="recovery_alpha_slow" value="0.001"/>
         <param name="recovery_alpha_fast" value="0.1"/>

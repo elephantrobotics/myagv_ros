@@ -82,9 +82,6 @@
       <param name="clearing_rotation_allowed" value="true"/>
   </node>
   
-  <node pkg="tf" type="static_transform_publisher" name="base_footprint_to_laser"
-  args="0.0 0.0 0.2 3.1415 0.0 0 /base_footprint /laser_frame 40" /> 
-
   <!-- rviz -->
   <group if="$(arg open_rviz)">
     <node pkg="rviz" type="rviz" name="rviz" required="true"

@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
 <launch>
 
-  <!--node pkg="tf2_ros" type="static_transform_publisher" name="static_transform_publisher" args="0 0 0 0 0 0 base_footprint fixed_base_footprint 100" /-->
-
- <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser_link" args="0.065 0.0 0.08 3.14159265 0.0 0.0 /base_footprint /laser_frame 10" />
-    <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu_link" args="-0.015 0.0 0.0 0.0 0.0 0.0 /base_footprint /imu_raw 10" /> 
-    
   <arg name="map_file" default="$(find myagv_navigation)/map/map.yaml"/>
 
   <node name="map_server_for_test" pkg="map_server" type="map_server" args="$(arg map_file)" output="screen">
@@ -36,10 +31,9 @@
 
     <param name="base_local_planner" value="dwa_local_planner/DWAPlannerROS"/>
     
-
   </node>
 
-  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/teb.rviz"/>
+  <node pkg="rviz" type="rviz" name="rviz" args="-d $(find myagv_navigation)/rviz/dwa.rviz"/>
 
 
 </launch>
