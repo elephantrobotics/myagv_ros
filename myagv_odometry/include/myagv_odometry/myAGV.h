@@ -15,7 +15,7 @@
 //#define sampleFreq	20.5f			// sample frequency in Hz
 #define twoKpDef	1.0f				// (2.0f * 0.5f)	// 2 * proportional gain
 #define twoKiDef	0.0f				// (2.0f * 0.0f)	// 2 * integral gain
-#define TOTAL_RECEIVE_SIZE 43         	// 43 ×Ö½Ú //The length of the data sent by the esp32
+#define TOTAL_RECEIVE_SIZE 43         	// 43 RECEIVE_SIZE //The length of the data sent by the esp32
 #define OFFSET_COUNT 	200
 
 class MyAGV
