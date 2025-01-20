@@ -65,7 +65,7 @@ private:
 	float accumulated_theta = 0.0f;     
 
 	ros::NodeHandle n;
-	ros::Publisher pub_odom,pub_voltage,pub_imu;
+	ros::Publisher pub_odom,pub_voltage,pub_voltage_backup,pub_imu;
 	ros::Time currentTime, lastTime;
 	sensor_msgs::Imu imu_data;
 	tf::TransformBroadcaster odomBroadcaster;

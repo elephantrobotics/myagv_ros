@@ -55,6 +55,7 @@ bool MyAGV::init()
     pub_imu =  n.advertise<sensor_msgs::Imu>("imu_data", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
     pub_voltage = n.advertise<std_msgs::Float32>("voltage", 10);
+    pub_voltage_backup = n.advertise<std_msgs::Float32>("voltage_backup", 10);
     restore(); //first restore,abort current err,don't restore
     return true;
 }
@@ -179,9 +180,17 @@ bool MyAGV::readSpeed()
     imu_data.angular_velocity.y = ((buf[index + 11] + buf[index + 12] * 256 ) - 10000) * 0.1;
     imu_data.angular_velocity.z = ((buf[index + 13] + buf[index + 14] * 256 ) - 10000) * 0.1;
 
-    Battery_voltage = (float)buf[index + 16] / 10.0f;
-    Backup_Battery_voltage = (float)buf[index + 17] / 10.0f;
+    uint8_t highNibble = (buf[index + 15] >> 4) & 0x0F;  
 
+    Battery_voltage = (float)buf[index + 16] / 10.0f;
+
+    bool isBatteryWithBackup = (highNibble == 0x03);
+    if (isBatteryWithBackup){
+        Backup_Battery_voltage = (float)buf[index + 17] / 10.0f;
+    }else{
+        Backup_Battery_voltage = 0.0f;
+    }
+    
     roll  = (int16_t)((buf[index + 26] << 8) | (buf[index + 27] & 0xff)) * 0.01;
     pitch = (int16_t)((buf[index + 28] << 8) | (buf[index + 29] & 0xff)) * 0.01;
     yaw   = (int16_t)((buf[index + 30] << 8) | (buf[index + 31] & 0xff)) * 0.01;
@@ -235,9 +244,13 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
 
 void MyAGV::Publish_Voltage()
 {
-    std_msgs::Float32 voltage_msg;
+    std_msgs::Float32 voltage_msg,voltage_backup_msg;
     voltage_msg.data = Battery_voltage;
     pub_voltage.publish(voltage_msg);
+
+    voltage_backup_msg.data = Backup_Battery_voltage;
+    pub_voltage_backup.publish(voltage_backup_msg);
+
 }
 
 void MyAGV::publisherImuSensor()
