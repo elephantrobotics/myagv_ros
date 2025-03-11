@@ -52,7 +52,7 @@ bool MyAGV::init()
     ros::Time::init();
 
     lastTime = ros::Time::now();
-    pub_imu =  n.advertise<sensor_msgs::Imu>("imu_data", 20);
+    pub_imu =  n.advertise<sensor_msgs::Imu>("imu", 20);
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
     pub_voltage = n.advertise<std_msgs::Float32>("voltage", 10);
     pub_voltage_backup = n.advertise<std_msgs::Float32>("voltage_backup", 10);
@@ -258,7 +258,7 @@ void MyAGV::publisherImuSensor()
     sensor_msgs::Imu ImuSensor;
 
     ImuSensor.header.stamp = ros::Time::now(); 
-    ImuSensor.header.frame_id = "imu";
+    ImuSensor.header.frame_id = "imu_link";
 
     tf::Quaternion qua;
     qua.setRPY(0, 0, yaw * M_PI / 180.0);
