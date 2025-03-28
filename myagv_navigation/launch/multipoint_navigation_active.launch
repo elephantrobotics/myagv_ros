@@ -11,7 +11,7 @@
   <arg name="scan_topic" default="scan"/>
 
   <node pkg="amcl" type="amcl" name="amcl" output="screen">
-    <rosparam file="$(find myagv_navigation)/param/base_local_planner_params/amcl.yaml" command="load" />
+    <rosparam file="$(find myagv_navigation)/param/base_local_planner_param/amcl.yaml" command="load" />
     <param name="initial_pose_x"            value="0"/>
     <param name="initial_pose_y"            value="0"/>
     <param name="initial_pose_a"            value="0"/>
