@@ -189,12 +189,12 @@ int main(int argc, char* argv[])
                 theta = 0;
                 }     
                 if(map.yy == -32767){
-                x = 0.5;
+                x = 0.25;
                 // y = 0;
                 // theta = 0;
                 }
                 if(map.yy == 32767){
-                x = -0.5;
+                x = -0.25;
                 // y = 0;
                 // theta = 0;
                 }
@@ -205,12 +205,12 @@ int main(int argc, char* argv[])
                 }
                 if(map.xx == -32767){
                 // x = 0;
-                y = 0.5;
+                y = 0.25;
                 // theta = 0;
                 }
                 if(map.xx == 32767){
                 // x = 0;
-                y = -0.5;
+                y = -0.25;
                 // theta = 0;
                 }
                 if(map.xx == 0){
