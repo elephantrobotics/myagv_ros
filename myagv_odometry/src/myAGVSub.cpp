@@ -26,8 +26,6 @@ int main(int argc, char* argv[])
 	ros::Subscriber sub = n.subscribe("cmd_vel", 50, cmdCallback);
 	ros::Rate loop_rate(100);
 
-	//ros::Duration(1).sleep();
-	
 	while (ros::ok())
 	{
 		ros::spinOnce();
