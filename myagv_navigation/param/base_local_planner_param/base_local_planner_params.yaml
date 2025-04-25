@@ -9,26 +9,27 @@ TrajectoryPlannerROS:
   # Robot Configuration Parameters
   acc_lim_x: 2
   acc_lim_theta: 0.5 #2
+  acc_lim_y: 0.0
 
-  max_vel_x: 0.17
+  max_vel_x: 0.2
   min_vel_x: 0.01
 
-  max_vel_theta: 0.03 #0.5
-  min_vel_theta: -0.03 #-0.5
-  min_in_place_vel_theta: 0.6
+  max_vel_theta: 0.1 #0.5
+  min_vel_theta: -0.1 #-0.5
+  min_in_place_vel_theta: 0.25
 
   holonomic_robot:  false
-  escape_vel: -0.0
+  escape_vel: 0.0
 
   # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.22
-  xy_goal_tolerance: 0.15
+  yaw_goal_tolerance: 0.25
+  xy_goal_tolerance: 0.25
   trans_stopped_vel: 0.05
   theta_stopped_vel: 0.01
   latch_xy_goal_tolerance: false
 
   # Forward Simulation Parameters
-  sim_time: 1.0
+  sim_time: 0.6
   sim_granularity: 0.02
   angular_sim_granularity: 0.02
   vx_samples: 3
@@ -52,47 +53,3 @@ TrajectoryPlannerROS:
   oscillation_reset_dist: 0.02 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
   escape_reset_dist: 0.05
   escape_reset_theta: 0.05
-
-DWAPlannerROS:
-  # Robot configuration parameters  
-  acc_lim_x: 2.5
-  acc_lim_y: 0
-  acc_lim_th: 3.2
-
-  max_vel_x: 0.5
-  min_vel_x: 0.2
-  max_vel_y: 0
-  min_vel_y: 0
-
-  max_rot_vel: 1.2
-  min_rot_vel: 0.4
-
-  max_vel_trans: 0.5
-  min_vel_trans: 0.1
-  max_vel_theta: 1.0
-  min_vel_theta: 0.2
-
-  # Goal Tolerance Parameters
-  yaw_goal_tolerance: 0.15
-  xy_goal_tolerance: 0.15
-  latch_xy_goal_tolerance: false
-
-  # # Forward Simulation Parameters
-  sim_time: 2.0
-  sim_granularity: 0.02
-  vx_samples: 6
-  vy_samples: 2
-  vtheta_samples: 20
-  penalize_negative_x: true
-
-  # # Trajectory scoring parameters
-  path_distance_bias: 32.0 # The weighting for how much the controller should stay close to the path it was given
-  goal_distance_bias: 24.0 # The weighting for how much the controller should attempt to reach its local goal, also controls speed
-  occdist_scale: 0.01 # The weighting for how much the controller should attempt to avoid obstacles
-  forward_point_distance: 0.325 # The distance from the center point of the robot to place an additional scoring point, in meters
-  stop_time_buffer: 0.2  # The amount of time that the robot must stThe absolute value of the veolicty at which to start scaling the robot's footprint, in m/sop before a collision in order for a trajectory to be considered valid in seconds
-  scaling_speed: 0.25 # The absolute value of the veolicty at which to start scaling the robot's footprint, in m/s
-  max_scaling_factor: 0.2 # The maximum factor to scale the robot's footprint by
-
-  # # Oscillation Prevention Parameters
-  oscillation_reset_dist: 0.05 #How far the robot must travel in meters before oscillation flags are reset (double, default: 0.05)
