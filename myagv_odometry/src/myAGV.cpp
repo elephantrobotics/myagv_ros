@@ -286,7 +286,7 @@ void MyAGV::publisherImuSensor()
     pub_imu.publish(ImuSensor); 
 }
 
-void MyAGV::publisherOdom()
+void MyAGV::publisherOdom(double dt)
 {   
     geometry_msgs::TransformStamped odom_trans;
     odom_trans.header.stamp = ros::Time::now();

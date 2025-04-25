@@ -1,0 +1,34 @@
+footprint: [[0.08, 0.06], [0.08,-0.06], [-0.08, -0.06], [-0.08, 0.06]]
+#footprint: [[0.12, 0.10], [0.12,-0.1], [-0.12, -0.10], [-0.12, 0.10]]
+footprint_padding: 0.01
+
+transform_tolerance: 0.2
+
+
+always_send_full_costmap: true
+
+obstacle_layer:
+  enabled: true
+
+  obstacle_range: 2.0 #2
+  raytrace_range: 2.0 #2
+  inflation_radius: 0.04
+  combination_method: 1
+  observation_sources: laser_scan_sensor 
+  track_unknown_space: true
+
+  laser_scan_sensor:
+    data_type: LaserScan
+    topic: /scan
+    marking: true
+    clearing: true
+
+
+inflation_layer:
+  enabled: true
+  cost_scaling_factor: 5.0 #10
+  inflation_radius: 0.06
+
+static_layer:
+  enabled: true
+  map_topic:  "/map"
