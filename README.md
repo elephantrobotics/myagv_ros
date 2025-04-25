@@ -48,3 +48,16 @@ roslaunch myagv_odometry myagv_active.launch
 ```
 roslaunch myagv_navigation navigation_active.launch
 ```
+
+## Update to new version
+
+```
+cd ~/myagv_ros/src
+
+git pull
+
+cd ..
+
+catkin_make
+```
+
