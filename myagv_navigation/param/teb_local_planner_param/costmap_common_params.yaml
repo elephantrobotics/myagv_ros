@@ -3,6 +3,7 @@ footprint_padding: 0.01
 
 transform_tolerance: 0.2
 
+
 always_send_full_costmap: true
 
 obstacle_layer:
@@ -24,7 +25,7 @@ obstacle_layer:
 
 inflation_layer:
   enabled: true
-  cost_scaling_factor: 5 #10
+  cost_scaling_factor: 5.0 #10
   inflation_radius: 0.25
 
 static_layer:
