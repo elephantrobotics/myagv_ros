@@ -2,6 +2,12 @@
 myAGV ROS package
 ![myAGV202306](https://github.com/user-attachments/assets/e4b5cbd8-9b46-41fb-9ee5-f34ef13c7019)
 
+##Version
+V1.3.6：</br>
+1、adapter firmware V1.2:</br>
+  1.1、add setAutoReport API & open slam-open auto report;close slam-close auto report</br>
+  1.2、modify move cmd 
+
 ## Package Download and Install
 
 ```bash

@@ -18,6 +18,8 @@
 #define TOTAL_RECEIVE_SIZE 43         	// 43 RECEIVE_SIZE //The length of the data sent by the esp32
 #define OFFSET_COUNT 	200
 
+#define move_cmd 267
+
 class MyAGV
 {
 public:
@@ -35,6 +37,7 @@ private:
 	void restore();
 	void restoreRun();
 	void clearSerialBuffer();
+	void setAutoReportState(bool state);
 
 	bool initialized = false;
 
