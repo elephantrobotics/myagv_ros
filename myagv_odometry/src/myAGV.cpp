@@ -38,7 +38,7 @@ MyAGV::MyAGV()
 
 MyAGV::~MyAGV()
 {
-    ;
+    setAutoReportState(0);
 }
 
 bool MyAGV::init()
@@ -56,6 +56,7 @@ bool MyAGV::init()
     pub_odom = n.advertise<nav_msgs::Odometry>("odom", 50); // used to be 50
     pub_voltage = n.advertise<std_msgs::Float32>("Voltage", 10);
     pub_voltage_backup = n.advertise<std_msgs::Float32>("voltage_backup", 10);
+    setAutoReportState(1);
     restore(); //first restore,abort current err,don't restore
     return true;
 }
@@ -71,7 +72,7 @@ void MyAGV::restore()
     // Motor Stall Recovery
     unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x00, 0x01, 0x02};
     
-    std::cout << "Sending data: ";
+    std::cout << "restore sending data: ";
     for (int i = 0; i < 6; ++i) 
     {
         std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(cmd[i]) << " ";
@@ -229,15 +230,18 @@ void MyAGV::writeSpeed(double movex, double movey, double rot)
     unsigned char x_send = static_cast<signed char>(movex * 100) + 128;
     unsigned char y_send = static_cast<signed char>(movey * 100) + 128;
     unsigned char rot_send = static_cast<signed char>(rot * 100) + 128;
-    unsigned char check = x_send + y_send + rot_send;
+    unsigned char check = 0;
 
     char buf[8] = { 0 };
     buf[0] = header[0];
     buf[1] = header[1];
-    buf[2] = x_send;
-    buf[3] = y_send;
-    buf[4] = rot_send;
-    buf[5] = check;
+    buf[2] = move_cmd >> 8;
+    buf[3] = move_cmd & 0xff;
+    buf[4] = x_send;
+    buf[5] = y_send;
+    buf[6] = rot_send;
+    check = (buf[2] + buf[3] + buf[4] + buf[5] + buf[6]) & 0xff;
+    buf[7] = check;
 
     boost::asio::write(sp, boost::asio::buffer(buf));
 }
@@ -346,4 +350,31 @@ void MyAGV::execute(double linearX, double linearY, double angularZ)
     lastTime = currentTime;
 }
 
+/**
+ * @brief auto report 
+ * state 0/1 0-close 1-open
+ */
+void MyAGV::setAutoReportState(bool state)
+{
+    // Motor auto report
+    unsigned char cmd[6] = {0xfe, 0xfe, 0x01, 0x0c, state, 0x0e};
+    short cmd_sum = 0;
 
+    std::cout << "setAutoReportState sending data: ";
+    for (int i = 0; i < 6; ++i) 
+    {
+        if (i >= 2 && i != 5) {
+            cmd_sum += cmd[i];
+	    }
+        if (i != 5)
+            std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(cmd[i]) << " ";
+    }
+    if (!state)
+        cmd[5] = cmd_sum & 0xff;
+    std::cout << std::hex << std::setfill('0') << std::setw(2) << (int)(cmd[5]) << " ";
+    // Write command data to the serial port
+    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    boost::asio::write(sp, boost::asio::buffer(cmd));
+    std::this_thread::sleep_for(std::chrono::milliseconds(50));
+    return;
+}
