@@ -16,6 +16,7 @@
 #define twoKiDef	0.0f				// (2.0f * 0.0f)	// 2 * integral gain
 #define TOTAL_RECEIVE_SIZE 43         	// 43 RECEIVE_SIZE(v1.1) 27 RECEIVE_SIZE(v1.0) //The length of the data sent by the esp32
 #define OFFSET_COUNT 	200
+#define move_cmd 267
 
 class MyAGV
 {
@@ -34,6 +35,7 @@ private:
 	void restore();
 	void restoreRun();
 	void clearSerialBuffer();
+	void setAutoReportState(bool state);
 
 	bool initialized = false;
 
